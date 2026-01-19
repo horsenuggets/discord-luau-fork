@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.8
+- Updated luau-futures to 2.0.0-beta.5 (fixes wally include pattern)
+
 ## 1.0.7
 - Updated luau-futures to 2.0.0-beta.4 (fixes init.luau require issue)
 
