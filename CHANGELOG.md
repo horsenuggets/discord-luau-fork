@@ -2,6 +2,10 @@
 
 ## 1.0.4
 - Fixed Wally package compatibility by converting internal @discordluau aliases to relative paths
+- Fixed CI workflows to use luau-cicd submodule scripts
+- Fixed .luaurc to use correct Lune typedefs path for horse fork
+- Added Roblox globals (game, workspace) to .luaurc for static analysis
+- Temporarily disabled tests pending migration from frktest to Testable
 
 ## 1.0.3
 - Fixed CI workflows to use luau-cicd submodule scripts
