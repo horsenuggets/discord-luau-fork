@@ -20,6 +20,9 @@ local function getRelativePath(fromFile: string, toModule: string): string
         return "./" .. toModule
     end
 
+    local fileName = fromFile:match("([^/]+)%.luau$")
+    local isInitFile = fileName == "init"
+
     -- Count how many directories deep from SOURCE_DIR
     local fromRelative = fromDir:gsub("^" .. SOURCE_DIR .. "/?", "")
     local depth = 0
@@ -28,6 +31,12 @@ local function getRelativePath(fromFile: string, toModule: string): string
     end
     if fromRelative ~= "" then
         depth += 1
+    end
+
+    -- For init.luau files, ./ resolves to the parent directory (where module is imported from)
+    -- So we need one less level of ../ compared to regular files
+    if isInitFile and depth > 0 then
+        depth -= 1
     end
 
     if depth == 0 then

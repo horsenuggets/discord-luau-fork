@@ -5,9 +5,9 @@
 	Wrapper around Discord snowflakes, allwowing developers to query information about a snowflake
 ]=]
 
-local stdPolyfills = require("../StdPolyfills")
+local stdPolyfills = require("./StdPolyfills")
 
-local bit = require("../Bit")
+local bit = require("./Bit")
 
 local DISCORD_EPOCH = 1420070400000
 
