@@ -1,0 +1,6 @@
+{
+    "name": "discord-luau",
+    "tree": {
+        "$path": "init.luau"
+    }
+}

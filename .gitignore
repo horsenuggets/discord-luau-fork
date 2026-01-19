@@ -1,3 +1,21 @@
+# Environment files
+.env
 .env.luau
-*_packages/
-darklua
+
+# Package directories (installed by Wally)
+Packages/
+DevPackages/
+
+# Build artifacts
+build/
+sourcemap.json
+wally.lock
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

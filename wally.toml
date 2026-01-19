@@ -1,0 +1,26 @@
+[package]
+name = "horsenuggets/discord-luau"
+description = "A powerful Discord API wrapper for Luau"
+version = "1.0.0"
+license = "MIT"
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+repository = "https://github.com/horsenuggets/discord-luau-fork"
+include = [
+    "default.project.json",
+    "init.luau",
+    "LICENSE",
+    "README.md",
+    "Source",
+    "Source/**",
+    "wally.toml",
+]
+exclude = ["**"]
+
+[dependencies]
+Future = "yetanotherclown/luau-futures@2.0.0-beta.3"
+t = "horsenuggets/t@3.1.1-horse.0.3"
+
+[dev-dependencies]
+Dotenv = "horsenuggets/dotenv-luau@0.1.2"
+Testable = "horsenuggets/testable@0.1.0"

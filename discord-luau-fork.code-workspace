@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"luau-lsp.require.mode": "relativeToFile",
+		"luau-lsp.require.directoryAliases": {
+			"@lune": "~/.lune/.typedefs/0.10.4/",
+			"@discordluau": "Source/DiscordLuau",
+			"@packages": "Packages",
+			"@devpackages": "DevPackages",
+			"@tests": "Tests",
+			"@scripts": "Scripts"
+		},
+		"luau-lsp.sourcemap.enabled": true,
+		"luau-lsp.sourcemap.rojoProjectFile": "dev.project.json",
+		"luau-lsp.types.definitionFiles": ["globalTypes.d.luau"],
+		"files.associations": {
+			"*.luau": "luau"
+		},
+		"[luau]": {
+			"editor.defaultFormatter": "JohnnyMorganz.stylua"
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"JohnnyMorganz.stylua",
+			"JohnnyMorganz.luau-lsp"
+		]
+	}
+}

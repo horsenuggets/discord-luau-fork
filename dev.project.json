@@ -1,0 +1,17 @@
+{
+    "name": "discord-luau-dev",
+    "tree": {
+        "DiscordLuau": {
+            "$path": "Source/DiscordLuau"
+        },
+        "Packages": {
+            "$path": "Packages"
+        },
+        "DevPackages": {
+            "$path": "DevPackages"
+        },
+        "Tests": {
+            "$path": "Tests"
+        }
+    }
+}
