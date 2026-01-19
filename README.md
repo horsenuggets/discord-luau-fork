@@ -1,26 +1,48 @@
-<div align="center" id="toc">
-<p>
-	<img align="right" src="https://raw.githubusercontent.com/DiscordLuau/docs/master/src/assets/vector.svg" width="256" alt="discord-luau"/>
-</p>
-<div align="left">
-<ul style="list-style: none;">
-    <summary>
-      <h1>DiscordLuau</h1>
-    </summary>
-  </ul>
-</div>
-</div>
+# discord-luau-fork
 
-<a href="https://discord.gg/DpQwdD8zD3"><img alt="Discord" src="https://img.shields.io/discord/385151591524597761?style=plastic&logo=discord&color=%235865F2"></a>
-<a href="https://discord-luau-docs.deno.dev"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/DiscordLuau/discord-luau/update-documentation.yml?style=plastic&logo=githubactions&label=docs&labelColor=%232a3036"></a>
-<a href="https://lune-org.github.io/docs"><img alt="Lune" src=".lune/assets/powered-by-lune.svg"></a>
+A Luau library for creating Discord bots, powered by Lune. Forked from [DiscordLuau/discord-luau](https://github.com/DiscordLuau/discord-luau).
 
+## Installation
 
-### Special Thanks
-A sub-section just to credit people who have committed to the Discord Luau project and cannot be represented through the GitHub contributors section.
+Add to your `wally.toml`:
 
-#### Icon & Design
-- [Dekkonot](https://github.com/Dekkonot) - Tilt concept
-- [BlizzarBlitz](https://github.com/BizzarBlitz) - Figma troubleshooting & ideas
-- [kalrnlo](https://github.com/kalrnlo) - Red ping dot
-- [CompeyDev](https://github.com/CompeyDev) - Design prototype
+```toml
+[dependencies]
+Discord = "horsenuggets/discord-luau-fork@1.0.0"
+```
+
+## Quick Start
+
+```luau
+local Discord = require("@packages/Discord")
+local process = require("@lune/process")
+
+-- Load environment variables
+local Dotenv = require("@devpackages/Dotenv")
+Dotenv.load()
+
+local bot = Discord.bot.new({
+    token = process.env.DISCORD_BOT_TOKEN,
+    intents = 513, -- Guild, GuildMessages
+})
+
+bot:connectAsync():await()
+
+print(`Bot connected as {bot.user.username}`)
+```
+
+## Development
+
+1. Clone the repository
+2. Copy `.env.template` to `.env` and fill in your bot token
+3. Run `rokit install` to install tools
+4. Run `wally install` to install dependencies
+5. Run `lune run Scripts/RunTests.luau` to run tests
+
+## Credits
+
+This is a fork of the original [discord-luau](https://github.com/DiscordLuau/discord-luau) project. Special thanks to the original contributors.
+
+## License
+
+MIT
