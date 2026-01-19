@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.9
+- Updated luau-futures to 2.0.0-beta.6 (fixes Lune ambiguity issue)
+
 ## 1.0.8
 - Updated luau-futures to 2.0.0-beta.5 (fixes wally include pattern)
 
