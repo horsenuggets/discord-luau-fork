@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.10
+- Added Lavalink audio support for Discord voice functionality
+- Added Signal/Connection event system utilities
+
 ## 1.0.9
 - Updated luau-futures to 2.0.0-beta.6 (fixes Lune ambiguity issue)
 

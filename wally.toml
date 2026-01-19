@@ -1,7 +1,7 @@
 [package]
 name = "horsenuggets/discord-luau-fork"
 description = "A Luau library for creating Discord bots, powered by Lune."
-version = "1.0.9"
+version = "1.0.10"
 license = "MIT"
 realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"
