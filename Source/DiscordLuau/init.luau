@@ -1,4 +1,5 @@
 local bot = require("@self/Bot")
+local lavalink = require("@self/Lavalink")
 
 --[=[
 	@class DiscordLuau
@@ -22,5 +23,12 @@ local DiscordLuau = {}
 ]=]
 DiscordLuau.bot = bot
 export type Bot = bot.Bot
+
+--[=[
+	@prop Lavalink DiscordLuau.Lavalink
+	@within DiscordLuau
+]=]
+DiscordLuau.Lavalink = lavalink
+export type Lavalink = lavalink.Lavalink
 
 return DiscordLuau
