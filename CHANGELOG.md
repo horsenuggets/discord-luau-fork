@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3
+- Fixed CI workflows to use luau-cicd submodule scripts
+- Added version-match check to release workflow
+
 ## 1.0.2
 - Fixed Wally auth configuration format
 
