@@ -7,11 +7,11 @@
 	https://discord.com/developers/docs/resources/integration#integration-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 local future = require("@packages/Future")
-local rest = require("@discordluau/Rest")
-local state = require("@discordluau/State")
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local rest = require("../../../Rest")
+local state = require("../../../State")
+local stdPolyfills = require("../../../StdPolyfills")
 
 local account = require("./account")
 local application = require("./application")

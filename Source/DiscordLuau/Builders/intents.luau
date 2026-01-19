@@ -7,9 +7,9 @@
 	https://discord.com/developers/docs/topics/gateway#list-of-intents
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
-local bit = require("@discordluau/Bit")
+local bit = require("../Bit")
 
 local Intents = {}
 

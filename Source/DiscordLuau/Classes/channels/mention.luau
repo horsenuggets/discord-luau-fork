@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/message#channel-mention-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local ChannelMention = {}
 

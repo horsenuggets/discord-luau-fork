@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/interactions/message-components#buttons
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local emoji = require("../../emoji")
 

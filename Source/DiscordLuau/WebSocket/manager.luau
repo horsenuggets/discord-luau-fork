@@ -10,14 +10,14 @@
 	@external future https://yetanotherclown.github.io/luau-futures/
 ]=]
 
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../StdPolyfills")
 
-local emitter = require("@discordluau/Emitter")
+local emitter = require("../Emitter")
 local future = require("@packages/Future")
-local logger = require("@discordluau/Logger")
+local logger = require("../Logger")
 
-local apiTypes = require("@discordluau/ApiTypes")
-local secret = require("@discordluau/Secret")
+local apiTypes = require("../ApiTypes")
+local secret = require("../Secret")
 
 local shard = require("./shard")
 

@@ -2,7 +2,7 @@
 	@class Types.sticker
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local StickerTypes = table.freeze(util.tableReflect({
     Standard = 1,

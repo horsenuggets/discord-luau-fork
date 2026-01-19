@@ -8,7 +8,7 @@
 ]=]
 
 local action = require("./action/action")
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 local triggerMetadata = require("./trigger/metadata")
 
 local AutomoderationRule = {}

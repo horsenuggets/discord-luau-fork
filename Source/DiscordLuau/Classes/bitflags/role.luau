@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/topics/permissions#role-object-role-flags
 ]=]
 
-local bit = require("@discordluau/Bit")
+local bit = require("../../Bit")
 
 local RoleBitflag = {}
 

@@ -7,8 +7,8 @@
 	https://discord.com/developers/docs/resources/guild#guild-widget-settings-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local state = require("@discordluau/State")
+local apiTypes = require("../../../ApiTypes")
+local state = require("../../../State")
 
 local user = require("../../user")
 

@@ -7,9 +7,9 @@
 	https://discord.com/developers/docs/resources/channel#forum-tag-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local ForumTag = {}
 

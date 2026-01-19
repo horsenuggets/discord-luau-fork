@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/message#message-reference-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local Reference = {}
 

@@ -7,10 +7,10 @@
 	https://discord.com/developers/docs/resources/channel#thread-member-object
 ]=]
 
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../StdPolyfills")
 
-local apiTypes = require("@discordluau/ApiTypes")
-local state = require("@discordluau/State")
+local apiTypes = require("../ApiTypes")
+local state = require("../State")
 
 local member = require("./guild/member")
 local threadMemberBitflag = require("./bitflags/threadMember")

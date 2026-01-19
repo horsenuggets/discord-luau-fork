@@ -7,9 +7,9 @@
 	https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
-local state = require("@discordluau/State")
+local state = require("../../State")
 
 local actionRow = require("../message/components/actionRow")
 local button = require("../message/components/button")

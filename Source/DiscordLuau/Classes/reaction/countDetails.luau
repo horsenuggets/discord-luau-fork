@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/message#reaction-count-details-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local CountDetails = {}
 

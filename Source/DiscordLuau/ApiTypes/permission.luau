@@ -2,9 +2,9 @@
 	@class Types.permission
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
-local bit = require("@discordluau/Bit")
+local bit = require("../Bit")
 
 local Permissions = table.freeze(util.tableReflect({
     CreateInstantInvite = bit.lshift(1, 0),

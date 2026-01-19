@@ -8,7 +8,7 @@ Add to your `wally.toml`:
 
 ```toml
 [dependencies]
-Discord = "horsenuggets/discord-luau-fork@1.0.0"
+Discord = "horsenuggets/discord-luau-fork@1.0.4"
 ```
 
 ## Quick Start

@@ -3,8 +3,9 @@
 	"lint": {
 		"*": true
 	},
+	"globals": ["game", "workspace", "warn"],
 	"aliases": {
-		"lune": "~/.lune/.typedefs/0.10.4/",
+		"lune": "~/.lune/.typedefs/0.10.4-horse.7.0/",
 		"discordluau": "Source/DiscordLuau",
 		"packages": "Packages",
 		"devpackages": "DevPackages",

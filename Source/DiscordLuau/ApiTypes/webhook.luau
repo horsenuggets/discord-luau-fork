@@ -2,7 +2,7 @@
 	@class Types.webhook
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local WebhookType = table.freeze(util.tableReflect({
     Incoming = 1,

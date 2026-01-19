@@ -7,7 +7,7 @@
 	packages/classes/src/message/poll/results.luau
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local AnswerCount = {}
 

@@ -29,11 +29,11 @@
 	Whether this interaction has been deferred.
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local builders = require("@discordluau/Builders")
+local apiTypes = require("../../../ApiTypes")
+local builders = require("../../../Builders")
 local future = require("@packages/Future")
-local rest = require("@discordluau/Rest")
-local state = require("@discordluau/State")
+local rest = require("../../../Rest")
+local state = require("../../../State")
 
 local message = require("../../message/message")
 

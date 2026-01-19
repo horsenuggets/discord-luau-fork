@@ -2,7 +2,7 @@
 	@class Types.user
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local NitroType = table.freeze(util.tableReflect({
     None = 0,

@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-action-object-action-metadata
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local ActionMetadata = {}
 

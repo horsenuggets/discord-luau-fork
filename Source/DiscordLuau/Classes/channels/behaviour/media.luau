@@ -5,11 +5,11 @@
 	Media Behaviour, responsible for implementing the various properties, and methods for a media thread channel.
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local builders = require("@discordluau/Builders")
+local apiTypes = require("../../../ApiTypes")
+local builders = require("../../../Builders")
 local future = require("@packages/Future")
-local rest = require("@discordluau/Rest")
-local state = require("@discordluau/State")
+local rest = require("../../../Rest")
+local state = require("../../../State")
 
 local defaultReaction = require("../defaultReaction")
 local forumTag = require("../forumTag")

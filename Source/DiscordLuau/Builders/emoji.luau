@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/emoji#emoji-object
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local Emoji = {}
 

@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/poll#poll-answer-object-poll-answer-object-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local mediaObject = require("./mediaObject")
 

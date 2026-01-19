@@ -7,9 +7,9 @@
 	https://discord.com/developers/docs/resources/poll#poll-object
 ]=]
 
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../../../StdPolyfills")
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local answer = require("./answer")
 local mediaObject = require("./mediaObject")

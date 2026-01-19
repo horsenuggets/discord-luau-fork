@@ -7,11 +7,11 @@
 	https://discord.com/developers/docs/topics/permissions#role-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local builders = require("@discordluau/Builders")
+local apiTypes = require("../../ApiTypes")
+local builders = require("../../Builders")
 local future = require("@packages/Future")
-local rest = require("@discordluau/Rest")
-local state = require("@discordluau/State")
+local rest = require("../../Rest")
+local state = require("../../State")
 
 local permission = require("../permission")
 local roleBitflag = require("../bitflags/role")

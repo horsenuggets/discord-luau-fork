@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/channel#start-thread-without-message-json-params
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local NoMessageThread = {}
 

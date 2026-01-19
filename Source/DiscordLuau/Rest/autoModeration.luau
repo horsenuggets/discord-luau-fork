@@ -1,6 +1,6 @@
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../StdPolyfills")
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 local future = require("@packages/Future")
 
 local request = require("./request")

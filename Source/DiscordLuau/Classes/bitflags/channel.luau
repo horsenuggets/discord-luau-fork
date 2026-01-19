@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/channel#channel-object-channel-flags
 ]=]
 
-local bit = require("@discordluau/Bit")
+local bit = require("../../Bit")
 
 local ChannelBitflag = {}
 

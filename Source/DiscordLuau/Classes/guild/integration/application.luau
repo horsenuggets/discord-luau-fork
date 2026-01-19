@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/guild#integration-application-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local user = require("../../user")
 

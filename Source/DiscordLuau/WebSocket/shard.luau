@@ -1,12 +1,12 @@
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../StdPolyfills")
 
-local buffer = require("@discordluau/Buffer")
-local emitter = require("@discordluau/Emitter")
+local buffer = require("../Buffer")
+local emitter = require("../Emitter")
 local future = require("@packages/Future")
-local logger = require("@discordluau/Logger")
+local logger = require("../Logger")
 
-local apiTypes = require("@discordluau/ApiTypes")
-local util = require("@discordluau/Utilities")
+local apiTypes = require("../ApiTypes")
+local util = require("../Utilities")
 
 local LIBRARY_IDENTIFIER = "DiscordLuau"
 

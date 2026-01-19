@@ -127,8 +127,8 @@
 	Bitrate of the voice channel in bits.
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local util = require("@discordluau/Utilities")
+local apiTypes = require("../ApiTypes")
+local util = require("../Utilities")
 
 local Channel = {}
 

@@ -7,8 +7,8 @@
 	https://discord.com/developers/docs/resources/message#attachment-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local apiTypes = require("../../ApiTypes")
+local stdPolyfills = require("../../StdPolyfills")
 
 local author = require("./author")
 local field = require("./field")

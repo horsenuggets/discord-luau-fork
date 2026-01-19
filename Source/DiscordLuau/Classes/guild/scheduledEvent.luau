@@ -7,8 +7,8 @@
 	https://discord.com/developers/docs/resources/scheduledevent#scheduledevent-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local apiTypes = require("../../ApiTypes")
+local stdPolyfills = require("../../StdPolyfills")
 
 local user = require("../user")
 

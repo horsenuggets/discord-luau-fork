@@ -2,7 +2,7 @@
 	@class Types.interaction
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local InteractionType = table.freeze(util.tableReflect({
     Ping = 1,

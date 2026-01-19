@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-timestamps
 ]=]
 
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../../StdPolyfills")
 
 local ActivityTimestamp = {}
 

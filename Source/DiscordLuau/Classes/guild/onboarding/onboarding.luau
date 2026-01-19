@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/guild#guild-onboarding-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local prompt = require("./prompt")
 

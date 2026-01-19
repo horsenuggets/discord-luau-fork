@@ -7,9 +7,9 @@
 	https://discord.com/developers/docs/monetization/entitlements#entitlement-object
 ]=]
 
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../StdPolyfills")
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
 local Entitlement = {}
 

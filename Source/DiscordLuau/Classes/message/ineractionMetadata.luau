@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/message#message-interaction-metadata-object-message-interaction-metadata-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local user = require("../user")
 

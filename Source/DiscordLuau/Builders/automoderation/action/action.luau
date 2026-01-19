@@ -5,7 +5,7 @@
 	Implementation of a discord automod action object as a luau builder.
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 local metadata = require("./metadata")
 
 local Action = {}

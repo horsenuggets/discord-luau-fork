@@ -7,13 +7,13 @@
 	https://discord.com/developers/docs/resources/message#message-object
 ]=]
 
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../../StdPolyfills")
 
-local apiTypes = require("@discordluau/ApiTypes")
-local builders = require("@discordluau/Builders")
+local apiTypes = require("../../ApiTypes")
+local builders = require("../../Builders")
 local future = require("@packages/Future")
-local rest = require("@discordluau/Rest")
-local state = require("@discordluau/State")
+local rest = require("../../Rest")
+local state = require("../../State")
 
 local activity = require("./activity")
 local application = require("../application/application")

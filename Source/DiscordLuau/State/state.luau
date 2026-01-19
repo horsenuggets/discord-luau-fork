@@ -54,10 +54,10 @@
 local cache = require("./cache")
 local rest = require("./rest")
 
-local apiTypes = require("@discordluau/ApiTypes")
-local logger = require("@discordluau/Logger")
-local secret = require("@discordluau/Secret")
-local websocket = require("@discordluau/WebSocket")
+local apiTypes = require("../ApiTypes")
+local logger = require("../Logger")
+local secret = require("../Secret")
+local websocket = require("../WebSocket")
 
 local State = {}
 

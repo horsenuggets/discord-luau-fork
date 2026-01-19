@@ -57,12 +57,12 @@
 	@within State.Rest
 ]=]
 
-local formdata = require("@discordluau/FormData")
-local logger = require("@discordluau/Logger")
-local rest = require("@discordluau/Rest")
-local secret = require("@discordluau/Secret")
-local stdPolyfills = require("@discordluau/StdPolyfills")
-local utils = require("@discordluau/Utilities")
+local formdata = require("../FormData")
+local logger = require("../Logger")
+local rest = require("../Rest")
+local secret = require("../Secret")
+local stdPolyfills = require("../StdPolyfills")
+local utils = require("../Utilities")
 
 local PER_RESOURCE_COOLOFF_TIME = 1
 local WARN_AFTER = 5

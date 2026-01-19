@@ -2,7 +2,7 @@
 	@class Types.message
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local MessageType = table.freeze(util.tableReflect({
     Default = 0,

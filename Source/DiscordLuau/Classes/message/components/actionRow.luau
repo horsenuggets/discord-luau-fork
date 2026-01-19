@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/message#message-object-message-activity-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local button = require("./button")
 local selectMenu = require("./selectMenu/selectMenu")

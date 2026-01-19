@@ -15,7 +15,7 @@
 	@within State.Cache
 ]=]
 
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../StdPolyfills")
 
 local Cache = {}
 

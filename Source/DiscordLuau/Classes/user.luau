@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/user#user-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
 local avatarDecoration = require("./avatarDecoration")
 

@@ -1,4 +1,4 @@
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 local future = require("@packages/Future")
 
 local request = require("./request")

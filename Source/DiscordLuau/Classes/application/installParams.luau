@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/application#install-params-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local permission = require("../permission")
 

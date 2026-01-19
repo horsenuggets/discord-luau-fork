@@ -1,12 +1,12 @@
-local apiTypes = require("@discordluau/ApiTypes")
-local builders = require("@discordluau/Builders")
-local classes = require("@discordluau/Classes")
-local emitter = require("@discordluau/Emitter")
+local apiTypes = require("./ApiTypes")
+local builders = require("./Builders")
+local classes = require("./Classes")
+local emitter = require("./Emitter")
 local future = require("@packages/Future")
-local logger = require("@discordluau/Logger")
-local rest = require("@discordluau/Rest")
-local state = require("@discordluau/State")
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local logger = require("./Logger")
+local rest = require("./Rest")
+local state = require("./State")
+local stdPolyfills = require("./StdPolyfills")
 
 local DISCORD_VERSION = 10
 

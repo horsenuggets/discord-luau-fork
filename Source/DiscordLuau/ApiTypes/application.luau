@@ -2,7 +2,7 @@
 	@class Types.application
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local MembershipState = table.freeze(util.tableReflect({
     Invited = 1,

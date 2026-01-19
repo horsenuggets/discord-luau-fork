@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/channel#create-channel-invite-json-params
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
 local Invite = {}
 

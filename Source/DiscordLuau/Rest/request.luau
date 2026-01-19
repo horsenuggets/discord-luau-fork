@@ -1,4 +1,4 @@
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../StdPolyfills")
 
 local future = require("@packages/Future")
 

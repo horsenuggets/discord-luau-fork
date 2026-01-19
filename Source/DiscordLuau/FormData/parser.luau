@@ -8,7 +8,7 @@
 		- https://andreubotella.github.io/multipart-form-data/#multipart-form-data-parser
 ]]
 
-local Stream = require("@discordluau/Stream")
+local Stream = require("../Stream")
 
 local ILLEGAL_HTTP_TOKEN_CHARACTERS = table.freeze({
     ['"'] = true,

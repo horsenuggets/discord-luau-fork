@@ -6,7 +6,7 @@
 	and methods for a voice-able channels.
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 local future = require("@packages/Future")
 
 local VoiceBehaviour = {}

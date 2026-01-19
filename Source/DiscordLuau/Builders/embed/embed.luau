@@ -7,9 +7,9 @@
 	https://discord.com/developers/docs/resources/message#embed-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local stdPolyfills = require("../../StdPolyfills")
 
 local embedAuthor = require("./author")
 local embedField = require("./field")
