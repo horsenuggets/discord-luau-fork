@@ -1,6 +1,6 @@
 -- selene: allow(unused_variable)
-local apiTypes = require("@discordluau/ApiTypes")
-local state = require("@discordluau/State")
+local apiTypes = require("../../ApiTypes")
+local state = require("../../State")
 
 local dmChannel = require("./types/dm")
 local groupDmChannel = require("./types/groupDm")

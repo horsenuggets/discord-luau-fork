@@ -2,7 +2,7 @@
 	@class Types.client
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local ActivityType = table.freeze(util.tableReflect({
     Game = 0,

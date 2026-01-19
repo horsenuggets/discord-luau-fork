@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags
 ]=]
 
-local bit = require("@discordluau/Bit")
+local bit = require("../../Bit")
 
 local GuildMemberBitflag = {}
 

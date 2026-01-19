@@ -7,8 +7,8 @@
 	https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object-message-interaction-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local state = require("@discordluau/State")
+local apiTypes = require("../../ApiTypes")
+local state = require("../../State")
 
 local member = require("../guild/member")
 local user = require("../user")

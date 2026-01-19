@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/topics/teams#data-models-team-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local user = require("../../user")
 

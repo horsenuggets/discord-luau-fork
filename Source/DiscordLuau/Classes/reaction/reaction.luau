@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/message#reaction-object-reaction-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local countDetails = require("./countDetails")
 local emoji = require("../emoji")

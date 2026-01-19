@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/interactions/message-components#text-input-object-text-input-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local textInput = require("./textInput")
 

@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/events/gateway-events#update-presence
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
 local activity = require("./activity")
 

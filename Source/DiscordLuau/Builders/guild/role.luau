@@ -7,10 +7,10 @@
 	https://discord.com/developers/docs/resources/guild#create-guild-role-json-params
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local util = require("@discordluau/Utilities")
+local apiTypes = require("../../ApiTypes")
+local util = require("../../Utilities")
 
-local bit = require("@discordluau/Bit")
+local bit = require("../../Bit")
 
 local Role = {}
 

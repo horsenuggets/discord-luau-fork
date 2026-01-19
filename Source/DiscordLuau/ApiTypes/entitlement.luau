@@ -2,7 +2,7 @@
 	@class Types.entitlement
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local EntitlementType = table.freeze(util.tableReflect({
     Purchase = 1,

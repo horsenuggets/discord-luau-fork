@@ -12,10 +12,10 @@
 	- Managing thread ownership and parent relationships
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 local future = require("@packages/Future")
-local rest = require("@discordluau/Rest")
-local state = require("@discordluau/State")
+local rest = require("../../../Rest")
+local state = require("../../../State")
 
 local threadMember = require("../../threadMember")
 local threadMetadata = require("../../channels/threadMetadata")

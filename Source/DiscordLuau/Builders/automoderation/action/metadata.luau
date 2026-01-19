@@ -5,7 +5,7 @@
 	Implementation of a discord automoderation action metadata object as a luau builder.
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local ActionMetadata = {}
 

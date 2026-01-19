@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-emoji
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local ActivityEmoji = {}
 

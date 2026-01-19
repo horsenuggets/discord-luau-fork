@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/message#embed-object-embed-thumbnail-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local Thumbnail = {}
 

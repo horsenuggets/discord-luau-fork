@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/message#attachment-object-attachment-flags
 ]=]
 
-local bit = require("@discordluau/Bit")
+local bit = require("../../Bit")
 
 local AttachmentBitflag = {}
 

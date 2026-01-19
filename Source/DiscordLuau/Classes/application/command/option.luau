@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local choice = require("./choice")
 

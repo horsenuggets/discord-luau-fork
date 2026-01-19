@@ -8,7 +8,7 @@
 	https://discord.com/developers/docs/resources/message#message-object-message-flags
 ]=]
 
-local bit = require("@discordluau/Bit")
+local bit = require("../../Bit")
 
 local MessageBitflag = {}
 

@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/guild#guild-widget-settings-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local WidgetSettings = {}
 

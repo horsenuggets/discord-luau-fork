@@ -7,9 +7,9 @@
 	https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 local interactionChoice = require("./choice")
-local util = require("@discordluau/Utilities")
+local util = require("../../Utilities")
 
 local Option = {}
 

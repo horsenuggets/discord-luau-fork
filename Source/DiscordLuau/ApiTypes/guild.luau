@@ -2,7 +2,7 @@
 	@class Types.guild
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local VerificationLevel = table.freeze(util.tableReflect({
     None = 0,

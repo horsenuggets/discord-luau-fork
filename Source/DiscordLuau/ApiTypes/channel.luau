@@ -2,7 +2,7 @@
 	@class Types.channel
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local apiTypes = require("./apiTypes")
 

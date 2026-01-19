@@ -7,9 +7,9 @@
 	https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command-json-params
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 local interactionOption = require("./option")
-local util = require("@discordluau/Utilities")
+local util = require("../../Utilities")
 
 local Interaction = {}
 

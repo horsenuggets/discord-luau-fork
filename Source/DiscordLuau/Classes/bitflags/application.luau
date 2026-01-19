@@ -8,7 +8,7 @@
 	https://discord.com/developers/docs/resources/application#application-object-application-flags
 ]=]
 
-local bit = require("@discordluau/Bit")
+local bit = require("../../Bit")
 
 local ApplicationBitflag = {}
 

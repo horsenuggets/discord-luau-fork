@@ -2,7 +2,7 @@
 	@class Types.embed
 ]=]
 
-local util = require("@discordluau/Utilities")
+local util = require("../Utilities")
 
 local EmbedType = table.freeze(util.tableReflect({
     Rich = "rich",

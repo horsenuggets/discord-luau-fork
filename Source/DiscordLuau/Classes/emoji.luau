@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/emoji#emoji-resource
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
 local user = require("./user")
 

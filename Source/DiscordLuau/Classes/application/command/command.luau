@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/interactions/application-commands#application-command-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local permission = require("../../permission")
 

@@ -8,8 +8,8 @@
 ]=]
 
 -- selene: allow(unused_variable)
-local apiTypes = require("@discordluau/ApiTypes")
-local state = require("@discordluau/State")
+local apiTypes = require("../../../ApiTypes")
+local state = require("../../../State")
 
 local interactionBehaviour = require("../behaviour/interaction")
 

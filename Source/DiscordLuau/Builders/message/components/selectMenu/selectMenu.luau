@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/interactions/message-components#SelectMenus
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../../ApiTypes")
 
 local defaultValue = require("./defaultValue")
 local option = require("./option")

@@ -7,8 +7,8 @@
 	https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local state = require("@discordluau/State")
+local apiTypes = require("../../ApiTypes")
+local state = require("../../State")
 
 local command = require("../application/command/command")
 local entry = require("./entry/entry")

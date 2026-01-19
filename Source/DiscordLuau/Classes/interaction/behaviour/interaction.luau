@@ -8,8 +8,8 @@
 	 https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local state = require("@discordluau/State")
+local apiTypes = require("../../../ApiTypes")
+local state = require("../../../State")
 
 local data = require("../data")
 local entitlement = require("../../entitlement")

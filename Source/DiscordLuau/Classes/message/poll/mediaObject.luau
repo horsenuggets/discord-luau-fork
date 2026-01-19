@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/poll#poll-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local emoji = require("../../emoji")
 

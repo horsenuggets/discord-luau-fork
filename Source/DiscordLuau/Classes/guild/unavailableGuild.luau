@@ -7,8 +7,8 @@
 	https://discord.com/developers/docs/resources/guild#unavailable-guild-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local state = require("@discordluau/State")
+local apiTypes = require("../../ApiTypes")
+local state = require("../../State")
 
 local UnavailableGuild = {}
 

@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/guild#guild-preview-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local emojiObject = require("../emoji")
 local stickerObject = require("../sticker")

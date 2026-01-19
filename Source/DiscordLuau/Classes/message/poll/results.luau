@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/poll#poll-results-object-poll-results-object-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local answerCount = require("./answerCount")
 

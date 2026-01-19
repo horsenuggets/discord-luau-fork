@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-trigger-metadata
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local TriggerMetadata = {}
 

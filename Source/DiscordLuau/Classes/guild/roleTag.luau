@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/topics/permissions#role-object-role-tags-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local RoleTag = {}
 

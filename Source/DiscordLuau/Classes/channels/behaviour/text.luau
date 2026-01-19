@@ -13,12 +13,12 @@
 	- Handling rate limits and message timestamps
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local builders = require("@discordluau/Builders")
+local apiTypes = require("../../../ApiTypes")
+local builders = require("../../../Builders")
 local future = require("@packages/Future")
-local rest = require("@discordluau/Rest")
-local state = require("@discordluau/State")
-local stdPolyfills = require("@discordluau/StdPolyfills")
+local rest = require("../../../Rest")
+local state = require("../../../State")
+local stdPolyfills = require("../../../StdPolyfills")
 
 local message = require("../../message/message")
 

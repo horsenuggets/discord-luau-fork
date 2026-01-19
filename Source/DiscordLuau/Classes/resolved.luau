@@ -7,9 +7,9 @@
 	https://discord.com/developers/docs/resources/message#attachment-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
-local state = require("@discordluau/State")
+local state = require("../State")
 
 local attachment = require("./attachment")
 local member = require("./guild/member")

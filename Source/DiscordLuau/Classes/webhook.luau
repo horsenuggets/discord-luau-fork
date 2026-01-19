@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/webhook#webhook-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
 local user = require("./user")
 

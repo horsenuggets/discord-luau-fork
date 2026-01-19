@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../ApiTypes")
 
 local AuditLogEntryInfo = {}
 

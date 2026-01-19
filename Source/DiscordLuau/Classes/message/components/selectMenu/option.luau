@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-menu-structure
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../../../ApiTypes")
 
 local emoji = require("../../../emoji")
 

@@ -8,11 +8,11 @@
 	https://discord.com/developers/docs/resources/guild#guild-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
-local builders = require("@discordluau/Builders")
+local apiTypes = require("../../ApiTypes")
+local builders = require("../../Builders")
 local future = require("@packages/Future")
-local rest = require("@discordluau/Rest")
-local state = require("@discordluau/State")
+local rest = require("../../Rest")
+local state = require("../../State")
 
 local auditlog = require("../auditlog/auditlog")
 local automoderationRule = require("../automoderation/rule")
@@ -704,36 +704,31 @@ function Guild.Prototype.bulkBanAsync(
     string,
     { failedUsers: { apiTypes.Snowflake }, bannedUsers: { apiTypes.Snowflake } }
 >
-    return future.Future.new(
-            function()
-                local request = self.state.rest:newRequest()
+    return future.Future.new(function()
+        local request = self.state.rest:newRequest()
 
-                if deleteMessageSeconds then
-                    assert(deleteMessageSeconds < 604800, "deleteMessageSeconds must be less than 604800")
-                    assert(deleteMessageSeconds > 0, "deleteMessageSeconds must be greater than 0")
-                end
+        if deleteMessageSeconds then
+            assert(deleteMessageSeconds < 604800, "deleteMessageSeconds must be less than 604800")
+            assert(deleteMessageSeconds > 0, "deleteMessageSeconds must be greater than 0")
+        end
 
-                local response = rest.guild
-                    .bulkGuildBanAsync(request, self.id, {
-                        user_ids = userIds,
-                        delete_message_seconds = deleteMessageSeconds,
-                    }, reason)
-                    :await()
+        local response = rest.guild
+            .bulkGuildBanAsync(request, self.id, {
+                user_ids = userIds,
+                delete_message_seconds = deleteMessageSeconds,
+            }, reason)
+            :await()
 
-                assert(response:isOk(), tostring(response:unwrapErr()))
+        assert(response:isOk(), tostring(response:unwrapErr()))
 
-                local data = response:unwrapOk()
-                local returnedValue = {}
+        local data = response:unwrapOk()
+        local returnedValue = {}
 
-                returnedValue.bannedUsers = data.banned_users
-                returnedValue.failedUsers = data.failed_users
+        returnedValue.bannedUsers = data.banned_users
+        returnedValue.failedUsers = data.failed_users
 
-                return returnedValue
-            end
-        ) :: future.FutureLike<
-            string,
-            { bannedUsers: { apiTypes.Snowflake }, failedUsers: { apiTypes.Snowflake } }
-        >
+        return returnedValue
+    end) :: future.FutureLike<string, { bannedUsers: { apiTypes.Snowflake }, failedUsers: { apiTypes.Snowflake } }>
 end
 
 --[=[

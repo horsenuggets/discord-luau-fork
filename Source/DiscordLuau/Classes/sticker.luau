@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/sticker#sticker-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
 local user = require("./user")
 

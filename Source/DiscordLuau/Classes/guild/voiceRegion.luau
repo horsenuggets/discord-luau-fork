@@ -7,7 +7,7 @@
 	https://discord.com/developers/docs/resources/voice#voice-region-object
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../../ApiTypes")
 
 local VoiceRegion = {}
 

@@ -9,7 +9,7 @@
 	Note: Only YouTube and Twitch URLs are allowed for streaming.
 ]=]
 
-local apiTypes = require("@discordluau/ApiTypes")
+local apiTypes = require("../ApiTypes")
 
 local Activity = {}
 
