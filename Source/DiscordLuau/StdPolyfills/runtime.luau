@@ -2,10 +2,6 @@
 	@class StdPolyfills.runtime
 ]=]
 
--- Roblox globals (may not exist in Lune environment)
-declare game: any?
-declare workspace: any?
-
 local LUNE_STRING_MATCH = "(Lune) (%d+%.%d+%.%d+.*)+(%d+)"
 local ZUNE_STRING_MATCH = "(Zune) (%d+%.%d+%.%d+.*)+(%d+%.%d+)"
 

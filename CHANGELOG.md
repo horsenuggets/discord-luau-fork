@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.4
+- Fixed Wally package compatibility by converting internal @discordluau aliases to relative paths
+
 ## 1.0.3
 - Fixed CI workflows to use luau-cicd submodule scripts
 - Added version-match check to release workflow
