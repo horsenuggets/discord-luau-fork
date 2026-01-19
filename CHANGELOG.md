@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.6
+- Fixed init.luau relative paths (reverted incorrect ./ to ../ for subdirectory modules)
+
 ## 1.0.5
 - Updated luau-futures dependency to use forked version with proper Wally packaging
 - Fixed init.luau relative paths for proper module resolution
