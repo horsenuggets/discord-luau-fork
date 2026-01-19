@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.2
+- Fixed Wally auth configuration format
+
 ## 1.0.1
 - Added Wally package publishing to release workflow
 - Fixed submodule checkout in publish workflow
