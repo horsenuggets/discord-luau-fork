@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5
+- Updated luau-futures dependency to use forked version with proper Wally packaging
+- Fixed init.luau relative paths for proper module resolution
+
 ## 1.0.4
 - Fixed Wally package compatibility by converting internal @discordluau aliases to relative paths
 - Fixed CI workflows to use luau-cicd submodule scripts
