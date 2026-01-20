@@ -39,5 +39,4 @@ classes = ["*"]
 enabled = true
 includeReadme = true
 
-[gitRepoUrl]
-url = "https://github.com/horsenuggets/discord-luau-fork"
+gitRepoUrl = "https://github.com/horsenuggets/discord-luau-fork"
