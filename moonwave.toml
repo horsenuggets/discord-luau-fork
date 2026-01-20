@@ -1,0 +1,29 @@
+[docusaurus]
+onBrokenLinks = "throw"
+onBrokenMarkdownLinks = "warn"
+organizationName = "horsenuggets"
+projectName = "discord-luau-fork"
+tagline = "A Luau library for creating Discord bots, powered by Lune."
+title = "discord-luau-fork"
+url = "https://horsenuggets.github.io"
+baseUrl = "/discord-luau-fork/"
+
+[footer]
+style = "dark"
+
+[[footer.links]]
+title = "Links"
+
+[[footer.links.items]]
+label = "GitHub"
+href = "https://github.com/horsenuggets/discord-luau-fork"
+
+[[footer.links.items]]
+label = "Wally"
+href = "https://wally.run/package/horsenuggets/discord-luau-fork"
+
+[home]
+enabled = true
+includeReadme = true
+
+gitRepoUrl = "https://github.com/horsenuggets/discord-luau-fork"
