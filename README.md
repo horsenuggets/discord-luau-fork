@@ -2,12 +2,12 @@
 
 A Luau library for creating Discord bots, powered by Lune.
 
-[![Documentation](https://img.shields.io/badge/docs-horsenuggets.github.io-blue)](https://horsenuggets.github.io/discord-luau-fork/)
+[![Documentation](https://img.shields.io/badge/docs-horsenuggets.github.io-blue)](https://horsenuggets.github.io/discord-luau-fork-docs/)
 [![Wally](https://img.shields.io/badge/wally-horsenuggets%2Fdiscord--luau--fork-brightgreen)](https://wally.run/package/horsenuggets/discord-luau-fork)
 
 ## Documentation
 
-Full API documentation is available at **[horsenuggets.github.io/discord-luau-fork](https://horsenuggets.github.io/discord-luau-fork/)**.
+Full API documentation is available at **[horsenuggets.github.io/discord-luau-fork-docs](https://horsenuggets.github.io/discord-luau-fork-docs/)**.
 
 ## Installation
 
