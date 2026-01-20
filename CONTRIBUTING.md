@@ -5,11 +5,11 @@ When contributing to this repository, please first discuss the change you wish t
 Please note we have a [code of conduct](CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
 ## Development environment setup
-1. Git clone the projects repository *(`git clone https://github.com/DiscordLuau/discord-luau.git`)*
-2. Bundle the Types for the project *(`lune bundle`)*
-3. Install all dependencies *(`pesde install`)*
-4. Use `Lune` to start the `development.luau` script
-	i. `lune run development`
+1. Git clone the repository *(`git clone https://github.com/horsenuggets/discord-luau-fork.git`)*
+2. Install all tools *(`rokit install`)*
+3. Install all dependencies *(`wally install`)*
+4. Copy `.env.template` to `.env` and fill in your bot token
+5. Run tests with `lune run Scripts/RunTests.luau`
 
 ## Code Style Guide
 - **Classes:** Use PascalCase for classes.
@@ -28,7 +28,7 @@ Please note we have a [code of conduct](CODE_OF_CONDUCT.md), please follow it in
 
 ## Issues and feature requests
 
-You've found a bug in the source code, a mistake in the documentation or maybe you'd like a new feature? You can help us by [submitting an issue on GitHub](https://github.com/DiscordLuau/discord-luau/issues).
+You've found a bug in the source code, a mistake in the documentation or maybe you'd like a new feature? You can help us by [submitting an issue on GitHub](https://github.com/horsenuggets/discord-luau-fork/issues).
 
 **Even better: Submit a pull request with a fix or new feature!**
 
@@ -37,6 +37,6 @@ You've found a bug in the source code, a mistake in the documentation or maybe y
 1. Fork the project
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Write your code changes
-4. Commit your changes (`git commit -m 'feature: add amazing_feature'`)
-5. Push to the branch (`git push origin feat/amazing_feature`)
-6. [Open a Pull Request](https://github.com/DiscordLuau/discord-luau/compare?expand=1)
+4. Commit your changes (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. [Open a Pull Request](https://github.com/horsenuggets/discord-luau-fork/compare?expand=1)

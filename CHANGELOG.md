@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.11
+- Added Moonwave documentation configuration
+- Added GitHub Pages documentation workflow
+- Updated User-Agent to reference discord-luau-fork
+- Updated issue templates and contributing guide for fork
+
 ## 1.0.10
 - Added Lavalink audio support for Discord voice functionality
 - Added Signal/Connection event system utilities
