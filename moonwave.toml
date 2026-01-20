@@ -24,15 +24,6 @@ href = "https://wally.run/package/horsenuggets/discord-luau-fork"
 
 [[classOrder]]
 section = "Classes"
-classes = [
-    "DiscordLuau",
-    "DiscordLuau.Bot",
-    "Lavalink",
-]
-
-[[classOrder]]
-section = "Structures"
-collapsed = true
 classes = ["*"]
 
 [home]
