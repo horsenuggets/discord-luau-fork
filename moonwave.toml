@@ -22,10 +22,6 @@ href = "https://github.com/horsenuggets/discord-luau-fork"
 label = "Wally"
 href = "https://wally.run/package/horsenuggets/discord-luau-fork"
 
-[[classOrder]]
-section = "Classes"
-classes = ["*"]
-
 [home]
 enabled = true
 includeReadme = true
