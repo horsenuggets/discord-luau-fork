@@ -1,1 +1,1 @@
-return require("./Source/DiscordLuau")
+return require("@self/Source/DiscordLuau")
