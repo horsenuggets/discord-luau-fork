@@ -20,7 +20,7 @@ Usage:
         name = "main",
         host = "localhost",
         port = 2333,
-        password = "youshallnotpass",
+        password = "lifeisroblox",
     })
 
     bot.onReady:listen(function()

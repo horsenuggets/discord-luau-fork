@@ -62,7 +62,7 @@ lavalink:AddNode({
     name = "main",
     host = "localhost",
     port = 2333,
-    password = "youshallnotpass",
+    password = "lifeisroblox",
 })
 
 -- Get a player for a guild and play music
