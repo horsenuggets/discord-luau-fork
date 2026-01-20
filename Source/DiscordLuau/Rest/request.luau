@@ -145,7 +145,7 @@ function Request.Prototype.executeAsync<Resolve>(self: Request)
         local baseUrl = `https://discord.com/api/v{self.restApiVersion}{self.url}`
         local hasUrlParams = next(self.urlParams) ~= nil
 
-        headerTable["user-agent"] = "DiscordBot (https://github.com/DiscordLuau/discord-luau, 0.1.0)"
+        headerTable["user-agent"] = "DiscordBot (https://github.com/horsenuggets/discord-luau-fork, 1.0.0)"
         headerTable["content-type"] = "application/json"
 
         if self.token then

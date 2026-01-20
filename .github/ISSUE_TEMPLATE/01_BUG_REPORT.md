@@ -1,9 +1,8 @@
 ---
 name: "Bug Report"
-about: "Report a bug in discord-luau"
+about: "Report a bug in discord-luau-fork"
 title: "[Bug]: "
 labels: ["bug"]
-assignees: ["4x8Matrix"]
 ---
 
 # Bug Report
