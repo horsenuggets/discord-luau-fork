@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.12
+- Changed documentation to external repo at horsenuggets/discord-luau-fork-docs
+- Changed Rojo project configurations to use fork naming
+- Changed root init to use @self alias for require path
+- Fixed moonwave.toml configuration (gitRepoUrl, favicon, classOrder)
+
 ## 1.0.11
 - Added Moonwave documentation configuration
 - Added GitHub Pages documentation workflow
