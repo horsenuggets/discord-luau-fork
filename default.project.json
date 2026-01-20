@@ -1,6 +1,6 @@
 {
-    "name": "discord-luau",
+    "name": "discord-luau-fork",
     "tree": {
-        "$path": "init.luau"
+        "$path": "Source/DiscordLuau"
     }
 }
