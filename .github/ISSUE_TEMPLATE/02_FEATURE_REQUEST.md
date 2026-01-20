@@ -1,9 +1,8 @@
 ---
 name: "✨ Feature Request"
-about: "Suggest an idea or improvement for discord-luau"
+about: "Suggest an idea or improvement for discord-luau-fork"
 title: "[Feature]: "
 labels: ["enhancement"]
-assignees: ["4x8Matrix"]
 ---
 
 # Feature Request
