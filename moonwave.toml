@@ -8,9 +8,6 @@ title = "discord-luau-fork"
 url = "https://horsenuggets.github.io"
 baseUrl = "/discord-luau-fork/"
 
-[docusaurus.favicon]
-png = "static/logo.png"
-
 [footer]
 style = "dark"
 
