@@ -15,7 +15,7 @@ Add to your `wally.toml`:
 
 ```toml
 [dependencies]
-Discord = "horsenuggets/discord-luau-fork@1.0.12"
+Discord = "horsenuggets/discord-luau-fork@1.0.13"
 ```
 
 ## Quick Start
