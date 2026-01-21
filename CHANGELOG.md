@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.13
+- Fixed Logger method casing in Bot.luau (Emergency -> emergency)
+
 ## 1.0.12
 - Changed documentation to external repo at horsenuggets/discord-luau-fork-docs
 - Changed Rojo project configurations to use fork naming
