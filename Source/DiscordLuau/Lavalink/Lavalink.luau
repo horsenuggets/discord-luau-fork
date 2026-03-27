@@ -174,10 +174,10 @@ function Lavalink._tryConnectPlayer(self: Lavalink, guildId: string)
 end
 
 --[[
-	Adds a Lavalink node.
+    Adds a Lavalink node.
 
-	@param options - Node configuration options
-	@return The created node
+    @param options - Node configuration options
+    @return The created node
 ]]
 function Lavalink.AddNode(self: Lavalink, options: Types.NodeOptions): LavalinkNode.LavalinkNode
     assert(type(options) == "table", "Expected options to be a table")
@@ -243,9 +243,9 @@ function Lavalink.AddNode(self: Lavalink, options: Types.NodeOptions): LavalinkN
 end
 
 --[[
-	Removes a Lavalink node.
+    Removes a Lavalink node.
 
-	@param name - The name of the node to remove
+    @param name - The name of the node to remove
 ]]
 function Lavalink.RemoveNode(self: Lavalink, name: string)
     assert(type(name) == "string", "Expected name to be a string")
@@ -258,9 +258,9 @@ function Lavalink.RemoveNode(self: Lavalink, name: string)
 end
 
 --[[
-	Gets the best available node based on load.
+    Gets the best available node based on load.
 
-	@return The best node or nil if none available
+    @return The best node or nil if none available
 ]]
 function Lavalink.GetBestNode(self: Lavalink): LavalinkNode.LavalinkNode?
     local bestNode: LavalinkNode.LavalinkNode? = nil
@@ -280,20 +280,20 @@ function Lavalink.GetBestNode(self: Lavalink): LavalinkNode.LavalinkNode?
 end
 
 --[[
-	Gets a node by name.
+    Gets a node by name.
 
-	@param name - The node name
-	@return The node or nil
+    @param name - The node name
+    @return The node or nil
 ]]
 function Lavalink.GetNode(self: Lavalink, name: string): LavalinkNode.LavalinkNode?
     return self.Nodes[name]
 end
 
 --[[
-	Gets or creates a player for a guild.
+    Gets or creates a player for a guild.
 
-	@param guildId - The guild ID
-	@return The player for the guild
+    @param guildId - The guild ID
+    @return The player for the guild
 ]]
 function Lavalink.GetPlayer(self: Lavalink, guildId: string): Player.Player?
     assert(type(guildId) == "string", "Expected guildId to be a string")
@@ -307,10 +307,10 @@ function Lavalink.GetPlayer(self: Lavalink, guildId: string): Player.Player?
 end
 
 --[[
-	Creates a new player for a guild.
+    Creates a new player for a guild.
 
-	@param guildId - The guild ID
-	@return The created player or nil if no nodes available
+    @param guildId - The guild ID
+    @return The created player or nil if no nodes available
 ]]
 function Lavalink.CreatePlayer(self: Lavalink, guildId: string): Player.Player?
     assert(type(guildId) == "string", "Expected guildId to be a string")
@@ -327,9 +327,9 @@ function Lavalink.CreatePlayer(self: Lavalink, guildId: string): Player.Player?
 end
 
 --[[
-	Destroys a player for a guild.
+    Destroys a player for a guild.
 
-	@param guildId - The guild ID
+    @param guildId - The guild ID
 ]]
 function Lavalink.DestroyPlayer(self: Lavalink, guildId: string)
     assert(type(guildId) == "string", "Expected guildId to be a string")
@@ -345,11 +345,11 @@ function Lavalink.DestroyPlayer(self: Lavalink, guildId: string)
 end
 
 --[[
-	Searches for tracks.
+    Searches for tracks.
 
-	@param query - The search query
-	@param source - The source to search (ytsearch, scsearch, etc.)
-	@return Load result with tracks
+    @param query - The search query
+    @param source - The source to search (ytsearch, scsearch, etc.)
+    @return Load result with tracks
 ]]
 function Lavalink.Search(self: Lavalink, query: string, source: string?): Types.LoadResult
     assert(type(query) == "string", "Expected query to be a string")
@@ -370,10 +370,10 @@ function Lavalink.Search(self: Lavalink, query: string, source: string?): Types.
 end
 
 --[[
-	Loads tracks from an identifier (URL or search query).
+    Loads tracks from an identifier (URL or search query).
 
-	@param identifier - The track identifier
-	@return Load result with tracks
+    @param identifier - The track identifier
+    @return Load result with tracks
 ]]
 function Lavalink.LoadTracks(self: Lavalink, identifier: string): Types.LoadResult
     assert(type(identifier) == "string", "Expected identifier to be a string")
@@ -394,10 +394,10 @@ function Lavalink.LoadTracks(self: Lavalink, identifier: string): Types.LoadResu
 end
 
 --[[
-	Loads a local audio file.
+    Loads a local audio file.
 
-	@param filePath - The absolute path to the audio file
-	@return Load result with track
+    @param filePath - The absolute path to the audio file
+    @return Load result with track
 ]]
 function Lavalink.LoadFile(self: Lavalink, filePath: string): Types.LoadResult
     assert(type(filePath) == "string", "Expected filePath to be a string")
@@ -420,12 +420,12 @@ function Lavalink.LoadFile(self: Lavalink, filePath: string): Types.LoadResult
 end
 
 --[[
-	Sends a voice state update to Discord gateway.
+    Sends a voice state update to Discord gateway.
 
-	@param guildId - The guild ID
-	@param channelId - The channel ID (nil to disconnect)
-	@param selfDeaf - Whether to self deafen
-	@param selfMute - Whether to self mute
+    @param guildId - The guild ID
+    @param channelId - The channel ID (nil to disconnect)
+    @param selfDeaf - Whether to self deafen
+    @param selfMute - Whether to self mute
 ]]
 function Lavalink._sendVoiceUpdate(
     self: Lavalink,
@@ -449,7 +449,7 @@ function Lavalink._sendVoiceUpdate(
 end
 
 --[[
-	Cleans up the Lavalink manager.
+    Cleans up the Lavalink manager.
 ]]
 function Lavalink.Destroy(self: Lavalink)
     -- Disconnect dispatch listener

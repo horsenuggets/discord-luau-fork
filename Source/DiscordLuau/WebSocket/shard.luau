@@ -1,3 +1,11 @@
+--[[
+
+shard
+
+WebSocket shard implementation for the Discord gateway.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local buffer = require("../Buffer")
@@ -11,182 +19,182 @@ local util = require("../Utilities")
 local LIBRARY_IDENTIFIER = "DiscordLuau"
 
 --[=[
-	@class WebSocket.Shard
-	@__index Prototype
+    @class WebSocket.Shard
+    @__index Prototype
 
-	Shard is responsible for managing a single WebSocket connection to Discord's Gateway API.
-	Its key responsibilities include:
+    Shard is responsible for managing a single WebSocket connection to Discord's Gateway API.
+    Its key responsibilities include:
 
-	1. Establishing and maintaining a WebSocket connection
-	2. Handling incoming messages:
-		- Decompressing ZLIB-compressed messages
-		- Decoding JSON payloads
-		- Invoking callbacks for processed messages
-	3. Sending outgoing messages, including heartbeats
-	4. Managing the heartbeat mechanism:
-		- Sending periodic heartbeats to keep the connection alive
-		- Tracking heartbeat acknowledgements
-		- Initiating reconnection if heartbeats are not acknowledged
-	5. Handling reconnection logic when the connection becomes unstable or "zombified"
-	6. Providing an interface for other parts of the application to interact with the WebSocket connection
+    1. Establishing and maintaining a WebSocket connection
+    2. Handling incoming messages:
+        - Decompressing ZLIB-compressed messages
+        - Decoding JSON payloads
+        - Invoking callbacks for processed messages
+    3. Sending outgoing messages, including heartbeats
+    4. Managing the heartbeat mechanism:
+        - Sending periodic heartbeats to keep the connection alive
+        - Tracking heartbeat acknowledgements
+        - Initiating reconnection if heartbeats are not acknowledged
+    5. Handling reconnection logic when the connection becomes unstable or "zombified"
+    6. Providing an interface for other parts of the application to interact with the WebSocket connection
 
-	The Shard module is crucial for maintaining real-time communication with Discord's Gateway,
-	ensuring the bot stays connected and can send and receive updates efficiently.
+    The Shard module is crucial for maintaining real-time communication with Discord's Gateway,
+    ensuring the bot stays connected and can send and receive updates efficiently.
 ]=]
 
 --[=[
-	@prop token Secret 
-	@within WebSocket.Shard
+    @prop token Secret 
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop intents number
-	@within WebSocket.Shard
+    @prop intents number
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop shardId number
-	@within WebSocket.Shard
+    @prop shardId number
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop shardCount number
-	@within WebSocket.Shard
+    @prop shardCount number
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop shouldReconnect boolean
-	@within WebSocket.Shard
+    @prop shouldReconnect boolean
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop largeThreshold number?
-	@within WebSocket.Shard
+    @prop largeThreshold number?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop zlibBuffer Buffer
-	@within WebSocket.Shard
+    @prop zlibBuffer Buffer
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop onSocketConnected Emitter<()>
-	@within WebSocket.Shard
+    @prop onSocketConnected Emitter<()>
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop onSocketReconnected Emitter<number?>
-	@within WebSocket.Shard
+    @prop onSocketReconnected Emitter<number?>
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop onSocketDisconnected Emitter<number?, boolean?>
-	@within WebSocket.Shard
+    @prop onSocketDisconnected Emitter<number?, boolean?>
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop onSocketHeartbeat Emitter<number?>
-	@within WebSocket.Shard
+    @prop onSocketHeartbeat Emitter<number?>
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop onSocketDispatch Emitter<apiTypes.Payload<unknown>>
-	@within WebSocket.Shard
+    @prop onSocketDispatch Emitter<apiTypes.Payload<unknown>>
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop onSocketRawMessage Emitter<apiTypes.Payload<unknown>>
-	@within WebSocket.Shard
+    @prop onSocketRawMessage Emitter<apiTypes.Payload<unknown>>
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop onSocketReady Emitter<()>
-	@within WebSocket.Shard
+    @prop onSocketReady Emitter<()>
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop heartbeatAcknowledged boolean?
-	@within WebSocket.Shard
+    @prop heartbeatAcknowledged boolean?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop heartbeatClockTime number?
-	@within WebSocket.Shard
+    @prop heartbeatClockTime number?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop heartbeatInterval number?
-	@within WebSocket.Shard
+    @prop heartbeatInterval number?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop heartbeatThread thread?
-	@within WebSocket.Shard
+    @prop heartbeatThread thread?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop heartbeatPing number?
-	@within WebSocket.Shard
+    @prop heartbeatPing number?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop lastSequence number?
-	@within WebSocket.Shard
+    @prop lastSequence number?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop logger Logger
-	@within WebSocket.Shard
+    @prop logger Logger
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop socketActive boolean
-	@within WebSocket.Shard
+    @prop socketActive boolean
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop socketReconnecting boolean
-	@within WebSocket.Shard
+    @prop socketReconnecting boolean
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop socketDisconnecting boolean
-	@within WebSocket.Shard
+    @prop socketDisconnecting boolean
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop socketIdentified boolean
-	@within WebSocket.Shard
+    @prop socketIdentified boolean
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop sessionId string?
-	@within WebSocket.Shard
+    @prop sessionId string?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop sessionGateway string?
-	@within WebSocket.Shard
+    @prop sessionGateway string?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop socketVersion number?
-	@within WebSocket.Shard
+    @prop socketVersion number?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop socketUrl string?
-	@within WebSocket.Shard
+    @prop socketUrl string?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop socketInstance any?
-	@within WebSocket.Shard
+    @prop socketInstance any?
+    @within WebSocket.Shard
 ]=]
 
 --[=[
-	@prop socketThread thread?
-	@within WebSocket.Shard
+    @prop socketThread thread?
+    @within WebSocket.Shard
 ]=]
 
 local Shard = {}
@@ -195,20 +203,20 @@ Shard.Interface = {}
 Shard.Prototype = {}
 
 --[=[
-	@within WebSocket.Shard
-	@private
+    @within WebSocket.Shard
+    @private
 
-	Function responsible for handling incoming messages from the WebSocket connection.
-	
-	It performs the following steps:
-	1. Decompresses the incoming message if it's ZLIB-compressed
-		i. It's worth noting that payloads may not be complete, meaning we should add data to the
-			buffer until we have a complete message
-	2. Decodes the JSON payload
-	3. Invokes the appropriate callback based on the received event type
+    Function responsible for handling incoming messages from the WebSocket connection.
+    
+    It performs the following steps:
+    1. Decompresses the incoming message if it's ZLIB-compressed
+        i. It's worth noting that payloads may not be complete, meaning we should add data to the
+            buffer until we have a complete message
+    2. Decodes the JSON payload
+    3. Invokes the appropriate callback based on the received event type
 
-	Roughly based on the following documentation:
-	https://discord.com/developers/docs/topics/gateway#zlibstream
+    Roughly based on the following documentation:
+    https://discord.com/developers/docs/topics/gateway#zlibstream
 ]=]
 function Shard.Prototype._handleMessage(self: Shard, message: string): ()
     local isJson, jsonContent = pcall(stdPolyfills.serde.decode, "json" :: any, message)
@@ -240,9 +248,9 @@ function Shard.Prototype._handleMessage(self: Shard, message: string): ()
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Sends a heartbeat to the Discord Gateway API.
+    Sends a heartbeat to the Discord Gateway API.
 ]=]
 function Shard.Prototype.heartbeatAsync(self: Shard, requested: boolean?)
     return future.Future.new(function()
@@ -265,9 +273,9 @@ function Shard.Prototype.heartbeatAsync(self: Shard, requested: boolean?)
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Identifies the current shard with the Discord Gateway.
+    Identifies the current shard with the Discord Gateway.
 ]=]
 function Shard.Prototype.identifyAsync(self: Shard)
     return future.Future.new(function()
@@ -295,12 +303,12 @@ function Shard.Prototype.identifyAsync(self: Shard)
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Disconnects the Shard from the Discord Gateway.
+    Disconnects the Shard from the Discord Gateway.
 
-	Optionally, a WebSocket close code can be provided, websocket close code spec can be found here:
-	https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent/code
+    Optionally, a WebSocket close code can be provided, websocket close code spec can be found here:
+    https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent/code
 ]=]
 function Shard.Prototype.disconnectAsync(self: Shard, code: number?)
     return future.Future.new(function()
@@ -341,15 +349,15 @@ function Shard.Prototype.disconnectAsync(self: Shard, code: number?)
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Connects the shard to a Discord Gateway.
+    Connects the shard to a Discord Gateway.
 
-	Expects both a Socket URL, and Socket Version to be provided. It will prepend the socket version
-	to the socket URL, and then connect to the socket.
+    Expects both a Socket URL, and Socket Version to be provided. It will prepend the socket version
+    to the socket URL, and then connect to the socket.
 
-	Also responsible for spawning the thread that will be responsible for
-	receiving messages from the socket.
+    Also responsible for spawning the thread that will be responsible for
+    receiving messages from the socket.
 ]=]
 function Shard.Prototype.connectAsync(self: Shard, socketUrl: string, socketVersion: number)
     return future.Future.new(function()
@@ -429,10 +437,10 @@ function Shard.Prototype.connectAsync(self: Shard, socketUrl: string, socketVers
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Resumes a shard session if for some reason the session has either become
-	zombified, or the session has been invalidated by Discord.
+    Resumes a shard session if for some reason the session has either become
+    zombified, or the session has been invalidated by Discord.
 ]=]
 function Shard.Prototype.resumeAsync(self: Shard)
     return future.Future.new(function()
@@ -472,10 +480,10 @@ function Shard.Prototype.resumeAsync(self: Shard)
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Closes the websocket connection and reconnects the shard.
-	This is not a re-instantiation of the shard, but a re-connection of the shard.
+    Closes the websocket connection and reconnects the shard.
+    This is not a re-instantiation of the shard, but a re-connection of the shard.
 ]=]
 function Shard.Prototype.reconnectAsync(self: Shard)
     return future.Future.new(function()
@@ -513,11 +521,11 @@ function Shard.Prototype.reconnectAsync(self: Shard)
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Sends a message through the WebSocket to Discords Gateway.
+    Sends a message through the WebSocket to Discords Gateway.
 
-	NOTE: Messages are expected to be JSON encoded strings.
+    NOTE: Messages are expected to be JSON encoded strings.
 ]=]
 function Shard.Prototype.sendAsync(self: Shard, data: string)
     local debugTraceback = debug.traceback()
@@ -540,15 +548,15 @@ function Shard.Prototype.sendAsync(self: Shard, data: string)
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Disconnects the Shard, and re-instantiats it.
+    Disconnects the Shard, and re-instantiats it.
 
-	Re-instantiation is the reconnection of the shard to the original socket passed, and not the
-	session URL/ID that was passed.
+    Re-instantiation is the reconnection of the shard to the original socket passed, and not the
+    session URL/ID that was passed.
 
-	Any events between the initial disconnection and reconnection will not be recovered. If this is
-	what you intend to do, use `Shard:reconnectAsync` instead.
+    Any events between the initial disconnection and reconnection will not be recovered. If this is
+    what you intend to do, use `Shard:reconnectAsync` instead.
 ]=]
 function Shard.Prototype.reinstantiateAsync(self: Shard, noFail: boolean?)
     return future.Future.new(function()
@@ -583,10 +591,10 @@ function Shard.Prototype.reinstantiateAsync(self: Shard, noFail: boolean?)
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Sends a heartbeat after `milliseconds` milliseconds, looping and continuing to heartbeat 
-	until the shard is disconnected.
+    Sends a heartbeat after `milliseconds` milliseconds, looping and continuing to heartbeat 
+    until the shard is disconnected.
 ]=]
 function Shard.Prototype.heartbeatIn(self: Shard, milliseconds: number): ()
     if self.heartbeatThread then
@@ -611,9 +619,9 @@ function Shard.Prototype.heartbeatIn(self: Shard, milliseconds: number): ()
 end
 
 --[=[
-	@within WebSocket.Shard
+    @within WebSocket.Shard
 
-	Will instantiate a new Shard class.
+    Will instantiate a new Shard class.
 ]=]
 function Shard.Interface.new(settings: {
     token: string,
@@ -759,12 +767,12 @@ function Shard.Interface.new(settings: {
     end)
 
     --[[
-		The following handles events from the Discord Websocket, we're specifically awaiting the 'Ready'
-			event, which is emitted when the shard has identified.
+        The following handles events from the Discord Websocket, we're specifically awaiting the 'Ready'
+            event, which is emitted when the shard has identified.
 
-		The Ready event contains the resume gateway url, and the session id, which is key for us
-			in order to resume the session.
-	]]
+        The Ready event contains the resume gateway url, and the session id, which is key for us
+            in order to resume the session.
+    ]]
     self.onSocketDispatch:listen(function(payload)
         if payload.t ~= apiTypes.gateway.receiveEvents.Ready then
             return

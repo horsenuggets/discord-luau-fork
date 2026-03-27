@@ -1,10 +1,18 @@
+--[[
+
+guildVoice
+
+Implementation of the Discord GuildVoice class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.GuildVoice
-	@__index Prototype
+    @class Classes.GuildVoice
+    @__index Prototype
 
-	Implementation of the Discord GuildVoice class in Luau
+    Implementation of the Discord GuildVoice class in Luau
 
-	https://discord.com/developers/docs/resources/channel#channel-object
+    https://discord.com/developers/docs/resources/channel#channel-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -25,11 +33,11 @@ GuildVoice.Behaviours = {
 }
 
 --[=[
-	@within Classes.GuildVoice
-	@private
+    @within Classes.GuildVoice
+    @private
 
-	Responsible for syncing data to this guild voice channel object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this guild voice channel object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function GuildVoice.Prototype.sync(self: GuildVoice, channelData: apiTypes.ChannelObject)
     for _, behaviour in GuildVoice.Behaviours do
@@ -39,16 +47,16 @@ function GuildVoice.Prototype.sync(self: GuildVoice, channelData: apiTypes.Chann
 end
 
 --[=[
-	@within Classes.GuildVoice
-	@private
+    @within Classes.GuildVoice
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function GuildVoice.Interface.new(state: state.State, channelData: apiTypes.ChannelObject): GuildVoice
     --[=[
-		@prop state Classes.State
-		@within Classes.GuildVoice
-	]=]
+        @prop state Classes.State
+        @within Classes.GuildVoice
+    ]=]
     local self = setmetatable(
         {
             state = state,

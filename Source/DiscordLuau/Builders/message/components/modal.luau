@@ -1,10 +1,18 @@
+--[[
+
+modal
+
+Implementation of discords Modal object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Modal
-	@__index Prototype
+    @class Builders.Modal
+    @__index Prototype
 
-	Implementation of discords Modal object as a Luau builder.	
+    Implementation of discords Modal object as a Luau builder.    
 
-	https://discord.com/developers/docs/interactions/message-components#text-input-object-text-input-structure
+    https://discord.com/developers/docs/interactions/message-components#text-input-object-text-input-structure
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -17,9 +25,9 @@ Modal.Prototype = {}
 Modal.Interface = {}
 
 --[=[
-	@within Builders.Modal
+    @within Builders.Modal
 
-	Sets the custom ID for this modal. This is required for the Discord API to identify this modal.
+    Sets the custom ID for this modal. This is required for the Discord API to identify this modal.
 ]=]
 function Modal.Prototype.setCustomId(self: Modal, customId: string): Modal
     self.customId = customId
@@ -28,9 +36,9 @@ function Modal.Prototype.setCustomId(self: Modal, customId: string): Modal
 end
 
 --[=[
-	@within Builders.Modal
+    @within Builders.Modal
 
-	Sets the title that appears at the top of the modal.
+    Sets the title that appears at the top of the modal.
 ]=]
 function Modal.Prototype.setTitle(self: Modal, title: string): Modal
     self.title = title
@@ -39,9 +47,9 @@ function Modal.Prototype.setTitle(self: Modal, title: string): Modal
 end
 
 --[=[
-	@within Builders.Modal
+    @within Builders.Modal
 
-	Sets the components that will be displayed in this modal. These must be text input components.
+    Sets the components that will be displayed in this modal. These must be text input components.
 ]=]
 function Modal.Prototype.setComponents(self: Modal, components: { textInput.JSON }): Modal
     self.components = components
@@ -50,9 +58,9 @@ function Modal.Prototype.setComponents(self: Modal, components: { textInput.JSON
 end
 
 --[=[
-	@within Builders.Modal
+    @within Builders.Modal
 
-	Responsible for building the Modal JSON that can be parsed by the Discord API.
+    Responsible for building the Modal JSON that can be parsed by the Discord API.
 ]=]
 function Modal.Prototype.build(self: Modal): JSON
     assert(self.customId, `Modal.customId is required.`)
@@ -67,17 +75,17 @@ function Modal.Prototype.build(self: Modal): JSON
 end
 
 --[=[
-	@within Builders.Modal
+    @within Builders.Modal
 
-	Responsible for creating a new Modal.
+    Responsible for creating a new Modal.
 
-	```luau
-	local modal = Modal.new()
-		:setCustomId("my-modal")
-		:setTitle("My Modal")
-		:setComponents({textInput})
-		:build()
-	```
+    ```luau
+    local modal = Modal.new()
+        :setCustomId("my-modal")
+        :setTitle("My Modal")
+        :setComponents({textInput})
+        :build()
+    ```
 ]=]
 function Modal.Interface.new(resource: {
     customId: string?,
@@ -87,24 +95,24 @@ function Modal.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop customId string?
-				@within Builders.Modal
-				The custom identifier for the modal.
-			]=]
+                @prop customId string?
+                @within Builders.Modal
+                The custom identifier for the modal.
+            ]=]
             customId = nil,
 
             --[=[
-				@prop title string?
-				@within Builders.Modal
-				The title that appears at the top of the modal.
-			]=]
+                @prop title string?
+                @within Builders.Modal
+                The title that appears at the top of the modal.
+            ]=]
             title = nil,
 
             --[=[
-				@prop components { Builders.TextInput }?
-				@within Builders.Modal
-				The components that will be displayed in this modal.
-			]=]
+                @prop components { Builders.TextInput }?
+                @within Builders.Modal
+                The components that will be displayed in this modal.
+            ]=]
             components = nil,
         } :: Modal,
         {

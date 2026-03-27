@@ -1,10 +1,18 @@
+--[[
+
+ban
+
+Implementation of the Discord Ban class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Ban
-	@__index Prototype
+    @class Classes.Ban
+    @__index Prototype
 
-	Implementation of the Discord Ban class in Luau
+    Implementation of the Discord Ban class in Luau
 
-	https://discord.com/developers/docs/resources/guild#ban-object
+    https://discord.com/developers/docs/resources/guild#ban-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -20,8 +28,8 @@ Ban.Interface = {}
 Ban.Prototype = {}
 
 --[=[
-	@within Classes.Ban
-	Remove the ban for a user. Requires the BAN_MEMBERS permissions.
+    @within Classes.Ban
+    Remove the ban for a user. Requires the BAN_MEMBERS permissions.
 ]=]
 function Ban.Prototype.removeAsync(self: Ban)
     return future.Future.new(function()
@@ -36,50 +44,50 @@ function Ban.Prototype.removeAsync(self: Ban)
 end
 
 --[=[
-	@within Classes.Ban
-	@private
+    @within Classes.Ban
+    @private
 
-	Responsible for syncing data to this ban object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this ban object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Ban.Prototype.sync(self: Ban, banData: apiTypes.BanObject)
     --[=[
-		@prop reason string?
-		@within Classes.Ban
-		
-		The reason provided when banning the user. This field may be null if no reason was provided when creating
-		the ban.
-	]=]
+        @prop reason string?
+        @within Classes.Ban
+        
+        The reason provided when banning the user. This field may be null if no reason was provided when creating
+        the ban.
+    ]=]
     self.reason = banData.reason
 
     --[=[
-		@prop user Classes.User
-		@within Classes.Ban
-		
-		The banned user object containing information about the user who was banned from the guild.
-	]=]
+        @prop user Classes.User
+        @within Classes.Ban
+        
+        The banned user object containing information about the user who was banned from the guild.
+    ]=]
     self.user = user.new(banData.user)
 end
 
 --[=[
-	@within Classes.Ban
-	@private
+    @within Classes.Ban
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Ban.Interface.new(state: state.State, guildId: string, banData: apiTypes.BanObject): Ban
     local self = setmetatable(
         {
             --[=[
-				@prop state lune.State
-				@within Classes.Ban
-			]=]
+                @prop state lune.State
+                @within Classes.Ban
+            ]=]
             state = state,
 
             --[=[
-				@prop guildId string
-				@within Classes.Ban
-			]=]
+                @prop guildId string
+                @within Classes.Ban
+            ]=]
             guildId = guildId,
         } :: Ban,
         { __index = Ban.Prototype }

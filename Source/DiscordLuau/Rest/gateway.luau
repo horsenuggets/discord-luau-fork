@@ -1,21 +1,29 @@
+--[[
+
+gateway
+
+REST API methods for Discord gateway endpoints.
+
+--]]
+
 local apiTypes = require("../ApiTypes")
 local future = require("@packages/Future")
 
 local request = require("./request")
 
 --[=[
-	@class Rest.gateway
+    @class Rest.gateway
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/topics/gateway
+    - https://discord.com/developers/docs/topics/gateway
 ]=]
 local gateway = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/topics/gateway#get-gateway
+    https://discord.com/developers/docs/topics/gateway#get-gateway
 ]=]
 function gateway.getGatewayAsync(instance: request.Request): future.FutureLike<string, apiTypes.GetGatewayResponse>
     return future.Future.new(function()
@@ -31,9 +39,9 @@ function gateway.getGatewayAsync(instance: request.Request): future.FutureLike<s
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/topics/gateway#get-gateway-bot
+    https://discord.com/developers/docs/topics/gateway#get-gateway-bot
 ]=]
 function gateway.getGatewayBotAsync(
     instance: request.Request

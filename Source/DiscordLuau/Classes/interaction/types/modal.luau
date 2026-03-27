@@ -1,10 +1,18 @@
+--[[
+
+modal
+
+Implementation of the Discord Modal Interaction class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Modal
-	@__index Prototype
+    @class Classes.Modal
+    @__index Prototype
 
-	Implementation of the Discord Modal Interaction class in Luau
+    Implementation of the Discord Modal Interaction class in Luau
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
+    https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
 ]=]
 
 -- selene: allow(unused_variable)
@@ -27,10 +35,10 @@ Modal.Behaviours = {
 }
 
 --[=[
-	@within Classes.Modal
-	@private
+    @within Classes.Modal
+    @private
 
-	Gets the content of a text input component with the specified custom ID.
+    Gets the content of a text input component with the specified custom ID.
 ]=]
 function Modal.Prototype.getContent(self: Modal, customId: string): string?
     assert(self.data, `Expected data`)
@@ -49,11 +57,11 @@ function Modal.Prototype.getContent(self: Modal, customId: string): string?
 end
 
 --[=[
-	@within Classes.Modal
-	@private
+    @within Classes.Modal
+    @private
 
-	Responsible for syncing data to this modal interaction object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this modal interaction object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Modal.Prototype.sync(self: Modal, interactionData: apiTypes.InteractionObject)
     for _, behaviour in Modal.Behaviours do
@@ -63,10 +71,10 @@ function Modal.Prototype.sync(self: Modal, interactionData: apiTypes.Interaction
 end
 
 --[=[
-	@within Classes.Modal
-	@private
+    @within Classes.Modal
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Modal.Interface.new(state: state.State, interactionData: apiTypes.InteractionObject): Modal
     local self = setmetatable(

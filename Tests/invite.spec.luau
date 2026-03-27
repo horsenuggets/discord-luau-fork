@@ -1,3 +1,11 @@
+--[[
+
+invite.spec
+
+Tests for the invite module.
+
+--]]
+
 local apiTypes = require("../luau_packages/api_types")
 local frktest = require("../../../lune_packages/frktest")
 local invite = require("../src/invite")

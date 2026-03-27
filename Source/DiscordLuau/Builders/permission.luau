@@ -1,10 +1,18 @@
+--[[
+
+permission
+
+Implementation of discords Permissions as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Permission
-	@__index Prototype
+    @class Builders.Permission
+    @__index Prototype
 
-	Implementation of discords Permissions as a Luau builder.	
+    Implementation of discords Permissions as a Luau builder.    
 
-	https://discord.com/developers/docs/topics/permissions#permissions
+    https://discord.com/developers/docs/topics/permissions#permissions
 ]=]
 
 local apiTypes = require("../ApiTypes")
@@ -17,9 +25,9 @@ Permission.Prototype = {}
 Permission.Interface = {}
 
 --[=[
-	@within Builders.Permission
+    @within Builders.Permission
 
-	Sets the bitflag for this builder.
+    Sets the bitflag for this builder.
 ]=]
 function Permission.Prototype.setPermissionBitflag(self: Permission, bitflag: string | number): Permission
     local numberRepresentation = tonumber(bitflag)
@@ -32,9 +40,9 @@ function Permission.Prototype.setPermissionBitflag(self: Permission, bitflag: st
 end
 
 --[=[
-	@within Builders.Permission
+    @within Builders.Permission
 
-	Adds a specific permission to this permissions builder.
+    Adds a specific permission to this permissions builder.
 ]=]
 function Permission.Prototype.addPermission(self: Permission, permission: apiTypes.Permissions): Permission
     table.insert(self.addedPermissions, permission)
@@ -43,9 +51,9 @@ function Permission.Prototype.addPermission(self: Permission, permission: apiTyp
 end
 
 --[=[
-	@within Builders.Permission
+    @within Builders.Permission
 
-	Removes a specific permission from this permissions builder.
+    Removes a specific permission from this permissions builder.
 ]=]
 function Permission.Prototype.removePermission(self: Permission, permission: apiTypes.Permissions): Permission
     table.insert(self.removedPermissions, permission)
@@ -54,9 +62,9 @@ function Permission.Prototype.removePermission(self: Permission, permission: api
 end
 
 --[=[
-	@within Builders.Permission
+    @within Builders.Permission
 
-	Returns the bitflag representation of the permission.
+    Returns the bitflag representation of the permission.
 ]=]
 function Permission.Prototype.build(self: Permission): JSON
     local bitflag = self.bitflag
@@ -73,9 +81,9 @@ function Permission.Prototype.build(self: Permission): JSON
 end
 
 --[=[
-	@within Builders.Permission
+    @within Builders.Permission
 
-	Responsible for creating a new Permission.
+    Responsible for creating a new Permission.
 ]=]
 function Permission.Interface.new(resource: {
     bitflag: (string | number)?,
@@ -83,24 +91,24 @@ function Permission.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop addedPermissions { apiTypes.Permissions }
-				@within Builders.Permission
-				An array of permissions that have been added to this permission builder.
-			]=]
+                @prop addedPermissions { apiTypes.Permissions }
+                @within Builders.Permission
+                An array of permissions that have been added to this permission builder.
+            ]=]
             addedPermissions = {},
 
             --[=[
-				@prop removedPermissions { apiTypes.Permissions }
-				@within Builders.Permission
-				An array of permissions that have been removed from this permission builder.
-			]=]
+                @prop removedPermissions { apiTypes.Permissions }
+                @within Builders.Permission
+                An array of permissions that have been removed from this permission builder.
+            ]=]
             removedPermissions = {},
 
             --[=[
-				@prop bitflag number
-				@within Builders.Permission
-				The numeric representation of the permission bitflag.
-			]=]
+                @prop bitflag number
+                @within Builders.Permission
+                The numeric representation of the permission bitflag.
+            ]=]
             bitflag = 0,
         } :: Permission,
         {
@@ -118,9 +126,9 @@ function Permission.Interface.new(resource: {
 end
 
 --[=[
-	@within Builders.Permission
+    @within Builders.Permission
 
-	Enables you to create a permission builder from a list of permissions.
+    Enables you to create a permission builder from a list of permissions.
 ]=]
 function Permission.Interface.fromPermissions(permissions: { apiTypes.Permissions }): Permission
     local bitflag = 0

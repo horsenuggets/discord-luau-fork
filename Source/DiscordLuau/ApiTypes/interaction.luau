@@ -1,5 +1,13 @@
+--[[
+
+interaction
+
+Type definitions for Discord interaction API objects.
+
+--]]
+
 --[=[
-	@class Types.interaction
+    @class Types.interaction
 ]=]
 
 local util = require("../Utilities")

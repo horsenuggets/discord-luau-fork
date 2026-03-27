@@ -1,21 +1,29 @@
+--[[
+
+invite
+
+REST API methods for Discord invite endpoints.
+
+--]]
+
 local apiTypes = require("../ApiTypes")
 local future = require("@packages/Future")
 
 local request = require("./request")
 
 --[=[
-	@class Rest.invite
+    @class Rest.invite
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/invite
+    - https://discord.com/developers/docs/resources/invite
 ]=]
 local invite = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/invite#get-invite
+    https://discord.com/developers/docs/resources/invite#get-invite
 ]=]
 function invite.getInviteAsync(
     instance: request.Request,
@@ -49,9 +57,9 @@ function invite.getInviteAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/invite#delete-invite
+    https://discord.com/developers/docs/resources/invite#delete-invite
 ]=]
 function invite.deleteInviteAsync(
     instance: request.Request,

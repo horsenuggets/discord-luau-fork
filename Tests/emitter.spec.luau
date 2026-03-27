@@ -1,3 +1,11 @@
+--[[
+
+emitter.spec
+
+Tests for the emitter module.
+
+--]]
+
 local frktest = require("../../../lune_packages/frktest")
 
 local emitter = require("../src")

@@ -1,10 +1,18 @@
+--[[
+
+embed
+
+Implementation of the Discord Embed class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Embed
-	@__index Prototype
+    @class Classes.Embed
+    @__index Prototype
 
-	Implementation of the Discord Embed class in Luau
+    Implementation of the Discord Embed class in Luau
 
-	https://discord.com/developers/docs/resources/message#attachment-object
+    https://discord.com/developers/docs/resources/message#attachment-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -24,11 +32,11 @@ Embed.Interface = {}
 Embed.Prototype = {}
 
 --[=[
-	@within Classes.Embed
-	@private
+    @within Classes.Embed
+    @private
 
-	Responsible for syncing data to this embed object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this embed object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Embed.Prototype.sync(self: Embed, embedData: apiTypes.EmbedObject)
     local fieldArray = {}
@@ -38,115 +46,115 @@ function Embed.Prototype.sync(self: Embed, embedData: apiTypes.EmbedObject)
     end
 
     --[=[
-		@prop title string?
-		@within Classes.Embed
+        @prop title string?
+        @within Classes.Embed
 
-		The title of the embed
-	]=]
+        The title of the embed
+    ]=]
     self.title = embedData.title
 
     --[=[
-		@prop type apiTypes.EmbedType?
-		@within Classes.Embed
+        @prop type apiTypes.EmbedType?
+        @within Classes.Embed
 
-		The type of embed (always "rich" for webhook embeds)
-	]=]
+        The type of embed (always "rich" for webhook embeds)
+    ]=]
     self.type = embedData.type :: any
 
     --[=[
-		@prop description string?
-		@within Classes.Embed
+        @prop description string?
+        @within Classes.Embed
 
-		The description of the embed
-	]=]
+        The description of the embed
+    ]=]
     self.description = embedData.description
 
     --[=[
-		@prop url string?
-		@within Classes.Embed
+        @prop url string?
+        @within Classes.Embed
 
-		The URL of the embed
-	]=]
+        The URL of the embed
+    ]=]
     self.url = embedData.url
 
     --[=[
-		@prop timestamp stdPolyfills.DateTime?
-		@within Classes.Embed
+        @prop timestamp stdPolyfills.DateTime?
+        @within Classes.Embed
 
-		Timestamp of embed content
-	]=]
+        Timestamp of embed content
+    ]=]
     self.timestamp = embedData.timestamp and stdPolyfills.datetime.fromIsoDate(embedData.timestamp)
 
     --[=[
-		@prop color number?
-		@within Classes.Embed
+        @prop color number?
+        @within Classes.Embed
 
-		Color code of the embed
-	]=]
+        Color code of the embed
+    ]=]
     self.color = embedData.color
 
     --[=[
-		@prop footer Classes.Footer?
-		@within Classes.Embed
+        @prop footer Classes.Footer?
+        @within Classes.Embed
 
-		Footer information for the embed
-	]=]
+        Footer information for the embed
+    ]=]
     self.footer = embedData.footer and footer.new(embedData.footer)
 
     --[=[
-		@prop image Classes.Image?
-		@within Classes.Embed
+        @prop image Classes.Image?
+        @within Classes.Embed
 
-		Image information for the embed
-	]=]
+        Image information for the embed
+    ]=]
     self.image = embedData.image and image.new(embedData.image)
 
     --[=[
-		@prop thumbnail Classes.Thumbnail?
-		@within Classes.Embed
+        @prop thumbnail Classes.Thumbnail?
+        @within Classes.Embed
 
-		Thumbnail information for the embed
-	]=]
+        Thumbnail information for the embed
+    ]=]
     self.thumbnail = embedData.thumbnail and thumbnail.new(embedData.thumbnail)
 
     --[=[
-		@prop video Classes.Video?
-		@within Classes.Embed
+        @prop video Classes.Video?
+        @within Classes.Embed
 
-		Video information for the embed
-	]=]
+        Video information for the embed
+    ]=]
     self.video = embedData.video and video.new(embedData.video)
 
     --[=[
-		@prop provider Classes.Provider?
-		@within Classes.Embed
+        @prop provider Classes.Provider?
+        @within Classes.Embed
 
-		Provider information for the embed
-	]=]
+        Provider information for the embed
+    ]=]
     self.provider = embedData.provider and provider.new(embedData.provider)
 
     --[=[
-		@prop author Classes.Author?
-		@within Classes.Embed
+        @prop author Classes.Author?
+        @within Classes.Embed
 
-		Author information for the embed
-	]=]
+        Author information for the embed
+    ]=]
     self.author = embedData.author and author.new(embedData.author)
 
     --[=[
-		@prop fields {Classes.Field}?
-		@within Classes.Embed
+        @prop fields {Classes.Field}?
+        @within Classes.Embed
 
-		Array of embed field objects
-	]=]
+        Array of embed field objects
+    ]=]
     self.fields = fieldArray
 end
 
 --[=[
-	@within Classes.Embed
-	@private
+    @within Classes.Embed
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Embed.Interface.new(embedData: apiTypes.EmbedObject): Embed
     local self = setmetatable({} :: Embed, { __index = Embed.Prototype })

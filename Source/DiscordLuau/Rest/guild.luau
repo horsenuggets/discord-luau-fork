@@ -1,3 +1,11 @@
+--[[
+
+guild
+
+REST API methods for Discord guild endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.guild
+    @class Rest.guild
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/guild
+    - https://discord.com/developers/docs/resources/guild
 ]=]
 local guild = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#create-guild
+    https://discord.com/developers/docs/resources/guild#create-guild
 ]=]
 function guild.createGuildAsync(
     instance: request.Request,
@@ -39,9 +47,9 @@ function guild.createGuildAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild
+    https://discord.com/developers/docs/resources/guild#get-guild
 ]=]
 function guild.getGuildAsync(
     instance: request.Request,
@@ -67,9 +75,9 @@ function guild.getGuildAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-preview
+    https://discord.com/developers/docs/resources/guild#get-guild-preview
 ]=]
 function guild.getGuildPreviewAsync(
     instance: request.Request,
@@ -90,9 +98,9 @@ function guild.getGuildPreviewAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-guild
+    https://discord.com/developers/docs/resources/guild#modify-guild
 ]=]
 function guild.modifyGuildAsync(
     instance: request.Request,
@@ -117,9 +125,9 @@ function guild.modifyGuildAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#delete-guild
+    https://discord.com/developers/docs/resources/guild#delete-guild
 ]=]
 function guild.deleteGuildAsync(
     instance: request.Request,
@@ -140,9 +148,9 @@ function guild.deleteGuildAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-channels
+    https://discord.com/developers/docs/resources/guild#get-guild-channels
 ]=]
 function guild.getGuildChannelsAsync(
     instance: request.Request,
@@ -163,9 +171,9 @@ function guild.getGuildChannelsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#create-guild-channel
+    https://discord.com/developers/docs/resources/guild#create-guild-channel
 ]=]
 function guild.createGuildChannelAsync(
     instance: request.Request,
@@ -190,9 +198,9 @@ function guild.createGuildChannelAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
+    https://discord.com/developers/docs/resources/guild#modify-guild-channel-positions
 ]=]
 function guild.modifyGuildChannelPositionsAsync(
     instance: request.Request,
@@ -215,9 +223,9 @@ function guild.modifyGuildChannelPositionsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#list-active-guild-threads
+    https://discord.com/developers/docs/resources/guild#list-active-guild-threads
 ]=]
 function guild.listActiveGuildThreadsAsync(
     instance: request.Request,
@@ -238,9 +246,9 @@ function guild.listActiveGuildThreadsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-member
+    https://discord.com/developers/docs/resources/guild#get-guild-member
 ]=]
 function guild.getGuildMemberAsync(
     instance: request.Request,
@@ -262,9 +270,9 @@ function guild.getGuildMemberAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#list-guild-members
+    https://discord.com/developers/docs/resources/guild#list-guild-members
 ]=]
 function guild.listGuildMembersAsync(
     instance: request.Request,
@@ -292,9 +300,9 @@ function guild.listGuildMembersAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#search-guild-members
+    https://discord.com/developers/docs/resources/guild#search-guild-members
 ]=]
 function guild.searchGuildMembersAsync(
     instance: request.Request,
@@ -322,9 +330,9 @@ function guild.searchGuildMembersAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#add-guild-member
+    https://discord.com/developers/docs/resources/guild#add-guild-member
 ]=]
 function guild.addGuildMemberAsync(
     instance: request.Request,
@@ -348,9 +356,9 @@ function guild.addGuildMemberAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-member
+    https://discord.com/developers/docs/resources/guild#modify-guild-member
 ]=]
 function guild.modifyGuildMemberAsync(
     instance: request.Request,
@@ -376,9 +384,9 @@ function guild.modifyGuildMemberAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-current-member
+    https://discord.com/developers/docs/resources/guild#modify-current-member
 ]=]
 function guild.modifyCurrentMemberAsync(
     instance: request.Request,
@@ -403,9 +411,9 @@ function guild.modifyCurrentMemberAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#add-guild-member-role
+    https://discord.com/developers/docs/resources/guild#add-guild-member-role
 ]=]
 function guild.addGuildMemberRoleAsync(
     instance: request.Request,
@@ -430,9 +438,9 @@ function guild.addGuildMemberRoleAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#remove-guild-member-role
+    https://discord.com/developers/docs/resources/guild#remove-guild-member-role
 ]=]
 function guild.removeGuildMemberRoleAsync(
     instance: request.Request,
@@ -457,9 +465,9 @@ function guild.removeGuildMemberRoleAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#remove-guild-member
+    https://discord.com/developers/docs/resources/guild#remove-guild-member
 ]=]
 function guild.removeGuildMemberAsync(
     instance: request.Request,
@@ -483,9 +491,9 @@ function guild.removeGuildMemberAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-bans
+    https://discord.com/developers/docs/resources/guild#get-guild-bans
 ]=]
 function guild.getGuildBansAsync(
     instance: request.Request,
@@ -515,9 +523,9 @@ function guild.getGuildBansAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-ban
+    https://discord.com/developers/docs/resources/guild#get-guild-ban
 ]=]
 function guild.getGuildBanAsync(
     instance: request.Request,
@@ -539,9 +547,9 @@ function guild.getGuildBanAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#create-guild-ban
+    https://discord.com/developers/docs/resources/guild#create-guild-ban
 ]=]
 function guild.createGuildBanAsync(
     instance: request.Request,
@@ -567,9 +575,9 @@ function guild.createGuildBanAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#remove-guild-ban
+    https://discord.com/developers/docs/resources/guild#remove-guild-ban
 ]=]
 function guild.removeGuildBanAsync(
     instance: request.Request,
@@ -593,9 +601,9 @@ function guild.removeGuildBanAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#bulk-guild-ban
+    https://discord.com/developers/docs/resources/guild#bulk-guild-ban
 ]=]
 function guild.bulkGuildBanAsync(
     instance: request.Request,
@@ -620,9 +628,9 @@ function guild.bulkGuildBanAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-roles
+    https://discord.com/developers/docs/resources/guild#get-guild-roles
 ]=]
 function guild.getGuildRolesAsync(
     instance: request.Request,
@@ -643,9 +651,9 @@ function guild.getGuildRolesAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-role
+    https://discord.com/developers/docs/resources/guild#get-guild-role
 ]=]
 function guild.getGuildRoleAsync(
     instance: request.Request,
@@ -667,9 +675,9 @@ function guild.getGuildRoleAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#create-guild-role
+    https://discord.com/developers/docs/resources/guild#create-guild-role
 ]=]
 function guild.createGuildRoleAsync(
     instance: request.Request,
@@ -694,9 +702,9 @@ function guild.createGuildRoleAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
+    https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
 ]=]
 function guild.modifyGuildRolePositionsAsync(
     instance: request.Request,
@@ -721,9 +729,9 @@ function guild.modifyGuildRolePositionsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-role
+    https://discord.com/developers/docs/resources/guild#modify-guild-role
 ]=]
 function guild.modifyGuildRoleAsync(
     instance: request.Request,
@@ -749,9 +757,9 @@ function guild.modifyGuildRoleAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level
+    https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level
 ]=]
 function guild.modifyGuildMFALevelAsync(
     instance: request.Request,
@@ -776,9 +784,9 @@ function guild.modifyGuildMFALevelAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#delete-guild-role
+    https://discord.com/developers/docs/resources/guild#delete-guild-role
 ]=]
 function guild.deleteGuildRoleAsync(
     instance: request.Request,
@@ -802,9 +810,9 @@ function guild.deleteGuildRoleAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-prune-count
+    https://discord.com/developers/docs/resources/guild#get-guild-prune-count
 ]=]
 function guild.getGuildPruneCountAsync(
     instance: request.Request,
@@ -832,9 +840,9 @@ function guild.getGuildPruneCountAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#begin-guild-prune
+    https://discord.com/developers/docs/resources/guild#begin-guild-prune
 ]=]
 function guild.beginGuildPruneAsync(
     instance: request.Request,
@@ -859,9 +867,9 @@ function guild.beginGuildPruneAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-voice-regions
+    https://discord.com/developers/docs/resources/guild#get-guild-voice-regions
 ]=]
 function guild.getGuildVoiceRegionsAsync(
     instance: request.Request,
@@ -882,9 +890,9 @@ function guild.getGuildVoiceRegionsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-invites
+    https://discord.com/developers/docs/resources/guild#get-guild-invites
 ]=]
 function guild.getGuildInvitesAsync(
     instance: request.Request,
@@ -905,9 +913,9 @@ function guild.getGuildInvitesAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-integrations
+    https://discord.com/developers/docs/resources/guild#get-guild-integrations
 ]=]
 function guild.getGuildIntegrationsAsync(
     instance: request.Request,
@@ -928,9 +936,9 @@ function guild.getGuildIntegrationsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#delete-guild-integration
+    https://discord.com/developers/docs/resources/guild#delete-guild-integration
 ]=]
 function guild.deleteGuildIntegrationAsync(
     instance: request.Request,
@@ -954,9 +962,9 @@ function guild.deleteGuildIntegrationAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-widget-settings
+    https://discord.com/developers/docs/resources/guild#get-guild-widget-settings
 ]=]
 function guild.getGuildWidgetSettingsAsync(
     instance: request.Request,
@@ -977,9 +985,9 @@ function guild.getGuildWidgetSettingsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-widget
+    https://discord.com/developers/docs/resources/guild#modify-guild-widget
 ]=]
 function guild.modifyGuildWidgetAsync(
     instance: request.Request,
@@ -1004,9 +1012,9 @@ function guild.modifyGuildWidgetAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-widget
+    https://discord.com/developers/docs/resources/guild#get-guild-widget
 ]=]
 function guild.getGuildWidgetAsync(
     instance: request.Request,
@@ -1027,9 +1035,9 @@ function guild.getGuildWidgetAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-vanity-url
+    https://discord.com/developers/docs/resources/guild#get-guild-vanity-url
 ]=]
 function guild.getGuildVanityURLAsync(
     instance: request.Request,
@@ -1050,9 +1058,9 @@ function guild.getGuildVanityURLAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-widget-image
+    https://discord.com/developers/docs/resources/guild#get-guild-widget-image
 ]=]
 function guild.getGuildWidgetImageAsync(
     instance: request.Request,
@@ -1078,9 +1086,9 @@ function guild.getGuildWidgetImageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen
+    https://discord.com/developers/docs/resources/guild#get-guild-welcome-screen
 ]=]
 function guild.getGuildWelcomeScreenAsync(
     instance: request.Request,
@@ -1101,9 +1109,9 @@ function guild.getGuildWelcomeScreenAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
+    https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
 ]=]
 function guild.modifyGuildWelcomeScreenAsync(
     instance: request.Request,
@@ -1128,9 +1136,9 @@ function guild.modifyGuildWelcomeScreenAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#get-guild-onboarding
+    https://discord.com/developers/docs/resources/guild#get-guild-onboarding
 ]=]
 function guild.getGuildOnboardingAsync(
     instance: request.Request,
@@ -1151,9 +1159,9 @@ function guild.getGuildOnboardingAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
+    https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
 ]=]
 function guild.modifyGuildOnboardingAsync(
     instance: request.Request,

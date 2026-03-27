@@ -1,3 +1,11 @@
+--[[
+
+application
+
+REST API methods for Discord application endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.application
+    @class Rest.application
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/application
+    - https://discord.com/developers/docs/resources/application
 ]=]
 local application = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/application#get-current-application
+    https://discord.com/developers/docs/resources/application#get-current-application
 ]=]
 function application.getCurrentApplicationAsync(
     instance: request.Request,
@@ -38,9 +46,9 @@ function application.getCurrentApplicationAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/application#edit-current-application
+    https://discord.com/developers/docs/resources/application#edit-current-application
 ]=]
 function application.editCurrentApplicationAsync(
     instance: request.Request,

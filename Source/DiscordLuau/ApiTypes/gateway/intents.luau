@@ -1,7 +1,15 @@
---[=[
-	@class Types.gateway.intents
+--[[
 
-	https://discord.com/developers/docs/topics/gateway#list-of-intents
+intents
+
+Type definitions for Discord intents API objects.
+
+--]]
+
+--[=[
+    @class Types.gateway.intents
+
+    https://discord.com/developers/docs/topics/gateway#list-of-intents
 ]=]
 
 local Intents = table.freeze({

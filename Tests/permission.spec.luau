@@ -1,3 +1,11 @@
+--[[
+
+permission.spec
+
+Tests for the permission module.
+
+--]]
+
 local Permission = require("../src/permission")
 local frktest = require("../../../lune_packages/frktest")
 

@@ -1,10 +1,18 @@
+--[[
+
+textInput
+
+Implementation of discords TextInput object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.TextInput
-	@__index Prototype
+    @class Builders.TextInput
+    @__index Prototype
 
-	Implementation of discords TextInput object as a Luau builder.	
+    Implementation of discords TextInput object as a Luau builder.    
 
-	https://discord.com/developers/docs/interactions/message-components#text-input-object-text-input-structure
+    https://discord.com/developers/docs/interactions/message-components#text-input-object-text-input-structure
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -15,9 +23,9 @@ TextInput.Prototype = {}
 TextInput.Interface = {}
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Sets the custom identifier for this text input component.
+    Sets the custom identifier for this text input component.
 ]=]
 function TextInput.Prototype.setCustomId(self: TextInput, customId: string): TextInput
     self.customId = customId
@@ -26,9 +34,9 @@ function TextInput.Prototype.setCustomId(self: TextInput, customId: string): Tex
 end
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Sets the style of the text input component.
+    Sets the style of the text input component.
 ]=]
 function TextInput.Prototype.setStyle(self: TextInput, style: apiTypes.TextInputStyle): TextInput
     self.style = style
@@ -37,9 +45,9 @@ function TextInput.Prototype.setStyle(self: TextInput, style: apiTypes.TextInput
 end
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Sets the label text that appears above the text input field.
+    Sets the label text that appears above the text input field.
 ]=]
 function TextInput.Prototype.setLabel(self: TextInput, label: string): TextInput
     self.label = label
@@ -48,9 +56,9 @@ function TextInput.Prototype.setLabel(self: TextInput, label: string): TextInput
 end
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Sets the minimum length of text that can be entered.
+    Sets the minimum length of text that can be entered.
 ]=]
 function TextInput.Prototype.setMinLength(self: TextInput, minLength: number): TextInput
     self.minLength = minLength
@@ -59,9 +67,9 @@ function TextInput.Prototype.setMinLength(self: TextInput, minLength: number): T
 end
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Sets the maximum length of text that can be entered.
+    Sets the maximum length of text that can be entered.
 ]=]
 function TextInput.Prototype.setMaxLength(self: TextInput, maxLength: number): TextInput
     self.maxLength = maxLength
@@ -70,9 +78,9 @@ function TextInput.Prototype.setMaxLength(self: TextInput, maxLength: number): T
 end
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Sets whether this text input field is required to be filled.
+    Sets whether this text input field is required to be filled.
 ]=]
 function TextInput.Prototype.setIsRequired(self: TextInput, isRequired: boolean): TextInput
     self.required = isRequired
@@ -81,9 +89,9 @@ function TextInput.Prototype.setIsRequired(self: TextInput, isRequired: boolean)
 end
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Sets the pre-filled value for the text input field.
+    Sets the pre-filled value for the text input field.
 ]=]
 function TextInput.Prototype.setValue(self: TextInput, value: string): TextInput
     self.value = value
@@ -92,9 +100,9 @@ function TextInput.Prototype.setValue(self: TextInput, value: string): TextInput
 end
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Sets the placeholder text that appears when no text is entered.
+    Sets the placeholder text that appears when no text is entered.
 ]=]
 function TextInput.Prototype.setPlaceholder(self: TextInput, placeholder: string): TextInput
     self.placeholder = placeholder
@@ -103,9 +111,9 @@ function TextInput.Prototype.setPlaceholder(self: TextInput, placeholder: string
 end
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Responsible for building the TextInput JSON that can be parsed by the Discord API.
+    Responsible for building the TextInput JSON that can be parsed by the Discord API.
 ]=]
 function TextInput.Prototype.build(self: TextInput): JSON
     assert(self.customId, `TextInput.customId is required.`)
@@ -126,17 +134,17 @@ function TextInput.Prototype.build(self: TextInput): JSON
 end
 
 --[=[
-	@within Builders.TextInput
+    @within Builders.TextInput
 
-	Responsible for creating a new TextInput.
+    Responsible for creating a new TextInput.
 
-	```luau
-	local textInput = TextInput.new({
-		customId = "my_text_input",
-		style = TextInputStyle.Short,
-		label = "Enter your name"
-	})
-	```
+    ```luau
+    local textInput = TextInput.new({
+        customId = "my_text_input",
+        style = TextInputStyle.Short,
+        label = "Enter your name"
+    })
+    ```
 ]=]
 function TextInput.Interface.new(resource: {
     customId: string?,
@@ -151,59 +159,59 @@ function TextInput.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop customId string?
-				@within Builders.TextInput
-				The custom identifier for the text input component.
-			]=]
+                @prop customId string?
+                @within Builders.TextInput
+                The custom identifier for the text input component.
+            ]=]
             customId = nil,
 
             --[=[
-				@prop style apiTypes.TextInputStyle?
-				@within Builders.TextInput
-				The style of the text input component.
-			]=]
+                @prop style apiTypes.TextInputStyle?
+                @within Builders.TextInput
+                The style of the text input component.
+            ]=]
             style = nil,
 
             --[=[
-				@prop label string?
-				@within Builders.TextInput
-				The label text that appears above the text input field.
-			]=]
+                @prop label string?
+                @within Builders.TextInput
+                The label text that appears above the text input field.
+            ]=]
             label = nil,
 
             --[=[
-				@prop minLength number?
-				@within Builders.TextInput
-				The minimum length of text that can be entered.
-			]=]
+                @prop minLength number?
+                @within Builders.TextInput
+                The minimum length of text that can be entered.
+            ]=]
             minLength = nil,
 
             --[=[
-				@prop maxLength number?
-				@within Builders.TextInput
-				The maximum length of text that can be entered.
-			]=]
+                @prop maxLength number?
+                @within Builders.TextInput
+                The maximum length of text that can be entered.
+            ]=]
             maxLength = nil,
 
             --[=[
-				@prop required boolean?
-				@within Builders.TextInput
-				Whether this text input field is required to be filled.
-			]=]
+                @prop required boolean?
+                @within Builders.TextInput
+                Whether this text input field is required to be filled.
+            ]=]
             required = nil,
 
             --[=[
-				@prop value string?
-				@within Builders.TextInput
-				The pre-filled value for the text input field.
-			]=]
+                @prop value string?
+                @within Builders.TextInput
+                The pre-filled value for the text input field.
+            ]=]
             value = nil,
 
             --[=[
-				@prop placeholder string?
-				@within Builders.TextInput
-				The placeholder text that appears when no text is entered.
-			]=]
+                @prop placeholder string?
+                @within Builders.TextInput
+                The placeholder text that appears when no text is entered.
+            ]=]
             placeholder = nil,
         } :: TextInput,
         {

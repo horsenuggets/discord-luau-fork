@@ -1,10 +1,18 @@
+--[[
+
+option
+
+Implementation of discords Option object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Option
-	@__index Prototype
+    @class Builders.Option
+    @__index Prototype
 
-	Implementation of discords Option object as a Luau builder.	
+    Implementation of discords Option object as a Luau builder.    
 
-	https://discord.com/developers/docs/interactions/message-components#Options
+    https://discord.com/developers/docs/interactions/message-components#Options
 ]=]
 
 local emoji = require("../../../emoji")
@@ -15,9 +23,9 @@ Option.Prototype = {}
 Option.Interface = {}
 
 --[=[
-	@within Builders.Option
+    @within Builders.Option
 
-	Sets the user-facing name of the option.
+    Sets the user-facing name of the option.
 ]=]
 function Option.Prototype.setLabel(self: Option, label: string): Option
     assert(#label <= 100, `Label must be less than 80 characters.`)
@@ -29,9 +37,9 @@ function Option.Prototype.setLabel(self: Option, label: string): Option
 end
 
 --[=[
-	@within Builders.Option
+    @within Builders.Option
 
-	Sets the dev-defined value of the option.
+    Sets the dev-defined value of the option.
 ]=]
 function Option.Prototype.setValue(self: Option, value: string): Option
     assert(#value <= 100, `Value must be less than 80 characters.`)
@@ -43,9 +51,9 @@ function Option.Prototype.setValue(self: Option, value: string): Option
 end
 
 --[=[
-	@within Builders.Option
+    @within Builders.Option
 
-	Sets an additional description of the option.
+    Sets an additional description of the option.
 ]=]
 function Option.Prototype.setDescription(self: Option, description: string): Option
     assert(#description <= 100, `Description( must be less than 80 characters.`)
@@ -57,9 +65,9 @@ function Option.Prototype.setDescription(self: Option, description: string): Opt
 end
 
 --[=[
-	@within Builders.Option
+    @within Builders.Option
 
-	Sets an emoji to display alongside the option.
+    Sets an emoji to display alongside the option.
 ]=]
 function Option.Prototype.setEmoji(self: Option, emoji: emoji.JSON): Option
     self.emoji = emoji
@@ -68,9 +76,9 @@ function Option.Prototype.setEmoji(self: Option, emoji: emoji.JSON): Option
 end
 
 --[=[
-	@within Builders.Option
+    @within Builders.Option
 
-	Sets whether this option is selected by default.
+    Sets whether this option is selected by default.
 ]=]
 function Option.Prototype.setDefault(self: Option, default: boolean): Option
     self.default = default
@@ -79,9 +87,9 @@ function Option.Prototype.setDefault(self: Option, default: boolean): Option
 end
 
 --[=[
-	@within Builders.Option
+    @within Builders.Option
 
-	Responsible for building the Option JSON that can be parsed by the Discord API.
+    Responsible for building the Option JSON that can be parsed by the Discord API.
 ]=]
 function Option.Prototype.build(self: Option): JSON
     assert(self.label, `Label is required`)
@@ -98,18 +106,18 @@ function Option.Prototype.build(self: Option): JSON
 end
 
 --[=[
-	@within Builders.Option
+    @within Builders.Option
 
-	Responsible for creating a new Option.
+    Responsible for creating a new Option.
 
-	```luau
-	local option = Option.new({
-		label = "My Option",
-		value = "option_value",
-		description = "A description",
-		default = false
-	})
-	```
+    ```luau
+    local option = Option.new({
+        label = "My Option",
+        value = "option_value",
+        description = "A description",
+        default = false
+    })
+    ```
 ]=]
 function Option.Interface.new(resource: {
     label: string?,
@@ -121,38 +129,38 @@ function Option.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop label string?
-				@within Builders.Option
-				The user-facing name of the option.
-			]=]
+                @prop label string?
+                @within Builders.Option
+                The user-facing name of the option.
+            ]=]
             label = nil,
 
             --[=[
-				@prop value string?
-				@within Builders.Option
-				The dev-defined value of the option.
-			]=]
+                @prop value string?
+                @within Builders.Option
+                The dev-defined value of the option.
+            ]=]
             value = nil,
 
             --[=[
-				@prop description string?
-				@within Builders.Option
-				An additional description of the option.
-			]=]
+                @prop description string?
+                @within Builders.Option
+                An additional description of the option.
+            ]=]
             description = nil,
 
             --[=[
-				@prop emoji Builders.Emoji?
-				@within Builders.Option
-				The emoji to display alongside the option.
-			]=]
+                @prop emoji Builders.Emoji?
+                @within Builders.Option
+                The emoji to display alongside the option.
+            ]=]
             emoji = nil,
 
             --[=[
-				@prop default boolean?
-				@within Builders.Option
-				Whether this option is selected by default.
-			]=]
+                @prop default boolean?
+                @within Builders.Option
+                Whether this option is selected by default.
+            ]=]
             default = nil,
         } :: Option,
         {

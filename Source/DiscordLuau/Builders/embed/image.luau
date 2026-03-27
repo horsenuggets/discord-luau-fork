@@ -1,10 +1,18 @@
+--[[
+
+image
+
+Implementation of discords Image object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Image
-	@__index Prototype
+    @class Builders.Image
+    @__index Prototype
 
-	Implementation of discords Image object as a Luau builder.	
+    Implementation of discords Image object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/message#embed-object-embed-image-structure
+    https://discord.com/developers/docs/resources/message#embed-object-embed-image-structure
 ]=]
 
 local Image = {}
@@ -13,9 +21,9 @@ Image.Prototype = {}
 Image.Interface = {}
 
 --[=[
-	@within Builders.Image
+    @within Builders.Image
 
-	Set the image url for this embed.
+    Set the image url for this embed.
 ]=]
 function Image.Prototype.setUrl(self: Image, url: string, proxyUrl: string?): Image
     self.url = url
@@ -25,9 +33,9 @@ function Image.Prototype.setUrl(self: Image, url: string, proxyUrl: string?): Im
 end
 
 --[=[
-	@within Builders.Image
+    @within Builders.Image
 
-	Set the image height for this embed.
+    Set the image height for this embed.
 ]=]
 function Image.Prototype.setHeight(self: Image, height: number): Image
     self.height = height
@@ -36,9 +44,9 @@ function Image.Prototype.setHeight(self: Image, height: number): Image
 end
 
 --[=[
-	@within Builders.Image
+    @within Builders.Image
 
-	Set the image width for this embed.
+    Set the image width for this embed.
 ]=]
 function Image.Prototype.setWidth(self: Image, width: number): Image
     self.width = width
@@ -47,9 +55,9 @@ function Image.Prototype.setWidth(self: Image, width: number): Image
 end
 
 --[=[
-	@within Builders.Image
+    @within Builders.Image
 
-	Responsible for building the JSON that can be parsed by the Discord API.
+    Responsible for building the JSON that can be parsed by the Discord API.
 ]=]
 function Image.Prototype.build(self: Image): JSON
     return {
@@ -61,17 +69,17 @@ function Image.Prototype.build(self: Image): JSON
 end
 
 --[=[
-	@within Builders.Image
+    @within Builders.Image
 
-	Responsible for creating a new Image.
+    Responsible for creating a new Image.
 
-	```luau
-	local image = Image.new({
-		url = "https://example.com/image.png",
-		height = 100,
-		width = 100
-	})
-	```
+    ```luau
+    local image = Image.new({
+        url = "https://example.com/image.png",
+        height = 100,
+        width = 100
+    })
+    ```
 ]=]
 function Image.Interface.new(resource: {
     url: string,
@@ -82,31 +90,31 @@ function Image.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop url string
-				@within Builders.Image
-				Source url of image (only supports http(s) and attachments)
-			]=]
+                @prop url string
+                @within Builders.Image
+                Source url of image (only supports http(s) and attachments)
+            ]=]
             url = nil,
 
             --[=[
-				@prop proxyUrl string?
-				@within Builders.Image
-				A proxied url of the image
-			]=]
+                @prop proxyUrl string?
+                @within Builders.Image
+                A proxied url of the image
+            ]=]
             proxyUrl = nil,
 
             --[=[
-				@prop height number?
-				@within Builders.Image
-				Height of image
-			]=]
+                @prop height number?
+                @within Builders.Image
+                Height of image
+            ]=]
             height = nil,
 
             --[=[
-				@prop width number?
-				@within Builders.Image
-				Width of image
-			]=]
+                @prop width number?
+                @within Builders.Image
+                Width of image
+            ]=]
             width = nil,
         } :: Image,
         {

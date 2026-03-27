@@ -1,7 +1,15 @@
---[=[
-	@class Types.gateway.closeCodes
+--[[
 
-	https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-close-event-codes
+closeCodes
+
+Type definitions for Discord closeCodes API objects.
+
+--]]
+
+--[=[
+    @class Types.gateway.closeCodes
+
+    https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-close-event-codes
 ]=]
 
 local CloseCodes = table.freeze({

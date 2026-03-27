@@ -1,10 +1,18 @@
+--[[
+
+activity
+
+Implementation of the Discord Activity class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Activity
-	@__index Prototype
+    @class Classes.Activity
+    @__index Prototype
 
-	Implementation of the Discord Activity class in Luau
+    Implementation of the Discord Activity class in Luau
 
-	https://discord.com/developers/docs/topics/gateway-events#activity-object
+    https://discord.com/developers/docs/topics/gateway-events#activity-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -22,11 +30,11 @@ Activity.Interface = {}
 Activity.Prototype = {}
 
 --[=[
-	@within Classes.Activity
-	@private
+    @within Classes.Activity
+    @private
 
-	Responsible for syncing data to this activity object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this activity object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Activity.Prototype.sync(self: Activity, activityData: apiTypes.ActivityObject)
     local activityButtons = {}
@@ -53,93 +61,93 @@ function Activity.Prototype.sync(self: Activity, activityData: apiTypes.Activity
     end
 
     --[=[
-		@prop name string
-		@within Classes.Activity
+        @prop name string
+        @within Classes.Activity
 
-		The name of the activity being performed
-	]=]
+        The name of the activity being performed
+    ]=]
     self.name = activityData.name
 
     --[=[
-		@prop type ActivityType
-		@within Classes.Activity
+        @prop type ActivityType
+        @within Classes.Activity
 
-		The type of activity being performed
-	]=]
+        The type of activity being performed
+    ]=]
     self.type = activityType
 
     --[=[
-		@prop url string?
-		@within Classes.Activity
+        @prop url string?
+        @within Classes.Activity
 
-		Stream URL, is validated when type is 1 (streaming)
-	]=]
+        Stream URL, is validated when type is 1 (streaming)
+    ]=]
     self.url = activityData.url
 
     --[=[
-		@prop createdAt number
-		@within Classes.Activity
+        @prop createdAt number
+        @within Classes.Activity
 
-		Unix timestamp in milliseconds of when the activity was created
-	]=]
+        Unix timestamp in milliseconds of when the activity was created
+    ]=]
     self.createdAt = activityData.created_at
 
     --[=[
-		@prop timestamps Classes.ActivityTimestamp
-		@within Classes.Activity
+        @prop timestamps Classes.ActivityTimestamp
+        @within Classes.Activity
 
-		Unix timestamps for start and/or end of the game
-	]=]
+        Unix timestamps for start and/or end of the game
+    ]=]
     self.timestamps = activityData.timestamps
         and activityTimestamp.new(activityData.timestamps.start, activityData.timestamps["end"])
 
     --[=[
-		@prop applicationId string
-		@within Classes.Activity
+        @prop applicationId string
+        @within Classes.Activity
 
-		Application ID for the game
-	]=]
+        Application ID for the game
+    ]=]
     self.applicationId = activityData.application_id
 
     --[=[
-		@prop details string?
-		@within Classes.Activity
+        @prop details string?
+        @within Classes.Activity
 
-		What the player is currently doing
-	]=]
+        What the player is currently doing
+    ]=]
     self.details = activityData.details
 
     --[=[
-		@prop state string?
-		@within Classes.Activity
+        @prop state string?
+        @within Classes.Activity
 
-		The user's current party status
-	]=]
+        The user's current party status
+    ]=]
     self.state = activityData.state
 
     --[=[
-		@prop emoji Classes.ActivityEmoji?
-		@within Classes.Activity
+        @prop emoji Classes.ActivityEmoji?
+        @within Classes.Activity
 
-		The emoji used for a custom status
-	]=]
+        The emoji used for a custom status
+    ]=]
     self.emoji = activityData.emoji and activityEmoji.new(activityData.emoji.id, activityData.emoji)
 
     --[=[
-		@prop party Classes.ActivityParty?
-		@within Classes.Activity
+        @prop party Classes.ActivityParty?
+        @within Classes.Activity
 
-		Information for the current party of the player
-	]=]
+        Information for the current party of the player
+    ]=]
     self.party = activityData.party
         and activityParty.new(activityData.party.id, activityData.party.size[1], activityData.party.size[2])
 
     --[=[
-		@prop assets Classes.ActivityAssets?
-		@within Classes.Activity
+        @prop assets Classes.ActivityAssets?
+        @within Classes.Activity
 
-		Images for the presence and their hover texts
-	]=]
+        Images for the presence and their hover texts
+    ]=]
     self.assets = activityData.assets
         and activityAssets.new(
             activityData.assets.large_image,
@@ -149,44 +157,44 @@ function Activity.Prototype.sync(self: Activity, activityData: apiTypes.Activity
         )
 
     --[=[
-		@prop secrets Classes.ActivitySecrets?
-		@within Classes.Activity
+        @prop secrets Classes.ActivitySecrets?
+        @within Classes.Activity
 
-		Secrets for Rich Presence joining and spectating
-	]=]
+        Secrets for Rich Presence joining and spectating
+    ]=]
     self.secrets = activityData.secrets
         and activitySecrets.new(activityData.secrets.join, activityData.secrets.spectate, activityData.secrets.match)
 
     --[=[
-		@prop instance boolean?
-		@within Classes.Activity
+        @prop instance boolean?
+        @within Classes.Activity
 
-		Whether or not the activity is an instanced game session
-	]=]
+        Whether or not the activity is an instanced game session
+    ]=]
     self.instance = activityData.instance
 
     --[=[
-		@prop flags number?
-		@within Classes.Activity
+        @prop flags number?
+        @within Classes.Activity
 
-		Activity flags ORd together, describes what the payload includes
-	]=]
+        Activity flags ORd together, describes what the payload includes
+    ]=]
     self.flags = activityData.flags
 
     --[=[
-		@prop buttons {Classes.ActivityButton}
-		@within Classes.Activity
+        @prop buttons {Classes.ActivityButton}
+        @within Classes.Activity
 
-		Custom buttons shown in the Rich Presence
-	]=]
+        Custom buttons shown in the Rich Presence
+    ]=]
     self.buttons = activityButtons
 end
 
 --[=[
-	@within Classes.Activity
-	@private
+    @within Classes.Activity
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Activity.Interface.new(data: apiTypes.ActivityObject): Activity
     local self = setmetatable({} :: Activity, { __index = Activity.Prototype })

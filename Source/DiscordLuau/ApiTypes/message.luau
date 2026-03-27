@@ -1,5 +1,13 @@
+--[[
+
+message
+
+Type definitions for Discord message API objects.
+
+--]]
+
 --[=[
-	@class Types.message
+    @class Types.message
 ]=]
 
 local util = require("../Utilities")

@@ -1,21 +1,29 @@
+--[[
+
+poll
+
+REST API methods for Discord poll endpoints.
+
+--]]
+
 local apiTypes = require("../ApiTypes")
 local future = require("@packages/Future")
 
 local request = require("./request")
 
 --[=[
-	@class Rest.poll
+    @class Rest.poll
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/poll
+    - https://discord.com/developers/docs/resources/poll
 ]=]
 local poll = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/poll#get-answer-voters
+    https://discord.com/developers/docs/resources/poll#get-answer-voters
 ]=]
 function poll.getAnswerVotersAsync(
     instance: request.Request,
@@ -45,9 +53,9 @@ function poll.getAnswerVotersAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/poll#end-poll
+    https://discord.com/developers/docs/resources/poll#end-poll
 ]=]
 function poll.endPollAsync(
     instance: request.Request,

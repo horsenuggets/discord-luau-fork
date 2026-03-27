@@ -1,3 +1,11 @@
+--[[
+
+Classes
+
+Represents a Discord Classes object.
+
+--]]
+
 local account = require("@self/guild/integration/account")
 local actionRow = require("@self/message/components/actionRow")
 local activity = require("@self/message/activity")

@@ -1,10 +1,18 @@
+--[[
+
+auditlog
+
+Implementation of the Discord AuditLog class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.AuditLogs
-	@__index Prototype
+    @class Classes.AuditLogs
+    @__index Prototype
 
-	Implementation of the Discord AuditLog class in Luau
+    Implementation of the Discord AuditLog class in Luau
 
-	https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
+    https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -25,11 +33,11 @@ AuditLogs.Interface = {}
 AuditLogs.Prototype = {}
 
 --[=[
-	@within Classes.AuditLogs
-	@private
+    @within Classes.AuditLogs
+    @private
 
-	Responsible for syncing data to this audit logs object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this audit logs object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function AuditLogs.Prototype.sync(self: AuditLogs, auditLogsData: apiTypes.AuditLogObject)
     for _, commandData in auditLogsData.application_commands do
@@ -66,84 +74,84 @@ function AuditLogs.Prototype.sync(self: AuditLogs, auditLogsData: apiTypes.Audit
 end
 
 --[=[
-	@within Classes.AuditLogs
-	@private
+    @within Classes.AuditLogs
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function AuditLogs.Interface.new(state: state.State, auditLogsData: apiTypes.AuditLogObject): AuditLogs
     local self = setmetatable(
         {
             --[=[
-				@prop state state.State
-				@within Classes.AuditLogs
+                @prop state state.State
+                @within Classes.AuditLogs
 
-				The state object that contains all the cache and client information.
-			]=]
+                The state object that contains all the cache and client information.
+            ]=]
             state = state,
 
             --[=[
-				@prop applicationCommands { Classes.Command }
-				@within Classes.AuditLogs
+                @prop applicationCommands { Classes.Command }
+                @within Classes.AuditLogs
 
-				Array of application commands found in the audit log.
-			]=]
+                Array of application commands found in the audit log.
+            ]=]
             applicationCommands = {},
 
             --[=[
-				@prop auditLogEntries { Classes.AuditLogEntry }
-				@within Classes.AuditLogs
+                @prop auditLogEntries { Classes.AuditLogEntry }
+                @within Classes.AuditLogs
 
-				Array of audit log entries containing information about various changes made in the guild.
-			]=]
+                Array of audit log entries containing information about various changes made in the guild.
+            ]=]
             auditLogEntries = {},
 
             --[=[
-				@prop autoModerationRules { Classes.AutomoderationRule }
-				@within Classes.AuditLogs
+                @prop autoModerationRules { Classes.AutomoderationRule }
+                @within Classes.AuditLogs
 
-				Array of auto moderation rules that have been created, updated, or deleted in the guild.
-			]=]
+                Array of auto moderation rules that have been created, updated, or deleted in the guild.
+            ]=]
             autoModerationRules = {},
 
             --[=[
-				@prop guildScheduledEvents { Classes.ScheduledEvent }
-				@within Classes.AuditLogs
+                @prop guildScheduledEvents { Classes.ScheduledEvent }
+                @within Classes.AuditLogs
 
-				Array of scheduled events that have been created, updated, or deleted in the guild.
-			]=]
+                Array of scheduled events that have been created, updated, or deleted in the guild.
+            ]=]
             guildScheduledEvents = {},
 
             --[=[
-				@prop integrations { Classes.Integration }
-				@within Classes.AuditLogs
+                @prop integrations { Classes.Integration }
+                @within Classes.AuditLogs
 
-				Array of integrations that have been created, updated, or deleted in the guild.
-			]=]
+                Array of integrations that have been created, updated, or deleted in the guild.
+            ]=]
             integrations = {},
 
             --[=[
-				@prop threads { Classes.Public }
-				@within Classes.AuditLogs
+                @prop threads { Classes.Public }
+                @within Classes.AuditLogs
 
-				Array of threads that have been created, updated, or deleted in the guild.
-			]=]
+                Array of threads that have been created, updated, or deleted in the guild.
+            ]=]
             threads = {},
 
             --[=[
-				@prop users { Classes.User }
-				@within Classes.AuditLogs
+                @prop users { Classes.User }
+                @within Classes.AuditLogs
 
-				Array of users that are referenced in the audit log entries.
-			]=]
+                Array of users that are referenced in the audit log entries.
+            ]=]
             users = {},
 
             --[=[
-				@prop webhooks { Classes.Webhook }
-				@within Classes.AuditLogs
+                @prop webhooks { Classes.Webhook }
+                @within Classes.AuditLogs
 
-				Array of webhooks that have been created, updated, or deleted in the guild.
-			]=]
+                Array of webhooks that have been created, updated, or deleted in the guild.
+            ]=]
             webhooks = {},
         } :: AuditLogs,
         { __index = AuditLogs.Prototype }

@@ -1,10 +1,18 @@
+--[[
+
+defaultReaction
+
+Implementation of the Discord DefaultReaction class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.DefaultReaction
-	@__index Prototype
+    @class Classes.DefaultReaction
+    @__index Prototype
 
-	Implementation of the Discord DefaultReaction class in Luau
+    Implementation of the Discord DefaultReaction class in Luau
 
-	https://discord.com/developers/docs/resources/channel#default-reaction-object
+    https://discord.com/developers/docs/resources/channel#default-reaction-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -15,35 +23,35 @@ DefaultReaction.Interface = {}
 DefaultReaction.Prototype = {}
 
 --[=[
-	@within Classes.DefaultReaction
-	@private
+    @within Classes.DefaultReaction
+    @private
 
-	Responsible for syncing data to this default reaction object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this default reaction object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function DefaultReaction.Prototype.sync(self: DefaultReaction, DefaultReactionData: apiTypes.DefaultReactionObject)
     --[=[
-		@prop emojiId string?
-		@within Classes.DefaultReaction
+        @prop emojiId string?
+        @within Classes.DefaultReaction
 
-		The ID of the emoji to use as the default reaction
-	]=]
+        The ID of the emoji to use as the default reaction
+    ]=]
     self.emojiId = DefaultReactionData.emoji_id
 
     --[=[
-		@prop emojiName string?
-		@within Classes.DefaultReaction
+        @prop emojiName string?
+        @within Classes.DefaultReaction
 
-		The name of the emoji to use as the default reaction
-	]=]
+        The name of the emoji to use as the default reaction
+    ]=]
     self.emojiName = DefaultReactionData.emoji_name
 end
 
 --[=[
-	@within Classes.DefaultReaction
-	@private
+    @within Classes.DefaultReaction
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function DefaultReaction.Interface.new(DefaultReactionData: apiTypes.DefaultReactionObject): DefaultReaction
     local self = setmetatable({} :: DefaultReaction, { __index = DefaultReaction.Prototype })

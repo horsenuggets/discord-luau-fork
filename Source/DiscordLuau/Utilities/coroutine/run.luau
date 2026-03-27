@@ -1,12 +1,21 @@
+--[[
+
+run
+
+Creates a thread, resumes that thread - and handles errors if this resumed thread fails.
+Will return the thread spawned.
+
+--]]
+
 --[=[
-	@function Utilities.coroutineRun
-	@within Utilities
+    @function Utilities.coroutineRun
+    @within Utilities
 
-	Creates a thread, resumes that thread - and handles errors if this resumed thread fails.
+    Creates a thread, resumes that thread - and handles errors if this resumed thread fails.
 
-	Will return the thread spawned.
+    Will return the thread spawned.
 
-	@return thread
+    @return thread
 ]=]
 return function(func: () -> (), ...)
     local thread = coroutine.create(func)

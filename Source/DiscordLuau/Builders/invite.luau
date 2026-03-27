@@ -1,10 +1,18 @@
+--[[
+
+invite
+
+Implementation of discords Invite object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Invite
-	@__index Prototype
+    @class Builders.Invite
+    @__index Prototype
 
-	Implementation of discords Invite object as a Luau builder.	
+    Implementation of discords Invite object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/channel#create-channel-invite-json-params
+    https://discord.com/developers/docs/resources/channel#create-channel-invite-json-params
 ]=]
 
 local apiTypes = require("../ApiTypes")
@@ -15,10 +23,10 @@ Invite.Prototype = {}
 Invite.Interface = {}
 
 --[=[
-	@within Builders.Invite
+    @within Builders.Invite
 
-	Sets the duration in seconds after which the invite expires.
-	Age must be between 0 and 604800 seconds.
+    Sets the duration in seconds after which the invite expires.
+    Age must be between 0 and 604800 seconds.
 ]=]
 function Invite.Prototype.setMaxAge(self: Invite, age: number): Invite
     assert(age >= 0, "Max age must be greater than or equal to 0")
@@ -30,10 +38,10 @@ function Invite.Prototype.setMaxAge(self: Invite, age: number): Invite
 end
 
 --[=[
-	@within Builders.Invite
+    @within Builders.Invite
 
-	Sets the maximum number of times this invite can be used.
-	Uses must be between 0 and 100.
+    Sets the maximum number of times this invite can be used.
+    Uses must be between 0 and 100.
 ]=]
 function Invite.Prototype.setMaxUses(self: Invite, uses: number): Invite
     assert(uses >= 0, "Max uses must be greater than or equal to 0")
@@ -45,10 +53,10 @@ function Invite.Prototype.setMaxUses(self: Invite, uses: number): Invite
 end
 
 --[=[
-	@within Builders.Invite
+    @within Builders.Invite
 
-	Sets whether the invite grants temporary membership.
-	Temporary members are removed when they disconnect unless granted a role.
+    Sets whether the invite grants temporary membership.
+    Temporary members are removed when they disconnect unless granted a role.
 ]=]
 function Invite.Prototype.setTemporary(self: Invite, isTemporary: boolean): Invite
     self.temporary = isTemporary
@@ -57,10 +65,10 @@ function Invite.Prototype.setTemporary(self: Invite, isTemporary: boolean): Invi
 end
 
 --[=[
-	@within Builders.Invite
+    @within Builders.Invite
 
-	Sets whether this invite should be unique.
-	If true, don't try to reuse a similar invite.
+    Sets whether this invite should be unique.
+    If true, don't try to reuse a similar invite.
 ]=]
 function Invite.Prototype.setIsUnique(self: Invite, isUnique: boolean): Invite
     self.unique = isUnique
@@ -69,10 +77,10 @@ function Invite.Prototype.setIsUnique(self: Invite, isUnique: boolean): Invite
 end
 
 --[=[
-	@within Builders.Invite
+    @within Builders.Invite
 
-	Sets the type of target for this invite.
-	Used for stream and embedded application invites.
+    Sets the type of target for this invite.
+    Used for stream and embedded application invites.
 ]=]
 function Invite.Prototype.setTargetType(self: Invite, targetType: apiTypes.InviteTargetType): Invite
     assert(apiTypes.guild.InviteTargetType[targetType], "Invalid target type")
@@ -83,10 +91,10 @@ function Invite.Prototype.setTargetType(self: Invite, targetType: apiTypes.Invit
 end
 
 --[=[
-	@within Builders.Invite
+    @within Builders.Invite
 
-	Sets the target user ID for this invite.
-	Used to specify which user's stream to display for stream invites.
+    Sets the target user ID for this invite.
+    Used to specify which user's stream to display for stream invites.
 ]=]
 function Invite.Prototype.setTargetUser(self: Invite, userId: string): Invite
     self.targetUserId = userId
@@ -95,10 +103,10 @@ function Invite.Prototype.setTargetUser(self: Invite, userId: string): Invite
 end
 
 --[=[
-	@within Builders.Invite
+    @within Builders.Invite
 
-	Sets the target application ID for this invite.
-	Used to specify which embedded application to open.
+    Sets the target application ID for this invite.
+    Used to specify which embedded application to open.
 ]=]
 function Invite.Prototype.setTargetApplication(self: Invite, applicationId: string): Invite
     self.targetApplicationId = applicationId
@@ -107,9 +115,9 @@ function Invite.Prototype.setTargetApplication(self: Invite, applicationId: stri
 end
 
 --[=[
-	@within Builders.Invite
+    @within Builders.Invite
 
-	Responsible for buillding the invite object that the Discord API can understand.
+    Responsible for buillding the invite object that the Discord API can understand.
 ]=]
 function Invite.Prototype.build(self: Invite): JSON
     return {
@@ -124,9 +132,9 @@ function Invite.Prototype.build(self: Invite): JSON
 end
 
 --[=[
-	@within Builders.Invite
+    @within Builders.Invite
 
-	Responsible for creating a new Invite.
+    Responsible for creating a new Invite.
 ]=]
 function Invite.Interface.new(resource: {
     maxAge: number?,
@@ -140,46 +148,46 @@ function Invite.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop maxAge number?
-				@within Builders.Invite
-				Duration in seconds after which the invite expires. Must be between 0 and 604800 seconds.
-			]=]
+                @prop maxAge number?
+                @within Builders.Invite
+                Duration in seconds after which the invite expires. Must be between 0 and 604800 seconds.
+            ]=]
 
             --[=[
-				@prop maxUses number?
-				@within Builders.Invite
-				Maximum number of times this invite can be used. Must be between 0 and 100.
-			]=]
+                @prop maxUses number?
+                @within Builders.Invite
+                Maximum number of times this invite can be used. Must be between 0 and 100.
+            ]=]
 
             --[=[
-				@prop temporary boolean?
-				@within Builders.Invite
-				Whether the invite grants temporary membership. Members are removed on disconnect unless granted a role.
-			]=]
+                @prop temporary boolean?
+                @within Builders.Invite
+                Whether the invite grants temporary membership. Members are removed on disconnect unless granted a role.
+            ]=]
 
             --[=[
-				@prop unique boolean?
-				@within Builders.Invite
-				Whether this invite should be unique. If true, don't try to reuse a similar invite.
-			]=]
+                @prop unique boolean?
+                @within Builders.Invite
+                Whether this invite should be unique. If true, don't try to reuse a similar invite.
+            ]=]
 
             --[=[
-				@prop targetType api_types.InviteTargetType?
-				@within Builders.Invite
-				The type of target for this invite. Used for stream and embedded application invites.
-			]=]
+                @prop targetType api_types.InviteTargetType?
+                @within Builders.Invite
+                The type of target for this invite. Used for stream and embedded application invites.
+            ]=]
 
             --[=[
-				@prop targetUserId string?
-				@within Builders.Invite
-				The target user ID for this invite. Used to specify which user's stream to display.
-			]=]
+                @prop targetUserId string?
+                @within Builders.Invite
+                The target user ID for this invite. Used to specify which user's stream to display.
+            ]=]
 
             --[=[
-				@prop targetApplicationId string?
-				@within Builders.Invite
-				The target application ID for this invite. Used to specify which embedded application to open.
-			]=]
+                @prop targetApplicationId string?
+                @within Builders.Invite
+                The target application ID for this invite. Used to specify which embedded application to open.
+            ]=]
         } :: Invite,
         {
             __index = Invite.Prototype,

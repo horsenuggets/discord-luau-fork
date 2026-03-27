@@ -1,10 +1,18 @@
+--[[
+
+author
+
+Implementation of discords Author object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Author
-	@__index Prototype
+    @class Builders.Author
+    @__index Prototype
 
-	Implementation of discords Author object as a Luau builder.	
+    Implementation of discords Author object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/message#embed-object-embed-author-structure
+    https://discord.com/developers/docs/resources/message#embed-object-embed-author-structure
 ]=]
 
 local Author = {}
@@ -13,9 +21,9 @@ Author.Prototype = {}
 Author.Interface = {}
 
 --[=[
-	@within Builders.Author
+    @within Builders.Author
 
-	Set the image url for this embed.
+    Set the image url for this embed.
 ]=]
 function Author.Prototype.setName(self: Author, name: string): Author
     assert(#name <= 256, "Name must be less than 256 characters")
@@ -27,9 +35,9 @@ function Author.Prototype.setName(self: Author, name: string): Author
 end
 
 --[=[
-	@within Builders.Author
+    @within Builders.Author
 
-	Set the image height for this embed.
+    Set the image height for this embed.
 ]=]
 function Author.Prototype.setUrl(self: Author, url: string): Author
     self.url = url
@@ -38,9 +46,9 @@ function Author.Prototype.setUrl(self: Author, url: string): Author
 end
 
 --[=[
-	@within Builders.Author
+    @within Builders.Author
 
-	Set the image height for this embed.
+    Set the image height for this embed.
 ]=]
 function Author.Prototype.setIcon(self: Author, iconUrl: string, proxyIconUrl: string?): Author
     self.iconUrl = iconUrl
@@ -50,9 +58,9 @@ function Author.Prototype.setIcon(self: Author, iconUrl: string, proxyIconUrl: s
 end
 
 --[=[
-	@within Builders.Author
+    @within Builders.Author
 
-	Responsible for building the Author JSON that can be parsed by the Discord API.
+    Responsible for building the Author JSON that can be parsed by the Discord API.
 ]=]
 function Author.Prototype.build(self: Author): JSON
     assert(self.name, `Author must have a name`)
@@ -66,9 +74,9 @@ function Author.Prototype.build(self: Author): JSON
 end
 
 --[=[
-	@within Builders.Author
+    @within Builders.Author
 
-	Responsible for creating a new Author.
+    Responsible for creating a new Author.
 ]=]
 function Author.Interface.new(resource: {
     name: string?,
@@ -79,31 +87,31 @@ function Author.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-			`	@prop name string?
-				@within Builders.Author
-				The name of the author.
-			]=]
+            `    @prop name string?
+                @within Builders.Author
+                The name of the author.
+            ]=]
             name = nil,
 
             --[=[
-				@prop url string?
-				@within Builders.Author
-				The url of the author.
-			]=]
+                @prop url string?
+                @within Builders.Author
+                The url of the author.
+            ]=]
             url = nil,
 
             --[=[
-				@prop iconUrl string?
-				@within Builders.Author
-				The url of author's icon image.
-			]=]
+                @prop iconUrl string?
+                @within Builders.Author
+                The url of author's icon image.
+            ]=]
             iconUrl = nil,
 
             --[=[
-				@prop proxyIconUrl string?
-				@within Builders.Author
-				A proxied url of author's icon image.
-			]=]
+                @prop proxyIconUrl string?
+                @within Builders.Author
+                A proxied url of author's icon image.
+            ]=]
             proxyIconUrl = nil,
         } :: Author,
         {

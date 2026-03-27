@@ -1,3 +1,11 @@
+--[[
+
+construct
+
+Represents a Discord construct object.
+
+--]]
+
 -- selene: allow(unused_variable)
 local apiTypes = require("../../ApiTypes")
 local state = require("../../State")

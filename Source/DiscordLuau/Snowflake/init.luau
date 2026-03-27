@@ -1,8 +1,17 @@
---[=[
-	@class Snowflake
-	@__index Prototype
+--[[
 
-	Wrapper around Discord snowflakes, allwowing developers to query information about a snowflake
+Snowflake
+
+Wrapper around Discord snowflakes, allwowing developers to query information about a
+snowflake.
+
+--]]
+
+--[=[
+    @class Snowflake
+    @__index Prototype
+
+    Wrapper around Discord snowflakes, allwowing developers to query information about a snowflake
 ]=]
 
 local stdPolyfills = require("../StdPolyfills")
@@ -17,9 +26,9 @@ Snowflake.Interface = {}
 Snowflake.Prototype = {}
 
 --[=[
-	@within Snowflake
+    @within Snowflake
 
-	Returns the timestamp of the snowflake
+    Returns the timestamp of the snowflake
 ]=]
 function Snowflake.Prototype.getTimestamp(self: Snowflake)
     local snowflake = tonumber(self.snowflake) :: number
@@ -29,9 +38,9 @@ function Snowflake.Prototype.getTimestamp(self: Snowflake)
 end
 
 --[=[
-	@within Snowflake
+    @within Snowflake
 
-	Returns the internal worker ID of the snowflake
+    Returns the internal worker ID of the snowflake
 ]=]
 function Snowflake.Prototype.getInternalWorkerId(self: Snowflake)
     local snowflake = tonumber(self.snowflake) :: number
@@ -41,9 +50,9 @@ function Snowflake.Prototype.getInternalWorkerId(self: Snowflake)
 end
 
 --[=[
-	@within Snowflake
+    @within Snowflake
 
-	Returns the internal process ID of the snowflake
+    Returns the internal process ID of the snowflake
 ]=]
 function Snowflake.Prototype.getInternalProcessId(self: Snowflake)
     local snowflake = tonumber(self.snowflake) :: number
@@ -53,9 +62,9 @@ function Snowflake.Prototype.getInternalProcessId(self: Snowflake)
 end
 
 --[=[
-	@within Snowflake
+    @within Snowflake
 
-	Returns the increment of the snowflake
+    Returns the increment of the snowflake
 ]=]
 function Snowflake.Prototype.getIncrement(self: Snowflake)
     local snowflake = tonumber(self.snowflake) :: number
@@ -65,9 +74,9 @@ function Snowflake.Prototype.getIncrement(self: Snowflake)
 end
 
 --[=[
-	@within Snowflake
+    @within Snowflake
 
-	Creates a new snowflake
+    Creates a new snowflake
 ]=]
 function Snowflake.Interface.new(snowflake: string)
     return setmetatable(

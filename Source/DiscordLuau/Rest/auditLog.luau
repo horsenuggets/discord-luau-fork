@@ -1,21 +1,29 @@
+--[[
+
+auditLog
+
+REST API methods for Discord auditLog endpoints.
+
+--]]
+
 local apiTypes = require("../ApiTypes")
 local future = require("@packages/Future")
 
 local request = require("./request")
 
 --[=[
-	@class Rest.auditLog
+    @class Rest.auditLog
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/audit-log
+    - https://discord.com/developers/docs/resources/audit-log
 ]=]
 local auditLog = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/audit-log#get-guild-audit-log
+    https://discord.com/developers/docs/resources/audit-log#get-guild-audit-log
 ]=]
 function auditLog.getGuildAuditLogAsync(
     instance: request.Request,

@@ -1,10 +1,18 @@
+--[[
+
+intents
+
+Implementation of discord intents as a luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Intents
-	@__index Prototype
+    @class Builders.Intents
+    @__index Prototype
 
-	Implementation of discord intents as a luau builder.	
+    Implementation of discord intents as a luau builder.    
 
-	https://discord.com/developers/docs/topics/gateway#list-of-intents
+    https://discord.com/developers/docs/topics/gateway#list-of-intents
 ]=]
 
 local apiTypes = require("../ApiTypes")
@@ -17,9 +25,9 @@ Intents.Prototype = {}
 Intents.Interface = {}
 
 --[=[
-	@within Builders.Intents
+    @within Builders.Intents
 
-	Sets either the id of a guilds custom emoji, or a unicode character of an emoji.
+    Sets either the id of a guilds custom emoji, or a unicode character of an emoji.
 ]=]
 function Intents.Prototype.addIntent(self: Intents, intent: apiTypes.Intent): Intents
     assert(apiTypes.gateway.intents[intent], `Invalid intent: {intent}`)
@@ -31,9 +39,9 @@ function Intents.Prototype.addIntent(self: Intents, intent: apiTypes.Intent): In
 end
 
 --[=[
-	@within Builders.Intents
+    @within Builders.Intents
 
-	Responsible for building all intent permissions into an integer that the Discord API can parse
+    Responsible for building all intent permissions into an integer that the Discord API can parse
 ]=]
 function Intents.Prototype.build(self: Intents): number
     local intentsValue = 0
@@ -50,25 +58,25 @@ function Intents.Prototype.build(self: Intents): number
 end
 
 --[=[
-	@within Builders.Intents
+    @within Builders.Intents
 
-	Constructs a new intents builder.
+    Constructs a new intents builder.
 
-	```luau
-	Intents.new()
-		:addIntent("GuildMembers")
-		:addIntent("GuildMessages")
-		:build()
-	```
+    ```luau
+    Intents.new()
+        :addIntent("GuildMembers")
+        :addIntent("GuildMessages")
+        :build()
+    ```
 ]=]
 function Intents.Interface.new(intents: {}?): Intents
     local self = setmetatable(
         {
             --[=[
-				@prop intents { apiTypes.Intent }
-				@within Builders.Intents
-				An array of intent flags that determine which gateway events your client will receive.
-			]=]
+                @prop intents { apiTypes.Intent }
+                @within Builders.Intents
+                An array of intent flags that determine which gateway events your client will receive.
+            ]=]
             intents = intents or {},
         } :: Intents,
         { __index = Intents.Prototype }

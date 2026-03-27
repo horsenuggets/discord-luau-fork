@@ -1,10 +1,18 @@
+--[[
+
+messageThread
+
+Implementation of discords MessageThread object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.MessageThread
-	@__index Prototype
+    @class Builders.MessageThread
+    @__index Prototype
 
-	Implementation of discords MessageThread object as a Luau builder.	
+    Implementation of discords MessageThread object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/channel#start-thread-from-message-json-params
+    https://discord.com/developers/docs/resources/channel#start-thread-from-message-json-params
 ]=]
 
 local MessageThread = {}
@@ -13,10 +21,10 @@ MessageThread.Prototype = {}
 MessageThread.Interface = {}
 
 --[=[
-	@within Builders.MessageThread
+    @within Builders.MessageThread
 
-	Sets the name of the thread.
-	Name must be between 1-100 characters.
+    Sets the name of the thread.
+    Name must be between 1-100 characters.
 ]=]
 function MessageThread.Prototype.setName(self: MessageThread, name: string): MessageThread
     assert(#name <= 100, "Name must be less than 100 characters")
@@ -28,10 +36,10 @@ function MessageThread.Prototype.setName(self: MessageThread, name: string): Mes
 end
 
 --[=[
-	@within Builders.MessageThread
+    @within Builders.MessageThread
 
-	Sets the duration in minutes before the thread is automatically archived.
-	Duration must be 60, 1440, 4320, or 10080.
+    Sets the duration in minutes before the thread is automatically archived.
+    Duration must be 60, 1440, 4320, or 10080.
 ]=]
 function MessageThread.Prototype.setAutoArchiveDuration(self: MessageThread, duration: number): MessageThread
     assert(
@@ -45,10 +53,10 @@ function MessageThread.Prototype.setAutoArchiveDuration(self: MessageThread, dur
 end
 
 --[=[
-	@within Builders.MessageThread
+    @within Builders.MessageThread
 
-	Sets the rate limit per user in the thread.
-	Rate limit must be less than or equal to 21600 seconds.
+    Sets the rate limit per user in the thread.
+    Rate limit must be less than or equal to 21600 seconds.
 ]=]
 function MessageThread.Prototype.setRateLimitPerUser(self: MessageThread, rateLimit: number): MessageThread
     assert(rateLimit <= 21600, "Rate limit must be less than or equal to 21600")
@@ -59,9 +67,9 @@ function MessageThread.Prototype.setRateLimitPerUser(self: MessageThread, rateLi
 end
 
 --[=[
-	@within Builders.MessageThread
+    @within Builders.MessageThread
 
-	Responsible for building the MessageThread JSON that can be parsed by the Discord API.
+    Responsible for building the MessageThread JSON that can be parsed by the Discord API.
 ]=]
 function MessageThread.Prototype.build(self: MessageThread): JSON
     assert(self.name, `Name must be set`)
@@ -74,17 +82,17 @@ function MessageThread.Prototype.build(self: MessageThread): JSON
 end
 
 --[=[
-	@within Builders.MessageThread
+    @within Builders.MessageThread
 
-	Responsible for creating a new MessageThread.
+    Responsible for creating a new MessageThread.
 
-	```luau
-	local thread = MessageThread.new({
-		name = "My Thread",
-		autoArchiveDuration = 60,
-		rateLimitPerUser = 0
-	})
-	```
+    ```luau
+    local thread = MessageThread.new({
+        name = "My Thread",
+        autoArchiveDuration = 60,
+        rateLimitPerUser = 0
+    })
+    ```
 ]=]
 function MessageThread.Interface.new(resource: {
     name: string?,
@@ -94,24 +102,24 @@ function MessageThread.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop name string?
-				@within Builders.MessageThread
-				The name of the thread that is displayed.
-			]=]
+                @prop name string?
+                @within Builders.MessageThread
+                The name of the thread that is displayed.
+            ]=]
             name = nil,
 
             --[=[
-				@prop autoArchiveDuration number?
-				@within Builders.MessageThread
-				Duration in minutes to automatically archive the thread after recent activity.
-			]=]
+                @prop autoArchiveDuration number?
+                @within Builders.MessageThread
+                Duration in minutes to automatically archive the thread after recent activity.
+            ]=]
             autoArchiveDuration = nil,
 
             --[=[
-				@prop rateLimitPerUser number?
-				@within Builders.MessageThread
-				Amount of seconds a user has to wait before sending another message.
-			]=]
+                @prop rateLimitPerUser number?
+                @within Builders.MessageThread
+                Amount of seconds a user has to wait before sending another message.
+            ]=]
             rateLimitPerUser = nil,
         } :: MessageThread,
         {

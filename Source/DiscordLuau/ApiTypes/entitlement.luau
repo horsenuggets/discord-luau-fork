@@ -1,5 +1,13 @@
+--[[
+
+entitlement
+
+Type definitions for Discord entitlement API objects.
+
+--]]
+
 --[=[
-	@class Types.entitlement
+    @class Types.entitlement
 ]=]
 
 local util = require("../Utilities")

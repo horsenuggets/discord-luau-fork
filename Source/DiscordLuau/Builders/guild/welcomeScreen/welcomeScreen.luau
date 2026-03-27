@@ -1,10 +1,18 @@
+--[[
+
+welcomeScreen
+
+Implementation of discords WelcomeScreen object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.WelcomeScreen
-	@__index Prototype
+    @class Builders.WelcomeScreen
+    @__index Prototype
 
-	Implementation of discords WelcomeScreen object as a Luau builder.	
+    Implementation of discords WelcomeScreen object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen-json-params
+    https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen-json-params
 ]=]
 
 local WelcomeScreenChannel = require("./channel")
@@ -15,9 +23,9 @@ WelcomeScreen.Prototype = {}
 WelcomeScreen.Interface = {}
 
 --[=[
-	@within Builders.WelcomeScreen
+    @within Builders.WelcomeScreen
 
-	Set weather the welcome screen is enabled or not.
+    Set weather the welcome screen is enabled or not.
 ]=]
 function WelcomeScreen.Prototype.setEnabled(self: WelcomeScreen, enabled: boolean): WelcomeScreen
     self.enabled = enabled
@@ -26,9 +34,9 @@ function WelcomeScreen.Prototype.setEnabled(self: WelcomeScreen, enabled: boolea
 end
 
 --[=[
-	@within Builders.WelcomeScreen
+    @within Builders.WelcomeScreen
 
-	Set the description of the welcome screen.
+    Set the description of the welcome screen.
 ]=]
 function WelcomeScreen.Prototype.setDescription(self: WelcomeScreen, description: string): WelcomeScreen
     self.description = description
@@ -37,9 +45,9 @@ function WelcomeScreen.Prototype.setDescription(self: WelcomeScreen, description
 end
 
 --[=[
-	@within Builders.WelcomeScreen
+    @within Builders.WelcomeScreen
 
-	Add an welcome screen channel to the welcome screen
+    Add an welcome screen channel to the welcome screen
 ]=]
 function WelcomeScreen.Prototype.addChannel(self: WelcomeScreen, channel: WelcomeScreenChannel.JSON): WelcomeScreen
     table.insert(self.welcomeChannels, channel)
@@ -48,9 +56,9 @@ function WelcomeScreen.Prototype.addChannel(self: WelcomeScreen, channel: Welcom
 end
 
 --[=[
-	@within Builders.WelcomeScreen
+    @within Builders.WelcomeScreen
 
-	Responsible for building the WelcomeScreenObject JSON that can be parsed by the Discord API.
+    Responsible for building the WelcomeScreenObject JSON that can be parsed by the Discord API.
 ]=]
 function WelcomeScreen.Prototype.build(self: WelcomeScreen): JSON
     return {
@@ -61,9 +69,9 @@ function WelcomeScreen.Prototype.build(self: WelcomeScreen): JSON
 end
 
 --[=[
-	@within Builders.WelcomeScreen
+    @within Builders.WelcomeScreen
 
-	Responsible for creating a new WelcomeScreen.
+    Responsible for creating a new WelcomeScreen.
 ]=]
 function WelcomeScreen.Interface.new(resource: {
     enabled: boolean?,
@@ -73,22 +81,22 @@ function WelcomeScreen.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop enabled boolean?
-				@within Builders.WelcomeScreen
-				Whether the welcome screen is enabled or not.
-			]=]
+                @prop enabled boolean?
+                @within Builders.WelcomeScreen
+                Whether the welcome screen is enabled or not.
+            ]=]
 
             --[=[
-				@prop description string?
-				@within Builders.WelcomeScreen
-				The server description shown in the welcome screen.
-			]=]
+                @prop description string?
+                @within Builders.WelcomeScreen
+                The server description shown in the welcome screen.
+            ]=]
 
             --[=[
-				@prop welcomeChannels { Builders.WelcomeScreenChannel }
-				@within Builders.WelcomeScreen
-				The channels shown in the welcome screen.
-			]=]
+                @prop welcomeChannels { Builders.WelcomeScreenChannel }
+                @within Builders.WelcomeScreen
+                The channels shown in the welcome screen.
+            ]=]
             welcomeChannels = {},
         } :: WelcomeScreen,
         {

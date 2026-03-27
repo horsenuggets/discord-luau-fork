@@ -1,3 +1,11 @@
+--[[
+
+messageParams.spec
+
+Tests for the messageParams module.
+
+--]]
+
 local forumMediaThread = require("../../src/thread/forumMedia")
 local frktest = require("../../../../lune_packages/frktest")
 

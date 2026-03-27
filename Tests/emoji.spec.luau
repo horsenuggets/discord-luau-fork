@@ -1,3 +1,11 @@
+--[[
+
+emoji.spec
+
+Tests for the emoji module.
+
+--]]
+
 local emoji = require("../src/emoji")
 local frktest = require("../../../lune_packages/frktest")
 

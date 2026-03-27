@@ -1,5 +1,13 @@
+--[[
+
+channel
+
+Type definitions for Discord channel API objects.
+
+--]]
+
 --[=[
-	@class Types.channel
+    @class Types.channel
 ]=]
 
 local util = require("../Utilities")

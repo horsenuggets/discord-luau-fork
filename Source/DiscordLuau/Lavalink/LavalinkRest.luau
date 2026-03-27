@@ -102,10 +102,10 @@ function LavalinkRest._request(
 end
 
 --[[
-	Loads tracks from Lavalink.
+    Loads tracks from Lavalink.
 
-	@param identifier - The track identifier (URL, search query, etc.)
-	@return LoadResult with track data or error
+    @param identifier - The track identifier (URL, search query, etc.)
+    @return LoadResult with track data or error
 ]]
 function LavalinkRest.LoadTracks(self: LavalinkRest, identifier: string): Types.LoadResult
     assert(type(identifier) == "string", "Expected identifier to be a string")
@@ -128,10 +128,10 @@ function LavalinkRest.LoadTracks(self: LavalinkRest, identifier: string): Types.
 end
 
 --[[
-	Decodes a track from its encoded string.
+    Decodes a track from its encoded string.
 
-	@param encoded - The encoded track string
-	@return Track info or nil on error
+    @param encoded - The encoded track string
+    @return Track info or nil on error
 ]]
 function LavalinkRest.DecodeTrack(self: LavalinkRest, encoded: string): Types.TrackInfo?
     assert(type(encoded) == "string", "Expected encoded to be a string")
@@ -147,10 +147,10 @@ function LavalinkRest.DecodeTrack(self: LavalinkRest, encoded: string): Types.Tr
 end
 
 --[[
-	Decodes multiple tracks from their encoded strings.
+    Decodes multiple tracks from their encoded strings.
 
-	@param encodedTracks - Array of encoded track strings
-	@return Array of track data
+    @param encodedTracks - Array of encoded track strings
+    @return Array of track data
 ]]
 function LavalinkRest.DecodeTracks(self: LavalinkRest, encodedTracks: { string }): { Types.LavalinkTrack }
     assert(type(encodedTracks) == "table", "Expected encodedTracks to be a table")
@@ -165,9 +165,9 @@ function LavalinkRest.DecodeTracks(self: LavalinkRest, encodedTracks: { string }
 end
 
 --[[
-	Gets all players for this session.
+    Gets all players for this session.
 
-	@return Array of player states
+    @return Array of player states
 ]]
 function LavalinkRest.GetPlayers(self: LavalinkRest): { Types.LavalinkPlayer }
     if not self._sessionId then
@@ -184,10 +184,10 @@ function LavalinkRest.GetPlayers(self: LavalinkRest): { Types.LavalinkPlayer }
 end
 
 --[[
-	Gets a specific player by guild ID.
+    Gets a specific player by guild ID.
 
-	@param guildId - The guild ID
-	@return Player state or nil
+    @param guildId - The guild ID
+    @return Player state or nil
 ]]
 function LavalinkRest.GetPlayer(self: LavalinkRest, guildId: string): Types.LavalinkPlayer?
     assert(type(guildId) == "string", "Expected guildId to be a string")
@@ -206,12 +206,12 @@ function LavalinkRest.GetPlayer(self: LavalinkRest, guildId: string): Types.Lava
 end
 
 --[[
-	Updates a player's state (play, pause, seek, volume, filters, etc.)
+    Updates a player's state (play, pause, seek, volume, filters, etc.)
 
-	@param guildId - The guild ID
-	@param data - The update data
-	@param noReplace - If true, don't replace the current track
-	@return Updated player state or nil
+    @param guildId - The guild ID
+    @param data - The update data
+    @param noReplace - If true, don't replace the current track
+    @return Updated player state or nil
 ]]
 function LavalinkRest.UpdatePlayer(
     self: LavalinkRest,
@@ -241,10 +241,10 @@ function LavalinkRest.UpdatePlayer(
 end
 
 --[[
-	Destroys a player for a guild.
+    Destroys a player for a guild.
 
-	@param guildId - The guild ID
-	@return true if successful
+    @param guildId - The guild ID
+    @return true if successful
 ]]
 function LavalinkRest.DestroyPlayer(self: LavalinkRest, guildId: string): boolean
     assert(type(guildId) == "string", "Expected guildId to be a string")
@@ -259,11 +259,11 @@ function LavalinkRest.DestroyPlayer(self: LavalinkRest, guildId: string): boolea
 end
 
 --[[
-	Updates the session configuration (resuming).
+    Updates the session configuration (resuming).
 
-	@param resuming - Whether to enable session resuming
-	@param timeout - The timeout in seconds for resuming
-	@return true if successful
+    @param resuming - Whether to enable session resuming
+    @param timeout - The timeout in seconds for resuming
+    @return true if successful
 ]]
 function LavalinkRest.UpdateSession(self: LavalinkRest, resuming: boolean?, timeout: number?): boolean
     if not self._sessionId then
@@ -284,9 +284,9 @@ function LavalinkRest.UpdateSession(self: LavalinkRest, resuming: boolean?, time
 end
 
 --[[
-	Gets Lavalink server info.
+    Gets Lavalink server info.
 
-	@return Server info or nil
+    @return Server info or nil
 ]]
 function LavalinkRest.GetInfo(self: LavalinkRest): Types.LavalinkInfo?
     local result = self:_request("GET", "/v4/info")
@@ -299,9 +299,9 @@ function LavalinkRest.GetInfo(self: LavalinkRest): Types.LavalinkInfo?
 end
 
 --[[
-	Gets Lavalink server statistics.
+    Gets Lavalink server statistics.
 
-	@return Stats or nil
+    @return Stats or nil
 ]]
 function LavalinkRest.GetStats(self: LavalinkRest): Types.StatsEvent?
     local result = self:_request("GET", "/v4/stats")
@@ -314,9 +314,9 @@ function LavalinkRest.GetStats(self: LavalinkRest): Types.StatsEvent?
 end
 
 --[[
-	Gets the Lavalink server version.
+    Gets the Lavalink server version.
 
-	@return Version string or nil
+    @return Version string or nil
 ]]
 function LavalinkRest.GetVersion(self: LavalinkRest): string?
     local result = self:_request("GET", "/version")
@@ -330,11 +330,11 @@ function LavalinkRest.GetVersion(self: LavalinkRest): string?
 end
 
 --[[
-	Searches for tracks using a source prefix.
+    Searches for tracks using a source prefix.
 
-	@param query - The search query
-	@param source - The source to search (ytsearch, scsearch, etc.)
-	@return LoadResult with search results
+    @param query - The search query
+    @param source - The source to search (ytsearch, scsearch, etc.)
+    @return LoadResult with search results
 ]]
 function LavalinkRest.Search(self: LavalinkRest, query: string, source: string?): Types.LoadResult
     assert(type(query) == "string", "Expected query to be a string")

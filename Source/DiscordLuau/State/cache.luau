@@ -1,18 +1,26 @@
---[=[
-	@class State.Cache
-	@__index Prototype
+--[[
 
-	Class responsible for handling the underlying cache for all objects in Discord-Luau
+cache
+
+Class responsible for handling the underlying cache for all objects in Discord-Luau.
+
+--]]
+
+--[=[
+    @class State.Cache
+    @__index Prototype
+
+    Class responsible for handling the underlying cache for all objects in Discord-Luau
 ]=]
 
 --[=[
-	@prop store { [K]: V }
-	@within State.Cache
+    @prop store { [K]: V }
+    @within State.Cache
 ]=]
 
 --[=[
-	@prop expiry number
-	@within State.Cache
+    @prop expiry number
+    @within State.Cache
 ]=]
 
 local stdPolyfills = require("../StdPolyfills")
@@ -23,10 +31,10 @@ Cache.Interface = {}
 Cache.Prototype = {}
 
 --[=[
-	@within State.Cache
+    @within State.Cache
 
-	Responsible for storing something in cache, will then store both the key and value so that these objects don't get
-	cleaned up by the luau gc.
+    Responsible for storing something in cache, will then store both the key and value so that these objects don't get
+    cleaned up by the luau gc.
 ]=]
 function Cache.Prototype.set<K, V>(self: Cache<K, V>, key: K, value: V)
     self.store[key] = value
@@ -46,18 +54,18 @@ function Cache.Prototype.set<K, V>(self: Cache<K, V>, key: K, value: V)
 end
 
 --[=[
-	@within State.Cache
+    @within State.Cache
 
-	Responsible for getting something in the cache, will either return V or nil
+    Responsible for getting something in the cache, will either return V or nil
 ]=]
 function Cache.Prototype.get<K, V>(self: Cache<K, V>, key: K): V?
     return self.store[key :: any] :: any
 end
 
 --[=[
-	@within State.Cache
+    @within State.Cache
 
-	Constructor for the Cache class.
+    Constructor for the Cache class.
 ]=]
 function Cache.Interface.new<K, V>(expiry: number): Cache<K, V>
     local self = setmetatable(

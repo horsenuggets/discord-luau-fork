@@ -1,3 +1,11 @@
+--[[
+
+net
+
+Lune polyfill for the net standard library.
+
+--]]
+
 local net = setmetatable({}, { __index = require("@lune/net") })
 
 net.socket = function(...)

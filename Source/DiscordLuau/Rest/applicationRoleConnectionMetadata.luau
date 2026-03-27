@@ -1,21 +1,29 @@
+--[[
+
+applicationRoleConnectionMetadata
+
+REST API methods for Discord applicationRoleConnectionMetadata endpoints.
+
+--]]
+
 local apiTypes = require("../ApiTypes")
 local future = require("@packages/Future")
 
 local request = require("./request")
 
 --[=[
-	@class Rest.applicationRoleConnectionMetadata
+    @class Rest.applicationRoleConnectionMetadata
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/application-role-connection-metadata
+    - https://discord.com/developers/docs/resources/application-role-connection-metadata
 ]=]
 local applicationRoleConnectionMetadata = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/application-role-connection-metadata#get-application-role-connection-metadata-records
+    https://discord.com/developers/docs/resources/application-role-connection-metadata#get-application-role-connection-metadata-records
 ]=]
 function applicationRoleConnectionMetadata.getApplicationRoleConnectionMetadataRecordsAsync(
     instance: request.Request,
@@ -43,9 +51,9 @@ function applicationRoleConnectionMetadata.getApplicationRoleConnectionMetadataR
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/application-role-connection-metadata#update-application-role-connection-metadata-records
+    https://discord.com/developers/docs/resources/application-role-connection-metadata#update-application-role-connection-metadata-records
 ]=]
 function applicationRoleConnectionMetadata.updateApplicationRoleConnectionMetadataRecordsAsync(
     instance: request.Request,

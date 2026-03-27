@@ -1,10 +1,18 @@
+--[[
+
+presence
+
+Implementation of the Discord Presence class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Presence
-	@__index Prototype
+    @class Classes.Presence
+    @__index Prototype
 
-	Implementation of the Discord Presence class in Luau
+    Implementation of the Discord Presence class in Luau
 
-	https://discord.com/developers/docs/topics/gateway-events#update-presence
+    https://discord.com/developers/docs/topics/gateway-events#update-presence
 ]=]
 
 local stdPolyfills = require("../StdPolyfills")
@@ -19,18 +27,18 @@ Presence.Interface = {}
 Presence.Prototype = {}
 
 --[=[
-	@within Classes.Presence
-	@private
+    @within Classes.Presence
+    @private
 
-	Responsible for syncing data to this presence object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this presence object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Presence.Prototype.sync(self: Presence, presenceData: apiTypes.PresenceObject)
     --[=[
-		@prop since DateTime
-		@within Classes.Presence
-		The timestamp when this presence was last updated.
-	]=]
+        @prop since DateTime
+        @within Classes.Presence
+        The timestamp when this presence was last updated.
+    ]=]
     self.since = stdPolyfills.datetime.fromUnixTimestamp(presenceData.since)
 
     local activities = {}
@@ -40,32 +48,32 @@ function Presence.Prototype.sync(self: Presence, presenceData: apiTypes.Presence
     end
 
     --[=[
-		@prop activities { Classes.Activity }
-		@within Classes.Presence
-		The activities this user is currently participating in.
-	]=]
+        @prop activities { Classes.Activity }
+        @within Classes.Presence
+        The activities this user is currently participating in.
+    ]=]
     self.activities = activities
 
     --[=[
-		@prop status string
-		@within Classes.Presence
-		The current status of this user (online, idle, dnd, offline).
-	]=]
+        @prop status string
+        @within Classes.Presence
+        The current status of this user (online, idle, dnd, offline).
+    ]=]
     self.status = presenceData.status
 
     --[=[
-		@prop afk boolean
-		@within Classes.Presence
-		Whether this user is currently marked as AFK.
-	]=]
+        @prop afk boolean
+        @within Classes.Presence
+        Whether this user is currently marked as AFK.
+    ]=]
     self.afk = presenceData.afk
 end
 
 --[=[
-	@within Classes.Presence
-	@private
+    @within Classes.Presence
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Presence.Interface.new(presenceData: apiTypes.PresenceObject): Presence
     local self = setmetatable({} :: Presence, { __index = Presence.Prototype })

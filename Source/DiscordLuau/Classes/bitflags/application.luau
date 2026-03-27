@@ -1,11 +1,21 @@
+--[[
+
+application
+
+Implementation of the Discord Application Bitflags in Luau. This class provides methods to
+check various application flags that indicate different states and capabilities of a
+Discord application.
+
+--]]
+
 --[=[
-	@class Classes.ApplicationBitflag
-	@__index Prototype
+    @class Classes.ApplicationBitflag
+    @__index Prototype
 
-	Implementation of the Discord Application Bitflags in Luau.
-	This class provides methods to check various application flags that indicate different states and capabilities of a Discord application.
+    Implementation of the Discord Application Bitflags in Luau.
+    This class provides methods to check various application flags that indicate different states and capabilities of a Discord application.
 
-	https://discord.com/developers/docs/resources/application#application-object-application-flags
+    https://discord.com/developers/docs/resources/application#application-object-application-flags
 ]=]
 
 local bit = require("../../Bit")
@@ -16,8 +26,8 @@ ApplicationBitflag.Interface = {}
 ApplicationBitflag.Prototype = {}
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Indicates if an app uses the Auto Moderation API
+    @within Classes.ApplicationBitflag
+    Indicates if an app uses the Auto Moderation API
 ]=]
 function ApplicationBitflag.Prototype.applicationAutoModerationRoleCreateBadge(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 6)
@@ -26,8 +36,8 @@ function ApplicationBitflag.Prototype.applicationAutoModerationRoleCreateBadge(s
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Intent required for bots in 100 or more servers to receive presence_update events
+    @within Classes.ApplicationBitflag
+    Intent required for bots in 100 or more servers to receive presence_update events
 ]=]
 function ApplicationBitflag.Prototype.gatewayPresence(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 12)
@@ -36,9 +46,9 @@ function ApplicationBitflag.Prototype.gatewayPresence(self: ApplicationBitflag)
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Intent required for bots in under 100 servers to receive presence_update events,
-	found on the Bot page in your app's settings
+    @within Classes.ApplicationBitflag
+    Intent required for bots in under 100 servers to receive presence_update events,
+    found on the Bot page in your app's settings
 ]=]
 function ApplicationBitflag.Prototype.gatewayPresenceLimited(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 13)
@@ -47,9 +57,9 @@ function ApplicationBitflag.Prototype.gatewayPresenceLimited(self: ApplicationBi
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Intent required for bots in 100 or more servers to receive member-related events like
-	guild_member_add. See the list of member-related events under GUILD_MEMBERS
+    @within Classes.ApplicationBitflag
+    Intent required for bots in 100 or more servers to receive member-related events like
+    guild_member_add. See the list of member-related events under GUILD_MEMBERS
 ]=]
 function ApplicationBitflag.Prototype.gatewayGuildMembers(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 14)
@@ -58,11 +68,11 @@ function ApplicationBitflag.Prototype.gatewayGuildMembers(self: ApplicationBitfl
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Intent required for bots in under 100 servers to receive member-related events
-	like guild_member_add, found on the Bot page in your app's settings.
+    @within Classes.ApplicationBitflag
+    Intent required for bots in under 100 servers to receive member-related events
+    like guild_member_add, found on the Bot page in your app's settings.
 
-	See the list of member-related events under GUILD_MEMBERS
+    See the list of member-related events under GUILD_MEMBERS
 ]=]
 function ApplicationBitflag.Prototype.gatewayGuildMembersLimited(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 15)
@@ -71,8 +81,8 @@ function ApplicationBitflag.Prototype.gatewayGuildMembersLimited(self: Applicati
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Indicates unusual growth of an app that prevents verification
+    @within Classes.ApplicationBitflag
+    Indicates unusual growth of an app that prevents verification
 ]=]
 function ApplicationBitflag.Prototype.verificationPendingGuildLimit(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 16)
@@ -81,8 +91,8 @@ function ApplicationBitflag.Prototype.verificationPendingGuildLimit(self: Applic
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Indicates if an app is embedded within the Discord client (currently unavailable publicly)
+    @within Classes.ApplicationBitflag
+    Indicates if an app is embedded within the Discord client (currently unavailable publicly)
 ]=]
 function ApplicationBitflag.Prototype.embedded(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 17)
@@ -91,8 +101,8 @@ function ApplicationBitflag.Prototype.embedded(self: ApplicationBitflag)
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Intent required for bots in 100 or more servers to receive message content
+    @within Classes.ApplicationBitflag
+    Intent required for bots in 100 or more servers to receive message content
 ]=]
 function ApplicationBitflag.Prototype.gatewayMessageContent(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 18)
@@ -101,9 +111,9 @@ function ApplicationBitflag.Prototype.gatewayMessageContent(self: ApplicationBit
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Intent required for bots in under 100 servers to receive message content,
-	found on the Bot page in your app's settings
+    @within Classes.ApplicationBitflag
+    Intent required for bots in under 100 servers to receive message content,
+    found on the Bot page in your app's settings
 ]=]
 function ApplicationBitflag.Prototype.gatewayMessageContentLimited(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 19)
@@ -112,8 +122,8 @@ function ApplicationBitflag.Prototype.gatewayMessageContentLimited(self: Applica
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	Indicates if an app has registered global application commands
+    @within Classes.ApplicationBitflag
+    Indicates if an app has registered global application commands
 ]=]
 function ApplicationBitflag.Prototype.applicationCommandBadge(self: ApplicationBitflag)
     local targetBit = bit.lshift(1, 23)
@@ -122,10 +132,10 @@ function ApplicationBitflag.Prototype.applicationCommandBadge(self: ApplicationB
 end
 
 --[=[
-	@within Classes.ApplicationBitflag
-	@private
+    @within Classes.ApplicationBitflag
+    @private
 
-	Creates a new ApplicationBitflag instance with the specified flag value.
+    Creates a new ApplicationBitflag instance with the specified flag value.
 ]=]
 function ApplicationBitflag.Interface.new(flag: number): ApplicationBitflag
     local self = setmetatable(

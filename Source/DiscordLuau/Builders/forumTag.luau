@@ -1,10 +1,18 @@
+--[[
+
+forumTag
+
+Implementation of a discord forum tag object as a luau builder.
+
+--]]
+
 --[=[
-	@class Builders.ForumTag
-	@__index Prototype
+    @class Builders.ForumTag
+    @__index Prototype
 
-	Implementation of a discord forum tag object as a luau builder.	
+    Implementation of a discord forum tag object as a luau builder.    
 
-	https://discord.com/developers/docs/resources/channel#forum-tag-object
+    https://discord.com/developers/docs/resources/channel#forum-tag-object
 ]=]
 
 local apiTypes = require("../ApiTypes")
@@ -17,9 +25,9 @@ ForumTag.Prototype = {}
 ForumTag.Interface = {}
 
 --[=[
-	@within Builders.ForumTag
+    @within Builders.ForumTag
 
-	Sets either the id of a guilds custom emoji, or a unicode character of an emoji.
+    Sets either the id of a guilds custom emoji, or a unicode character of an emoji.
 ]=]
 function ForumTag.Prototype.setEmoji(self: ForumTag, emojiId: string?, emojiName: string?): ForumTag
     self.emojiId = emojiId
@@ -29,9 +37,9 @@ function ForumTag.Prototype.setEmoji(self: ForumTag, emojiId: string?, emojiName
 end
 
 --[=[
-	@within Builders.ForumTag
+    @within Builders.ForumTag
 
-	Sets whether this tag can only be added to or removed from threads by a member with the MANAGE_THREADS permission
+    Sets whether this tag can only be added to or removed from threads by a member with the MANAGE_THREADS permission
 ]=]
 function ForumTag.Prototype.setModerated(self: ForumTag, isModerated: boolean): ForumTag
     self.moderated = isModerated
@@ -40,9 +48,9 @@ function ForumTag.Prototype.setModerated(self: ForumTag, isModerated: boolean): 
 end
 
 --[=[
-	@within Builders.ForumTag
+    @within Builders.ForumTag
 
-	Set the name of this Forum Tag.
+    Set the name of this Forum Tag.
 ]=]
 function ForumTag.Prototype.setName(self: ForumTag, tagName: string): ForumTag
     assert(#tagName <= 20, `Tag name must be less than 20 characters.`)
@@ -56,9 +64,9 @@ function ForumTag.Prototype.setName(self: ForumTag, tagName: string): ForumTag
 end
 
 --[=[
-	@within Builders.ForumTag
+    @within Builders.ForumTag
 
-	Responsible for buillding the forum tag object that the Discord API can understand.
+    Responsible for buillding the forum tag object that the Discord API can understand.
 ]=]
 function ForumTag.Prototype.build(self: ForumTag): JSON
     return {
@@ -70,15 +78,15 @@ function ForumTag.Prototype.build(self: ForumTag): JSON
 end
 
 --[=[
-	@within Builders.ForumTag
+    @within Builders.ForumTag
 
-	Constructs a new tag builder.
-	
-	```luau
-	local tag = ForumTag.new("tag-name")
-		:setModerated(true)	
-		:build()
-	```	
+    Constructs a new tag builder.
+    
+    ```luau
+    local tag = ForumTag.new("tag-name")
+        :setModerated(true)    
+        :build()
+    ```    
 ]=]
 function ForumTag.Interface.new(resource: {
     tagName: string,
@@ -90,31 +98,31 @@ function ForumTag.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop name string
-				@within Builders.ForumTag
-				The name of the tag that is displayed.
-			]=]
+                @prop name string
+                @within Builders.ForumTag
+                The name of the tag that is displayed.
+            ]=]
             name = nil,
 
             --[=[
-				@prop moderated boolean
-				@within Builders.ForumTag
-				Whether this tag can only be added to or removed from threads by a member with the MANAGE_THREADS permission.
-			]=]
+                @prop moderated boolean
+                @within Builders.ForumTag
+                Whether this tag can only be added to or removed from threads by a member with the MANAGE_THREADS permission.
+            ]=]
             moderated = nil,
 
             --[=[
-				@prop emojiId string?
-				@within Builders.ForumTag
-				The id of a guild's custom emoji.
-			]=]
+                @prop emojiId string?
+                @within Builders.ForumTag
+                The id of a guild's custom emoji.
+            ]=]
             emojiId = nil,
 
             --[=[
-				@prop emojiName string?
-				@within Builders.ForumTag
-				The unicode character of the emoji.
-			]=]
+                @prop emojiName string?
+                @within Builders.ForumTag
+                The unicode character of the emoji.
+            ]=]
             emojiName = nil,
         } :: ForumTag,
         { __index = ForumTag.Prototype }
@@ -134,9 +142,9 @@ function ForumTag.Interface.new(resource: {
 end
 
 --[=[
-	@within Builders.ForumTag
+    @within Builders.ForumTag
 
-	Enables us to construct a Tag Builder object from an existing tag object, used when modifying forum tags.
+    Enables us to construct a Tag Builder object from an existing tag object, used when modifying forum tags.
 ]=]
 function ForumTag.Interface.fromId(resource: {
     tagId: apiTypes.Snowflake,
@@ -149,10 +157,10 @@ function ForumTag.Interface.fromId(resource: {
     local self = ForumTag.Interface.new(resource)
 
     --[=[
-		@prop id string?
-		@within Builders.ForumTag
-		The id of the tag.
-	]=]
+        @prop id string?
+        @within Builders.ForumTag
+        The id of the tag.
+    ]=]
     self.id = resource.tagId
 
     return self

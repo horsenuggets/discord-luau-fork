@@ -1,10 +1,18 @@
+--[[
+
+component
+
+Implementation of the Discord Component Interaction class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Component
-	@__index Prototype
+    @class Classes.Component
+    @__index Prototype
 
-	Implementation of the Discord Component Interaction class in Luau
+    Implementation of the Discord Component Interaction class in Luau
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
+    https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
 ]=]
 
 -- selene: allow(unused_variable)
@@ -24,11 +32,11 @@ Component.Behaviours = {
 }
 
 --[=[
-	@within Classes.Component
-	@private
+    @within Classes.Component
+    @private
 
-	Responsible for syncing data to this component interaction object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this component interaction object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Component.Prototype.sync(self: Component, interactionData: apiTypes.InteractionObject)
     for _, behaviour in Component.Behaviours do
@@ -38,10 +46,10 @@ function Component.Prototype.sync(self: Component, interactionData: apiTypes.Int
 end
 
 --[=[
-	@within Classes.Component
-	@private
+    @within Classes.Component
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Component.Interface.new(state: state.State, interactionData: apiTypes.InteractionObject): Component
     local self = setmetatable(
@@ -58,13 +66,13 @@ function Component.Interface.new(state: state.State, interactionData: apiTypes.I
 end
 
 --[=[
-	@prop isDeferred boolean
-	@within Classes.Component
+    @prop isDeferred boolean
+    @within Classes.Component
 ]=]
 
 --[=[
-	@prop state State
-	@within Classes.Component
+    @prop state State
+    @within Classes.Component
 ]=]
 
 export type Component = typeof(Component.Prototype) & {

@@ -1,12 +1,20 @@
+--[[
+
+createGuid
+
+Implementation of the createGuid module.
+
+--]]
+
 local template = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
 
 --[=[
-	@function Utilities.createGuild
-	@within Utilities
+    @function Utilities.createGuild
+    @within Utilities
 
-	Generates a random Guid (v4) that we can use to apply a unique identifier to objects.
+    Generates a random Guid (v4) that we can use to apply a unique identifier to objects.
 
-	@return string
+    @return string
 ]=]
 return function()
     local guid = string.gsub(template, "[xy]", function(c)

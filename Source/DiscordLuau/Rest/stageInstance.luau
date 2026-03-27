@@ -1,3 +1,11 @@
+--[[
+
+stageInstance
+
+REST API methods for Discord stageInstance endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.stageInstance
+    @class Rest.stageInstance
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/stage-instance
+    - https://discord.com/developers/docs/resources/stage-instance
 ]=]
 local stageInstance = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
+    https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
 ]=]
 function stageInstance.createStageInstanceAsync(
     instance: request.Request,
@@ -41,9 +49,9 @@ function stageInstance.createStageInstanceAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/stage-instance#get-stage-instance
+    https://discord.com/developers/docs/resources/stage-instance#get-stage-instance
 ]=]
 function stageInstance.getStageInstanceAsync(
     instance: request.Request,
@@ -64,9 +72,9 @@ function stageInstance.getStageInstanceAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance
+    https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance
 ]=]
 function stageInstance.modifyStageInstanceAsync(
     instance: request.Request,
@@ -91,9 +99,9 @@ function stageInstance.modifyStageInstanceAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/stage-instance#delete-stage-instance
+    https://discord.com/developers/docs/resources/stage-instance#delete-stage-instance
 ]=]
 function stageInstance.deleteStageInstanceAsync(
     instance: request.Request,

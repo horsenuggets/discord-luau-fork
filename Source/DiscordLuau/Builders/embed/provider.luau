@@ -1,10 +1,18 @@
+--[[
+
+provider
+
+Implementation of discords Provider object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Provider
-	@__index Prototype
+    @class Builders.Provider
+    @__index Prototype
 
-	Implementation of discords Provider object as a Luau builder.	
+    Implementation of discords Provider object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/message#embed-object-embed-provider-structure
+    https://discord.com/developers/docs/resources/message#embed-object-embed-provider-structure
 ]=]
 
 local Provider = {}
@@ -13,9 +21,9 @@ Provider.Prototype = {}
 Provider.Interface = {}
 
 --[=[
-	@within Builders.Provider
+    @within Builders.Provider
 
-	Set the image url for this embed.
+    Set the image url for this embed.
 ]=]
 function Provider.Prototype.setName(self: Provider, name: string): Provider
     assert(#name <= 256, "Name must be less than 256 characters")
@@ -27,9 +35,9 @@ function Provider.Prototype.setName(self: Provider, name: string): Provider
 end
 
 --[=[
-	@within Builders.Provider
+    @within Builders.Provider
 
-	Set the image height for this embed.
+    Set the image height for this embed.
 ]=]
 function Provider.Prototype.setUrl(self: Provider, url: string): Provider
     self.url = url
@@ -38,9 +46,9 @@ function Provider.Prototype.setUrl(self: Provider, url: string): Provider
 end
 
 --[=[
-	@within Builders.Provider
+    @within Builders.Provider
 
-	Responsible for building the Provider JSON that can be parsed by the Discord API.
+    Responsible for building the Provider JSON that can be parsed by the Discord API.
 ]=]
 function Provider.Prototype.build(self: Provider): JSON
     return {
@@ -50,9 +58,9 @@ function Provider.Prototype.build(self: Provider): JSON
 end
 
 --[=[
-	@within Builders.Provider
+    @within Builders.Provider
 
-	Responsible for creating a new Provider.
+    Responsible for creating a new Provider.
 ]=]
 function Provider.Interface.new(resource: {
     name: string?,
@@ -61,17 +69,17 @@ function Provider.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop name string?
-				@within Builders.Provider
-				The name of the provider.
-			]=]
+                @prop name string?
+                @within Builders.Provider
+                The name of the provider.
+            ]=]
             name = nil,
 
             --[=[
-				@prop url string?
-				@within Builders.Provider
-				The url of the provider.
-			]=]
+                @prop url string?
+                @within Builders.Provider
+                The url of the provider.
+            ]=]
             url = nil,
         } :: Provider,
         {

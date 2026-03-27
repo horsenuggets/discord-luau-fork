@@ -1,5 +1,13 @@
+--[[
+
+net
+
+Standard library polyfill for net.
+
+--]]
+
 --[=[
-	@class StdPolyfills.net
+    @class StdPolyfills.net
 ]=]
 
 local runtime = require("./runtime")
@@ -7,9 +15,9 @@ local runtime = require("./runtime")
 local net = {}
 
 --[=[
-	@within StdPolyfills.net
+    @within StdPolyfills.net
 
-	Encodes the given string using URL encoding.
+    Encodes the given string using URL encoding.
 ]=]
 function net.urlEncode(url: string, binary: boolean?): string
     local target = runtime.assertRuntime()
@@ -22,12 +30,12 @@ function net.urlEncode(url: string, binary: boolean?): string
 end
 
 --[=[
-	@within StdPolyfills.net
+    @within StdPolyfills.net
 
-	Sends an HTTP request using the given url and / or parameters, and returns a dictionary that describes the
-		response received.
+    Sends an HTTP request using the given url and / or parameters, and returns a dictionary that describes the
+        response received.
 
-	Only throws an error if a miscellaneous network or I/O error occurs, never for unsuccessful status codes.
+    Only throws an error if a miscellaneous network or I/O error occurs, never for unsuccessful status codes.
 ]=]
 function net.request(config: string | FetchParams): FetchResponse
     local target = runtime.assertRuntime()
@@ -40,12 +48,12 @@ function net.request(config: string | FetchParams): FetchResponse
 end
 
 --[=[
-	@within StdPolyfills.net
+    @within StdPolyfills.net
 
-	Connects to a TCP web socket at the given URL.
+    Connects to a TCP web socket at the given URL.
 
-	Throws an error if the server at the given URL does not support web sockets, or if a miscellaneous network or I/O
-		error occurs.
+    Throws an error if the server at the given URL does not support web sockets, or if a miscellaneous network or I/O
+        error occurs.
 ]=]
 function net.tcpSocket(url: string)
     local target = runtime.assertRuntime()
@@ -58,12 +66,12 @@ function net.tcpSocket(url: string)
 end
 
 --[=[
-	@within StdPolyfills.net
+    @within StdPolyfills.net
 
-	Connects to a UDP web socket at the given URL.
+    Connects to a UDP web socket at the given URL.
 
-	Throws an error if the server at the given URL does not support web sockets, or if a miscellaneous network or I/O
-		error occurs.
+    Throws an error if the server at the given URL does not support web sockets, or if a miscellaneous network or I/O
+        error occurs.
 ]=]
 function net.udpSocket(_url: string)
     error(`No Runtimes currently support UDP sockets!`)

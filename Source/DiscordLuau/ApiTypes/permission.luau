@@ -1,5 +1,13 @@
+--[[
+
+permission
+
+Type definitions for Discord permission API objects.
+
+--]]
+
 --[=[
-	@class Types.permission
+    @class Types.permission
 ]=]
 
 local util = require("../Utilities")

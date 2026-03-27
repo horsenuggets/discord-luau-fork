@@ -1,3 +1,11 @@
+--[[
+
+fsIntoTable
+
+Script for fsIntoTable.
+
+--]]
+
 local fs = require("@lune/fs")
 local process = require("@lune/process")
 
