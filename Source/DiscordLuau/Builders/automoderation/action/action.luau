@@ -1,8 +1,16 @@
---[=[
-	@class Builders.Action
-	@__index Prototype
+--[[
 
-	Implementation of a discord automod action object as a luau builder.
+action
+
+Implementation of a discord automod action object as a luau builder.
+
+--]]
+
+--[=[
+    @class Builders.Action
+    @__index Prototype
+
+    Implementation of a discord automod action object as a luau builder.
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -14,9 +22,9 @@ Action.Prototype = {}
 Action.Interface = {}
 
 --[=[
-	@within Builders.Action
+    @within Builders.Action
 
-	Sets the type of the action.
+    Sets the type of the action.
 ]=]
 function Action.Prototype.setType(self: Action, type: apiTypes.ActionTypes): Action
     self.type = type
@@ -25,9 +33,9 @@ function Action.Prototype.setType(self: Action, type: apiTypes.ActionTypes): Act
 end
 
 --[=[
-	@within Builders.Action
+    @within Builders.Action
 
-	Sets the action metadata.
+    Sets the action metadata.
 ]=]
 function Action.Prototype.setMetadata(self: Action, metadata: metadata.JSON): Action
     self.metadata = metadata
@@ -36,9 +44,9 @@ function Action.Prototype.setMetadata(self: Action, metadata: metadata.JSON): Ac
 end
 
 --[=[
-	@within Builders.Action
+    @within Builders.Action
 
-	Builds the action object.
+    Builds the action object.
 ]=]
 function Action.Prototype.build(self: Action): JSON
     return {
@@ -48,9 +56,9 @@ function Action.Prototype.build(self: Action): JSON
 end
 
 --[=[
-	@within Builders.Action
+    @within Builders.Action
 
-	Responsible for creating a new Action.
+    Responsible for creating a new Action.
 ]=]
 function Action.Interface.new(resource: {
     type: apiTypes.ActionTypes?,
@@ -59,17 +67,17 @@ function Action.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop type apiTypes.ActionTypes
-				@within Builders.Action
-				The type of action to perform when a rule is triggered.
-			]=]
+                @prop type apiTypes.ActionTypes
+                @within Builders.Action
+                The type of action to perform when a rule is triggered.
+            ]=]
             type = nil,
 
             --[=[
-				@prop metadata Builders.ActionMetadata
-				@within Builders.Action
-				Additional metadata needed during execution for this specific action type.
-			]=]
+                @prop metadata Builders.ActionMetadata
+                @within Builders.Action
+                Additional metadata needed during execution for this specific action type.
+            ]=]
             metadata = nil,
         } :: Action,
         {

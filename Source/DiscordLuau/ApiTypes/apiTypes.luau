@@ -1,5 +1,13 @@
+--[[
+
+apiTypes
+
+Type definitions for Discord apiTypes API objects.
+
+--]]
+
 --[=[
-	@class Types.apiTypes
+    @class Types.apiTypes
 ]=]
 
 export type Partial<T> = any
@@ -440,7 +448,7 @@ export type GuildRoleObject = {
 
 -- https://discord.com/developers/docs/resources/emoji#emoji-object
 export type EmojiObject = {
-    id: Snowflake?, -- 	emoji id
+    id: Snowflake?, --     emoji id
     name: string, -- emoji name
     roles: { Snowflake }?, -- roles allowed to use this emoji
     user: UserObject?, -- user that created this emoji
@@ -473,7 +481,7 @@ export type StickerObject = {
     tags: string, -- autocomplete/suggestion tags for the sticker (max 200 characters)
     asset: string?, -- Deprecated previously the sticker asset hash, now an empty string
     type: StickerType, -- type of sticker
-    format_type: StickerFormatType, -- 	type of sticker format
+    format_type: StickerFormatType, --     type of sticker format
     available: boolean?, -- whether this guild sticker can be used, may be false due to loss of Server Boosts
     guild_id: Snowflake?, -- id of the guild that owns this sticker
     user: UserObject?, -- the user that uploaded the guild sticker
@@ -486,7 +494,7 @@ export type GuildObject = {
     name: string?, -- guild name (2-100 characters, excluding trailing and leading whitespace)
     icon: string?, -- icon hash
     icon_hash: string?, -- icon hash, returned when in the template object
-    splash: string?, -- 	splash hash
+    splash: string?, --     splash hash
     discovery_splash: string?, -- discovery splash hash; only present for guilds with the "DISCOVERABLE" feature
     owner: boolean?, -- true if the user is the owner of the guild
     owner_id: Snowflake?, -- id of owner
@@ -521,7 +529,7 @@ export type GuildObject = {
     approximate_member_count: number?, -- approximate number of members in this guild, returned from the GET /guilds/<id> and /users/@me/guilds endpoints when with_counts is true
     approximate_presence_count: number?, -- approximate number of non-offline members in this guild, returned from the GET /guilds/<id> and /users/@me/guilds endpoints when with_counts is true
     welcome_screen: WelcomeScreenObject?, -- the welcome screen of a Community guild, shown to new members, returned in an Invite's guild object
-    nsfw_level: GuildNSFWLevel?, -- 	guild NSFW level
+    nsfw_level: GuildNSFWLevel?, --     guild NSFW level
     stickers: { StickerObject }?, -- custom guild stickers
     premium_progress_bar_enabled: boolean?, -- whether the guild has the boost progress bar enabled
     safety_alerts_channel_id: Snowflake?, -- the id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
@@ -938,7 +946,7 @@ export type ReactionObject = {
 
 -- https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
 export type MessageActivityObject = {
-    type: MessageActivityType, -- 	type of message activity
+    type: MessageActivityType, --     type of message activity
     party_id: string, -- party_id from a Rich Presence event
 }
 
@@ -1041,7 +1049,7 @@ export type ComponentObjects =
 export type SitckerItemObject = {
     id: Snowflake, -- id of the sticker
     name: string, -- name of the sticker
-    format_type: StickerFormatType, -- 	type of sticker format
+    format_type: StickerFormatType, --     type of sticker format
 }
 
 -- https://discord.com/developers/docs/resources/channel#role-subscription-data-object

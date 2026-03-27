@@ -1,14 +1,26 @@
+--[[
+
+groupDM
+
+Behaviour class that implements the properties and methods specific to Group DM channels
+in Discord. This behaviour is inherited by the GroupDM class to provide group DM specific
+functionality. Group DM behaviours include: - Managing recipients (adding/removing users)
+- Modifying group DM properties (name, icon) - Handling group DM specific data
+(recipients, icon, owner, etc.).
+
+--]]
+
 --[=[
-	@class Classes.GroupDMBehaviour
-	@__index Prototype
+    @class Classes.GroupDMBehaviour
+    @__index Prototype
 
-	Behaviour class that implements the properties and methods specific to Group DM channels in Discord.
-	This behaviour is inherited by the GroupDM class to provide group DM specific functionality.
+    Behaviour class that implements the properties and methods specific to Group DM channels in Discord.
+    This behaviour is inherited by the GroupDM class to provide group DM specific functionality.
 
-	Group DM behaviours include:
-	- Managing recipients (adding/removing users)
-	- Modifying group DM properties (name, icon)
-	- Handling group DM specific data (recipients, icon, owner, etc.)
+    Group DM behaviours include:
+    - Managing recipients (adding/removing users)
+    - Modifying group DM properties (name, icon)
+    - Handling group DM specific data (recipients, icon, owner, etc.)
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -24,8 +36,8 @@ GroupDMBehaviour.Interface = {}
 GroupDMBehaviour.Prototype = {}
 
 --[=[
-	@within Classes.GroupDMBehaviour
-	Adds a recipient to a Group DM using their access token.
+    @within Classes.GroupDMBehaviour
+    Adds a recipient to a Group DM using their access token.
 ]=]
 function GroupDMBehaviour.Prototype.addRecipient<T>(
     self: Channel<T>,
@@ -50,8 +62,8 @@ function GroupDMBehaviour.Prototype.addRecipient<T>(
 end
 
 --[=[
-	@within Classes.GroupDMBehaviour
-	Removes a recipient from a Group DM.
+    @within Classes.GroupDMBehaviour
+    Removes a recipient from a Group DM.
 ]=]
 function GroupDMBehaviour.Prototype.removeRecipient<T>(self: Channel<T>, userId: string)
     return future.Future.new(function()
@@ -66,8 +78,8 @@ function GroupDMBehaviour.Prototype.removeRecipient<T>(self: Channel<T>, userId:
 end
 
 --[=[
-	@within Classes.GroupDMBehaviour
-	Sets the name of the Group DM channel.
+    @within Classes.GroupDMBehaviour
+    Sets the name of the Group DM channel.
 ]=]
 function GroupDMBehaviour.Prototype.setNameAsync<T>(self: Channel<T>, groupName: string)
     return self:modifyAsync({
@@ -76,8 +88,8 @@ function GroupDMBehaviour.Prototype.setNameAsync<T>(self: Channel<T>, groupName:
 end
 
 --[=[
-	@within Classes.GroupDMBehaviour
-	Sets the icon of the Group DM channel using base64 encoded image data.
+    @within Classes.GroupDMBehaviour
+    Sets the icon of the Group DM channel using base64 encoded image data.
 ]=]
 function GroupDMBehaviour.Prototype.setIconAsync<T>(self: Channel<T>, iconData: string)
     return self:modifyAsync({
@@ -87,11 +99,11 @@ function GroupDMBehaviour.Prototype.setIconAsync<T>(self: Channel<T>, iconData: 
 end
 
 --[=[
-	@within Classes.GroupDMBehaviour
-	@private
+    @within Classes.GroupDMBehaviour
+    @private
 
-	Inherits properties from the channel data into the class instance.
-	This is typically called during object creation or updates.
+    Inherits properties from the channel data into the class instance.
+    This is typically called during object creation or updates.
 ]=]
 function GroupDMBehaviour.Interface.inheritProperties(class: any, channelData: apiTypes.ChannelObject)
     local recipientArray = {}
@@ -102,47 +114,47 @@ function GroupDMBehaviour.Interface.inheritProperties(class: any, channelData: a
     end
 
     --[=[
-		@within Classes.GroupDMBehaviour
-		@prop recipients { Classes.User }
-		The users in the Group DM channel.
-	]=]
+        @within Classes.GroupDMBehaviour
+        @prop recipients { Classes.User }
+        The users in the Group DM channel.
+    ]=]
     class.recipients = recipientArray
 
     --[=[
-		@within Classes.GroupDMBehaviour
-		@prop icon string?
-		The icon hash of the Group DM channel.
-	]=]
+        @within Classes.GroupDMBehaviour
+        @prop icon string?
+        The icon hash of the Group DM channel.
+    ]=]
     class.icon = channelData.icon
 
     --[=[
-		@within Classes.GroupDMBehaviour
-		@prop ownerId string?
-		The ID of the user who created the Group DM channel.
-	]=]
+        @within Classes.GroupDMBehaviour
+        @prop ownerId string?
+        The ID of the user who created the Group DM channel.
+    ]=]
     class.ownerId = channelData.owner_id
 
     --[=[
-		@within Classes.GroupDMBehaviour
-		@prop applicationId string?
-		The ID of the application that created the Group DM channel, if it was created by an application.
-	]=]
+        @within Classes.GroupDMBehaviour
+        @prop applicationId string?
+        The ID of the application that created the Group DM channel, if it was created by an application.
+    ]=]
     class.applicationId = channelData.application_id
 
     --[=[
-		@within Classes.GroupDMBehaviour
-		@prop managed boolean
-		Whether the Group DM channel is managed by an application.
-	]=]
+        @within Classes.GroupDMBehaviour
+        @prop managed boolean
+        Whether the Group DM channel is managed by an application.
+    ]=]
     class.managed = channelData.managed
 end
 
 --[=[
-	@within Classes.GroupDMBehaviour
-	@private
+    @within Classes.GroupDMBehaviour
+    @private
 
-	Inherits methods from the GroupDMBehaviour prototype into the class instance.
-	This is typically called during object creation or updates.
+    Inherits methods from the GroupDMBehaviour prototype into the class instance.
+    This is typically called during object creation or updates.
 ]=]
 function GroupDMBehaviour.Interface.inheritMethods(class: any)
     for key, value in GroupDMBehaviour.Prototype do

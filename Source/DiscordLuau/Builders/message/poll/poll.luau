@@ -1,10 +1,18 @@
+--[[
+
+poll
+
+Implementation of discords Poll object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Poll
-	@__index Prototype
+    @class Builders.Poll
+    @__index Prototype
 
-	Implementation of discords Poll object as a Luau builder.	
+    Implementation of discords Poll object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/poll#poll-object
+    https://discord.com/developers/docs/resources/poll#poll-object
 ]=]
 
 local stdPolyfills = require("../../../StdPolyfills")
@@ -20,9 +28,9 @@ Poll.Prototype = {}
 Poll.Interface = {}
 
 --[=[
-	@within Builders.Poll
+    @within Builders.Poll
 
-	Adds an answer to the poll.
+    Adds an answer to the poll.
 ]=]
 function Poll.Prototype.addAnswer(self: Poll, answer: answerBuilder.JSON): Poll
     table.insert(self.answers, answer)
@@ -31,9 +39,9 @@ function Poll.Prototype.addAnswer(self: Poll, answer: answerBuilder.JSON): Poll
 end
 
 --[=[
-	@within Builders.Poll
+    @within Builders.Poll
 
-	Sets the question for the poll.
+    Sets the question for the poll.
 ]=]
 function Poll.Prototype.setQuestion(self: Poll, question: mediaBuilder.JSON): Poll
     self.question = question
@@ -42,9 +50,9 @@ function Poll.Prototype.setQuestion(self: Poll, question: mediaBuilder.JSON): Po
 end
 
 --[=[
-	@within Builders.Poll
+    @within Builders.Poll
 
-	Sets the expiry time for the poll.
+    Sets the expiry time for the poll.
 ]=]
 function Poll.Prototype.setExpiry(self: Poll, expiry: string | number | stdPolyfills.DateTime): Poll
     if typeof(expiry) == "DateTime" then
@@ -59,9 +67,9 @@ function Poll.Prototype.setExpiry(self: Poll, expiry: string | number | stdPolyf
 end
 
 --[=[
-	@within Builders.Poll
+    @within Builders.Poll
 
-	Sets whether the poll allows multiple selections.
+    Sets whether the poll allows multiple selections.
 ]=]
 function Poll.Prototype.setMultiselect(self: Poll, multiselect: boolean): Poll
     self.allowMultiselect = multiselect
@@ -70,9 +78,9 @@ function Poll.Prototype.setMultiselect(self: Poll, multiselect: boolean): Poll
 end
 
 --[=[
-	@within Builders.Poll
+    @within Builders.Poll
 
-	Sets the layout type for the poll.
+    Sets the layout type for the poll.
 ]=]
 function Poll.Prototype.setLayoutType(self: Poll, layoutType: apiTypes.PollLayoutType): Poll
     self.layoutType = layoutType
@@ -81,9 +89,9 @@ function Poll.Prototype.setLayoutType(self: Poll, layoutType: apiTypes.PollLayou
 end
 
 --[=[
-	@within Builders.Poll
+    @within Builders.Poll
 
-	Builds and returns the Poll JSON that can be parsed by the Discord API.
+    Builds and returns the Poll JSON that can be parsed by the Discord API.
 ]=]
 function Poll.Prototype.build(self: Poll): JSON
     assert(self.question, "Poll question is required")
@@ -102,9 +110,9 @@ function Poll.Prototype.build(self: Poll): JSON
 end
 
 --[=[
-	@within Builders.Poll
+    @within Builders.Poll
 
-	Responsible for creating a new Poll.
+    Responsible for creating a new Poll.
 ]=]
 function Poll.Interface.new(resource: {
     question: mediaBuilder.JSON?,
@@ -116,31 +124,31 @@ function Poll.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop question Builders.Media
-				@within Builders.Poll
-				The question to be displayed in the poll.
-			]=]
+                @prop question Builders.Media
+                @within Builders.Poll
+                The question to be displayed in the poll.
+            ]=]
             --[=[
-				@prop answers {Builders.Answer}
-				@within Builders.Poll
-				The array of possible answers for the poll.
-			]=]
+                @prop answers {Builders.Answer}
+                @within Builders.Poll
+                The array of possible answers for the poll.
+            ]=]
             answers = {},
             --[=[
-				@prop expiry string
-				@within Builders.Poll
-				The timestamp when the poll will expire.
-			]=]
+                @prop expiry string
+                @within Builders.Poll
+                The timestamp when the poll will expire.
+            ]=]
             --[=[
-				@prop allowMultiselect boolean
-				@within Builders.Poll
-				Whether users can select multiple answers.
-			]=]
+                @prop allowMultiselect boolean
+                @within Builders.Poll
+                Whether users can select multiple answers.
+            ]=]
             --[=[
-				@prop layoutType api_types.PollLayoutType
-				@within Builders.Poll
-				The layout type of the poll display.
-			]=]
+                @prop layoutType api_types.PollLayoutType
+                @within Builders.Poll
+                The layout type of the poll display.
+            ]=]
         } :: Poll,
         {
             __index = Poll.Prototype,

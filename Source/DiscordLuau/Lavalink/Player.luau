@@ -88,10 +88,10 @@ function Player.new(guildId: string, node: any, manager: any): Player
 end
 
 --[[
-	Connects the player to a voice channel.
+    Connects the player to a voice channel.
 
-	@param channelId - The voice channel ID to connect to
-	@param options - Connection options (selfDeaf, selfMute)
+    @param channelId - The voice channel ID to connect to
+    @param options - Connection options (selfDeaf, selfMute)
 ]]
 function Player.Connect(self: Player, channelId: string, options: PlayerOptions?)
     assert(type(channelId) == "string", "Expected channelId to be a string")
@@ -115,7 +115,7 @@ function Player.Connect(self: Player, channelId: string, options: PlayerOptions?
 end
 
 --[[
-	Disconnects the player from the voice channel.
+    Disconnects the player from the voice channel.
 ]]
 function Player.Disconnect(self: Player)
     self.ChannelId = nil
@@ -130,10 +130,10 @@ function Player.Disconnect(self: Player)
 end
 
 --[[
-	Plays a track.
+    Plays a track.
 
-	@param track - The track to play (Track object or encoded string)
-	@param options - Play options (startTime, endTime, volume, paused, noReplace)
+    @param track - The track to play (Track object or encoded string)
+    @param options - Play options (startTime, endTime, volume, paused, noReplace)
 ]]
 function Player.Play(self: Player, track: Track.Track | string, options: PlayOptions?)
     local encoded: string
@@ -170,7 +170,7 @@ function Player.Play(self: Player, track: Track.Track | string, options: PlayOpt
 end
 
 --[[
-	Stops playback and clears the current track.
+    Stops playback and clears the current track.
 ]]
 function Player.Stop(self: Player)
     -- In Lavalink v4, sending track with encoded = json null stops playback
@@ -184,9 +184,9 @@ function Player.Stop(self: Player)
 end
 
 --[[
-	Pauses or resumes playback.
+    Pauses or resumes playback.
 
-	@param paused - Whether to pause (true) or resume (false)
+    @param paused - Whether to pause (true) or resume (false)
 ]]
 function Player.Pause(self: Player, paused: boolean?)
     local shouldPause = if paused ~= nil then paused else not self.Paused
@@ -199,16 +199,16 @@ function Player.Pause(self: Player, paused: boolean?)
 end
 
 --[[
-	Resumes playback.
+    Resumes playback.
 ]]
 function Player.Resume(self: Player)
     self:Pause(false)
 end
 
 --[[
-	Seeks to a position in the current track.
+    Seeks to a position in the current track.
 
-	@param position - Position in milliseconds
+    @param position - Position in milliseconds
 ]]
 function Player.Seek(self: Player, position: number)
     assert(type(position) == "number", "Expected position to be a number")
@@ -221,9 +221,9 @@ function Player.Seek(self: Player, position: number)
 end
 
 --[[
-	Sets the player volume.
+    Sets the player volume.
 
-	@param volume - Volume level (0-1000, default range is 0-100)
+    @param volume - Volume level (0-1000, default range is 0-100)
 ]]
 function Player.SetVolume(self: Player, volume: number)
     assert(type(volume) == "number", "Expected volume to be a number")
@@ -238,9 +238,9 @@ function Player.SetVolume(self: Player, volume: number)
 end
 
 --[[
-	Sets audio filters on the player.
+    Sets audio filters on the player.
 
-	@param filters - The filters to apply
+    @param filters - The filters to apply
 ]]
 function Player.SetFilters(self: Player, filters: Types.Filters)
     assert(type(filters) == "table", "Expected filters to be a table")
@@ -251,16 +251,16 @@ function Player.SetFilters(self: Player, filters: Types.Filters)
 end
 
 --[[
-	Clears all audio filters.
+    Clears all audio filters.
 ]]
 function Player.ClearFilters(self: Player)
     self:SetFilters({})
 end
 
 --[[
-	Updates the player state from Lavalink.
+    Updates the player state from Lavalink.
 
-	@param state - The player state from Lavalink
+    @param state - The player state from Lavalink
 ]]
 function Player._updateState(self: Player, state: Types.PlayerState)
     self.Position = state.position
@@ -269,9 +269,9 @@ function Player._updateState(self: Player, state: Types.PlayerState)
 end
 
 --[[
-	Called when a track starts playing.
+    Called when a track starts playing.
 
-	@param trackData - The track data from Lavalink
+    @param trackData - The track data from Lavalink
 ]]
 function Player._onTrackStart(self: Player, trackData: Types.LavalinkTrack)
     self.CurrentTrack = Track.new(trackData)
@@ -281,10 +281,10 @@ function Player._onTrackStart(self: Player, trackData: Types.LavalinkTrack)
 end
 
 --[[
-	Called when a track ends.
+    Called when a track ends.
 
-	@param trackData - The track data from Lavalink
-	@param reason - The reason the track ended
+    @param trackData - The track data from Lavalink
+    @param reason - The reason the track ended
 ]]
 function Player._onTrackEnd(self: Player, trackData: Types.LavalinkTrack, reason: string)
     local track = Track.new(trackData)
@@ -298,10 +298,10 @@ function Player._onTrackEnd(self: Player, trackData: Types.LavalinkTrack, reason
 end
 
 --[[
-	Called when a track throws an exception.
+    Called when a track throws an exception.
 
-	@param trackData - The track data from Lavalink
-	@param exception - The exception details
+    @param trackData - The track data from Lavalink
+    @param exception - The exception details
 ]]
 function Player._onTrackException(
     self: Player,
@@ -313,10 +313,10 @@ function Player._onTrackException(
 end
 
 --[[
-	Called when a track gets stuck.
+    Called when a track gets stuck.
 
-	@param trackData - The track data from Lavalink
-	@param thresholdMs - The threshold in milliseconds
+    @param trackData - The track data from Lavalink
+    @param thresholdMs - The threshold in milliseconds
 ]]
 function Player._onTrackStuck(self: Player, trackData: Types.LavalinkTrack, thresholdMs: number)
     local track = Track.new(trackData)
@@ -324,9 +324,9 @@ function Player._onTrackStuck(self: Player, trackData: Types.LavalinkTrack, thre
 end
 
 --[[
-	Sets the voice state for Lavalink.
+    Sets the voice state for Lavalink.
 
-	@param voiceState - The voice state from Discord
+    @param voiceState - The voice state from Discord
 ]]
 function Player._setVoiceState(self: Player, voiceState: Types.VoiceState)
     self._voiceState = voiceState
@@ -334,7 +334,7 @@ function Player._setVoiceState(self: Player, voiceState: Types.VoiceState)
 end
 
 --[[
-	Sends the voice update to Lavalink if we have both token and sessionId.
+    Sends the voice update to Lavalink if we have both token and sessionId.
 ]]
 function Player._sendVoiceUpdate(self: Player)
     if not self._voiceState then

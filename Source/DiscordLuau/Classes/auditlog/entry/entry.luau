@@ -1,10 +1,18 @@
+--[[
+
+entry
+
+Implementation of the Discord AuditLog class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.AuditLogEntry
-	@__index Prototype
+    @class Classes.AuditLogEntry
+    @__index Prototype
 
-	Implementation of the Discord AuditLog class in Luau
+    Implementation of the Discord AuditLog class in Luau
 
-	https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
+    https://discord.com/developers/docs/resources/audit-log#audit-log-object-audit-log-structure
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -18,11 +26,11 @@ AuditLogEntry.Interface = {}
 AuditLogEntry.Prototype = {}
 
 --[=[
-	@within Classes.AuditLogEntry
-	@private
+    @within Classes.AuditLogEntry
+    @private
 
-	Responsible for syncing data to this audit log entry object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this audit log entry object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function AuditLogEntry.Prototype.sync(self: AuditLogEntry, auditLogEntryData: apiTypes.AuditLogEntryObject)
     local changes = {}
@@ -41,67 +49,67 @@ function AuditLogEntry.Prototype.sync(self: AuditLogEntry, auditLogEntryData: ap
     end
 
     --[=[
-		@prop changes { Classes.AuditLogChange }
-		@within Classes.AuditLogEntry
+        @prop changes { Classes.AuditLogChange }
+        @within Classes.AuditLogEntry
 
-		An array of audit log changes that occurred during this audit log entry
-	]=]
+        An array of audit log changes that occurred during this audit log entry
+    ]=]
     self.changes = changes
 
     --[=[
-		@prop options { Classes.AuditLogEntryInfo }
-		@within Classes.AuditLogEntry
+        @prop options { Classes.AuditLogEntryInfo }
+        @within Classes.AuditLogEntry
 
-		Additional information about the audit log entry
-	]=]
+        Additional information about the audit log entry
+    ]=]
     self.options = options
 
     --[=[
-		@prop targetId string?
-		@within Classes.AuditLogEntry
+        @prop targetId string?
+        @within Classes.AuditLogEntry
 
-		ID of the affected entity (webhook, user, role, etc.)
-	]=]
+        ID of the affected entity (webhook, user, role, etc.)
+    ]=]
     self.targetId = auditLogEntryData.target_id
 
     --[=[
-		@prop userId string?
-		@within Classes.AuditLogEntry
+        @prop userId string?
+        @within Classes.AuditLogEntry
 
-		The user who made the changes
-	]=]
+        The user who made the changes
+    ]=]
     self.userId = auditLogEntryData.user_id
 
     --[=[
-		@prop id string
-		@within Classes.AuditLogEntry
+        @prop id string
+        @within Classes.AuditLogEntry
 
-		Unique identifier for this entry
-	]=]
+        Unique identifier for this entry
+    ]=]
     self.id = auditLogEntryData.id
 
     --[=[
-		@prop actionType apiTypes.AuditLogEvent
-		@within Classes.AuditLogEntry
+        @prop actionType apiTypes.AuditLogEvent
+        @within Classes.AuditLogEntry
 
-		Type of action that occurred
-	]=]
+        Type of action that occurred
+    ]=]
     self.actionType = apiTypes.guild.AuditLogEvent[auditLogEntryData.action_type]
 
     --[=[
-		@prop reason string?
-		@within Classes.AuditLogEntry
+        @prop reason string?
+        @within Classes.AuditLogEntry
 
-		The reason for the change (0-512 characters)
-	]=]
+        The reason for the change (0-512 characters)
+    ]=]
     self.reason = auditLogEntryData.reason
 end
 
 --[=[
-	@within Classes.AuditLogEntry
-	@private
+    @within Classes.AuditLogEntry
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function AuditLogEntry.Interface.new(auditLogEntryData: apiTypes.AuditLogEntryObject): AuditLogEntry
     local self = setmetatable({} :: AuditLogEntry, { __index = AuditLogEntry.Prototype })

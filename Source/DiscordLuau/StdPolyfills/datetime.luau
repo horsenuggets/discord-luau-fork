@@ -1,5 +1,13 @@
+--[[
+
+datetime
+
+Standard library polyfill for datetime.
+
+--]]
+
 --[=[
-	@class StdPolyfills.datetime
+    @class StdPolyfills.datetime
 ]=]
 
 local runtime = require("./runtime")
@@ -7,9 +15,9 @@ local runtime = require("./runtime")
 local datetime = {}
 
 --[=[
-	@within StdPolyfills.datetime
+    @within StdPolyfills.datetime
 
-	Creates a new DateTime from an ISO 8601 date-time string.
+    Creates a new DateTime from an ISO 8601 date-time string.
 ]=]
 function datetime.fromIsoDate(isoDate: string): DateTime
     local target = runtime.assertRuntime()
@@ -22,11 +30,11 @@ function datetime.fromIsoDate(isoDate: string): DateTime
 end
 
 --[=[
-	@within StdPolyfills.datetime
+    @within StdPolyfills.datetime
 
-	Creates a new DateTime from the given UNIX timestamp.
+    Creates a new DateTime from the given UNIX timestamp.
 
-	This timestamp may contain both a whole and fractional part - where the fractional part denotes milliseconds / nanoseconds.
+    This timestamp may contain both a whole and fractional part - where the fractional part denotes milliseconds / nanoseconds.
 ]=]
 function datetime.fromUnixTimestamp(unixTimestamp: number): DateTime
     local target = runtime.assertRuntime()
@@ -39,9 +47,9 @@ function datetime.fromUnixTimestamp(unixTimestamp: number): DateTime
 end
 
 --[=[
-	@within StdPolyfills.datetime
+    @within StdPolyfills.datetime
 
-	Returns a DateTime representing the current moment in time.
+    Returns a DateTime representing the current moment in time.
 ]=]
 function datetime.now(): DateTime
     local target = runtime.assertRuntime()

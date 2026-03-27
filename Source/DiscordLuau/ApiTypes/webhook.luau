@@ -1,5 +1,13 @@
+--[[
+
+webhook
+
+Type definitions for Discord webhook API objects.
+
+--]]
+
 --[=[
-	@class Types.webhook
+    @class Types.webhook
 ]=]
 
 local util = require("../Utilities")

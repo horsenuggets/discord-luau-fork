@@ -1,7 +1,15 @@
---[=[
-	@class Utilities
+--[[
 
-	Interface for the discord-luau Utilities package
+Utilities
+
+Interface for the discord-luau Utilities package.
+
+--]]
+
+--[=[
+    @class Utilities
+
+    Interface for the discord-luau Utilities package
 ]=]
 
 return {

@@ -1,10 +1,18 @@
+--[[
+
+dataOption
+
+Implementation of the Discord DataOption class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.DataOption
-	@__index Prototype
+    @class Classes.DataOption
+    @__index Prototype
 
-	Implementation of the Discord DataOption class in Luau
+    Implementation of the Discord DataOption class in Luau
 
-	https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
+    https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-type
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -15,11 +23,11 @@ DataOption.Interface = {}
 DataOption.Prototype = {}
 
 --[=[
-	@within Classes.DataOption
-	@private
+    @within Classes.DataOption
+    @private
 
-	Responsible for syncing data to this DataOption object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this DataOption object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function DataOption.Prototype.sync<T>(
     self: DataOption<T>,
@@ -28,11 +36,11 @@ function DataOption.Prototype.sync<T>(
     local optionArray = {}
 
     --[=[
-		@prop type ApplicationCommandOptionType
-		@within Classes.DataOption
+        @prop type ApplicationCommandOptionType
+        @within Classes.DataOption
 
-		The type of command option this represents. This determines how the option is displayed and handled in Discord.
-	]=]
+        The type of command option this represents. This determines how the option is displayed and handled in Discord.
+    ]=]
     self.type = apiTypes.interaction.ApplicationCommandOptionType[optionData.type]
 
     for _, option in next, optionData.options or {} do
@@ -40,46 +48,46 @@ function DataOption.Prototype.sync<T>(
     end
 
     --[=[
-		@prop options {Classes.DataOption}?
-		@within Classes.DataOption
+        @prop options {Classes.DataOption}?
+        @within Classes.DataOption
 
-		An array of additional options if this option is a subcommand group, subcommand, or group of choices.
-		Can be nil if this option has no sub-options.
-	]=]
+        An array of additional options if this option is a subcommand group, subcommand, or group of choices.
+        Can be nil if this option has no sub-options.
+    ]=]
     self.options = optionArray
 
     --[=[
-		@prop name string
-		@within Classes.DataOption
+        @prop name string
+        @within Classes.DataOption
 
-		The name of this command option as it appears in Discord. This is what users see when using the command.
-	]=]
+        The name of this command option as it appears in Discord. This is what users see when using the command.
+    ]=]
     self.name = optionData.name
 
     --[=[
-		@prop value T?
-		@within Classes.DataOption
+        @prop value T?
+        @within Classes.DataOption
 
-		The value provided by the user for this option. The type varies based on the option type.
-		Can be nil if no value was provided.
-	]=]
+        The value provided by the user for this option. The type varies based on the option type.
+        Can be nil if no value was provided.
+    ]=]
     self.value = (optionData.value :: any) :: T
 
     --[=[
-		@prop focused boolean?
-		@within Classes.DataOption
+        @prop focused boolean?
+        @within Classes.DataOption
 
-		Indicates whether this option is currently focused in the Discord client during autocomplete.
-		Only present for autocomplete interactions.
-	]=]
+        Indicates whether this option is currently focused in the Discord client during autocomplete.
+        Only present for autocomplete interactions.
+    ]=]
     self.focused = optionData.focused
 end
 
 --[=[
-	@within Classes.DataOption
-	@private
+    @within Classes.DataOption
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function DataOption.Interface.new<T>(optionData: apiTypes.ApplicationCommandInteractionDataOptionObject): DataOption<T>
     local self = setmetatable({} :: DataOption<T>, { __index = DataOption.Prototype })

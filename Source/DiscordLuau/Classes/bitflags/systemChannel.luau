@@ -1,10 +1,19 @@
+--[[
+
+systemChannel
+
+Implementation of the Discord System Channel Bitflags in Luau. This class represents
+various flags that can be set on a system channel in a Discord guild.
+
+--]]
+
 --[=[
-	@class Classes.SystemChannelBitflag
-	@__index Prototype
+    @class Classes.SystemChannelBitflag
+    @__index Prototype
 
-	Implementation of the Discord System Channel Bitflags in Luau. This class represents various flags that can be set on a system channel in a Discord guild.
+    Implementation of the Discord System Channel Bitflags in Luau. This class represents various flags that can be set on a system channel in a Discord guild.
 
-	https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
+    https://discord.com/developers/docs/resources/guild#guild-object-system-channel-flags
 ]=]
 
 local bit = require("../../Bit")
@@ -15,9 +24,9 @@ SystemChannelBitflag.Interface = {}
 SystemChannelBitflag.Prototype = {}
 
 --[=[
-	@within Classes.SystemChannelBitflag
+    @within Classes.SystemChannelBitflag
 
-	Returns if the system channel has the suppress join notifications bitflag set.
+    Returns if the system channel has the suppress join notifications bitflag set.
 ]=]
 function SystemChannelBitflag.Prototype.suppressJoinNotifications(self: SystemChannelBitflag)
     local targetBit = bit.lshift(1, 0)
@@ -26,9 +35,9 @@ function SystemChannelBitflag.Prototype.suppressJoinNotifications(self: SystemCh
 end
 
 --[=[
-	@within Classes.SystemChannelBitflag
+    @within Classes.SystemChannelBitflag
 
-	Returns if the system channel has the suppress premium subscriptions bitflag set.
+    Returns if the system channel has the suppress premium subscriptions bitflag set.
 ]=]
 function SystemChannelBitflag.Prototype.suppressPremiumSubscriptions(self: SystemChannelBitflag)
     local targetBit = bit.lshift(1, 1)
@@ -37,9 +46,9 @@ function SystemChannelBitflag.Prototype.suppressPremiumSubscriptions(self: Syste
 end
 
 --[=[
-	@within Classes.SystemChannelBitflag
+    @within Classes.SystemChannelBitflag
 
-	Returns if the system channel has the suppress guild reminder notifications bitflag set.
+    Returns if the system channel has the suppress guild reminder notifications bitflag set.
 ]=]
 function SystemChannelBitflag.Prototype.suppressGuildReminderNotifications(self: SystemChannelBitflag)
     local targetBit = bit.lshift(1, 2)
@@ -48,9 +57,9 @@ function SystemChannelBitflag.Prototype.suppressGuildReminderNotifications(self:
 end
 
 --[=[
-	@within Classes.SystemChannelBitflag
+    @within Classes.SystemChannelBitflag
 
-	Returns if the system channel has the suppress join notification replies bitflag set.
+    Returns if the system channel has the suppress join notification replies bitflag set.
 ]=]
 function SystemChannelBitflag.Prototype.suppressJoinNotificationReplies(self: SystemChannelBitflag)
     local targetBit = bit.lshift(1, 3)
@@ -59,9 +68,9 @@ function SystemChannelBitflag.Prototype.suppressJoinNotificationReplies(self: Sy
 end
 
 --[=[
-	@within Classes.SystemChannelBitflag
+    @within Classes.SystemChannelBitflag
 
-	Returns if the system channel has the suppress role subscriptions purchase notifications bitflag set.
+    Returns if the system channel has the suppress role subscriptions purchase notifications bitflag set.
 ]=]
 function SystemChannelBitflag.Prototype.suppressRoleSubscriptionPurchaseNotifications(self: SystemChannelBitflag)
     local targetBit = bit.lshift(1, 4)
@@ -70,9 +79,9 @@ function SystemChannelBitflag.Prototype.suppressRoleSubscriptionPurchaseNotifica
 end
 
 --[=[
-	@within Classes.SystemChannelBitflag
+    @within Classes.SystemChannelBitflag
 
-	Returns if the system channel has the suppress role subscriptions purchase notification replies bitflag set.
+    Returns if the system channel has the suppress role subscriptions purchase notification replies bitflag set.
 ]=]
 function SystemChannelBitflag.Prototype.suppressRoleSubscriptionPurchaseNotificationReplies(self: SystemChannelBitflag)
     local targetBit = bit.lshift(1, 5)
@@ -81,19 +90,19 @@ function SystemChannelBitflag.Prototype.suppressRoleSubscriptionPurchaseNotifica
 end
 
 --[=[
-	@within Classes.SystemChannelBitflag
-	@private
+    @within Classes.SystemChannelBitflag
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function SystemChannelBitflag.Interface.new(flag: number): SystemChannelBitflag
     local self = setmetatable(
         {
             --[=[
-				@prop flag number
-				@within Classes.SystemChannelBitflag
-				The bitfield representing the system channel flags.
-			]=]
+                @prop flag number
+                @within Classes.SystemChannelBitflag
+                The bitfield representing the system channel flags.
+            ]=]
             flag = flag,
         } :: SystemChannelBitflag,
         { __index = SystemChannelBitflag.Prototype }

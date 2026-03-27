@@ -1,5 +1,13 @@
+--[[
+
+application
+
+Type definitions for Discord application API objects.
+
+--]]
+
 --[=[
-	@class Types.application
+    @class Types.application
 ]=]
 
 local util = require("../Utilities")

@@ -1,10 +1,18 @@
+--[[
+
+welcomeScreen
+
+Implementation of the Discord WelcomeScreen class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.WelcomeScreen
-	@__index Prototype
+    @class Classes.WelcomeScreen
+    @__index Prototype
 
-	Implementation of the Discord WelcomeScreen class in Luau
+    Implementation of the Discord WelcomeScreen class in Luau
 
-	https://discord.com/developers/docs/resources/guild#welcome-screen-object
+    https://discord.com/developers/docs/resources/guild#welcome-screen-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -17,20 +25,20 @@ WelcomeScreen.Interface = {}
 WelcomeScreen.Prototype = {}
 
 --[=[
-	@within Classes.WelcomeScreen
-	@private
+    @within Classes.WelcomeScreen
+    @private
 
-	Responsible for syncing data to this welcome screen object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this welcome screen object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function WelcomeScreen.Prototype.sync(self: WelcomeScreen, welcomeScreenData: apiTypes.WelcomeScreenObject)
     --[=[
-		@prop welcomeChannels { Classes.WelcomeScreenChannel }
-		@within Classes.WelcomeScreen
+        @prop welcomeChannels { Classes.WelcomeScreenChannel }
+        @within Classes.WelcomeScreen
 
-		An array of welcome screen channel objects linked to the guild's welcome screen. These channels are shown to new members
-		when they join the guild.
-	]=]
+        An array of welcome screen channel objects linked to the guild's welcome screen. These channels are shown to new members
+        when they join the guild.
+    ]=]
     local welcomeChannelArray = {}
 
     for _, welcomeChannelData in welcomeScreenData.welcome_channels do
@@ -40,20 +48,20 @@ function WelcomeScreen.Prototype.sync(self: WelcomeScreen, welcomeScreenData: ap
     self.welcomeChannels = welcomeChannelArray
 
     --[=[
-		@prop description string?
-		@within Classes.WelcomeScreen
+        @prop description string?
+        @within Classes.WelcomeScreen
 
-		The server description shown in the welcome screen. This description provides new members with information about
-		the guild when they first join.
-	]=]
+        The server description shown in the welcome screen. This description provides new members with information about
+        the guild when they first join.
+    ]=]
     self.description = welcomeScreenData.description
 end
 
 --[=[
-	@within Classes.WelcomeScreen
-	@private
+    @within Classes.WelcomeScreen
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function WelcomeScreen.Interface.new(welcomeScreenData: apiTypes.WelcomeScreenObject): WelcomeScreen
     local self = setmetatable({} :: WelcomeScreen, { __index = WelcomeScreen.Prototype })

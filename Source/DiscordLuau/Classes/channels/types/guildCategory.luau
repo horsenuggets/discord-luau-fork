@@ -1,10 +1,18 @@
+--[[
+
+guildCategory
+
+Implementation of the Discord GuildCategory class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.GuildCategory
-	@__index Prototype
+    @class Classes.GuildCategory
+    @__index Prototype
 
-	Implementation of the Discord GuildCategory class in Luau
+    Implementation of the Discord GuildCategory class in Luau
 
-	https://discord.com/developers/docs/resources/channel#channel-object
+    https://discord.com/developers/docs/resources/channel#channel-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -23,11 +31,11 @@ GuildCategory.Behaviours = {
 }
 
 --[=[
-	@within Classes.GuildCategory
-	@private
+    @within Classes.GuildCategory
+    @private
 
-	Responsible for syncing data to this channel object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this channel object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function GuildCategory.Prototype.sync(self: GuildCategory, channelData: apiTypes.ChannelObject)
     for _, behaviour in GuildCategory.Behaviours do
@@ -37,16 +45,16 @@ function GuildCategory.Prototype.sync(self: GuildCategory, channelData: apiTypes
 end
 
 --[=[
-	@within Classes.GuildCategory
-	@private
+    @within Classes.GuildCategory
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function GuildCategory.Interface.new(state: state.State, channelData: apiTypes.ChannelObject): GuildCategory
     --[=[
-		@prop state Classes.State
-		@within Classes.GuildCategory
-	]=]
+        @prop state Classes.State
+        @within Classes.GuildCategory
+    ]=]
     local self = setmetatable(
         {
             state = state,

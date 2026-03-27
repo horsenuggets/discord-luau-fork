@@ -1,10 +1,18 @@
+--[[
+
+guildDirectory
+
+Implementation of the Discord GuildDirectory class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.GuildDirectory
-	@__index Prototype
+    @class Classes.GuildDirectory
+    @__index Prototype
 
-	Implementation of the Discord GuildDirectory class in Luau
+    Implementation of the Discord GuildDirectory class in Luau
 
-	https://discord.com/developers/docs/resources/channel#channel-object
+    https://discord.com/developers/docs/resources/channel#channel-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -23,11 +31,11 @@ GuildDirectory.Behaviours = {
 }
 
 --[=[
-	@within Classes.GuildDirectory
-	@private
+    @within Classes.GuildDirectory
+    @private
 
-	Responsible for syncing data to this guild directory object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this guild directory object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function GuildDirectory.Prototype.sync(self: GuildDirectory, channelData: apiTypes.ChannelObject)
     for _, behaviour in GuildDirectory.Behaviours do
@@ -37,18 +45,18 @@ function GuildDirectory.Prototype.sync(self: GuildDirectory, channelData: apiTyp
 end
 
 --[=[
-	@within Classes.GuildDirectory
-	@private
+    @within Classes.GuildDirectory
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function GuildDirectory.Interface.new(state: state.State, channelData: apiTypes.ChannelObject): GuildDirectory
     local self = setmetatable(
         {
             --[=[
-				@prop state Classes.State
-				@within Classes.GuildDirectory
-			]=]
+                @prop state Classes.State
+                @within Classes.GuildDirectory
+            ]=]
             state = state,
         } :: GuildDirectory,
         { __index = GuildDirectory.Prototype }

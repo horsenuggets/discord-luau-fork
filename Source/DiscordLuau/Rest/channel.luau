@@ -1,3 +1,11 @@
+--[[
+
+channel
+
+REST API methods for Discord channel endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.channel
+    @class Rest.channel
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/channel
+    - https://discord.com/developers/docs/resources/channel
 ]=]
 local channel = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#get-channel
+    https://discord.com/developers/docs/resources/channel#get-channel
 ]=]
 function channel.getChannelAsync(
     instance: request.Request,
@@ -38,9 +46,9 @@ function channel.getChannelAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#modify-channel
+    https://discord.com/developers/docs/resources/channel#modify-channel
 ]=]
 function channel.modifyChannelAsync(
     instance: request.Request,
@@ -65,9 +73,9 @@ function channel.modifyChannelAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#deleteclose-channel
+    https://discord.com/developers/docs/resources/channel#deleteclose-channel
 ]=]
 function channel.deleteOrCloseChannelAsync(
     instance: request.Request,
@@ -90,9 +98,9 @@ function channel.deleteOrCloseChannelAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#edit-channel-permissions
+    https://discord.com/developers/docs/resources/channel#edit-channel-permissions
 ]=]
 function channel.editChannelPermissionsAsync(
     instance: request.Request,
@@ -118,9 +126,9 @@ function channel.editChannelPermissionsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#get-channel-invites
+    https://discord.com/developers/docs/resources/channel#get-channel-invites
 ]=]
 function channel.getChannelInvitesAsync(
     instance: request.Request,
@@ -141,9 +149,9 @@ function channel.getChannelInvitesAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#create-channel-invite
+    https://discord.com/developers/docs/resources/channel#create-channel-invite
 ]=]
 function channel.createChannelInviteAsync(
     instance: request.Request,
@@ -168,9 +176,9 @@ function channel.createChannelInviteAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#delete-channel-permission
+    https://discord.com/developers/docs/resources/channel#delete-channel-permission
 ]=]
 function channel.deleteChannelPermissionAsync(
     instance: request.Request,
@@ -194,9 +202,9 @@ function channel.deleteChannelPermissionAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#follow-announcement-channel
+    https://discord.com/developers/docs/resources/channel#follow-announcement-channel
 ]=]
 function channel.followAnnouncementChannelAsync(
     instance: request.Request,
@@ -221,9 +229,9 @@ function channel.followAnnouncementChannelAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#trigger-typing-indicator
+    https://discord.com/developers/docs/resources/channel#trigger-typing-indicator
 ]=]
 function channel.triggerTypingIndicatorAsync(
     instance: request.Request,
@@ -244,9 +252,9 @@ function channel.triggerTypingIndicatorAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#get-pinned-messages
+    https://discord.com/developers/docs/resources/channel#get-pinned-messages
 ]=]
 function channel.getPinnedMessagesAsync(
     instance: request.Request,
@@ -267,9 +275,9 @@ function channel.getPinnedMessagesAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#pin-message
+    https://discord.com/developers/docs/resources/channel#pin-message
 ]=]
 function channel.pinMessageAsync(
     instance: request.Request,
@@ -293,9 +301,9 @@ function channel.pinMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#unpin-message
+    https://discord.com/developers/docs/resources/channel#unpin-message
 ]=]
 function channel.unpinMessageAsync(
     instance: request.Request,
@@ -319,9 +327,9 @@ function channel.unpinMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
+    https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
 ]=]
 function channel.groupDMAddRecipientAsync(
     instance: request.Request,
@@ -345,9 +353,9 @@ function channel.groupDMAddRecipientAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#group-dm-remove-recipient
+    https://discord.com/developers/docs/resources/channel#group-dm-remove-recipient
 ]=]
 function channel.groupDMRemoveRecipientAsync(
     instance: request.Request,
@@ -369,9 +377,9 @@ function channel.groupDMRemoveRecipientAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#start-thread-from-message
+    https://discord.com/developers/docs/resources/channel#start-thread-from-message
 ]=]
 function channel.startThreadFromMessageAsync(
     instance: request.Request,
@@ -397,9 +405,9 @@ function channel.startThreadFromMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#start-thread-without-message
+    https://discord.com/developers/docs/resources/channel#start-thread-without-message
 ]=]
 function channel.startThreadWithoutMessageAsync(
     instance: request.Request,
@@ -424,9 +432,9 @@ function channel.startThreadWithoutMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
+    https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
 ]=]
 function channel.startThreadInForumOrMediaChannelAsync(
     instance: request.Request,
@@ -456,9 +464,9 @@ function channel.startThreadInForumOrMediaChannelAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#join-thread
+    https://discord.com/developers/docs/resources/channel#join-thread
 ]=]
 function channel.joinThreadAsync(
     instance: request.Request,
@@ -479,9 +487,9 @@ function channel.joinThreadAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#add-thread-member
+    https://discord.com/developers/docs/resources/channel#add-thread-member
 ]=]
 function channel.addThreadMemberAsync(
     instance: request.Request,
@@ -503,9 +511,9 @@ function channel.addThreadMemberAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#leave-thread
+    https://discord.com/developers/docs/resources/channel#leave-thread
 ]=]
 function channel.leaveThreadAsync(
     instance: request.Request,
@@ -526,9 +534,9 @@ function channel.leaveThreadAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#remove-thread-member
+    https://discord.com/developers/docs/resources/channel#remove-thread-member
 ]=]
 function channel.removeThreadMemberAsync(
     instance: request.Request,
@@ -550,9 +558,9 @@ function channel.removeThreadMemberAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#get-thread-member
+    https://discord.com/developers/docs/resources/channel#get-thread-member
 ]=]
 function channel.getThreadMemberAsync(
     instance: request.Request,
@@ -579,9 +587,9 @@ function channel.getThreadMemberAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#list-thread-members
+    https://discord.com/developers/docs/resources/channel#list-thread-members
 ]=]
 function channel.listThreadMembersAsync(
     instance: request.Request,
@@ -611,9 +619,9 @@ function channel.listThreadMembersAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#list-public-archived-threads
+    https://discord.com/developers/docs/resources/channel#list-public-archived-threads
 ]=]
 function channel.listPublicArchivedThreadsAsync(
     instance: request.Request,
@@ -641,9 +649,9 @@ function channel.listPublicArchivedThreadsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#list-private-archived-threads
+    https://discord.com/developers/docs/resources/channel#list-private-archived-threads
 ]=]
 function channel.listPrivateArchivedThreadsAsync(
     instance: request.Request,
@@ -671,9 +679,9 @@ function channel.listPrivateArchivedThreadsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads
+    https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads
 ]=]
 function channel.listJoinedPrivateArchivedThreadsAsync(
     instance: request.Request,

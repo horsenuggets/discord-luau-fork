@@ -1,12 +1,21 @@
+--[[
+
+activity
+
+Implementation of Discord Activity as a Luau builder. Note: Only YouTube and Twitch URLs
+are allowed for streaming.
+
+--]]
+
 --[=[
-	@class Builders.Activity
-	@__index Prototype
+    @class Builders.Activity
+    @__index Prototype
 
-	Implementation of Discord Activity as a Luau builder.
+    Implementation of Discord Activity as a Luau builder.
 
-	https://discord.com/developers/docs/events/gateway-events#activity-object
-	
-	Note: Only YouTube and Twitch URLs are allowed for streaming.
+    https://discord.com/developers/docs/events/gateway-events#activity-object
+    
+    Note: Only YouTube and Twitch URLs are allowed for streaming.
 ]=]
 
 local apiTypes = require("../ApiTypes")
@@ -17,9 +26,9 @@ Activity.Prototype = {}
 Activity.Interface = {}
 
 --[=[
-	@within Builders.Activity
+    @within Builders.Activity
 
-	Sets the name of the activity.
+    Sets the name of the activity.
 ]=]
 function Activity.Prototype.setActivityName(self: Activity, name: string): Activity
     self.name = name
@@ -28,9 +37,9 @@ function Activity.Prototype.setActivityName(self: Activity, name: string): Activ
 end
 
 --[=[
-	@within Builders.Activity
+    @within Builders.Activity
 
-	Sets the type of the activity.
+    Sets the type of the activity.
 ]=]
 function Activity.Prototype.setActivityType(self: Activity, activityType: apiTypes.ActivityType): Activity
     assert(
@@ -44,9 +53,9 @@ function Activity.Prototype.setActivityType(self: Activity, activityType: apiTyp
 end
 
 --[=[
-	@within Builders.Activity
+    @within Builders.Activity
 
-	Sets the streaming URL of the activity. Only YouTube and Twitch URLs are allowed.
+    Sets the streaming URL of the activity. Only YouTube and Twitch URLs are allowed.
 ]=]
 function Activity.Prototype.setStreamingURL(self: Activity, streamURL: string): Activity
     local hasYouTube = string.find(streamURL, "youtube.com") ~= nil
@@ -60,9 +69,9 @@ function Activity.Prototype.setStreamingURL(self: Activity, streamURL: string): 
 end
 
 --[=[
-	@within Builders.Activity
+    @within Builders.Activity
 
-	Builds the activity JSON payload that can be parsed by the Discord API.
+    Builds the activity JSON payload that can be parsed by the Discord API.
 ]=]
 function Activity.Prototype.build(self: Activity): JSON
     assert(self.activityType ~= nil, `Activity requires ActivityType`)
@@ -76,17 +85,17 @@ function Activity.Prototype.build(self: Activity): JSON
 end
 
 --[=[
-	@within Builders.Activity
+    @within Builders.Activity
 
-	Creates a new Activity.
+    Creates a new Activity.
 
-	```luau
-	local activity = Activity.new({
-		name = "Playing a game",
-		activityType = "Game",
-		streamingURL = "https://twitch.tv/example"
-	})
-	```
+    ```luau
+    local activity = Activity.new({
+        name = "Playing a game",
+        activityType = "Game",
+        streamingURL = "https://twitch.tv/example"
+    })
+    ```
 ]=]
 function Activity.Interface.new(resource: {
     name: string?,
@@ -96,24 +105,24 @@ function Activity.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop name string
-				@within Builders.Activity
-				The name of the activity that is displayed.
-			]=]
+                @prop name string
+                @within Builders.Activity
+                The name of the activity that is displayed.
+            ]=]
             name = nil,
 
             --[=[
-				@prop activityType api_types.ActivityType
-				@within Builders.Activity
-				The type of activity being performed.
-			]=]
+                @prop activityType api_types.ActivityType
+                @within Builders.Activity
+                The type of activity being performed.
+            ]=]
             activityType = nil,
 
             --[=[
-				@prop streamingURL string?
-				@within Builders.Activity
-				The URL of the stream, only YouTube and Twitch URLs are supported.
-			]=]
+                @prop streamingURL string?
+                @within Builders.Activity
+                The URL of the stream, only YouTube and Twitch URLs are supported.
+            ]=]
             streamingURL = nil,
         } :: Activity,
         { __index = Activity.Prototype }

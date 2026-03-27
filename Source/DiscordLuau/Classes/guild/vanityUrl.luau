@@ -1,10 +1,18 @@
+--[[
+
+vanityUrl
+
+Implementation of the Discord VanityUrl class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.VanityUrl
-	@__index Prototype
+    @class Classes.VanityUrl
+    @__index Prototype
 
-	Implementation of the Discord VanityUrl class in Luau
+    Implementation of the Discord VanityUrl class in Luau
 
-	https://discord.com/developers/docs/resources/guild#get-guild-vanity-url
+    https://discord.com/developers/docs/resources/guild#get-guild-vanity-url
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -15,35 +23,35 @@ VanityUrl.Interface = {}
 VanityUrl.Prototype = {}
 
 --[=[
-	@within Classes.VanityUrl
-	@private
+    @within Classes.VanityUrl
+    @private
 
-	Responsible for syncing data to this vanity URL object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this vanity URL object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function VanityUrl.Prototype.sync(self: VanityUrl, vanityUrlData: apiTypes.GuildVanityUrl)
     --[=[
-		@prop code string
-		@within Classes.VanityUrl
+        @prop code string
+        @within Classes.VanityUrl
 
-		The unique code for this vanity URL. This code appears in the URL that users can use to join the guild.
-	]=]
+        The unique code for this vanity URL. This code appears in the URL that users can use to join the guild.
+    ]=]
     self.code = vanityUrlData.code
 
     --[=[
-		@prop uses number
-		@within Classes.VanityUrl
+        @prop uses number
+        @within Classes.VanityUrl
 
-		The number of times this vanity URL has been used to join the guild.
-	]=]
+        The number of times this vanity URL has been used to join the guild.
+    ]=]
     self.uses = vanityUrlData.uses
 end
 
 --[=[
-	@within Classes.VanityUrl
-	@private
+    @within Classes.VanityUrl
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function VanityUrl.Interface.new(vanityUrlData: apiTypes.GuildVanityUrl): VanityUrl
     local self = setmetatable({} :: VanityUrl, { __index = VanityUrl.Prototype })

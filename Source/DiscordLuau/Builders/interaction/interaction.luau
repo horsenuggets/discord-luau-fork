@@ -1,10 +1,18 @@
+--[[
+
+interaction
+
+Implementation of a discord Interaction object as a luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Interaction
-	@__index Prototype
+    @class Builders.Interaction
+    @__index Prototype
 
-	Implementation of a discord Interaction object as a luau builder.
+    Implementation of a discord Interaction object as a luau builder.
 
-	https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command-json-params
+    https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command-json-params
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -17,9 +25,9 @@ Interaction.Prototype = {}
 Interaction.Interface = {}
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Name of command, 1-32 characters
+    Name of command, 1-32 characters
 ]=]
 function Interaction.Prototype.setName(self: Interaction, name: string): Interaction
     assert(#name <= 32, "name must be less than 32 characters")
@@ -31,9 +39,9 @@ function Interaction.Prototype.setName(self: Interaction, name: string): Interac
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Set the Type of command
+    Set the Type of command
 ]=]
 function Interaction.Prototype.setType(self: Interaction, commandType: apiTypes.ApplicationCommandType): Interaction
     self.type = commandType
@@ -42,9 +50,9 @@ function Interaction.Prototype.setType(self: Interaction, commandType: apiTypes.
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Localization dictionary for the name field. Values follow the same restrictions as name
+    Localization dictionary for the name field. Values follow the same restrictions as name
 ]=]
 function Interaction.Prototype.setNameLocalization(
     self: Interaction,
@@ -62,9 +70,9 @@ function Interaction.Prototype.setNameLocalization(
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	1-100 character description
+    1-100 character description
 ]=]
 function Interaction.Prototype.setDescription(self: Interaction, description: string): Interaction
     assert(#description <= 100, "description must be less than 100 characters")
@@ -76,9 +84,9 @@ function Interaction.Prototype.setDescription(self: Interaction, description: st
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Localization dictionary for the description field. Values follow the same restrictions as description
+    Localization dictionary for the description field. Values follow the same restrictions as description
 ]=]
 function Interaction.Prototype.setDescriptionLocalization(
     self: Interaction,
@@ -94,9 +102,9 @@ function Interaction.Prototype.setDescriptionLocalization(
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	The parameters for the command
+    The parameters for the command
 ]=]
 function Interaction.Prototype.addOption(self: Interaction, option: interactionOption.JSON): Interaction
     table.insert(self.options, option)
@@ -105,9 +113,9 @@ function Interaction.Prototype.addOption(self: Interaction, option: interactionO
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Set of permissions represented as a bit set, recommended that you use the permission builder.
+    Set of permissions represented as a bit set, recommended that you use the permission builder.
 ]=]
 function Interaction.Prototype.setDefaultMemberPermissions(self: Interaction, permissions: string): Interaction
     self.defaultMemberPermissions = permissions
@@ -116,9 +124,9 @@ function Interaction.Prototype.setDefaultMemberPermissions(self: Interaction, pe
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Installation context(s) where the command is available
+    Installation context(s) where the command is available
 ]=]
 function Interaction.Prototype.addIntegrationType(self: Interaction, type: apiTypes.IntegrationTypesConfig): Interaction
     table.insert(self.integrationTypes, type)
@@ -127,9 +135,9 @@ function Interaction.Prototype.addIntegrationType(self: Interaction, type: apiTy
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Interaction context(s) where the command can be used
+    Interaction context(s) where the command can be used
 ]=]
 function Interaction.Prototype.addContext(self: Interaction, context: apiTypes.InteractionContextType): Interaction
     table.insert(self.contexts, context)
@@ -138,9 +146,9 @@ function Interaction.Prototype.addContext(self: Interaction, context: apiTypes.I
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Indicates whether the command is age-restricted
+    Indicates whether the command is age-restricted
 ]=]
 function Interaction.Prototype.setNsfw(self: Interaction, isNsfw: boolean): Interaction
     self.nsfw = isNsfw
@@ -149,9 +157,9 @@ function Interaction.Prototype.setNsfw(self: Interaction, isNsfw: boolean): Inte
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Responsible for building the default reaction object that the Discord API can understand.
+    Responsible for building the default reaction object that the Discord API can understand.
 ]=]
 function Interaction.Prototype.build(self: Interaction): JSON
     assert(self.name, "name must be set")
@@ -190,9 +198,9 @@ function Interaction.Prototype.build(self: Interaction): JSON
 end
 
 --[=[
-	@within Builders.Interaction
+    @within Builders.Interaction
 
-	Constructor for the Discord Default Reaction Builder.
+    Constructor for the Discord Default Reaction Builder.
 ]=]
 function Interaction.Interface.new(resource: {
     name: string?,
@@ -206,50 +214,50 @@ function Interaction.Interface.new(resource: {
     nsfw: boolean?,
 }?): Interaction
     --[=[
-		@prop name string
-		@within Builders.Interaction
-		The name of the command.
-	]=]
+        @prop name string
+        @within Builders.Interaction
+        The name of the command.
+    ]=]
     --[=[
-		@prop nameLocalizations { [package].LanguageLocales: string }
-		@within Builders.Interaction
-		Localization dictionary for the name field.
-	]=]
+        @prop nameLocalizations { [package].LanguageLocales: string }
+        @within Builders.Interaction
+        Localization dictionary for the name field.
+    ]=]
     --[=[
-		@prop description string
-		@within Builders.Interaction
-		The description of the command.
-	]=]
+        @prop description string
+        @within Builders.Interaction
+        The description of the command.
+    ]=]
     --[=[
-		@prop descriptionLocalizations { [package].LanguageLocales: string }
-		@within Builders.Interaction
-		Localization dictionary for the description field.
-	]=]
+        @prop descriptionLocalizations { [package].LanguageLocales: string }
+        @within Builders.Interaction
+        Localization dictionary for the description field.
+    ]=]
     --[=[
-		@prop options { package.option.JSON }
-		@within Builders.Interaction
-		A list of parameters/options for the command.
-	]=]
+        @prop options { package.option.JSON }
+        @within Builders.Interaction
+        A list of parameters/options for the command.
+    ]=]
     --[=[
-		@prop defaultMemberPermissions string?
-		@within Builders.Interaction
-		Permissions required to execute the command.
-	]=]
+        @prop defaultMemberPermissions string?
+        @within Builders.Interaction
+        Permissions required to execute the command.
+    ]=]
     --[=[
-		@prop integrationTypes { package.api_types.IntegrationTypesConfig }
-		@within Builders.Interaction
-		Installation contexts the command is available to.
-	]=]
+        @prop integrationTypes { package.api_types.IntegrationTypesConfig }
+        @within Builders.Interaction
+        Installation contexts the command is available to.
+    ]=]
     --[=[
-		@prop contexts { package.api_types.InteractionContextType }
-		@within Builders.Interaction
-		Interaction contexts where the command can be used.
-	]=]
+        @prop contexts { package.api_types.InteractionContextType }
+        @within Builders.Interaction
+        Interaction contexts where the command can be used.
+    ]=]
     --[=[
-		@prop nsfw boolean?
-		@within Builders.Interaction
-		Whether this command is age-restricted.
-	]=]
+        @prop nsfw boolean?
+        @within Builders.Interaction
+        Whether this command is age-restricted.
+    ]=]
     local self = setmetatable(
         {
             nameLocalizations = {},

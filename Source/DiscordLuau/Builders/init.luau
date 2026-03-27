@@ -1,3 +1,11 @@
+--[[
+
+Builders
+
+Builder for Discord Builders objects.
+
+--]]
+
 local actionRow = require("@self/message/components/actionRow")
 local activity = require("@self/activity")
 local allowedMention = require("@self/message/allowedMention")

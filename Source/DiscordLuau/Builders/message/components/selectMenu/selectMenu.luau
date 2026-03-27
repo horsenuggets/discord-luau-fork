@@ -1,10 +1,18 @@
+--[[
+
+selectMenu
+
+Implementation of discords SelectMenu object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.SelectMenu
-	@__index Prototype
+    @class Builders.SelectMenu
+    @__index Prototype
 
-	Implementation of discords SelectMenu object as a Luau builder.	
+    Implementation of discords SelectMenu object as a Luau builder.    
 
-	https://discord.com/developers/docs/interactions/message-components#SelectMenus
+    https://discord.com/developers/docs/interactions/message-components#SelectMenus
 ]=]
 
 local apiTypes = require("../../../../ApiTypes")
@@ -18,9 +26,9 @@ SelectMenu.Prototype = {}
 SelectMenu.Interface = {}
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Sets the type of select menu component to be created.
+    Sets the type of select menu component to be created.
 ]=]
 function SelectMenu.Prototype.setType(self: SelectMenu, selectMenuType: apiTypes.SelectMenuType): SelectMenu
     self.type = selectMenuType
@@ -29,9 +37,9 @@ function SelectMenu.Prototype.setType(self: SelectMenu, selectMenuType: apiTypes
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Sets a developer-defined identifier for the select menu.
+    Sets a developer-defined identifier for the select menu.
 ]=]
 function SelectMenu.Prototype.setCustomId(self: SelectMenu, customId: string): SelectMenu
     self.customId = customId
@@ -40,9 +48,9 @@ function SelectMenu.Prototype.setCustomId(self: SelectMenu, customId: string): S
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Sets custom placeholder text shown when no option is selected.
+    Sets custom placeholder text shown when no option is selected.
 ]=]
 function SelectMenu.Prototype.setPlaceholder(self: SelectMenu, placeholder: string): SelectMenu
     self.placeholder = placeholder
@@ -51,9 +59,9 @@ function SelectMenu.Prototype.setPlaceholder(self: SelectMenu, placeholder: stri
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Sets the minimum number of items that must be selected.
+    Sets the minimum number of items that must be selected.
 ]=]
 function SelectMenu.Prototype.setMinValues(self: SelectMenu, minValueCount: number): SelectMenu
     self.minValues = minValueCount
@@ -62,9 +70,9 @@ function SelectMenu.Prototype.setMinValues(self: SelectMenu, minValueCount: numb
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Sets the maximum number of items that can be selected.
+    Sets the maximum number of items that can be selected.
 ]=]
 function SelectMenu.Prototype.setMaxValues(self: SelectMenu, maxValueCount: number): SelectMenu
     self.maxValues = maxValueCount
@@ -73,9 +81,9 @@ function SelectMenu.Prototype.setMaxValues(self: SelectMenu, maxValueCount: numb
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Sets whether the select menu is disabled or not.
+    Sets whether the select menu is disabled or not.
 ]=]
 function SelectMenu.Prototype.setDisabled(self: SelectMenu, disabled: boolean): SelectMenu
     self.disabled = disabled
@@ -84,9 +92,9 @@ function SelectMenu.Prototype.setDisabled(self: SelectMenu, disabled: boolean): 
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Adds a default value to the select menu.
+    Adds a default value to the select menu.
 ]=]
 function SelectMenu.Prototype.addDefaultValue(self: SelectMenu, defaultValue: defaultValue.JSON): SelectMenu
     table.insert(self.defaultValues, defaultValue)
@@ -95,9 +103,9 @@ function SelectMenu.Prototype.addDefaultValue(self: SelectMenu, defaultValue: de
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Adds a channel type that can be selected in the menu.
+    Adds a channel type that can be selected in the menu.
 ]=]
 function SelectMenu.Prototype.addChannelType(self: SelectMenu, channelType: apiTypes.ChannelType): SelectMenu
     table.insert(self.apiTypes, channelType)
@@ -106,9 +114,9 @@ function SelectMenu.Prototype.addChannelType(self: SelectMenu, channelType: apiT
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Adds an option to the select menu.
+    Adds an option to the select menu.
 ]=]
 function SelectMenu.Prototype.addOption(self: SelectMenu, option: option.JSON): SelectMenu
     table.insert(self.options, option)
@@ -117,9 +125,9 @@ function SelectMenu.Prototype.addOption(self: SelectMenu, option: option.JSON): 
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Responsible for building the SelectMenu JSON that can be parsed by the Discord API.
+    Responsible for building the SelectMenu JSON that can be parsed by the Discord API.
 ]=]
 function SelectMenu.Prototype.build(self: SelectMenu): JSON
     assert(self.type, "SelectMenu type is required")
@@ -139,9 +147,9 @@ function SelectMenu.Prototype.build(self: SelectMenu): JSON
 end
 
 --[=[
-	@within Builders.SelectMenu
+    @within Builders.SelectMenu
 
-	Responsible for creating a new SelectMenu.
+    Responsible for creating a new SelectMenu.
 ]=]
 function SelectMenu.Interface.new(resource: {
     type: apiTypes.SelectMenuType?,
@@ -157,24 +165,24 @@ function SelectMenu.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop defaultValues {Builders.DefaultValue}
-				@within Builders.SelectMenu
-				Array of default values for auto-populated select menu components
-			]=]
+                @prop defaultValues {Builders.DefaultValue}
+                @within Builders.SelectMenu
+                Array of default values for auto-populated select menu components
+            ]=]
             defaultValues = {},
 
             --[=[
-				@prop options {Builders.Option}
-				@within Builders.SelectMenu
-				Array of select menu options
-			]=]
+                @prop options {Builders.Option}
+                @within Builders.SelectMenu
+                Array of select menu options
+            ]=]
             options = {},
 
             --[=[
-				@prop apiTypes {api_types.ChannelType}
-				@within Builders.SelectMenu
-				Array of channel types that can be selected
-			]=]
+                @prop apiTypes {api_types.ChannelType}
+                @within Builders.SelectMenu
+                Array of channel types that can be selected
+            ]=]
             apiTypes = {},
         } :: SelectMenu,
         {

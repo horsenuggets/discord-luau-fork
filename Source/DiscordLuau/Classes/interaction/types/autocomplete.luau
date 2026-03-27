@@ -1,10 +1,18 @@
+--[[
+
+autocomplete
+
+Implementation of the Discord Autocomplete Interaction class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Autocomplete
-	@__index Prototype
+    @class Classes.Autocomplete
+    @__index Prototype
 
-	Implementation of the Discord Autocomplete Interaction class in Luau
+    Implementation of the Discord Autocomplete Interaction class in Luau
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
+    https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
 ]=]
 
 -- selene: allow(unused_variable)
@@ -22,11 +30,11 @@ Autocomplete.Behaviours = {
 }
 
 --[=[
-	@within Classes.Autocomplete
-	@private
+    @within Classes.Autocomplete
+    @private
 
-	Responsible for syncing data to this interaction object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this interaction object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Autocomplete.Prototype.sync(self: Autocomplete, interactionData: apiTypes.InteractionObject)
     for _, behaviour in Autocomplete.Behaviours do
@@ -36,18 +44,18 @@ function Autocomplete.Prototype.sync(self: Autocomplete, interactionData: apiTyp
 end
 
 --[=[
-	@within Classes.Autocomplete
-	@private
+    @within Classes.Autocomplete
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Autocomplete.Interface.new(state: state.State, interactionData: apiTypes.InteractionObject): Autocomplete
     local self = setmetatable(
         {
             --[=[
-				@prop state State
-				@within Classes.Autocomplete
-			]=]
+                @prop state State
+                @within Classes.Autocomplete
+            ]=]
             state = state,
         } :: Autocomplete,
         { __index = Autocomplete.Prototype }

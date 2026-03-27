@@ -1,10 +1,18 @@
+--[[
+
+guildMember
+
+Implementation of the Discord Role Bitflags in Luau.
+
+--]]
+
 --[=[
-	@class Classes.GuildMemberBitflag
-	@__index Prototype
+    @class Classes.GuildMemberBitflag
+    @__index Prototype
 
-	Implementation of the Discord Role Bitflags in Luau
+    Implementation of the Discord Role Bitflags in Luau
 
-	https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags
+    https://discord.com/developers/docs/resources/guild#guild-member-object-guild-member-flags
 ]=]
 
 local bit = require("../../Bit")
@@ -15,10 +23,10 @@ GuildMemberBitflag.Interface = {}
 GuildMemberBitflag.Prototype = {}
 
 --[=[
-	@within Classes.GuildMemberBitflag
-	@private
+    @within Classes.GuildMemberBitflag
+    @private
 
-	Member has left and rejoined the guild	
+    Member has left and rejoined the guild    
 ]=]
 function GuildMemberBitflag.Prototype.didRejoin(self: GuildMemberBitflag)
     local targetBit = bit.lshift(1, 0)
@@ -27,10 +35,10 @@ function GuildMemberBitflag.Prototype.didRejoin(self: GuildMemberBitflag)
 end
 
 --[=[
-	@within Classes.GuildMemberBitflag
-	@private
+    @within Classes.GuildMemberBitflag
+    @private
 
-	Member has completed onboarding	
+    Member has completed onboarding    
 ]=]
 function GuildMemberBitflag.Prototype.completedOnboarding(self: GuildMemberBitflag)
     local targetBit = bit.lshift(1, 1)
@@ -39,10 +47,10 @@ function GuildMemberBitflag.Prototype.completedOnboarding(self: GuildMemberBitfl
 end
 
 --[=[
-	@within Classes.GuildMemberBitflag
-	@private
+    @within Classes.GuildMemberBitflag
+    @private
 
-	Member is exempt from guild verification requirements	
+    Member is exempt from guild verification requirements    
 ]=]
 function GuildMemberBitflag.Prototype.bypassesVerification(self: GuildMemberBitflag)
     local targetBit = bit.lshift(1, 2)
@@ -51,10 +59,10 @@ function GuildMemberBitflag.Prototype.bypassesVerification(self: GuildMemberBitf
 end
 
 --[=[
-	@within Classes.GuildMemberBitflag
-	@private
+    @within Classes.GuildMemberBitflag
+    @private
 
-	Member has started onboarding	
+    Member has started onboarding    
 ]=]
 function GuildMemberBitflag.Prototype.startedOnboarding(self: GuildMemberBitflag)
     local targetBit = bit.lshift(1, 3)
@@ -63,18 +71,18 @@ function GuildMemberBitflag.Prototype.startedOnboarding(self: GuildMemberBitflag
 end
 
 --[=[
-	@within Classes.GuildMemberBitflag
-	@private
+    @within Classes.GuildMemberBitflag
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function GuildMemberBitflag.Interface.new(flag: number): GuildMemberBitflag
     local self = setmetatable(
         {
             --[=[
-				@prop flag number
-				@within Classes.GuildMemberBitflag
-			]=]
+                @prop flag number
+                @within Classes.GuildMemberBitflag
+            ]=]
             flag = flag,
         } :: GuildMemberBitflag,
         { __index = GuildMemberBitflag.Prototype }

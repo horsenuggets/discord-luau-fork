@@ -1,10 +1,18 @@
+--[[
+
+button
+
+Implementation of discords Button object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Button
-	@__index Prototype
+    @class Builders.Button
+    @__index Prototype
 
-	Implementation of discords Button object as a Luau builder.	
+    Implementation of discords Button object as a Luau builder.    
 
-	https://discord.com/developers/docs/interactions/message-components#buttons
+    https://discord.com/developers/docs/interactions/message-components#buttons
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -17,9 +25,9 @@ Button.Prototype = {}
 Button.Interface = {}
 
 --[=[
-	@within Builders.Button
+    @within Builders.Button
 
-	Sets the style of the button. This determines the button's appearance and behavior.
+    Sets the style of the button. This determines the button's appearance and behavior.
 ]=]
 function Button.Prototype.setStyle(self: Button, buttonStyle: apiTypes.ButtonStyle): Button
     self.style = buttonStyle
@@ -28,9 +36,9 @@ function Button.Prototype.setStyle(self: Button, buttonStyle: apiTypes.ButtonSty
 end
 
 --[=[
-	@within Builders.Button
+    @within Builders.Button
 
-	Sets the text that appears on the button. Must be between 1-80 characters.
+    Sets the text that appears on the button. Must be between 1-80 characters.
 ]=]
 function Button.Prototype.setLabel(self: Button, label: string): Button
     assert(#label <= 80, `Label must be less than 80 characters.`)
@@ -42,9 +50,9 @@ function Button.Prototype.setLabel(self: Button, label: string): Button
 end
 
 --[=[
-	@within Builders.Button
+    @within Builders.Button
 
-	Sets the emoji that appears on the button.
+    Sets the emoji that appears on the button.
 ]=]
 function Button.Prototype.setEmoji(self: Button, emoji: emoji.JSON): Button
     self.emoji = emoji
@@ -53,9 +61,9 @@ function Button.Prototype.setEmoji(self: Button, emoji: emoji.JSON): Button
 end
 
 --[=[
-	@within Builders.Button
+    @within Builders.Button
 
-	Sets a developer-defined identifier for the button that will be sent when the button is clicked.
+    Sets a developer-defined identifier for the button that will be sent when the button is clicked.
 ]=]
 function Button.Prototype.setCustomId(self: Button, customId: string): Button
     self.customId = customId
@@ -64,9 +72,9 @@ function Button.Prototype.setCustomId(self: Button, customId: string): Button
 end
 
 --[=[
-	@within Builders.Button
+    @within Builders.Button
 
-	Sets the SKU ID for the button, used for purchase buttons.
+    Sets the SKU ID for the button, used for purchase buttons.
 ]=]
 function Button.Prototype.setSkuId(self: Button, skuId: string): Button
     self.skuId = skuId
@@ -75,9 +83,9 @@ function Button.Prototype.setSkuId(self: Button, skuId: string): Button
 end
 
 --[=[
-	@within Builders.Button
+    @within Builders.Button
 
-	Sets the URL that the button will navigate to when clicked.
+    Sets the URL that the button will navigate to when clicked.
 ]=]
 function Button.Prototype.setUrl(self: Button, url: string): Button
     self.url = url
@@ -86,9 +94,9 @@ function Button.Prototype.setUrl(self: Button, url: string): Button
 end
 
 --[=[
-	@within Builders.Button
+    @within Builders.Button
 
-	Sets whether the button is disabled and cannot be clicked.
+    Sets whether the button is disabled and cannot be clicked.
 ]=]
 function Button.Prototype.setDisabled(self: Button, disabled: boolean): Button
     self.disabled = disabled
@@ -97,9 +105,9 @@ function Button.Prototype.setDisabled(self: Button, disabled: boolean): Button
 end
 
 --[=[
-	@within Builders.Button
+    @within Builders.Button
 
-	Responsible for building the Button JSON that can be parsed by the Discord API.
+    Responsible for building the Button JSON that can be parsed by the Discord API.
 ]=]
 function Button.Prototype.build(self: Button): JSON
     assert(self.style, `Button style is required.`)
@@ -117,17 +125,17 @@ function Button.Prototype.build(self: Button): JSON
 end
 
 --[=[
-	@within Builders.Button
+    @within Builders.Button
 
-	Responsible for creating a new Button.
+    Responsible for creating a new Button.
 
-	```luau
-	local button = Button.new({
-		style = "Primary",
-		label = "Click me!",
-		customId = "my_button"
-	})
-	```
+    ```luau
+    local button = Button.new({
+        style = "Primary",
+        label = "Click me!",
+        customId = "my_button"
+    })
+    ```
 ]=]
 function Button.Interface.new(resource: {
     style: apiTypes.ButtonStyle,
@@ -141,52 +149,52 @@ function Button.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop style apiTypes.ButtonStyle
-				@within Builders.Button
-				The style of the button that determines its appearance and behavior.
-			]=]
+                @prop style apiTypes.ButtonStyle
+                @within Builders.Button
+                The style of the button that determines its appearance and behavior.
+            ]=]
             style = nil,
 
             --[=[
-				@prop label string?
-				@within Builders.Button
-				The text that appears on the button.
-			]=]
+                @prop label string?
+                @within Builders.Button
+                The text that appears on the button.
+            ]=]
             label = nil,
 
             --[=[
-				@prop emoji Builders.Emoji?
-				@within Builders.Button
-				The emoji that appears on the button.
-			]=]
+                @prop emoji Builders.Emoji?
+                @within Builders.Button
+                The emoji that appears on the button.
+            ]=]
             emoji = nil,
 
             --[=[
-				@prop customId string?
-				@within Builders.Button
-				A developer-defined identifier for the button.
-			]=]
+                @prop customId string?
+                @within Builders.Button
+                A developer-defined identifier for the button.
+            ]=]
             customId = nil,
 
             --[=[
-				@prop skuId string?
-				@within Builders.Button
-				The SKU ID for purchase buttons.
-			]=]
+                @prop skuId string?
+                @within Builders.Button
+                The SKU ID for purchase buttons.
+            ]=]
             skuId = nil,
 
             --[=[
-				@prop url string?
-				@within Builders.Button
-				The URL that the button will navigate to when clicked.
-			]=]
+                @prop url string?
+                @within Builders.Button
+                The URL that the button will navigate to when clicked.
+            ]=]
             url = nil,
 
             --[=[
-				@prop disabled boolean?
-				@within Builders.Button
-				Whether the button is disabled and cannot be clicked.
-			]=]
+                @prop disabled boolean?
+                @within Builders.Button
+                Whether the button is disabled and cannot be clicked.
+            ]=]
             disabled = nil,
         } :: Button,
         {

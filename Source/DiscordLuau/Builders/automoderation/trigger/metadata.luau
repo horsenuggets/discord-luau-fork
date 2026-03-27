@@ -1,8 +1,16 @@
---[=[
-	@class Builders.TriggerMetadata
-	@__index Prototype
+--[[
 
-	Implementation of a discord auto moderation trigger metadata object as a luau builder.
+metadata
+
+Implementation of a discord auto moderation trigger metadata object as a luau builder.
+
+--]]
+
+--[=[
+    @class Builders.TriggerMetadata
+    @__index Prototype
+
+    Implementation of a discord auto moderation trigger metadata object as a luau builder.
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -13,9 +21,9 @@ TriggerMetadata.Prototype = {}
 TriggerMetadata.Interface = {}
 
 --[=[
-	@within Builders.TriggerMetadata
+    @within Builders.TriggerMetadata
 
-	Sets the list of keywords to match.
+    Sets the list of keywords to match.
 ]=]
 function TriggerMetadata.Prototype.setKeywordFilter(self: TriggerMetadata, keywordFilter: { string }): TriggerMetadata
     self.keywordFilter = keywordFilter
@@ -24,9 +32,9 @@ function TriggerMetadata.Prototype.setKeywordFilter(self: TriggerMetadata, keywo
 end
 
 --[=[
-	@within Builders.TriggerMetadata
+    @within Builders.TriggerMetadata
 
-	Sets the list of regular expressions to match.
+    Sets the list of regular expressions to match.
 ]=]
 function TriggerMetadata.Prototype.setRegexPatterns(self: TriggerMetadata, regexPatterns: { string }): TriggerMetadata
     self.regexPatterns = regexPatterns
@@ -35,9 +43,9 @@ function TriggerMetadata.Prototype.setRegexPatterns(self: TriggerMetadata, regex
 end
 
 --[=[
-	@within Builders.TriggerMetadata
+    @within Builders.TriggerMetadata
 
-	Sets the list of preset keywords to match.
+    Sets the list of preset keywords to match.
 ]=]
 function TriggerMetadata.Prototype.setPresets(
     self: TriggerMetadata,
@@ -49,9 +57,9 @@ function TriggerMetadata.Prototype.setPresets(
 end
 
 --[=[
-	@within Builders.TriggerMetadata
+    @within Builders.TriggerMetadata
 
-	Sets the list of allowed keywords.
+    Sets the list of allowed keywords.
 ]=]
 function TriggerMetadata.Prototype.setAllowList(self: TriggerMetadata, allowList: { string }): TriggerMetadata
     self.allowList = allowList
@@ -60,9 +68,9 @@ function TriggerMetadata.Prototype.setAllowList(self: TriggerMetadata, allowList
 end
 
 --[=[
-	@within Builders.TriggerMetadata
+    @within Builders.TriggerMetadata
 
-	Sets the maximum number of mentions allowed.
+    Sets the maximum number of mentions allowed.
 ]=]
 function TriggerMetadata.Prototype.setMentionTotalLimit(
     self: TriggerMetadata,
@@ -74,9 +82,9 @@ function TriggerMetadata.Prototype.setMentionTotalLimit(
 end
 
 --[=[
-	@within Builders.TriggerMetadata
+    @within Builders.TriggerMetadata
 
-	Sets whether raid protection is enabled.
+    Sets whether raid protection is enabled.
 ]=]
 function TriggerMetadata.Prototype.setMentionRaidProtectionEnabled(
     self: TriggerMetadata,
@@ -88,9 +96,9 @@ function TriggerMetadata.Prototype.setMentionRaidProtectionEnabled(
 end
 
 --[=[
-	@within Builders.TriggerMetadata
+    @within Builders.TriggerMetadata
 
-	Builds the trigger metadata object.
+    Builds the trigger metadata object.
 ]=]
 function TriggerMetadata.Prototype.build(self: TriggerMetadata): JSON
     local presets = {}
@@ -110,16 +118,16 @@ function TriggerMetadata.Prototype.build(self: TriggerMetadata): JSON
 end
 
 --[=[
-	@within Builders.TriggerMetadata
+    @within Builders.TriggerMetadata
 
-	Responsible for creating a new TriggerMetadata.
+    Responsible for creating a new TriggerMetadata.
 
-	```luau
-	local metadata = TriggerMetadata.new({
-		keywordFilter = {"bad", "words"},
-		mentionTotalLimit = 5
-	})
-	```
+    ```luau
+    local metadata = TriggerMetadata.new({
+        keywordFilter = {"bad", "words"},
+        mentionTotalLimit = 5
+    })
+    ```
 ]=]
 function TriggerMetadata.Interface.new(resource: {
     keywordFilter: { string }?,
@@ -132,45 +140,45 @@ function TriggerMetadata.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop keywordFilter {string}
-				@within Builders.TriggerMetadata
-				Array of strings that represent keywords that will trigger the rule.
-			]=]
+                @prop keywordFilter {string}
+                @within Builders.TriggerMetadata
+                Array of strings that represent keywords that will trigger the rule.
+            ]=]
             keywordFilter = nil,
 
             --[=[
-				@prop regexPatterns {string}
-				@within Builders.TriggerMetadata
-				Array of strings that represent regex patterns that will trigger the rule.
-			]=]
+                @prop regexPatterns {string}
+                @within Builders.TriggerMetadata
+                Array of strings that represent regex patterns that will trigger the rule.
+            ]=]
             regexPatterns = nil,
 
             --[=[
-				@prop presets {api_types.KeywordPresetType}
-				@within Builders.TriggerMetadata
-				Array of preset keyword types that will trigger the rule.
-			]=]
+                @prop presets {api_types.KeywordPresetType}
+                @within Builders.TriggerMetadata
+                Array of preset keyword types that will trigger the rule.
+            ]=]
             presets = nil,
 
             --[=[
-				@prop allowList {string}
-				@within Builders.TriggerMetadata
-				Array of strings that represent keywords that should not trigger the rule.
-			]=]
+                @prop allowList {string}
+                @within Builders.TriggerMetadata
+                Array of strings that represent keywords that should not trigger the rule.
+            ]=]
             allowList = nil,
 
             --[=[
-				@prop mentionTotalLimit number
-				@within Builders.TriggerMetadata
-				Total number of unique role and user mentions allowed per message.
-			]=]
+                @prop mentionTotalLimit number
+                @within Builders.TriggerMetadata
+                Total number of unique role and user mentions allowed per message.
+            ]=]
             mentionTotalLimit = nil,
 
             --[=[
-				@prop mentionRaidProtectionEnabled boolean
-				@within Builders.TriggerMetadata
-				Whether to automatically detect mention raids and remove them.
-			]=]
+                @prop mentionRaidProtectionEnabled boolean
+                @within Builders.TriggerMetadata
+                Whether to automatically detect mention raids and remove them.
+            ]=]
             mentionRaidProtectionEnabled = nil,
         } :: TriggerMetadata,
         {

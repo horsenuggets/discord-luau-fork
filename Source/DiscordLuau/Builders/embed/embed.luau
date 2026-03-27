@@ -1,10 +1,18 @@
+--[[
+
+embed
+
+Implementation of discords Embed object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Embed
-	@__index Prototype
+    @class Builders.Embed
+    @__index Prototype
 
-	Implementation of discords Embed object as a Luau builder.	
+    Implementation of discords Embed object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/message#embed-object
+    https://discord.com/developers/docs/resources/message#embed-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -25,9 +33,9 @@ Embed.Prototype = {}
 Embed.Interface = {}
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the title of the embed.
+    Set the title of the embed.
 ]=]
 function Embed.Prototype.setTitle(self: Embed, title: string): Embed
     assert(#title <= 256, "Title must be less than 256 characters")
@@ -39,9 +47,9 @@ function Embed.Prototype.setTitle(self: Embed, title: string): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Sets the Type of the embed.
+    Sets the Type of the embed.
 ]=]
 function Embed.Prototype.setType(self: Embed, type: apiTypes.EmbedType): Embed
     self.type = type
@@ -50,9 +58,9 @@ function Embed.Prototype.setType(self: Embed, type: apiTypes.EmbedType): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the description of the embed.
+    Set the description of the embed.
 ]=]
 function Embed.Prototype.setDescription(self: Embed, description: string): Embed
     assert(#description <= 4096, "Description must be less than 4096 characters")
@@ -64,9 +72,9 @@ function Embed.Prototype.setDescription(self: Embed, description: string): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the URL of the embed, URL will provide a hyperlinked title.
+    Set the URL of the embed, URL will provide a hyperlinked title.
 ]=]
 function Embed.Prototype.setUrl(self: Embed, url: string): Embed
     self.url = url
@@ -75,9 +83,9 @@ function Embed.Prototype.setUrl(self: Embed, url: string): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the timestamp of the embed, timestamps will exist at the bottom/footer of the embed.
+    Set the timestamp of the embed, timestamps will exist at the bottom/footer of the embed.
 ]=]
 function Embed.Prototype.setTimestamp(self: Embed, timestamp: stdPolyfills.DateTime): Embed
     self.timestamp = timestamp:toRfc3339()
@@ -86,14 +94,14 @@ function Embed.Prototype.setTimestamp(self: Embed, timestamp: stdPolyfills.DateT
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the color of the embed, colors are numbers and in luau you can render hex as: 0x<HEX>
+    Set the color of the embed, colors are numbers and in luau you can render hex as: 0x<HEX>
 
-	example:
-		- Red Color: 0xFF0000
-		- Green Color: 0x00FF00
-		- Blue Clor: 0x0000FF
+    example:
+        - Red Color: 0xFF0000
+        - Green Color: 0x00FF00
+        - Blue Clor: 0x0000FF
 ]=]
 function Embed.Prototype.setColor(self: Embed, color: number): Embed
     self.color = color
@@ -102,9 +110,9 @@ function Embed.Prototype.setColor(self: Embed, color: number): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the footer of the embed.
+    Set the footer of the embed.
 ]=]
 function Embed.Prototype.setFooter(self: Embed, footer: embedFooter.JSON): Embed
     self.footer = footer
@@ -113,9 +121,9 @@ function Embed.Prototype.setFooter(self: Embed, footer: embedFooter.JSON): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the image of the embed.
+    Set the image of the embed.
 ]=]
 function Embed.Prototype.setImage(self: Embed, image: embedImage.JSON): Embed
     self.image = image
@@ -124,9 +132,9 @@ function Embed.Prototype.setImage(self: Embed, image: embedImage.JSON): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the thumbnail of the embed.
+    Set the thumbnail of the embed.
 ]=]
 function Embed.Prototype.setThumbnail(self: Embed, thumbnail: embedThumbnail.JSON): Embed
     self.thumbnail = thumbnail
@@ -135,9 +143,9 @@ function Embed.Prototype.setThumbnail(self: Embed, thumbnail: embedThumbnail.JSO
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the video of the embed.
+    Set the video of the embed.
 ]=]
 function Embed.Prototype.setVideo(self: Embed, video: embedVideo.JSON): Embed
     self.video = video
@@ -146,9 +154,9 @@ function Embed.Prototype.setVideo(self: Embed, video: embedVideo.JSON): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the provider of the embed.
+    Set the provider of the embed.
 ]=]
 function Embed.Prototype.setProvider(self: Embed, provider: embedProvider.JSON): Embed
     self.provider = provider
@@ -157,9 +165,9 @@ function Embed.Prototype.setProvider(self: Embed, provider: embedProvider.JSON):
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Set the author of the embed.
+    Set the author of the embed.
 ]=]
 function Embed.Prototype.setAuthor(self: Embed, author: embedAuthor.JSON): Embed
     self.author = author
@@ -168,9 +176,9 @@ function Embed.Prototype.setAuthor(self: Embed, author: embedAuthor.JSON): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Add a field to the embeds.
+    Add a field to the embeds.
 ]=]
 function Embed.Prototype.addField(self: Embed, field: embedField.JSON): Embed
     assert(#self.fields <= 25, `Embeds can only house up to 25 fields!`)
@@ -181,9 +189,9 @@ function Embed.Prototype.addField(self: Embed, field: embedField.JSON): Embed
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Responsible for building the Embed JSON that can be parsed by the Discord API.
+    Responsible for building the Embed JSON that can be parsed by the Discord API.
 ]=]
 function Embed.Prototype.build(self: Embed): JSON
     assert(self.type, `Embed type must be set before building!`)
@@ -206,9 +214,9 @@ function Embed.Prototype.build(self: Embed): JSON
 end
 
 --[=[
-	@within Builders.Embed
+    @within Builders.Embed
 
-	Responsible for creating a new Embed.
+    Responsible for creating a new Embed.
 ]=]
 function Embed.Interface.new(resource: {
     title: string?,
@@ -228,82 +236,82 @@ function Embed.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop title string?
-				@within Builders.Embed
-				The title of the embed.
-			]=]
+                @prop title string?
+                @within Builders.Embed
+                The title of the embed.
+            ]=]
 
             --[=[
-				@prop type apiTypes.EmbedType?
-				@within Builders.Embed
-				The type of embed.
-			]=]
+                @prop type apiTypes.EmbedType?
+                @within Builders.Embed
+                The type of embed.
+            ]=]
 
             --[=[
-				@prop description string?
-				@within Builders.Embed
-				The description of the embed.
-			]=]
+                @prop description string?
+                @within Builders.Embed
+                The description of the embed.
+            ]=]
 
             --[=[
-				@prop url string?
-				@within Builders.Embed
-				The URL of the embed.
-			]=]
+                @prop url string?
+                @within Builders.Embed
+                The URL of the embed.
+            ]=]
 
             --[=[
-				@prop timestamp number?
-				@within Builders.Embed
-				The timestamp of the embed.
-			]=]
+                @prop timestamp number?
+                @within Builders.Embed
+                The timestamp of the embed.
+            ]=]
 
             --[=[
-				@prop color number?
-				@within Builders.Embed
-				The color of the embed.
-			]=]
+                @prop color number?
+                @within Builders.Embed
+                The color of the embed.
+            ]=]
 
             --[=[
-				@prop footer Builders.EmbedFooter?
-				@within Builders.Embed
-				The footer of the embed.
-			]=]
+                @prop footer Builders.EmbedFooter?
+                @within Builders.Embed
+                The footer of the embed.
+            ]=]
 
             --[=[
-				@prop image Builders.EmbedImage?
-				@within Builders.Embed
-				The image of the embed.
-			]=]
+                @prop image Builders.EmbedImage?
+                @within Builders.Embed
+                The image of the embed.
+            ]=]
 
             --[=[
-				@prop thumbnail Builders.EmbedThumbnail?
-				@within Builders.Embed
-				The thumbnail of the embed.
-			]=]
+                @prop thumbnail Builders.EmbedThumbnail?
+                @within Builders.Embed
+                The thumbnail of the embed.
+            ]=]
 
             --[=[
-				@prop video Builders.EmbedVideo?
-				@within Builders.Embed
-				The video of the embed.
-			]=]
+                @prop video Builders.EmbedVideo?
+                @within Builders.Embed
+                The video of the embed.
+            ]=]
 
             --[=[
-				@prop provider Builders.EmbedProvider?
-				@within Builders.Embed
-				The provider of the embed.
-			]=]
+                @prop provider Builders.EmbedProvider?
+                @within Builders.Embed
+                The provider of the embed.
+            ]=]
 
             --[=[
-				@prop author Builders.EmbedAuthor?
-				@within Builders.Embed
-				The author of the embed.
-			]=]
+                @prop author Builders.EmbedAuthor?
+                @within Builders.Embed
+                The author of the embed.
+            ]=]
 
             --[=[
-				@prop fields {Builders.EmbedField}
-				@within Builders.Embed
-				The fields in the embed.
-			]=]
+                @prop fields {Builders.EmbedField}
+                @within Builders.Embed
+                The fields in the embed.
+            ]=]
             fields = {},
         } :: Embed,
         {

@@ -1,16 +1,28 @@
+--[[
+
+text
+
+Behaviour class that implements the properties and methods specific to text-based channels
+in Discord. This behaviour is inherited by text channel classes to provide text messaging
+functionality. Text behaviours include: - Managing messages (create, delete, bulk delete)
+- Handling message history and retrieval - Managing pinned messages - Creating threads -
+Handling rate limits and message timestamps.
+
+--]]
+
 --[=[
-	@class Classes.TextBehaviour
-	@__index Prototype
+    @class Classes.TextBehaviour
+    @__index Prototype
 
-	Behaviour class that implements the properties and methods specific to text-based channels in Discord.
-	This behaviour is inherited by text channel classes to provide text messaging functionality.
+    Behaviour class that implements the properties and methods specific to text-based channels in Discord.
+    This behaviour is inherited by text channel classes to provide text messaging functionality.
 
-	Text behaviours include:
-	- Managing messages (create, delete, bulk delete)
-	- Handling message history and retrieval
-	- Managing pinned messages
-	- Creating threads
-	- Handling rate limits and message timestamps
+    Text behaviours include:
+    - Managing messages (create, delete, bulk delete)
+    - Handling message history and retrieval
+    - Managing pinned messages
+    - Creating threads
+    - Handling rate limits and message timestamps
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -28,9 +40,9 @@ TextBehaviour.Interface = {}
 TextBehaviour.Prototype = {}
 
 --[=[
-	@within Classes.TextBehaviour
-	Delete multiple messages in a single request. This endpoint can only be used on guild channels and requires the
-	MANAGE_MESSAGES permission.
+    @within Classes.TextBehaviour
+    Delete multiple messages in a single request. This endpoint can only be used on guild channels and requires the
+    MANAGE_MESSAGES permission.
 ]=]
 function TextBehaviour.Prototype.bulkDeleteMessagesAsync<T>(self: Channel<T>, messageIds: { string }, reason: string?)
     return future.Future.new(function()
@@ -49,8 +61,8 @@ function TextBehaviour.Prototype.bulkDeleteMessagesAsync<T>(self: Channel<T>, me
 end
 
 --[=[
-	@within Classes.TextBehaviour
-	Gets messages from a channel. Returns an array of message objects.
+    @within Classes.TextBehaviour
+    Gets messages from a channel. Returns an array of message objects.
 ]=]
 function TextBehaviour.Prototype.getMessagesAsync<T>(
     self: Channel<T>,
@@ -84,8 +96,8 @@ function TextBehaviour.Prototype.getMessagesAsync<T>(
 end
 
 --[=[
-	@within Classes.TextBehaviour
-	Gets a specific message from a channel using its ID. Returns a message object.
+    @within Classes.TextBehaviour
+    Gets a specific message from a channel using its ID. Returns a message object.
 ]=]
 function TextBehaviour.Prototype.getMessageAsync<T>(self: Channel<T>, messageId: apiTypes.Snowflake)
     return future.Future.new(function()
@@ -100,8 +112,8 @@ function TextBehaviour.Prototype.getMessageAsync<T>(self: Channel<T>, messageId:
 end
 
 --[=[
-	@within Classes.TextBehaviour
-	Creates a new message in the channel. Returns the created message object.
+    @within Classes.TextBehaviour
+    Creates a new message in the channel. Returns the created message object.
 ]=]
 function TextBehaviour.Prototype.createMessageAsync<T>(self: Channel<T>, json: builders.messageJSON)
     return future.Future.new(function()
@@ -118,8 +130,8 @@ function TextBehaviour.Prototype.createMessageAsync<T>(self: Channel<T>, json: b
 end
 
 --[=[
-	@within Classes.TextBehaviour
-	Gets all pinned messages in the channel. Returns an array of message objects.
+    @within Classes.TextBehaviour
+    Gets all pinned messages in the channel. Returns an array of message objects.
 ]=]
 function TextBehaviour.Prototype.getPinnedMessagesAsync<T>(self: Channel<T>)
     return future.Future.new(function()
@@ -140,8 +152,8 @@ function TextBehaviour.Prototype.getPinnedMessagesAsync<T>(self: Channel<T>)
 end
 
 --[=[
-	@within Classes.TextBehaviour
-	Pins a message in the channel.
+    @within Classes.TextBehaviour
+    Pins a message in the channel.
 ]=]
 function TextBehaviour.Prototype.pinMessageAsync<T>(self: Channel<T>, messageId: string)
     return future.Future.new(function()
@@ -156,8 +168,8 @@ function TextBehaviour.Prototype.pinMessageAsync<T>(self: Channel<T>, messageId:
 end
 
 --[=[
-	@within Classes.TextBehaviour
-	Unpins a message from the channel.
+    @within Classes.TextBehaviour
+    Unpins a message from the channel.
 ]=]
 function TextBehaviour.Prototype.unpinMessageAsync<T>(self: Channel<T>, messageId: string, reason: string?)
     return future.Future.new(function()
@@ -172,8 +184,8 @@ function TextBehaviour.Prototype.unpinMessageAsync<T>(self: Channel<T>, messageI
 end
 
 --[=[
-	@within Classes.TextBehaviour
-	Starts a new thread in the channel without an associated message. Returns the thread ID.
+    @within Classes.TextBehaviour
+    Starts a new thread in the channel without an associated message. Returns the thread ID.
 ]=]
 function TextBehaviour.Prototype.startThread<T>(self: Channel<T>, json: builders.noMessageThreadJSON)
     return future.Future.new(function()
@@ -188,42 +200,42 @@ function TextBehaviour.Prototype.startThread<T>(self: Channel<T>, json: builders
 end
 
 --[=[
-	@within Classes.TextBehaviour
-	@private
+    @within Classes.TextBehaviour
+    @private
 
-	Inherits properties from the channel data into the class instance.
-	This is typically called during object creation or updates.
+    Inherits properties from the channel data into the class instance.
+    This is typically called during object creation or updates.
 ]=]
 function TextBehaviour.Interface.inheritProperties(class: any, channelData: apiTypes.ChannelObject)
     --[=[
-		@within Classes.TextBehaviour
-		@prop lastMessageId string?
-		The ID of the last message sent in this channel.
-	]=]
+        @within Classes.TextBehaviour
+        @prop lastMessageId string?
+        The ID of the last message sent in this channel.
+    ]=]
     class.lastMessageId = channelData.last_message_id
 
     --[=[
-		@within Classes.TextBehaviour
-		@prop lastPinTimestamp DateTime?
-		The timestamp of the last pinned message in this channel.
-	]=]
+        @within Classes.TextBehaviour
+        @prop lastPinTimestamp DateTime?
+        The timestamp of the last pinned message in this channel.
+    ]=]
     class.lastPinTimestamp = channelData.last_pin_timestamp
         and stdPolyfills.datetime.fromIsoDate(channelData.last_pin_timestamp)
 
     --[=[
-		@within Classes.TextBehaviour
-		@prop rateLimitPerUser number
-		The rate limit per user for sending messages in this channel.
-	]=]
+        @within Classes.TextBehaviour
+        @prop rateLimitPerUser number
+        The rate limit per user for sending messages in this channel.
+    ]=]
     class.rateLimitPerUser = channelData.rate_limit_per_user
 end
 
 --[=[
-	@within Classes.TextBehaviour
-	@private
+    @within Classes.TextBehaviour
+    @private
 
-	Inherits methods from the TextBehaviour prototype into the class instance.
-	This is typically called during object creation or updates.
+    Inherits methods from the TextBehaviour prototype into the class instance.
+    This is typically called during object creation or updates.
 ]=]
 function TextBehaviour.Interface.inheritMethods(class: any)
     for key, value in TextBehaviour.Prototype do

@@ -1,3 +1,11 @@
+--[[
+
+attachmen.spec
+
+Tests for the attachmen module.
+
+--]]
+
 local attachments = require("../src/attachment")
 local frktest = require("../../../lune_packages/frktest")
 

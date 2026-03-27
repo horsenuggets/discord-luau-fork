@@ -1,10 +1,18 @@
+--[[
+
+attachment
+
+Implementation of the Discord Attachment class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Attachment
-	@__index Prototype
+    @class Classes.Attachment
+    @__index Prototype
 
-	Implementation of the Discord Attachment class in Luau
+    Implementation of the Discord Attachment class in Luau
 
-	https://discord.com/developers/docs/resources/message#attachment-object
+    https://discord.com/developers/docs/resources/message#attachment-object
 ]=]
 
 local apiTypes = require("../ApiTypes")
@@ -17,131 +25,131 @@ Attachment.Interface = {}
 Attachment.Prototype = {}
 
 --[=[
-	@within Classes.Attachment
-	@private
+    @within Classes.Attachment
+    @private
 
-	Responsible for syncing data to this attachment object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this attachment object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Attachment.Prototype.sync(self: Attachment, attachmentData: apiTypes.AttachmentObject)
     --[=[
-		@prop id string
-		@within Classes.Attachment
+        @prop id string
+        @within Classes.Attachment
 
-		The unique identifier for this attachment
-	]=]
+        The unique identifier for this attachment
+    ]=]
     self.id = attachmentData.id
 
     --[=[
-		@prop filename string
-		@within Classes.Attachment
+        @prop filename string
+        @within Classes.Attachment
 
-		Name of the attached file
-	]=]
+        Name of the attached file
+    ]=]
     self.filename = attachmentData.filename
 
     --[=[
-		@prop title string?
-		@within Classes.Attachment
+        @prop title string?
+        @within Classes.Attachment
 
-		Title of the attached file (if provided)
-	]=]
+        Title of the attached file (if provided)
+    ]=]
     self.title = attachmentData.title
 
     --[=[
-		@prop description string?
-		@within Classes.Attachment
+        @prop description string?
+        @within Classes.Attachment
 
-		Description of the attached file (if provided)
-	]=]
+        Description of the attached file (if provided)
+    ]=]
     self.description = attachmentData.description
 
     --[=[
-		@prop contentType string?
-		@within Classes.Attachment
+        @prop contentType string?
+        @within Classes.Attachment
 
-		The media type/MIME type of the file
-	]=]
+        The media type/MIME type of the file
+    ]=]
     self.contentType = attachmentData.content_type
 
     --[=[
-		@prop size number
-		@within Classes.Attachment
+        @prop size number
+        @within Classes.Attachment
 
-		Size of the file in bytes
-	]=]
+        Size of the file in bytes
+    ]=]
     self.size = attachmentData.size
 
     --[=[
-		@prop url string
-		@within Classes.Attachment
+        @prop url string
+        @within Classes.Attachment
 
-		Source URL of the file
-	]=]
+        Source URL of the file
+    ]=]
     self.url = attachmentData.url
 
     --[=[
-		@prop proxyUrl string
-		@within Classes.Attachment
+        @prop proxyUrl string
+        @within Classes.Attachment
 
-		A proxied URL of the file
-	]=]
+        A proxied URL of the file
+    ]=]
     self.proxyUrl = attachmentData.proxy_url
 
     --[=[
-		@prop height number?
-		@within Classes.Attachment
+        @prop height number?
+        @within Classes.Attachment
 
-		Height of the file if it is an image
-	]=]
+        Height of the file if it is an image
+    ]=]
     self.height = attachmentData.height
 
     --[=[
-		@prop width number?
-		@within Classes.Attachment
+        @prop width number?
+        @within Classes.Attachment
 
-		Width of the file if it is an image
-	]=]
+        Width of the file if it is an image
+    ]=]
     self.width = attachmentData.width
 
     --[=[
-		@prop ephemeral boolean?
-		@within Classes.Attachment
+        @prop ephemeral boolean?
+        @within Classes.Attachment
 
-		Whether this attachment is ephemeral
-	]=]
+        Whether this attachment is ephemeral
+    ]=]
     self.ephemeral = attachmentData.ephemeral
 
     --[=[
-		@prop durationSeconds number?
-		@within Classes.Attachment
+        @prop durationSeconds number?
+        @within Classes.Attachment
 
-		Duration of the audio file in seconds
-	]=]
+        Duration of the audio file in seconds
+    ]=]
     self.durationSeconds = attachmentData.duration_secs
 
     --[=[
-		@prop waveform string?
-		@within Classes.Attachment
+        @prop waveform string?
+        @within Classes.Attachment
 
-		Base64 encoded waveform data for audio files
-	]=]
+        Base64 encoded waveform data for audio files
+    ]=]
     self.waveform = attachmentData.waveform
 
     --[=[
-		@prop flags Classes.AttachmentBitflag?
-		@within Classes.Attachment
+        @prop flags Classes.AttachmentBitflag?
+        @within Classes.Attachment
 
-		Attachment flags that describe extra features or properties
-	]=]
+        Attachment flags that describe extra features or properties
+    ]=]
     self.flags = attachmentData.flags and attachmentBitflag.new(attachmentData.flags)
 end
 
 --[=[
-	@within Classes.Attachment
-	@private
+    @within Classes.Attachment
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Attachment.Interface.new(attachmentData: apiTypes.AttachmentObject): Attachment
     local self = setmetatable({} :: Attachment, { __index = Attachment.Prototype })

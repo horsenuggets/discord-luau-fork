@@ -1,10 +1,18 @@
+--[[
+
+role
+
+Implementation of a Discord Guild Role as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Role
-	@__index Prototype
+    @class Builders.Role
+    @__index Prototype
 
-	Implementation of a Discord Guild Role as a Luau builder.
+    Implementation of a Discord Guild Role as a Luau builder.
 
-	https://discord.com/developers/docs/resources/guild#create-guild-role-json-params
+    https://discord.com/developers/docs/resources/guild#create-guild-role-json-params
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -18,9 +26,9 @@ Role.Prototype = {}
 Role.Interface = {}
 
 --[=[
-	@within Builders.Role
+    @within Builders.Role
 
-	Sets the name of the role, optionally this could be defined when creating the Role Builder as well.
+    Sets the name of the role, optionally this could be defined when creating the Role Builder as well.
 ]=]
 function Role.Prototype.setName(self: Role, roleName: string): Role
     assert(#roleName <= 100, `Role name must be less than 100 characters.`)
@@ -34,9 +42,9 @@ function Role.Prototype.setName(self: Role, roleName: string): Role
 end
 
 --[=[
-	@within Builders.Role
+    @within Builders.Role
 
-	Sets the permissions of the role, optionally this could be defined when creating the Role Builder as well.
+    Sets the permissions of the role, optionally this could be defined when creating the Role Builder as well.
 ]=]
 function Role.Prototype.setPermissions(self: Role, ...: apiTypes.Permissions): Role
     for _, permissionType in { ... } do
@@ -47,9 +55,9 @@ function Role.Prototype.setPermissions(self: Role, ...: apiTypes.Permissions): R
 end
 
 --[=[
-	@within Builders.Role
+    @within Builders.Role
 
-	Sets the color of the role. Colors are presennted as a hexadecimal number.
+    Sets the color of the role. Colors are presennted as a hexadecimal number.
 ]=]
 function Role.Prototype.setColor(self: Role, color: number): Role
     self.color = color
@@ -58,9 +66,9 @@ function Role.Prototype.setColor(self: Role, color: number): Role
 end
 
 --[=[
-	@within Builders.Role
+    @within Builders.Role
 
-	Sets the role to be hoisted. A hoisted role is displayed in the user listing, vs's an unhoisted role which is not displayed at all.
+    Sets the role to be hoisted. A hoisted role is displayed in the user listing, vs's an unhoisted role which is not displayed at all.
 ]=]
 function Role.Prototype.setHoisted(self: Role, isHoisted: boolean): Role
     self.isHoisted = isHoisted
@@ -69,9 +77,9 @@ function Role.Prototype.setHoisted(self: Role, isHoisted: boolean): Role
 end
 
 --[=[
-	@within Builders.Role
+    @within Builders.Role
 
-	Sets the role to be mentionable through the @ mention.
+    Sets the role to be mentionable through the @ mention.
 ]=]
 function Role.Prototype.setMentionable(self: Role, isMentionable: boolean): Role
     self.isMentionable = isMentionable
@@ -80,9 +88,9 @@ function Role.Prototype.setMentionable(self: Role, isMentionable: boolean): Role
 end
 
 --[=[
-	@within Builders.Role
+    @within Builders.Role
 
-	Responsible for buillding the role object that the Discord API can understand.
+    Responsible for buillding the role object that the Discord API can understand.
 ]=]
 function Role.Prototype.build(self: Role): JSON
     local permissionBits = {}
@@ -105,17 +113,17 @@ function Role.Prototype.build(self: Role): JSON
 end
 
 --[=[
-	@within Builders.Role
+    @within Builders.Role
 
-	Constructs a new Role Builder.
+    Constructs a new Role Builder.
 
-	```luau
-	local role = Role.new("Role Name", { permissions.Permission.SendMessages })
-		:setColor(0xFFFFFF)
-		:setHoisted(true)
-		:setMentionable(true)
-		:build()
-	```
+    ```luau
+    local role = Role.new("Role Name", { permissions.Permission.SendMessages })
+        :setColor(0xFFFFFF)
+        :setHoisted(true)
+        :setMentionable(true)
+        :build()
+    ```
 ]=]
 function Role.Interface.new(resource: {
     roleName: string?,
@@ -124,47 +132,47 @@ function Role.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop name string?
-				@within Builders.Role
-				The name of the role.
-			]=]
+                @prop name string?
+                @within Builders.Role
+                The name of the role.
+            ]=]
 
             --[=[
-				@prop permissionFlags { apiTypes.Permissions }
-				@within Builders.Role
-				The permissions assigned to the role.
-			]=]
+                @prop permissionFlags { apiTypes.Permissions }
+                @within Builders.Role
+                The permissions assigned to the role.
+            ]=]
             permissionFlags = {},
 
             --[=[
-				@prop color number?
-				@within Builders.Role
-				The color of the role represented as a hexadecimal number.
-			]=]
+                @prop color number?
+                @within Builders.Role
+                The color of the role represented as a hexadecimal number.
+            ]=]
 
             --[=[
-				@prop isHoisted boolean?
-				@within Builders.Role
-				Whether the role is displayed separately in the member list.
-			]=]
+                @prop isHoisted boolean?
+                @within Builders.Role
+                Whether the role is displayed separately in the member list.
+            ]=]
 
             --[=[
-				@prop icon string?
-				@within Builders.Role
-				The icon of the role.
-			]=]
+                @prop icon string?
+                @within Builders.Role
+                The icon of the role.
+            ]=]
 
             --[=[
-				@prop unicodeEmoji string?
-				@within Builders.Role
-				The unicode emoji of the role.
-			]=]
+                @prop unicodeEmoji string?
+                @within Builders.Role
+                The unicode emoji of the role.
+            ]=]
 
             --[=[
-				@prop isMentionable boolean?
-				@within Builders.Role
-				Whether the role can be mentioned by users.
-			]=]
+                @prop isMentionable boolean?
+                @within Builders.Role
+                Whether the role can be mentioned by users.
+            ]=]
         } :: Role,
         { __index = Role.Prototype }
     )

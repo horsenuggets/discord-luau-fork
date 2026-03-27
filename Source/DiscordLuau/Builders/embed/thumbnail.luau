@@ -1,10 +1,18 @@
+--[[
+
+thumbnail
+
+Implementation of discords Thumbnail object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Thumbnail
-	@__index Prototype
+    @class Builders.Thumbnail
+    @__index Prototype
 
-	Implementation of discords Thumbnail object as a Luau builder.	
+    Implementation of discords Thumbnail object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/message#embed-object-embed-thumbnail-structure
+    https://discord.com/developers/docs/resources/message#embed-object-embed-thumbnail-structure
 ]=]
 
 local Thumbnail = {}
@@ -13,9 +21,9 @@ Thumbnail.Prototype = {}
 Thumbnail.Interface = {}
 
 --[=[
-	@within Builders.Thumbnail
+    @within Builders.Thumbnail
 
-	Set the image url for this embed.
+    Set the image url for this embed.
 ]=]
 function Thumbnail.Prototype.setUrl(self: Thumbnail, url: string, proxyUrl: string?): Thumbnail
     self.url = url
@@ -25,9 +33,9 @@ function Thumbnail.Prototype.setUrl(self: Thumbnail, url: string, proxyUrl: stri
 end
 
 --[=[
-	@within Builders.Thumbnail
+    @within Builders.Thumbnail
 
-	Set the image height for this embed.
+    Set the image height for this embed.
 ]=]
 function Thumbnail.Prototype.setHeight(self: Thumbnail, height: number): Thumbnail
     self.height = height
@@ -36,9 +44,9 @@ function Thumbnail.Prototype.setHeight(self: Thumbnail, height: number): Thumbna
 end
 
 --[=[
-	@within Builders.Thumbnail
+    @within Builders.Thumbnail
 
-	Set the image width for this embed.
+    Set the image width for this embed.
 ]=]
 function Thumbnail.Prototype.setWidth(self: Thumbnail, width: number): Thumbnail
     self.width = width
@@ -47,9 +55,9 @@ function Thumbnail.Prototype.setWidth(self: Thumbnail, width: number): Thumbnail
 end
 
 --[=[
-	@within Builders.Thumbnail
+    @within Builders.Thumbnail
 
-	Responsible for building the Thumbnail JSON that can be parsed by the Discord API.
+    Responsible for building the Thumbnail JSON that can be parsed by the Discord API.
 ]=]
 function Thumbnail.Prototype.build(self: Thumbnail): JSON
     return {
@@ -61,17 +69,17 @@ function Thumbnail.Prototype.build(self: Thumbnail): JSON
 end
 
 --[=[
-	@within Builders.Thumbnail
+    @within Builders.Thumbnail
 
-	Responsible for creating a new Thumbnail.
+    Responsible for creating a new Thumbnail.
 
-	```luau
-	local thumbnail = Thumbnail.new({
-		url = "https://example.com/image.png",
-		height = 100,
-		width = 100
-	})
-	```
+    ```luau
+    local thumbnail = Thumbnail.new({
+        url = "https://example.com/image.png",
+        height = 100,
+        width = 100
+    })
+    ```
 ]=]
 function Thumbnail.Interface.new(resource: {
     url: string,
@@ -82,31 +90,31 @@ function Thumbnail.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop url string
-				@within Builders.Thumbnail
-				The source url of the thumbnail.
-			]=]
+                @prop url string
+                @within Builders.Thumbnail
+                The source url of the thumbnail.
+            ]=]
             url = nil,
 
             --[=[
-				@prop proxyUrl string?
-				@within Builders.Thumbnail
-				A proxied url of the thumbnail.
-			]=]
+                @prop proxyUrl string?
+                @within Builders.Thumbnail
+                A proxied url of the thumbnail.
+            ]=]
             proxyUrl = nil,
 
             --[=[
-				@prop height number?
-				@within Builders.Thumbnail
-				The height of the thumbnail.
-			]=]
+                @prop height number?
+                @within Builders.Thumbnail
+                The height of the thumbnail.
+            ]=]
             height = nil,
 
             --[=[
-				@prop width number?
-				@within Builders.Thumbnail
-				The width of the thumbnail.
-			]=]
+                @prop width number?
+                @within Builders.Thumbnail
+                The width of the thumbnail.
+            ]=]
             width = nil,
         } :: Thumbnail,
         {

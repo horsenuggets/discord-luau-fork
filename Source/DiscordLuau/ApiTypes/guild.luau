@@ -1,5 +1,13 @@
+--[[
+
+guild
+
+Type definitions for Discord guild API objects.
+
+--]]
+
 --[=[
-	@class Types.guild
+    @class Types.guild
 ]=]
 
 local util = require("../Utilities")

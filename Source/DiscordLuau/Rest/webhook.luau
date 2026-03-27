@@ -1,3 +1,11 @@
+--[[
+
+webhook
+
+REST API methods for Discord webhook endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.webhook
+    @class Rest.webhook
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/webhook
+    - https://discord.com/developers/docs/resources/webhook
 ]=]
 local webhook = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#create-webhook
+    https://discord.com/developers/docs/resources/webhook#create-webhook
 ]=]
 function webhook.createWebhookAsync(
     instance: request.Request,
@@ -42,9 +50,9 @@ function webhook.createWebhookAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#get-channel-webhooks
+    https://discord.com/developers/docs/resources/webhook#get-channel-webhooks
 ]=]
 function webhook.getChannelWebhooksAsync(
     instance: request.Request,
@@ -65,9 +73,9 @@ function webhook.getChannelWebhooksAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#get-guild-webhooks
+    https://discord.com/developers/docs/resources/webhook#get-guild-webhooks
 ]=]
 function webhook.getGuildWebhooksAsync(
     instance: request.Request,
@@ -88,9 +96,9 @@ function webhook.getGuildWebhooksAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#get-webhook
+    https://discord.com/developers/docs/resources/webhook#get-webhook
 ]=]
 function webhook.getWebhookAsync(
     instance: request.Request,
@@ -111,9 +119,9 @@ function webhook.getWebhookAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#get-webhook-with-token
+    https://discord.com/developers/docs/resources/webhook#get-webhook-with-token
 ]=]
 function webhook.getWebhookWithTokenAsync(
     instance: request.Request,
@@ -135,9 +143,9 @@ function webhook.getWebhookWithTokenAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#modify-webhook
+    https://discord.com/developers/docs/resources/webhook#modify-webhook
 ]=]
 function webhook.modifyWebhookAsync(
     instance: request.Request,
@@ -162,9 +170,9 @@ function webhook.modifyWebhookAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#modify-webhook-with-token
+    https://discord.com/developers/docs/resources/webhook#modify-webhook-with-token
 ]=]
 function webhook.modifyWebhookWithTokenAsync(
     instance: request.Request,
@@ -190,9 +198,9 @@ function webhook.modifyWebhookWithTokenAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#delete-webhook
+    https://discord.com/developers/docs/resources/webhook#delete-webhook
 ]=]
 function webhook.deleteWebhookAsync(
     instance: request.Request,
@@ -215,9 +223,9 @@ function webhook.deleteWebhookAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#delete-webhook-with-token
+    https://discord.com/developers/docs/resources/webhook#delete-webhook-with-token
 ]=]
 function webhook.deleteWebhookWithTokenAsync(
     instance: request.Request,
@@ -241,9 +249,9 @@ function webhook.deleteWebhookWithTokenAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#execute-webhook
+    https://discord.com/developers/docs/resources/webhook#execute-webhook
 ]=]
 function webhook.executeWebhookAsync(
     instance: request.Request,
@@ -274,9 +282,9 @@ function webhook.executeWebhookAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#get-webhook-message
+    https://discord.com/developers/docs/resources/webhook#get-webhook-message
 ]=]
 function webhook.getWebhookMessageAsync(
     instance: request.Request,
@@ -304,9 +312,9 @@ function webhook.getWebhookMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#edit-webhook-message
+    https://discord.com/developers/docs/resources/webhook#edit-webhook-message
 ]=]
 function webhook.editWebhookMessageAsync(
     instance: request.Request,
@@ -336,9 +344,9 @@ function webhook.editWebhookMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/webhook#delete-webhook-message
+    https://discord.com/developers/docs/resources/webhook#delete-webhook-message
 ]=]
 function webhook.deleteWebhookMessageAsync(
     instance: request.Request,

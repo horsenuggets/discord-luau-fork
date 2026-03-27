@@ -1,3 +1,11 @@
+--[[
+
+message
+
+REST API methods for Discord message endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.message
+    @class Rest.message
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/message
+    - https://discord.com/developers/docs/resources/message
 ]=]
 local message = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#get-channel-messages
+    https://discord.com/developers/docs/resources/message#get-channel-messages
 ]=]
 function message.getChannelMessagesAsync(
     instance: request.Request,
@@ -49,9 +57,9 @@ function message.getChannelMessagesAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#get-channel-message
+    https://discord.com/developers/docs/resources/message#get-channel-message
 ]=]
 function message.getChannelMessageAsync(
     instance: request.Request,
@@ -73,9 +81,9 @@ function message.getChannelMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#create-message
+    https://discord.com/developers/docs/resources/message#create-message
 ]=]
 function message.createMessageAsync(
     instance: request.Request,
@@ -98,9 +106,9 @@ function message.createMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#crosspost-message
+    https://discord.com/developers/docs/resources/message#crosspost-message
 ]=]
 function message.crosspostMessageAsync(
     instance: request.Request,
@@ -122,9 +130,9 @@ function message.crosspostMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#create-reaction
+    https://discord.com/developers/docs/resources/message#create-reaction
 ]=]
 function message.createReactionAsync(
     instance: request.Request,
@@ -154,9 +162,9 @@ function message.createReactionAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#delete-own-reaction
+    https://discord.com/developers/docs/resources/message#delete-own-reaction
 ]=]
 function message.deleteOwnReactionAsync(
     instance: request.Request,
@@ -186,9 +194,9 @@ function message.deleteOwnReactionAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#delete-user-reaction
+    https://discord.com/developers/docs/resources/message#delete-user-reaction
 ]=]
 function message.deleteUserReactionAsync(
     instance: request.Request,
@@ -220,9 +228,9 @@ function message.deleteUserReactionAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#get-reactions
+    https://discord.com/developers/docs/resources/message#get-reactions
 ]=]
 function message.getReactionsAsync(
     instance: request.Request,
@@ -256,9 +264,9 @@ function message.getReactionsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#delete-all-reactions
+    https://discord.com/developers/docs/resources/message#delete-all-reactions
 ]=]
 function message.deleteAllReactionsAsync(
     instance: request.Request,
@@ -280,9 +288,9 @@ function message.deleteAllReactionsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#delete-all-reactions-for-emoji
+    https://discord.com/developers/docs/resources/message#delete-all-reactions-for-emoji
 ]=]
 function message.deleteAllReactionsForEmojiAsync(
     instance: request.Request,
@@ -312,9 +320,9 @@ function message.deleteAllReactionsForEmojiAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#edit-message
+    https://discord.com/developers/docs/resources/message#edit-message
 ]=]
 function message.editMessageAsync(
     instance: request.Request,
@@ -338,9 +346,9 @@ function message.editMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#delete-message
+    https://discord.com/developers/docs/resources/message#delete-message
 ]=]
 function message.deleteMessageAsync(
     instance: request.Request,
@@ -364,9 +372,9 @@ function message.deleteMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/message#bulk-delete-messages
+    https://discord.com/developers/docs/resources/message#bulk-delete-messages
 ]=]
 function message.bulkDeleteMessagesAsync(
     instance: request.Request,

@@ -1,13 +1,22 @@
+--[[
+
+overwrite
+
+Implementation of discords Permission Overwrite object as a Luau builder. See permissions
+for more information about the allow and deny fields.
+
+--]]
+
 --[=[
-	@class Builders.Overwrite
-	@__index Prototype
+    @class Builders.Overwrite
+    @__index Prototype
 
-	Implementation of discords Permission Overwrite object as a Luau builder.	
+    Implementation of discords Permission Overwrite object as a Luau builder.    
 
-	See permissions for more information about the allow and deny fields.
+    See permissions for more information about the allow and deny fields.
 
-	https://discord.com/developers/docs/topics/permissions#permissions
-	https://discord.com/developers/docs/resources/channel#overwrite-object
+    https://discord.com/developers/docs/topics/permissions#permissions
+    https://discord.com/developers/docs/resources/channel#overwrite-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -20,9 +29,9 @@ Overwrite.Prototype = {}
 Overwrite.Interface = {}
 
 --[=[
-	@within Builders.Overwrite
+    @within Builders.Overwrite
 
-	Responsible for allowing specific permissions to be set on either a Role of a Member.
+    Responsible for allowing specific permissions to be set on either a Role of a Member.
 ]=]
 function Overwrite.Prototype.allowPermissions(self: Overwrite, ...: apiTypes.Permissions): Overwrite
     for _, apiTypes in { ... } do
@@ -33,9 +42,9 @@ function Overwrite.Prototype.allowPermissions(self: Overwrite, ...: apiTypes.Per
 end
 
 --[=[
-	@within Builders.Overwrite
+    @within Builders.Overwrite
 
-	Responsible for denying specific permissions to be set on either a Role of a Member.
+    Responsible for denying specific permissions to be set on either a Role of a Member.
 ]=]
 function Overwrite.Prototype.denyPermissions(self: Overwrite, ...: apiTypes.Permissions): Overwrite
     for _, apiTypes in { ... } do
@@ -46,9 +55,9 @@ function Overwrite.Prototype.denyPermissions(self: Overwrite, ...: apiTypes.Perm
 end
 
 --[=[
-	@within Builders.Overwrite
+    @within Builders.Overwrite
 
-	Sets the permission type for this builder.
+    Sets the permission type for this builder.
 ]=]
 function Overwrite.Prototype.setPermissionType(self: Overwrite, type: PermissionOverwriteType): Overwrite
     self.type = type
@@ -57,9 +66,9 @@ function Overwrite.Prototype.setPermissionType(self: Overwrite, type: Permission
 end
 
 --[=[
-	@within Builders.Overwrite
+    @within Builders.Overwrite
 
-	Responsible for building the OverwriteObject JSON that can be parsed by the Discord API.
+    Responsible for building the OverwriteObject JSON that can be parsed by the Discord API.
 ]=]
 function Overwrite.Prototype.build(self: Overwrite): JSON
     local allowPermissionBits = {}
@@ -86,9 +95,9 @@ function Overwrite.Prototype.build(self: Overwrite): JSON
 end
 
 --[=[
-	@within Builders.Overwrite
+    @within Builders.Overwrite
 
-	Responsible for creating a new Overwrite.
+    Responsible for creating a new Overwrite.
 ]=]
 function Overwrite.Interface.new(resource: {
     permissionType: PermissionOverwriteType,
@@ -98,24 +107,24 @@ function Overwrite.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop allowedPermissionFlags {apiTypes.Permissions}
-				@within Builders.Overwrite
-				Array of permission flags that are allowed for this overwrite.
-			]=]
+                @prop allowedPermissionFlags {apiTypes.Permissions}
+                @within Builders.Overwrite
+                Array of permission flags that are allowed for this overwrite.
+            ]=]
             allowedPermissionFlags = resource.allowFlags or {},
 
             --[=[
-				@prop deniedPermissionFlags {apiTypes.Permissions}
-				@within Builders.Overwrite
-				Array of permission flags that are denied for this overwrite.
-			]=]
+                @prop deniedPermissionFlags {apiTypes.Permissions}
+                @within Builders.Overwrite
+                Array of permission flags that are denied for this overwrite.
+            ]=]
             deniedPermissionFlags = resource.denyFlags or {},
 
             --[=[
-				@prop type PermissionOverwriteType
-				@within Builders.Overwrite
-				The type of overwrite, either "role" or "member".
-			]=]
+                @prop type PermissionOverwriteType
+                @within Builders.Overwrite
+                The type of overwrite, either "role" or "member".
+            ]=]
             type = resource.permissionType,
         } :: Overwrite,
         {
@@ -145,11 +154,11 @@ function Overwrite.Interface.new(resource: {
 end
 
 --[=[
-	@within Builders.Overwrite
+    @within Builders.Overwrite
 
-	Responsible for creating a new Overwrite from an existing ID/Object.
+    Responsible for creating a new Overwrite from an existing ID/Object.
 
-	Supports properties that the .new constructor doesn't support. (id)
+    Supports properties that the .new constructor doesn't support. (id)
 ]=]
 function Overwrite.Interface.fromId(resource: {
     permissionId: apiTypes.Snowflake,
@@ -160,10 +169,10 @@ function Overwrite.Interface.fromId(resource: {
     local self = Overwrite.Interface.new(resource)
 
     --[=[
-		@prop id string
-		@within Builders.Overwrite
-		The ID of the role or user that the overwrite belongs to.
-	]=]
+        @prop id string
+        @within Builders.Overwrite
+        The ID of the role or user that the overwrite belongs to.
+    ]=]
     self.id = resource.permissionId
 
     return self

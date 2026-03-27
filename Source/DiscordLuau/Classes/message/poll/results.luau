@@ -1,10 +1,18 @@
+--[[
+
+results
+
+Implementation of the Discord Results class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Results
-	@__index Prototype
+    @class Classes.Results
+    @__index Prototype
 
-	Implementation of the Discord Results class in Luau
+    Implementation of the Discord Results class in Luau
 
-	https://discord.com/developers/docs/resources/poll#poll-results-object-poll-results-object-structure
+    https://discord.com/developers/docs/resources/poll#poll-results-object-poll-results-object-structure
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -17,11 +25,11 @@ Results.Interface = {}
 Results.Prototype = {}
 
 --[=[
-	@within Classes.Results
-	@private
+    @within Classes.Results
+    @private
 
-	Responsible for syncing data to this results object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this results object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Results.Prototype.sync(self: Results, resultsData: apiTypes.PollResultObject)
     local countArray = {}
@@ -31,25 +39,25 @@ function Results.Prototype.sync(self: Results, resultsData: apiTypes.PollResultO
     end
 
     --[=[
-		@prop isFinalized boolean
-		@within Classes.Results
-		Whether the poll results are finalized and can no longer be updated
-	]=]
+        @prop isFinalized boolean
+        @within Classes.Results
+        Whether the poll results are finalized and can no longer be updated
+    ]=]
     self.isFinalized = resultsData.is_finalized
 
     --[=[
-		@prop answerCounts { Classes.AnswerCount }
-		@within Classes.Results
-		Array of answer counts for each poll option
-	]=]
+        @prop answerCounts { Classes.AnswerCount }
+        @within Classes.Results
+        Array of answer counts for each poll option
+    ]=]
     self.answerCounts = countArray
 end
 
 --[=[
-	@within Classes.Results
-	@private
+    @within Classes.Results
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Results.Interface.new(resultsData: apiTypes.PollResultObject): Results
     local self = setmetatable({} :: Results, { __index = Results.Prototype })

@@ -1,3 +1,11 @@
+--[[
+
+sticker
+
+REST API methods for Discord sticker endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.sticker
+    @class Rest.sticker
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/sticker
+    - https://discord.com/developers/docs/resources/sticker
 ]=]
 local sticker = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/sticker#get-sticker
+    https://discord.com/developers/docs/resources/sticker#get-sticker
 ]=]
 function sticker.getStickerAsync(
     instance: request.Request,
@@ -40,9 +48,9 @@ function sticker.getStickerAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/sticker#list-sticker-packs
+    https://discord.com/developers/docs/resources/sticker#list-sticker-packs
 ]=]
 function sticker.listStickerPacksAsync(
     instance: request.Request
@@ -62,9 +70,9 @@ function sticker.listStickerPacksAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/sticker#list-guild-stickers
+    https://discord.com/developers/docs/resources/sticker#list-guild-stickers
 ]=]
 function sticker.listGuildStickersAsync(
     instance: request.Request,
@@ -85,9 +93,9 @@ function sticker.listGuildStickersAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/sticker#get-guild-sticker
+    https://discord.com/developers/docs/resources/sticker#get-guild-sticker
 ]=]
 function sticker.getGuildStickerAsync(
     instance: request.Request,
@@ -109,9 +117,9 @@ function sticker.getGuildStickerAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/sticker#create-guild-sticker
+    https://discord.com/developers/docs/resources/sticker#create-guild-sticker
 ]=]
 function sticker.createGuildStickerAsync(
     instance: request.Request,
@@ -136,9 +144,9 @@ function sticker.createGuildStickerAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/sticker#modify-guild-sticker
+    https://discord.com/developers/docs/resources/sticker#modify-guild-sticker
 ]=]
 function sticker.modifyGuildStickerAsync(
     instance: request.Request,
@@ -164,9 +172,9 @@ function sticker.modifyGuildStickerAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/sticker#delete-guild-sticker
+    https://discord.com/developers/docs/resources/sticker#delete-guild-sticker
 ]=]
 function sticker.deleteGuildStickerAsync(
     instance: request.Request,

@@ -1,10 +1,18 @@
+--[[
+
+prompt
+
+Implementation of discords Prompt object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Prompt
-	@__index Prototype
+    @class Builders.Prompt
+    @__index Prototype
 
-	Implementation of discords Prompt object as a Luau builder.	
+    Implementation of discords Prompt object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-prompt-structure
+    https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-prompt-structure
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -17,9 +25,9 @@ Prompt.Prototype = {}
 Prompt.Interface = {}
 
 --[=[
-	@within Builders.Prompt
+    @within Builders.Prompt
 
-	Add an Option to this prompt
+    Add an Option to this prompt
 ]=]
 function Prompt.Prototype.addOption(self: Prompt, option: option.JSON): Prompt
     table.insert(self.options, option)
@@ -28,9 +36,9 @@ function Prompt.Prototype.addOption(self: Prompt, option: option.JSON): Prompt
 end
 
 --[=[
-	@within Builders.Prompt
+    @within Builders.Prompt
 
-	Set the type of prompt.
+    Set the type of prompt.
 ]=]
 function Prompt.Prototype.setType(self: Prompt, type: apiTypes.OnboardingPromptType): Prompt
     self.type = type
@@ -39,9 +47,9 @@ function Prompt.Prototype.setType(self: Prompt, type: apiTypes.OnboardingPromptT
 end
 
 --[=[
-	@within Builders.Prompt
+    @within Builders.Prompt
 
-	Set the title of this prompt
+    Set the title of this prompt
 ]=]
 function Prompt.Prototype.setTitle(self: Prompt, title: string): Prompt
     self.title = title
@@ -50,9 +58,9 @@ function Prompt.Prototype.setTitle(self: Prompt, title: string): Prompt
 end
 
 --[=[
-	@within Builders.Prompt
+    @within Builders.Prompt
 
-	Set weather or not users can select one option, or multiple.
+    Set weather or not users can select one option, or multiple.
 ]=]
 function Prompt.Prototype.setSingleSelect(self: Prompt, singleSelect: boolean): Prompt
     self.singleSelect = singleSelect
@@ -61,9 +69,9 @@ function Prompt.Prototype.setSingleSelect(self: Prompt, singleSelect: boolean): 
 end
 
 --[=[
-	@within Builders.Prompt
+    @within Builders.Prompt
 
-	Set weather this option is required or not.
+    Set weather this option is required or not.
 ]=]
 function Prompt.Prototype.setRequired(self: Prompt, required: boolean): Prompt
     self.required = required
@@ -72,9 +80,9 @@ function Prompt.Prototype.setRequired(self: Prompt, required: boolean): Prompt
 end
 
 --[=[
-	@within Builders.Prompt
+    @within Builders.Prompt
 
-	Responsible for building the PromptObject JSON that can be parsed by the Discord API.
+    Responsible for building the PromptObject JSON that can be parsed by the Discord API.
 ]=]
 function Prompt.Prototype.build(self: Prompt): JSON
     return {
@@ -90,9 +98,9 @@ function Prompt.Prototype.build(self: Prompt): JSON
 end
 
 --[=[
-	@within Builders.Prompt
+    @within Builders.Prompt
 
-	Responsible for creating a new Prompt.
+    Responsible for creating a new Prompt.
 ]=]
 function Prompt.Interface.new(resource: {
     type: apiTypes.OnboardingPromptType?,
@@ -104,38 +112,38 @@ function Prompt.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop options { Builders.Option }
-				@within Builders.Prompt
-				The array of options available within this prompt.
-			]=]
+                @prop options { Builders.Option }
+                @within Builders.Prompt
+                The array of options available within this prompt.
+            ]=]
             options = {},
 
             --[=[
-				@prop type apiTypes.OnboardingPromptType
-				@within Builders.Prompt
-				The type of prompt to display.
-			]=]
+                @prop type apiTypes.OnboardingPromptType
+                @within Builders.Prompt
+                The type of prompt to display.
+            ]=]
             type = resource and resource.type,
 
             --[=[
-				@prop title string
-				@within Builders.Prompt
-				The title of the prompt to display.
-			]=]
+                @prop title string
+                @within Builders.Prompt
+                The title of the prompt to display.
+            ]=]
             title = resource and resource.title,
 
             --[=[
-				@prop singleSelect boolean
-				@within Builders.Prompt
-				Whether users can select only one option or multiple options.
-			]=]
+                @prop singleSelect boolean
+                @within Builders.Prompt
+                Whether users can select only one option or multiple options.
+            ]=]
             singleSelect = resource and resource.singleSelect,
 
             --[=[
-				@prop required boolean
-				@within Builders.Prompt
-				Whether this prompt is required to be answered or not.
-			]=]
+                @prop required boolean
+                @within Builders.Prompt
+                Whether this prompt is required to be answered or not.
+            ]=]
             required = resource and resource.required,
         } :: Prompt,
         {

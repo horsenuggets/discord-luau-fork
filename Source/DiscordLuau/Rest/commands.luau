@@ -1,3 +1,11 @@
+--[[
+
+commands
+
+REST API methods for Discord commands endpoints.
+
+--]]
+
 local apiTypes = require("../ApiTypes")
 local future = require("@packages/Future")
 local stdPolyfills = require("../StdPolyfills")
@@ -5,18 +13,18 @@ local stdPolyfills = require("../StdPolyfills")
 local request = require("./request")
 
 --[=[
-	@class Rest.commands
+    @class Rest.commands
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/interactions/application-commands
+    - https://discord.com/developers/docs/interactions/application-commands
 ]=]
 local commands = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
+    https://discord.com/developers/docs/interactions/application-commands#get-global-application-commands
 ]=]
 function commands.getGlobalApplicationCommandsAsync(
     instance: request.Request,
@@ -45,9 +53,9 @@ function commands.getGlobalApplicationCommandsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
+    https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
 ]=]
 function commands.createGlobalApplicationCommandAsync(
     instance: request.Request,
@@ -73,9 +81,9 @@ function commands.createGlobalApplicationCommandAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#get-global-application-command
+    https://discord.com/developers/docs/interactions/application-commands#get-global-application-command
 ]=]
 function commands.getGlobalApplicationCommandAsync(
     instance: request.Request,
@@ -100,9 +108,9 @@ function commands.getGlobalApplicationCommandAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
+    https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
 ]=]
 function commands.editGlobalApplicationCommandAsync(
     instance: request.Request,
@@ -129,9 +137,9 @@ function commands.editGlobalApplicationCommandAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#delete-global-application-command
+    https://discord.com/developers/docs/interactions/application-commands#delete-global-application-command
 ]=]
 function commands.deleteGlobalApplicationCommandAsync(
     instance: request.Request,
@@ -156,9 +164,9 @@ function commands.deleteGlobalApplicationCommandAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
+    https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
 ]=]
 function commands.bulkOverwriteGlobalApplicationCommandsAsync(
     instance: request.Request,
@@ -188,9 +196,9 @@ function commands.bulkOverwriteGlobalApplicationCommandsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands
+    https://discord.com/developers/docs/interactions/application-commands#get-guild-application-commands
 ]=]
 function commands.getGuildApplicationCommandsAsync(
     instance: request.Request,
@@ -220,9 +228,9 @@ function commands.getGuildApplicationCommandsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command
+    https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command
 ]=]
 function commands.createGuildApplicationCommandAsync(
     instance: request.Request,
@@ -249,9 +257,9 @@ function commands.createGuildApplicationCommandAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#get-guild-application-command
+    https://discord.com/developers/docs/interactions/application-commands#get-guild-application-command
 ]=]
 function commands.getGuildApplicationCommandAsync(
     instance: request.Request,
@@ -279,9 +287,9 @@ function commands.getGuildApplicationCommandAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
+    https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
 ]=]
 function commands.editGuildApplicationCommandAsync(
     instance: request.Request,
@@ -311,9 +319,9 @@ function commands.editGuildApplicationCommandAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#delete-guild-application-command
+    https://discord.com/developers/docs/interactions/application-commands#delete-guild-application-command
 ]=]
 function commands.deleteGuildApplicationCommandAsync(
     instance: request.Request,
@@ -341,9 +349,9 @@ function commands.deleteGuildApplicationCommandAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-guild-application-commands
+    https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-guild-application-commands
 ]=]
 function commands.bulkOverwriteGuildApplicationCommandsAsync(
     instance: request.Request,
@@ -374,9 +382,9 @@ function commands.bulkOverwriteGuildApplicationCommandsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#get-guild-application-command-permissions
+    https://discord.com/developers/docs/interactions/application-commands#get-guild-application-command-permissions
 ]=]
 function commands.getGuildApplicationCommandPermissionsAsync(
     instance: request.Request,
@@ -405,9 +413,9 @@ function commands.getGuildApplicationCommandPermissionsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#get-application-command-permissions
+    https://discord.com/developers/docs/interactions/application-commands#get-application-command-permissions
 ]=]
 function commands.getApplicationCommandPermissionsAsync(
     instance: request.Request,
@@ -442,9 +450,9 @@ function commands.getApplicationCommandPermissionsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/application-commands#edit-application-command-permissions
+    https://discord.com/developers/docs/interactions/application-commands#edit-application-command-permissions
 ]=]
 function commands.editApplicationCommandPermissionsAsync(
     instance: request.Request,

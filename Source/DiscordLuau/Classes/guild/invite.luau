@@ -1,10 +1,18 @@
+--[[
+
+invite
+
+Implementation of the Discord Invite class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Invite
-	@__index Prototype
+    @class Classes.Invite
+    @__index Prototype
 
-	Implementation of the Discord Invite class in Luau
+    Implementation of the Discord Invite class in Luau
 
-	https://discord.com/developers/docs/resources/invite#invite-object
+    https://discord.com/developers/docs/resources/invite#invite-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -27,9 +35,9 @@ Invite.Interface = {}
 Invite.Prototype = {}
 
 --[=[
-	@within Classes.Invite
-	Delete the attached integration object for the guild. Deletes any associated webhooks and kicks the associated bot
-	if there is one. Requires the MANAGE_GUILD permission.
+    @within Classes.Invite
+    Delete the attached integration object for the guild. Deletes any associated webhooks and kicks the associated bot
+    if there is one. Requires the MANAGE_GUILD permission.
 ]=]
 function Invite.Prototype.deleteAsync(self: Invite, reason: string?)
     return future.Future.new(function()
@@ -44,99 +52,99 @@ function Invite.Prototype.deleteAsync(self: Invite, reason: string?)
 end
 
 --[=[
-	@within Classes.Invite
-	@private
+    @within Classes.Invite
+    @private
 
-	Responsible for syncing data to this invite object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this invite object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Invite.Prototype.sync(self: Invite, inviteData: apiTypes.InviteObject)
     --[=[
-		@prop channel Classes.Channel
-		@within Classes.Invite
-		The channel this invite is for
-	]=]
+        @prop channel Classes.Channel
+        @within Classes.Invite
+        The channel this invite is for
+    ]=]
     if inviteData.channel then
         local channel = _require("../channels/construct")(self.state, inviteData.channel)
         self.channel = channel :: apiTypes.AbstractChannel
     end
 
     --[=[
-		@prop type string
-		@within Classes.Invite
-		The type of invite (GUILD, GROUP_DM, FRIEND)
-	]=]
+        @prop type string
+        @within Classes.Invite
+        The type of invite (GUILD, GROUP_DM, FRIEND)
+    ]=]
     self.type = apiTypes.guild.InviteType[inviteData.type]
 
     --[=[
-		@prop code string
-		@within Classes.Invite
-		The unique invite code
-	]=]
+        @prop code string
+        @within Classes.Invite
+        The unique invite code
+    ]=]
     self.code = inviteData.code
 
     --[=[
-		@prop guild Classes.UnavailableGuild?
-		@within Classes.Invite
-		The guild this invite is for
-	]=]
+        @prop guild Classes.UnavailableGuild?
+        @within Classes.Invite
+        The guild this invite is for
+    ]=]
     self.guild = inviteData.guild and unavailableGuild.new(self.state, inviteData.guild.id :: string)
 
     --[=[
-		@prop inviter Classes.User?
-		@within Classes.Invite
-		The user who created the invite
-	]=]
+        @prop inviter Classes.User?
+        @within Classes.Invite
+        The user who created the invite
+    ]=]
     self.inviter = inviteData.inviter and user.new(inviteData.inviter)
 
     --[=[
-		@prop targetType string?
-		@within Classes.Invite
-		The type of target for this invite (STREAM, EMBEDDED_APPLICATION)
-	]=]
+        @prop targetType string?
+        @within Classes.Invite
+        The type of target for this invite (STREAM, EMBEDDED_APPLICATION)
+    ]=]
     self.targetType = inviteData.target_type and apiTypes.guild.InviteTargetType[inviteData.target_type]
 
     --[=[
-		@prop targetUser Classes.User?
-		@within Classes.Invite
-		The user whose stream to display for this invite, if targetType is STREAM
-	]=]
+        @prop targetUser Classes.User?
+        @within Classes.Invite
+        The user whose stream to display for this invite, if targetType is STREAM
+    ]=]
     self.targetUser = inviteData.target_user and user.new(inviteData.target_user)
 
     --[=[
-		@prop approximatePresenceCount number?
-		@within Classes.Invite
-		Approximate count of online members (only present when target_user is set)
-	]=]
+        @prop approximatePresenceCount number?
+        @within Classes.Invite
+        Approximate count of online members (only present when target_user is set)
+    ]=]
     self.approximatePresenceCount = inviteData.approximate_presence_count
 
     --[=[
-		@prop approximateMemberCount number?
-		@within Classes.Invite
-		Approximate count of total members
-	]=]
+        @prop approximateMemberCount number?
+        @within Classes.Invite
+        Approximate count of total members
+    ]=]
     self.approximateMemberCount = inviteData.approximate_member_count
 
     --[=[
-		@prop expiresAt stdPolyfills.DateTime?
-		@within Classes.Invite
-		The expiration date of this invite
-	]=]
+        @prop expiresAt stdPolyfills.DateTime?
+        @within Classes.Invite
+        The expiration date of this invite
+    ]=]
     self.expiresAt = inviteData.expires_at and stdPolyfills.datetime.fromIsoDate(inviteData.expires_at)
 
     --[=[
-		@prop scheduledEvent Classes.ScheduledEvent?
-		@within Classes.Invite
-		The scheduled event associated with this invite
-	]=]
+        @prop scheduledEvent Classes.ScheduledEvent?
+        @within Classes.Invite
+        The scheduled event associated with this invite
+    ]=]
     self.scheduledEvent = inviteData.guild_scheduled_event and scheduledEvent.new(inviteData.guild_scheduled_event)
 end
 
 --[=[
-	@within Classes.Invite
-	@private
+    @within Classes.Invite
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Invite.Interface.new(state: state.State, inviteData: apiTypes.InviteObject): Invite
     local self = setmetatable(

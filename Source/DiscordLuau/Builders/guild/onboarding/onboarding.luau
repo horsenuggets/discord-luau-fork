@@ -1,10 +1,18 @@
+--[[
+
+onboarding
+
+Implementation of discords Onboarding object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Onboarding
-	@__index Prototype
+    @class Builders.Onboarding
+    @__index Prototype
 
-	Implementation of discords Onboarding object as a Luau builder.	
+    Implementation of discords Onboarding object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/guild#modify-guild-onboarding-json-params
+    https://discord.com/developers/docs/resources/guild#modify-guild-onboarding-json-params
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -17,9 +25,9 @@ Onboarding.Prototype = {}
 Onboarding.Interface = {}
 
 --[=[
-	@within Builders.Onboarding
+    @within Builders.Onboarding
 
-	Add a prompt to this onboarding
+    Add a prompt to this onboarding
 ]=]
 function Onboarding.Prototype.addPrompt(self: Onboarding, prompt: prompt.JSON): Onboarding
     table.insert(self.prompts, prompt)
@@ -28,9 +36,9 @@ function Onboarding.Prototype.addPrompt(self: Onboarding, prompt: prompt.JSON): 
 end
 
 --[=[
-	@within Builders.Onboarding
+    @within Builders.Onboarding
 
-	Add a default channel to this onboarding
+    Add a default channel to this onboarding
 ]=]
 function Onboarding.Prototype.addDefaultChannelId(self: Onboarding, channelId: string): Onboarding
     table.insert(self.defaultChannelIds, channelId)
@@ -39,9 +47,9 @@ function Onboarding.Prototype.addDefaultChannelId(self: Onboarding, channelId: s
 end
 
 --[=[
-	@within Builders.Onboarding
+    @within Builders.Onboarding
 
-	Set weather this onboarding is enabled or not.	
+    Set weather this onboarding is enabled or not.    
 ]=]
 function Onboarding.Prototype.setEnabled(self: Onboarding, enabled: boolean): Onboarding
     self.enabled = enabled
@@ -50,9 +58,9 @@ function Onboarding.Prototype.setEnabled(self: Onboarding, enabled: boolean): On
 end
 
 --[=[
-	@within Builders.Onboarding
+    @within Builders.Onboarding
 
-	Set the mode of this onboarding.
+    Set the mode of this onboarding.
 ]=]
 function Onboarding.Prototype.setMode(self: Onboarding, mode: apiTypes.OnboardingMode): Onboarding
     self.mode = mode
@@ -61,9 +69,9 @@ function Onboarding.Prototype.setMode(self: Onboarding, mode: apiTypes.Onboardin
 end
 
 --[=[
-	@within Builders.Onboarding
+    @within Builders.Onboarding
 
-	Responsible for building the OnboardingObject JSON that can be parsed by the Discord API.
+    Responsible for building the OnboardingObject JSON that can be parsed by the Discord API.
 ]=]
 function Onboarding.Prototype.build(self: Onboarding): JSON
     return {
@@ -75,9 +83,9 @@ function Onboarding.Prototype.build(self: Onboarding): JSON
 end
 
 --[=[
-	@within Builders.Onboarding
+    @within Builders.Onboarding
 
-	Responsible for creating a new Onboarding.
+    Responsible for creating a new Onboarding.
 ]=]
 function Onboarding.Interface.new(resource: {
     prompts: { prompt.JSON }?,
@@ -88,30 +96,30 @@ function Onboarding.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop prompts {Builders.Prompt}
-				@within Builders.Onboarding
-				Array of prompts shown during onboarding
-			]=]
+                @prop prompts {Builders.Prompt}
+                @within Builders.Onboarding
+                Array of prompts shown during onboarding
+            ]=]
             prompts = {},
 
             --[=[
-				@prop defaultChannelIds {string}
-				@within Builders.Onboarding
-				Array of channel IDs that members get opted into automatically
-			]=]
+                @prop defaultChannelIds {string}
+                @within Builders.Onboarding
+                Array of channel IDs that members get opted into automatically
+            ]=]
             defaultChannelIds = {},
 
             --[=[
-				@prop enabled boolean
-				@within Builders.Onboarding
-				Whether onboarding is enabled in the guild
-			]=]
+                @prop enabled boolean
+                @within Builders.Onboarding
+                Whether onboarding is enabled in the guild
+            ]=]
 
             --[=[
-				@prop mode apiTypes.OnboardingMode
-				@within Builders.Onboarding
-				Current mode of onboarding
-			]=]
+                @prop mode apiTypes.OnboardingMode
+                @within Builders.Onboarding
+                Current mode of onboarding
+            ]=]
         } :: Onboarding,
         {
             __index = Onboarding.Prototype,

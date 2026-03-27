@@ -1,9 +1,17 @@
---[=[
-	@class Command
-	Implementation of the Discord Command Interaction class in Luau
+--[[
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
-	@__index Command.Prototype
+command
+
+Implementation of the Discord Command Interaction class in Luau.
+
+--]]
+
+--[=[
+    @class Command
+    Implementation of the Discord Command Interaction class in Luau
+
+    https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
+    @__index Command.Prototype
 ]=]
 
 -- selene: allow(unused_variable)
@@ -25,8 +33,8 @@ Command.Behaviours = {
 }
 
 --[=[
-	@within Command
-	Returns a list of users who have been mentioned in this interaction
+    @within Command
+    Returns a list of users who have been mentioned in this interaction
 ]=]
 function Command.Prototype.getUsers(self: Command): { user.User }
     if self.data and self.data.resolved and self.data.resolved.users then
@@ -43,8 +51,8 @@ function Command.Prototype.getUsers(self: Command): { user.User }
 end
 
 --[=[
-	@within Command
-	Returns a list of members who have been mentioned in this interaction
+    @within Command
+    Returns a list of members who have been mentioned in this interaction
 ]=]
 function Command.Prototype.getMembers(self: Command)
     if self.data and self.data.resolved and self.data.resolved.members then
@@ -61,8 +69,8 @@ function Command.Prototype.getMembers(self: Command)
 end
 
 --[=[
-	@within Command
-	Returns a list of roles which have been mentioned in this interaction
+    @within Command
+    Returns a list of roles which have been mentioned in this interaction
 ]=]
 function Command.Prototype.getRoles(self: Command)
     if self.data and self.data.resolved and self.data.resolved.roles then
@@ -79,16 +87,16 @@ function Command.Prototype.getRoles(self: Command)
 end
 
 --[=[
-	@within Command
-	Returns a list of channels which have been mentioned in this interaction
+    @within Command
+    Returns a list of channels which have been mentioned in this interaction
 ]=]
 function Command.Prototype.getChannels(_self: Command)
     error(`Unable to fetch channels! This is not yet implemented!`)
 end
 
 --[=[
-	@within Command
-	Returns a list of messages which have been mentioned in this interaction
+    @within Command
+    Returns a list of messages which have been mentioned in this interaction
 ]=]
 function Command.Prototype.getMessages(self: Command)
     if self.data and self.data.resolved and self.data.resolved.messages then
@@ -105,8 +113,8 @@ function Command.Prototype.getMessages(self: Command)
 end
 
 --[=[
-	@within Command
-	Returns a list of attachments which have been mentioned in this interaction
+    @within Command
+    Returns a list of attachments which have been mentioned in this interaction
 ]=]
 function Command.Prototype.getAttachments(self: Command)
     if self.data and self.data.resolved and self.data.resolved.attachments then
@@ -123,11 +131,11 @@ function Command.Prototype.getAttachments(self: Command)
 end
 
 --[=[
-	@within Command
-	@private
+    @within Command
+    @private
 
-	Responsible for syncing data to this component interaction object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this component interaction object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Command.Prototype.sync(self: Command, interactionData: apiTypes.InteractionObject)
     for _, behaviour in Command.Behaviours do
@@ -137,24 +145,24 @@ function Command.Prototype.sync(self: Command, interactionData: apiTypes.Interac
 end
 
 --[=[
-	@within Command
-	@private
+    @within Command
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Command.Interface.new(state: state.State, interactionData: apiTypes.InteractionObject): Command
     local self = setmetatable(
         {
             --[=[
-				@prop state state.State
-				@within Command
-			]=]
+                @prop state state.State
+                @within Command
+            ]=]
             state = state,
 
             --[=[
-				@prop isDeferred boolean
-				@within Command
-			]=]
+                @prop isDeferred boolean
+                @within Command
+            ]=]
             isDeferred = false,
         } :: Command,
         { __index = Command.Prototype }

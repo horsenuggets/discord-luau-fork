@@ -1,10 +1,18 @@
+--[[
+
+command
+
+Implementation of the Discord Command class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Command
-	@__index Prototype
+    @class Classes.Command
+    @__index Prototype
 
-	Implementation of the Discord Command class in Luau
+    Implementation of the Discord Command class in Luau
 
-	https://discord.com/developers/docs/interactions/application-commands#application-command-object
+    https://discord.com/developers/docs/interactions/application-commands#application-command-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -19,11 +27,11 @@ Command.Interface = {}
 Command.Prototype = {}
 
 --[=[
-	@within Classes.Command
-	@private
+    @within Classes.Command
+    @private
 
-	Responsible for syncing data to this command object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this command object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Command.Prototype.sync(self: Command, commandData: apiTypes.ApplicationCommandObject)
     local optionArray = {}
@@ -46,124 +54,124 @@ function Command.Prototype.sync(self: Command, commandData: apiTypes.Application
     end
 
     --[=[
-		@prop id string
-		@within Classes.Command
+        @prop id string
+        @within Classes.Command
 
-		The unique identifier for this command
-	]=]
+        The unique identifier for this command
+    ]=]
     self.id = commandData.id or "-1"
 
     --[=[
-		@prop type apiTypes.ApplicationCommandType
-		@within Classes.Command
+        @prop type apiTypes.ApplicationCommandType
+        @within Classes.Command
 
-		The type of command this represents
-	]=]
+        The type of command this represents
+    ]=]
     self.type = apiTypes.interaction.ApplicationCommandType[commandData.type]
 
     --[=[
-		@prop applicationId string
-		@within Classes.Command
+        @prop applicationId string
+        @within Classes.Command
 
-		The unique identifier of the parent application
-	]=]
+        The unique identifier of the parent application
+    ]=]
     self.applicationId = commandData.application_id or "-1"
 
     --[=[
-		@prop guildId string?
-		@within Classes.Command
+        @prop guildId string?
+        @within Classes.Command
 
-		ID of the guild this command is registered to, if any
-	]=]
+        ID of the guild this command is registered to, if any
+    ]=]
     self.guildId = commandData.guild_id
 
     --[=[
-		@prop name string
-		@within Classes.Command
+        @prop name string
+        @within Classes.Command
 
-		Name of the command
-	]=]
+        Name of the command
+    ]=]
     self.name = commandData.name
 
     --[=[
-		@prop nameLocalizations { [apiTypes.LanguageLocales]: string }?
-		@within Classes.Command
+        @prop nameLocalizations { [apiTypes.LanguageLocales]: string }?
+        @within Classes.Command
 
-		Localization dictionary for the command name
-	]=]
+        Localization dictionary for the command name
+    ]=]
     self.nameLocalizations = commandData.name_localizations
 
     --[=[
-		@prop description string
-		@within Classes.Command
+        @prop description string
+        @within Classes.Command
 
-		Description of the command
-	]=]
+        Description of the command
+    ]=]
     self.description = commandData.description
 
     --[=[
-		@prop descriptionLocalizations { [apiTypes.LanguageLocales]: string }?
-		@within Classes.Command
+        @prop descriptionLocalizations { [apiTypes.LanguageLocales]: string }?
+        @within Classes.Command
 
-		Localization dictionary for the command description
-	]=]
+        Localization dictionary for the command description
+    ]=]
     self.descriptionLocalizations = commandData.description_localizations
 
     --[=[
-		@prop options { Classes.Option }
-		@within Classes.Command
+        @prop options { Classes.Option }
+        @within Classes.Command
 
-		The parameters for the command
-	]=]
+        The parameters for the command
+    ]=]
     self.options = optionArray
 
     --[=[
-		@prop defaultMemberPermissions Classes.Permission?
-		@within Classes.Command
+        @prop defaultMemberPermissions Classes.Permission?
+        @within Classes.Command
 
-		Default required permissions to use this command
-	]=]
+        Default required permissions to use this command
+    ]=]
     self.defaultMemberPermissions = commandData.default_member_permissions
         and permission.new(commandData.default_member_permissions)
 
     --[=[
-		@prop nsfw boolean?
-		@within Classes.Command
+        @prop nsfw boolean?
+        @within Classes.Command
 
-		Whether this command is age-restricted
-	]=]
+        Whether this command is age-restricted
+    ]=]
     self.nsfw = commandData.nsfw
 
     --[=[
-		@prop integrationTypes { apiTypes.IntegrationTypesConfig }
-		@within Classes.Command
+        @prop integrationTypes { apiTypes.IntegrationTypesConfig }
+        @within Classes.Command
 
-		The integration types this command supports
-	]=]
+        The integration types this command supports
+    ]=]
     self.integrationTypes = integrationTypeArray
 
     --[=[
-		@prop contexts { apiTypes.InteractionContextType }
-		@within Classes.Command
+        @prop contexts { apiTypes.InteractionContextType }
+        @within Classes.Command
 
-		The contexts this command can be used in
-	]=]
+        The contexts this command can be used in
+    ]=]
     self.contexts = contextArray
 
     --[=[
-		@prop version string
-		@within Classes.Command
+        @prop version string
+        @within Classes.Command
 
-		Auto-incrementing version identifier updated during substantial record changes
-	]=]
+        Auto-incrementing version identifier updated during substantial record changes
+    ]=]
     self.version = commandData.version or "-1"
 end
 
 --[=[
-	@within Classes.Command
-	@private
+    @within Classes.Command
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Command.Interface.new(commandData: apiTypes.ApplicationCommandObject): Command
     local self = setmetatable({} :: Command, { __index = Command.Prototype })

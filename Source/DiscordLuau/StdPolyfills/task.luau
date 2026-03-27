@@ -1,5 +1,13 @@
+--[[
+
+task
+
+Standard library polyfill for task.
+
+--]]
+
 --[=[
-	@class StdPolyfills.task
+    @class StdPolyfills.task
 ]=]
 
 local runtime = require("./runtime")
@@ -7,9 +15,9 @@ local runtime = require("./runtime")
 local task = {}
 
 --[=[
-	@within StdPolyfills.task
+    @within StdPolyfills.task
 
-	Stops a currently scheduled thread from resuming.
+    Stops a currently scheduled thread from resuming.
 ]=]
 function task.cancel(thread: thread)
     local target = runtime.assertRuntime()
@@ -22,9 +30,9 @@ function task.cancel(thread: thread)
 end
 
 --[=[
-	@within StdPolyfills.task
+    @within StdPolyfills.task
 
-	Defers a thread or function to run at the end of the current task queue.
+    Defers a thread or function to run at the end of the current task queue.
 ]=]
 function task.defer<T...>(functionOrThread: thread | (T...) -> ...any, ...: T...): thread
     local target = runtime.assertRuntime()
@@ -37,9 +45,9 @@ function task.defer<T...>(functionOrThread: thread | (T...) -> ...any, ...: T...
 end
 
 --[=[
-	@within StdPolyfills.task
+    @within StdPolyfills.task
 
-	Delays a thread or function to run after duration seconds.
+    Delays a thread or function to run after duration seconds.
 ]=]
 function task.delay<T...>(duration: number, functionOrThread: thread | (T...) -> ...any, ...: T...): thread
     local target = runtime.assertRuntime()
@@ -52,12 +60,12 @@ function task.delay<T...>(duration: number, functionOrThread: thread | (T...) ->
 end
 
 --[=[
-	@within StdPolyfills.task
-	
-	Instantly runs a thread or function.
+    @within StdPolyfills.task
+    
+    Instantly runs a thread or function.
 
-	If the spawned task yields, the thread that spawned the task will resume, letting the spawned task run in the
-		background.
+    If the spawned task yields, the thread that spawned the task will resume, letting the spawned task run in the
+        background.
 ]=]
 function task.spawn<T...>(functionOrThread: thread | (T...) -> ...any, ...: T...): thread
     local target = runtime.assertRuntime()
@@ -70,12 +78,12 @@ function task.spawn<T...>(functionOrThread: thread | (T...) -> ...any, ...: T...
 end
 
 --[=[
-	@within StdPolyfills.task
+    @within StdPolyfills.task
 
-	Waits for at least the given amount of time.
+    Waits for at least the given amount of time.
 
-	The minimum wait time possible when using task.wait is limited by the underlying OS sleep implementation. For most
-		systems this means task.wait is accurate down to about 5 milliseconds or less.
+    The minimum wait time possible when using task.wait is limited by the underlying OS sleep implementation. For most
+        systems this means task.wait is accurate down to about 5 milliseconds or less.
 ]=]
 function task.wait(duration: number?): number
     local target = runtime.assertRuntime()

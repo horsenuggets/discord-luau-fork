@@ -1,7 +1,15 @@
---[=[
-	@class Types.gateway.opcodes
+--[[
 
-	https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes
+opcodes
+
+Type definitions for Discord opcodes API objects.
+
+--]]
+
+--[=[
+    @class Types.gateway.opcodes
+
+    https://discord.com/developers/docs/topics/opcodes-and-status-codes#gateway-gateway-opcodes
 ]=]
 
 local Opcodess = table.freeze({

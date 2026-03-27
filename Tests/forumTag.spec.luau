@@ -1,3 +1,11 @@
+--[[
+
+forumTag.spec
+
+Tests for the forumTag module.
+
+--]]
+
 local forumTag = require("../src/forumTag")
 local frktest = require("../../../lune_packages/frktest")
 

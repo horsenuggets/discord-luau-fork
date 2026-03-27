@@ -1,10 +1,18 @@
+--[[
+
+guildAnnouncement
+
+Implementation of the Discord GuildAnnouncement class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.GuildAnnouncement
-	@__index Prototype
+    @class Classes.GuildAnnouncement
+    @__index Prototype
 
-	Implementation of the Discord GuildAnnouncement class in Luau
+    Implementation of the Discord GuildAnnouncement class in Luau
 
-	https://discord.com/developers/docs/resources/channel#channel-object
+    https://discord.com/developers/docs/resources/channel#channel-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -27,11 +35,11 @@ GuildAnnouncement.Behaviours = {
 }
 
 --[=[
-	@within Classes.GuildAnnouncement
+    @within Classes.GuildAnnouncement
 
-	Crosspost a message in an Announcement Channel to following channels. This endpoint requires the SEND_MESSAGES
-	permission, if the current user sent the message, or additionally the MANAGE_MESSAGES permission, for all
-	other messages, to be present for the current user.
+    Crosspost a message in an Announcement Channel to following channels. This endpoint requires the SEND_MESSAGES
+    permission, if the current user sent the message, or additionally the MANAGE_MESSAGES permission, for all
+    other messages, to be present for the current user.
 ]=]
 function GuildAnnouncement.Prototype.crosspostAsync(self: GuildAnnouncement, messageId: string)
     return future.Future.new(function()
@@ -46,10 +54,10 @@ function GuildAnnouncement.Prototype.crosspostAsync(self: GuildAnnouncement, mes
 end
 
 --[=[
-	@within Classes.GuildAnnouncement
+    @within Classes.GuildAnnouncement
 
-	Follow an Announcement Channel to send messages to a target channel. Requires the MANAGE_WEBHOOKS permission
-	in the target channel. 
+    Follow an Announcement Channel to send messages to a target channel. Requires the MANAGE_WEBHOOKS permission
+    in the target channel. 
 ]=]
 function GuildAnnouncement.Prototype.followAsync(self: GuildAnnouncement, targetChannelId: string)
     return future.Future.new(function()
@@ -68,11 +76,11 @@ function GuildAnnouncement.Prototype.followAsync(self: GuildAnnouncement, target
 end
 
 --[=[
-	@within Classes.GuildAnnouncement
-	@private
+    @within Classes.GuildAnnouncement
+    @private
 
-	Responsible for syncing data to this announcement channel object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this announcement channel object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function GuildAnnouncement.Prototype.sync(self: GuildAnnouncement, channelData: apiTypes.ChannelObject)
     for _, behaviour in GuildAnnouncement.Behaviours do
@@ -82,16 +90,16 @@ function GuildAnnouncement.Prototype.sync(self: GuildAnnouncement, channelData: 
 end
 
 --[=[
-	@within Classes.GuildAnnouncement
-	@private
+    @within Classes.GuildAnnouncement
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function GuildAnnouncement.Interface.new(state: state.State, channelData: apiTypes.ChannelObject): GuildAnnouncement
     --[=[
-		@prop state state.State
-		@within Classes.GuildAnnouncement
-	]=]
+        @prop state state.State
+        @within Classes.GuildAnnouncement
+    ]=]
     local self = setmetatable(
         {
             state = state,

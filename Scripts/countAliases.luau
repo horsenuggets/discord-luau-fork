@@ -1,3 +1,11 @@
+--[[
+
+countAliases
+
+Script for countAliases.
+
+--]]
+
 local fs = require("@lune/fs")
 local process = require("@lune/process")
 

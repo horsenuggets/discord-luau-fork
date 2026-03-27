@@ -1,8 +1,17 @@
---[=[
-	@class Classes.MediaBehaviour
-	@__index Prototype
+--[[
 
-	Media Behaviour, responsible for implementing the various properties, and methods for a media thread channel.
+media
+
+Media Behaviour, responsible for implementing the various properties, and methods for a
+media thread channel.
+
+--]]
+
+--[=[
+    @class Classes.MediaBehaviour
+    @__index Prototype
+
+    Media Behaviour, responsible for implementing the various properties, and methods for a media thread channel.
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -20,18 +29,18 @@ MediaBehaviour.Interface = {}
 MediaBehaviour.Prototype = {}
 
 --[=[
-	@within Classes.MediaBehaviour
-	@private
+    @within Classes.MediaBehaviour
+    @private
 
-	Creates a new forum post (thread) in the channel. Returns the ID of the created thread.
-	
-	Example usage:
-	
-	local builder = builders.forumMediaJSON.new()
-		:setName("My Thread")
-		:setContent("First post!")
-	
-	channel:createPostAsync(builder:build()):await()
+    Creates a new forum post (thread) in the channel. Returns the ID of the created thread.
+    
+    Example usage:
+    
+    local builder = builders.forumMediaJSON.new()
+        :setName("My Thread")
+        :setContent("First post!")
+    
+    channel:createPostAsync(builder:build()):await()
 ]=]
 function MediaBehaviour.Prototype.createPostAsync<T>(self: Channel<T>, post: builders.forumMediaJSON, reason: string?)
     return future.Future.new(function()
@@ -46,15 +55,15 @@ function MediaBehaviour.Prototype.createPostAsync<T>(self: Channel<T>, post: bui
 end
 
 --[=[
-	@within Classes.MediaBehaviour
-	@private
+    @within Classes.MediaBehaviour
+    @private
 ]=]
 function MediaBehaviour.Interface.inheritProperties(class: any, channelData: apiTypes.ChannelObject)
     --[=[
-		@prop availableTags { Classes.ForumTag }
-		@within Classes.MediaBehaviour
-		The tags that can be applied to posts in this media channel.
-	]=]
+        @prop availableTags { Classes.ForumTag }
+        @within Classes.MediaBehaviour
+        The tags that can be applied to posts in this media channel.
+    ]=]
     local forumTagArray = {}
 
     for _, mediaTagData in next, channelData.available_tags or {} do
@@ -64,38 +73,38 @@ function MediaBehaviour.Interface.inheritProperties(class: any, channelData: api
     class.availableTags = forumTagArray
 
     --[=[
-		@prop defaultReaction Classes.DefaultReaction?
-		@within Classes.MediaBehaviour
-		The default reaction that will be added to new posts in this media channel.
-	]=]
+        @prop defaultReaction Classes.DefaultReaction?
+        @within Classes.MediaBehaviour
+        The default reaction that will be added to new posts in this media channel.
+    ]=]
     class.defaultReaction = channelData.default_reaction_emoji
         and defaultReaction.new(channelData.default_reaction_emoji)
 
     --[=[
-		@prop defaultForumLayout string
-		@within Classes.MediaBehaviour
-		The default layout for posts in this media channel.
-	]=]
+        @prop defaultForumLayout string
+        @within Classes.MediaBehaviour
+        The default layout for posts in this media channel.
+    ]=]
     class.defaultForumLayout = channelData.default_forum_layout
 
     --[=[
-		@prop appliedTags { string }
-		@within Classes.MediaBehaviour
-		The tags currently applied to this media channel.
-	]=]
+        @prop appliedTags { string }
+        @within Classes.MediaBehaviour
+        The tags currently applied to this media channel.
+    ]=]
     class.appliedTags = channelData.applied_tags
 
     --[=[
-		@prop defaultSortOrder string
-		@within Classes.MediaBehaviour
-		The default sort order for posts in this media channel.
-	]=]
+        @prop defaultSortOrder string
+        @within Classes.MediaBehaviour
+        The default sort order for posts in this media channel.
+    ]=]
     class.defaultSortOrder = apiTypes.channel.MediaSortOrder[channelData.default_sort_order]
 end
 
 --[=[
-	@within Classes.MediaBehaviour
-	@private
+    @within Classes.MediaBehaviour
+    @private
 ]=]
 function MediaBehaviour.Interface.inheritMethods(class: any)
     for key, value in MediaBehaviour.Prototype do

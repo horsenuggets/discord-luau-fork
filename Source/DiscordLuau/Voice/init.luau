@@ -1,8 +1,16 @@
---[=[
-	@class Voice
-	@unreleased
+--[[
 
-	Interface for the discord-luau Voice package
+Voice
+
+Interface for the discord-luau Voice package.
+
+--]]
+
+--[=[
+    @class Voice
+    @unreleased
+
+    Interface for the discord-luau Voice package
 ]=]
 
 return {}

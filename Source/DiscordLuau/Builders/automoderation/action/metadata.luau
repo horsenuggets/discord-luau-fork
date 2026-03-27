@@ -1,8 +1,16 @@
---[=[
-	@class Builders.ActionMetadata
-	@__index Prototype
+--[[
 
-	Implementation of a discord automoderation action metadata object as a luau builder.
+metadata
+
+Implementation of a discord automoderation action metadata object as a luau builder.
+
+--]]
+
+--[=[
+    @class Builders.ActionMetadata
+    @__index Prototype
+
+    Implementation of a discord automoderation action metadata object as a luau builder.
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -13,9 +21,9 @@ ActionMetadata.Prototype = {}
 ActionMetadata.Interface = {}
 
 --[=[
-	@within Builders.ActionMetadata
+    @within Builders.ActionMetadata
 
-	Sets the ID of the channel where the action should be taken.
+    Sets the ID of the channel where the action should be taken.
 ]=]
 function ActionMetadata.Prototype.setChannelId(self: ActionMetadata, channelId: apiTypes.Snowflake): ActionMetadata
     self.channelId = channelId
@@ -24,9 +32,9 @@ function ActionMetadata.Prototype.setChannelId(self: ActionMetadata, channelId: 
 end
 
 --[=[
-	@within Builders.ActionMetadata
+    @within Builders.ActionMetadata
 
-	Sets the duration of the action in seconds.
+    Sets the duration of the action in seconds.
 ]=]
 function ActionMetadata.Prototype.setDurationSeconds(self: ActionMetadata, durationSeconds: number): ActionMetadata
     self.durationSeconds = durationSeconds
@@ -35,9 +43,9 @@ function ActionMetadata.Prototype.setDurationSeconds(self: ActionMetadata, durat
 end
 
 --[=[
-	@within Builders.ActionMetadata
+    @within Builders.ActionMetadata
 
-	Sets a custom message to be sent with the action.
+    Sets a custom message to be sent with the action.
 ]=]
 function ActionMetadata.Prototype.setCustomMessage(self: ActionMetadata, customMessage: string): ActionMetadata
     self.customMessage = customMessage
@@ -46,9 +54,9 @@ function ActionMetadata.Prototype.setCustomMessage(self: ActionMetadata, customM
 end
 
 --[=[
-	@within Builders.ActionMetadata
+    @within Builders.ActionMetadata
 
-	Builds the action metadata object.
+    Builds the action metadata object.
 ]=]
 function ActionMetadata.Prototype.build(self: ActionMetadata): JSON
     return {
@@ -59,17 +67,17 @@ function ActionMetadata.Prototype.build(self: ActionMetadata): JSON
 end
 
 --[=[
-	@within Builders.ActionMetadata
+    @within Builders.ActionMetadata
 
-	Responsible for creating a new ActionMetadata.
+    Responsible for creating a new ActionMetadata.
 
-	```luau
-	local metadata = ActionMetadata.new({
-		channelId = "123456789",
-		durationSeconds = 300,
-		customMessage = "Action taken due to rule violation"
-	})
-	```
+    ```luau
+    local metadata = ActionMetadata.new({
+        channelId = "123456789",
+        durationSeconds = 300,
+        customMessage = "Action taken due to rule violation"
+    })
+    ```
 ]=]
 function ActionMetadata.Interface.new(resource: {
     channelId: apiTypes.Snowflake?,
@@ -79,24 +87,24 @@ function ActionMetadata.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop channelId string
-				@within Builders.ActionMetadata
-				The ID of the channel where the action should be taken.
-			]=]
+                @prop channelId string
+                @within Builders.ActionMetadata
+                The ID of the channel where the action should be taken.
+            ]=]
             channelId = nil,
 
             --[=[
-				@prop durationSeconds number
-				@within Builders.ActionMetadata
-				The duration of the action in seconds.
-			]=]
+                @prop durationSeconds number
+                @within Builders.ActionMetadata
+                The duration of the action in seconds.
+            ]=]
             durationSeconds = nil,
 
             --[=[
-				@prop customMessage string?
-				@within Builders.ActionMetadata
-				A custom message that will be shown to members when the action is taken.
-			]=]
+                @prop customMessage string?
+                @within Builders.ActionMetadata
+                A custom message that will be shown to members when the action is taken.
+            ]=]
             customMessage = nil,
         } :: ActionMetadata,
         {

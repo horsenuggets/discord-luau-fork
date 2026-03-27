@@ -1,10 +1,18 @@
+--[[
+
+emoji
+
+Implementation of the Discord Emoji class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Emoji
-	@__index Prototype
+    @class Classes.Emoji
+    @__index Prototype
 
-	Implementation of the Discord Emoji class in Luau
+    Implementation of the Discord Emoji class in Luau
 
-	https://discord.com/developers/docs/resources/emoji#emoji-resource
+    https://discord.com/developers/docs/resources/emoji#emoji-resource
 ]=]
 
 local apiTypes = require("../ApiTypes")
@@ -17,75 +25,75 @@ Emoji.Interface = {}
 Emoji.Prototype = {}
 
 --[=[
-	@within Classes.Emoji
-	@private
+    @within Classes.Emoji
+    @private
 
-	Responsible for syncing data to this emoji object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this emoji object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Emoji.Prototype.sync(self: Emoji, emojiData: apiTypes.EmojiObject)
     --[=[
-		@prop roles { apiTypes.Snowflake }?
-		@within Classes.Emoji
-		The roles that can use this emoji.
-	]=]
+        @prop roles { apiTypes.Snowflake }?
+        @within Classes.Emoji
+        The roles that can use this emoji.
+    ]=]
     self.roles = emojiData.roles
 
     --[=[
-		@prop id apiTypes.Snowflake?
-		@within Classes.Emoji
-		The unique identifier for this emoji.
-	]=]
+        @prop id apiTypes.Snowflake?
+        @within Classes.Emoji
+        The unique identifier for this emoji.
+    ]=]
     self.id = emojiData.id
 
     --[=[
-		@prop name string?
-		@within Classes.Emoji
-		The name of this emoji.
-	]=]
+        @prop name string?
+        @within Classes.Emoji
+        The name of this emoji.
+    ]=]
     self.name = emojiData.name
 
     --[=[
-		@prop user Classes.User?
-		@within Classes.Emoji
-		The user who created this emoji.
-	]=]
+        @prop user Classes.User?
+        @within Classes.Emoji
+        The user who created this emoji.
+    ]=]
     self.user = emojiData.user and user.new(emojiData.user)
 
     --[=[
-		@prop requireColons boolean?
-		@within Classes.Emoji
-		Whether this emoji requires colons to be used.
-	]=]
+        @prop requireColons boolean?
+        @within Classes.Emoji
+        Whether this emoji requires colons to be used.
+    ]=]
     self.requireColons = emojiData.require_colons
 
     --[=[
-		@prop managed boolean?
-		@within Classes.Emoji
-		Whether this emoji is managed by an integration.
-	]=]
+        @prop managed boolean?
+        @within Classes.Emoji
+        Whether this emoji is managed by an integration.
+    ]=]
     self.managed = emojiData.managed
 
     --[=[
-		@prop animated boolean?
-		@within Classes.Emoji
-		Whether this emoji is animated.
-	]=]
+        @prop animated boolean?
+        @within Classes.Emoji
+        Whether this emoji is animated.
+    ]=]
     self.animated = emojiData.animated
 
     --[=[
-		@prop available boolean?
-		@within Classes.Emoji
-		Whether this emoji is available for use.
-	]=]
+        @prop available boolean?
+        @within Classes.Emoji
+        Whether this emoji is available for use.
+    ]=]
     self.available = emojiData.available
 end
 
 --[=[
-	@within Classes.Emoji
-	@private
+    @within Classes.Emoji
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Emoji.Interface.new(emojiData: apiTypes.EmojiObject): Emoji
     local self = setmetatable({} :: Emoji, { __index = Emoji.Prototype })

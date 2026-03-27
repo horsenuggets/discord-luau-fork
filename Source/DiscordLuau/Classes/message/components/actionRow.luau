@@ -1,10 +1,18 @@
+--[[
+
+actionRow
+
+Implementation of the Discord ActionRow class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.ActionRow
-	@__index Prototype
+    @class Classes.ActionRow
+    @__index Prototype
 
-	Implementation of the Discord ActionRow class in Luau
+    Implementation of the Discord ActionRow class in Luau
 
-	https://discord.com/developers/docs/resources/message#message-object-message-activity-structure
+    https://discord.com/developers/docs/resources/message#message-object-message-activity-structure
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -19,19 +27,19 @@ ActionRow.Interface = {}
 ActionRow.Prototype = {}
 
 --[=[
-	@within Classes.ActionRow
-	@private
+    @within Classes.ActionRow
+    @private
 
-	Responsible for syncing data to this action row object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this action row object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function ActionRow.Prototype.sync(self: ActionRow, activityObject: apiTypes.ActionRowComponentObject)
     --[=[
-		@prop type number
-		@within Classes.ActionRow
+        @prop type number
+        @within Classes.ActionRow
 
-		The type of component. For action rows, this will always be 1.
-	]=]
+        The type of component. For action rows, this will always be 1.
+    ]=]
     local components: { button.Button | textInput.TextInput | selectMenu.SelectMenu } = {}
 
     for _, componentData in activityObject.components do
@@ -59,19 +67,19 @@ function ActionRow.Prototype.sync(self: ActionRow, activityObject: apiTypes.Acti
     self.type = activityObject.type
 
     --[=[
-		@prop components {Classes.Button | Classes.TextInput | Classes.SelectMenu}
-		@within Classes.ActionRow
+        @prop components {Classes.Button | Classes.TextInput | Classes.SelectMenu}
+        @within Classes.ActionRow
 
-		An array of components within this action row. Can contain buttons, text inputs, or select menus.
-	]=]
+        An array of components within this action row. Can contain buttons, text inputs, or select menus.
+    ]=]
     self.components = components
 end
 
 --[=[
-	@within Classes.ActionRow
-	@private
+    @within Classes.ActionRow
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function ActionRow.Interface.new(activityObject: apiTypes.ActionRowComponentObject): ActionRow
     local self = setmetatable({} :: ActionRow, { __index = ActionRow.Prototype })

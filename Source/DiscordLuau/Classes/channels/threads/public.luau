@@ -1,10 +1,18 @@
+--[[
+
+public
+
+Implementation of the Discord Public class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Public
-	@__index Prototype
+    @class Classes.Public
+    @__index Prototype
 
-	Implementation of the Discord Public class in Luau
+    Implementation of the Discord Public class in Luau
 
-	https://discord.com/developers/docs/resources/channel#channel-object
+    https://discord.com/developers/docs/resources/channel#channel-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -27,11 +35,11 @@ Public.Behaviours = {
 }
 
 --[=[
-	@within Classes.Public
-	@private
+    @within Classes.Public
+    @private
 
-	Responsible for syncing data to this public thread object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this public thread object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Public.Prototype.sync(self: Public, channelData: apiTypes.ChannelObject)
     for _, behaviour in Public.Behaviours do
@@ -41,16 +49,16 @@ function Public.Prototype.sync(self: Public, channelData: apiTypes.ChannelObject
 end
 
 --[=[
-	@within Classes.Public
-	@private
+    @within Classes.Public
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Public.Interface.new(state: state.State, channelData: apiTypes.ChannelObject): Public
     --[=[
-		@prop state Classes.State
-		@within Classes.Public
-	]=]
+        @prop state Classes.State
+        @within Classes.Public
+    ]=]
     local self = setmetatable(
         {
             state = state,

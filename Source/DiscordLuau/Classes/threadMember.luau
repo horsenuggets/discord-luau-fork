@@ -1,10 +1,18 @@
+--[[
+
+threadMember
+
+Implementation of the Discord ThreadMember class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.ThreadMember
-	@__index Prototype
+    @class Classes.ThreadMember
+    @__index Prototype
 
-	Implementation of the Discord ThreadMember class in Luau
+    Implementation of the Discord ThreadMember class in Luau
 
-	https://discord.com/developers/docs/resources/channel#thread-member-object
+    https://discord.com/developers/docs/resources/channel#thread-member-object
 ]=]
 
 local stdPolyfills = require("../StdPolyfills")
@@ -21,54 +29,54 @@ ThreadMember.Interface = {}
 ThreadMember.Prototype = {}
 
 --[=[
-	@within Classes.ThreadMember
-	@private
+    @within Classes.ThreadMember
+    @private
 
-	Responsible for syncing data to this thread member object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this thread member object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function ThreadMember.Prototype.sync(self: ThreadMember, threadMemberData: apiTypes.ThreadMemberObject)
     --[=[
-		@prop joinTimestamp DateTime
-		@within Classes.ThreadMember
-		The timestamp when this user joined the thread.
-	]=]
+        @prop joinTimestamp DateTime
+        @within Classes.ThreadMember
+        The timestamp when this user joined the thread.
+    ]=]
     self.joinTimestamp = stdPolyfills.datetime.fromIsoDate(threadMemberData.join_timestamp)
 
     --[=[
-		@prop flags ThreadMemberBitflag
-		@within Classes.ThreadMember
-		The flags that indicate various properties and states of this thread member.
-	]=]
+        @prop flags ThreadMemberBitflag
+        @within Classes.ThreadMember
+        The flags that indicate various properties and states of this thread member.
+    ]=]
     self.flags = threadMemberData.flags and threadMemberBitflag.new(threadMemberData.flags)
 
     --[=[
-		@prop member Member?
-		@within Classes.ThreadMember
-		The guild member object for this user, if they are a member of the guild.
-	]=]
+        @prop member Member?
+        @within Classes.ThreadMember
+        The guild member object for this user, if they are a member of the guild.
+    ]=]
     self.member = threadMemberData.member and member.new(self.state, self.guildId, threadMemberData.member)
 
     --[=[
-		@prop id string?
-		@within Classes.ThreadMember
-		The unique identifier for this thread member.
-	]=]
+        @prop id string?
+        @within Classes.ThreadMember
+        The unique identifier for this thread member.
+    ]=]
     self.id = threadMemberData.id
 
     --[=[
-		@prop userId string?
-		@within Classes.ThreadMember
-		The ID of the user who is a member of this thread.
-	]=]
+        @prop userId string?
+        @within Classes.ThreadMember
+        The ID of the user who is a member of this thread.
+    ]=]
     self.userId = threadMemberData.user_id
 end
 
 --[=[
-	@within Classes.ThreadMember
-	@private
+    @within Classes.ThreadMember
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function ThreadMember.Interface.new(
     state: state.State,

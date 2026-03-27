@@ -1,10 +1,18 @@
+--[[
+
+defaultValue
+
+Implementation of discords DefaultValue object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.DefaultValue
-	@__index Prototype
+    @class Builders.DefaultValue
+    @__index Prototype
 
-	Implementation of discords DefaultValue object as a Luau builder.	
+    Implementation of discords DefaultValue object as a Luau builder.    
 
-	https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
+    https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
 ]=]
 
 local apiTypes = require("../../../../ApiTypes")
@@ -15,9 +23,9 @@ DefaultValue.Prototype = {}
 DefaultValue.Interface = {}
 
 --[=[
-	@within Builders.DefaultValue
+    @within Builders.DefaultValue
 
-	Sets the id of the default value.
+    Sets the id of the default value.
 ]=]
 function DefaultValue.Prototype.setId(self: DefaultValue, id: string): DefaultValue
     self.id = id
@@ -26,9 +34,9 @@ function DefaultValue.Prototype.setId(self: DefaultValue, id: string): DefaultVa
 end
 
 --[=[
-	@within Builders.DefaultValue
+    @within Builders.DefaultValue
 
-	Sets the type of the default value.
+    Sets the type of the default value.
 ]=]
 function DefaultValue.Prototype.setType(self: DefaultValue, type: apiTypes.SelectDefaultValueType): DefaultValue
     self.type = type
@@ -37,9 +45,9 @@ function DefaultValue.Prototype.setType(self: DefaultValue, type: apiTypes.Selec
 end
 
 --[=[
-	@within Builders.DefaultValue
+    @within Builders.DefaultValue
 
-	Responsible for building the DefaultValue JSON that can be parsed by the Discord API.
+    Responsible for building the DefaultValue JSON that can be parsed by the Discord API.
 ]=]
 function DefaultValue.Prototype.build(self: DefaultValue): JSON
     assert(self.id, `DefaultValue id is required`)
@@ -52,16 +60,16 @@ function DefaultValue.Prototype.build(self: DefaultValue): JSON
 end
 
 --[=[
-	@within Builders.DefaultValue
+    @within Builders.DefaultValue
 
-	Responsible for creating a new DefaultValue.
+    Responsible for creating a new DefaultValue.
 
-	```luau
-	local defaultValue = DefaultValue.new({
-		id = "123",
-		type = "user"
-	})
-	```
+    ```luau
+    local defaultValue = DefaultValue.new({
+        id = "123",
+        type = "user"
+    })
+    ```
 ]=]
 function DefaultValue.Interface.new(resource: {
     id: string,
@@ -70,17 +78,17 @@ function DefaultValue.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop id string
-				@within Builders.DefaultValue
-				The id of the default value.
-			]=]
+                @prop id string
+                @within Builders.DefaultValue
+                The id of the default value.
+            ]=]
             id = nil,
 
             --[=[
-				@prop type apiTypes.SelectDefaultValueType
-				@within Builders.DefaultValue
-				The type of the default value.
-			]=]
+                @prop type apiTypes.SelectDefaultValueType
+                @within Builders.DefaultValue
+                The type of the default value.
+            ]=]
             type = nil,
         } :: DefaultValue,
         {
