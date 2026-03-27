@@ -1,9 +1,17 @@
---[=[
-	@class Builders.Attachment
-	@__index Prototype
-	Implementation of discords Attachment object as a Luau builder.	
+--[[
 
-	https://discord.com/developers/docs/resources/message#attachment-object
+attachment
+
+Implementation of discords Attachment object as a Luau builder.
+
+--]]
+
+--[=[
+    @class Builders.Attachment
+    @__index Prototype
+    Implementation of discords Attachment object as a Luau builder.    
+
+    https://discord.com/developers/docs/resources/message#attachment-object
 ]=]
 
 local Attachment = {}
@@ -12,9 +20,9 @@ Attachment.Prototype = {}
 Attachment.Interface = {}
 
 --[=[
-	@within Builders.Attachment
+    @within Builders.Attachment
 
-	The ID of the attachment to use.
+    The ID of the attachment to use.
 ]=]
 function Attachment.Prototype.setId(self: Attachment, attachmentId: string): Attachment
     self.attachmentId = attachmentId
@@ -23,9 +31,9 @@ function Attachment.Prototype.setId(self: Attachment, attachmentId: string): Att
 end
 
 --[=[
-	@within Builders.Attachment
+    @within Builders.Attachment
 
-	Responsible for building the Attachment JSON that can be parsed by the Discord API.
+    Responsible for building the Attachment JSON that can be parsed by the Discord API.
 ]=]
 function Attachment.Prototype.build(self: Attachment): JSON
     return {
@@ -34,8 +42,8 @@ function Attachment.Prototype.build(self: Attachment): JSON
 end
 
 --[=[
-	@within Builders.Attachment
-	Responsible for creating a new Attachment.
+    @within Builders.Attachment
+    Responsible for creating a new Attachment.
 ]=]
 function Attachment.Interface.new(resource: {
     attachmentId: string,
@@ -43,10 +51,10 @@ function Attachment.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@within Builders.Attachment
-				@prop attachmentId string?
-				The ID of the attachment
-			]=]
+                @within Builders.Attachment
+                @prop attachmentId string?
+                The ID of the attachment
+            ]=]
         } :: Attachment,
         {
             __index = Attachment.Prototype,

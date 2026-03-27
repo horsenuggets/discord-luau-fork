@@ -1,3 +1,11 @@
+--[[
+
+channel.spec
+
+Tests for the channel module.
+
+--]]
+
 local builders = require("../src")
 local frktest = require("../../../lune_packages/frktest")
 

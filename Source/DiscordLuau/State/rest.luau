@@ -1,60 +1,70 @@
---[=[
-	@class State.Rest
-	@__index Prototype
+--[[
 
-	REST represents an interface to manipulate the Discord REST API.
-	When making any sort of REST request, this class is used so that we accurately
-	track the rate limits and add the token to each request.
+rest
+
+REST represents an interface to manipulate the Discord REST API. When making any sort of
+REST request, this class is used so that we accurately track the rate limits and add the
+token to each request.
+
+--]]
+
+--[=[
+    @class State.Rest
+    @__index Prototype
+
+    REST represents an interface to manipulate the Discord REST API.
+    When making any sort of REST request, this class is used so that we accurately
+    track the rate limits and add the token to each request.
 ]=]
 
 --[=[
-	@prop token Secret
-	@within State.Rest
+    @prop token Secret
+    @within State.Rest
 ]=]
 
 --[=[
-	@prop logger Logger
-	@within State.Rest
+    @prop logger Logger
+    @within State.Rest
 ]=]
 
 --[=[
-	@prop routeRatelimits { [string]: { remaining: number, limit: number, resetAfter: number, cooloff: boolean? } }
-	@within State.Rest
+    @prop routeRatelimits { [string]: { remaining: number, limit: number, resetAfter: number, cooloff: boolean? } }
+    @within State.Rest
 ]=]
 
 --[=[
-	@prop routeBuckets { [string]: string? }
-	@within State.Rest
+    @prop routeBuckets { [string]: string? }
+    @within State.Rest
 ]=]
 
 --[=[
-	@prop globalRequestCount number
-	@within State.Rest
+    @prop globalRequestCount number
+    @within State.Rest
 ]=]
 
 --[=[
-	@prop globalRatelimit number
-	@within State.Rest
+    @prop globalRatelimit number
+    @within State.Rest
 ]=]
 
 --[=[
-	@prop isBlocked boolean
-	@within State.Rest
+    @prop isBlocked boolean
+    @within State.Rest
 ]=]
 
 --[=[
-	@prop resourcesBlocked { [string]: boolean? }
-	@within State.Rest
+    @prop resourcesBlocked { [string]: boolean? }
+    @within State.Rest
 ]=]
 
 --[=[
-	@prop intents number
-	@within State.Rest
+    @prop intents number
+    @within State.Rest
 ]=]
 
 --[=[
-	@prop version number
-	@within State.Rest
+    @prop version number
+    @within State.Rest
 ]=]
 
 local formdata = require("../FormData")
@@ -73,9 +83,9 @@ REST.Interface = {}
 REST.Prototype = {}
 
 --[=[
-	@within State.Rest
+    @within State.Rest
 
-	Quality of life method to yield, warn after a specific duration, and resume once a condition has been met
+    Quality of life method to yield, warn after a specific duration, and resume once a condition has been met
 ]=]
 function REST.Prototype.yieldUntil(self: REST, callback: () -> boolean, message: string)
     local timeDelayed = 0
@@ -93,9 +103,9 @@ function REST.Prototype.yieldUntil(self: REST, callback: () -> boolean, message:
 end
 
 --[=[
-	@within State.Rest
+    @within State.Rest
 
-	Adds per-route bucket rate limit handling for each request.
+    Adds per-route bucket rate limit handling for each request.
 ]=]
 function REST.Prototype.implementBucketRatelimitsFor(self: REST, request: rest.Request)
     request:addHook("BeforeRequest", function(requestInfo)
@@ -158,9 +168,9 @@ function REST.Prototype.implementBucketRatelimitsFor(self: REST, request: rest.R
 end
 
 --[=[
-	@within State.Rest
+    @within State.Rest
 
-	Adds global ratelimiting to application
+    Adds global ratelimiting to application
 ]=]
 function REST.Prototype.implementGlobalRatelimitsFor(self: REST, request: rest.Request)
     request:addHook("BeforeRequest", function(requestInfo)
@@ -189,9 +199,9 @@ function REST.Prototype.implementGlobalRatelimitsFor(self: REST, request: rest.R
 end
 
 --[=[
-	@within State.Rest
+    @within State.Rest
 
-	Responsible for handling errors that occur when a request has been sent to discord
+    Responsible for handling errors that occur when a request has been sent to discord
 ]=]
 function REST.Prototype.implementErrorHandlerFor(self: REST, request: rest.Request)
     request:addHook("AfterRequest", function(requestInfo, data)
@@ -235,9 +245,9 @@ function REST.Prototype.implementErrorHandlerFor(self: REST, request: rest.Reque
 end
 
 --[=[
-	@within State.Rest
+    @within State.Rest
 
-	Responsible for handling errors that occur when a request has been sent to discord
+    Responsible for handling errors that occur when a request has been sent to discord
 ]=]
 function REST.Prototype.implementAttachmentHandlerFor(_: REST, request: rest.Request)
     request:addHook("BeforeRequest", function(requestInfo)
@@ -289,9 +299,9 @@ function REST.Prototype.implementAttachmentHandlerFor(_: REST, request: rest.Req
 end
 
 --[=[
-	@within State.Rest
+    @within State.Rest
 
-	Will create a new Request
+    Will create a new Request
 ]=]
 function REST.Prototype.newRequest(self: REST): rest.Request
     local newRequest = rest.request.new({
@@ -309,9 +319,9 @@ function REST.Prototype.newRequest(self: REST): rest.Request
 end
 
 --[=[
-	@within State.Rest
+    @within State.Rest
 
-	Will create a new REST object
+    Will create a new REST object
 ]=]
 function REST.Interface.new(settings: {
     token: secret.Secret<string>,

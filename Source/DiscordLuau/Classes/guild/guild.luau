@@ -1,11 +1,20 @@
+--[[
+
+guild
+
+Implementation of the Discord Guild class in Luau. Represents a Discord guild (server)
+with all its properties and methods.
+
+--]]
+
 --[=[
-	@class Classes.Guild
-	@__index Guild.Prototype
-	
-	Implementation of the Discord Guild class in Luau.
-	Represents a Discord guild (server) with all its properties and methods.
-	
-	https://discord.com/developers/docs/resources/guild#guild-object
+    @class Classes.Guild
+    @__index Guild.Prototype
+    
+    Implementation of the Discord Guild class in Luau.
+    Represents a Discord guild (server) with all its properties and methods.
+    
+    https://discord.com/developers/docs/resources/guild#guild-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -53,8 +62,8 @@ Guild.Interface = {}
 Guild.Prototype = {}
 
 --[=[
-	@within Classes.Guild
-	Creates a guild Slash command for the application.
+    @within Classes.Guild
+    Creates a guild Slash command for the application.
 ]=]
 function Guild.Prototype.createSlashCommandAsync(self: Guild, slashCommand: builders.interactionJSON)
     return future.Future.new(function()
@@ -71,8 +80,8 @@ function Guild.Prototype.createSlashCommandAsync(self: Guild, slashCommand: buil
 end
 
 --[=[
-	@within Classes.Guild
-	Delete an existing guild application command.
+    @within Classes.Guild
+    Delete an existing guild application command.
 ]=]
 function Guild.Prototype.deleteSlashCommandAsync(self: Guild, slashCommandId: apiTypes.Snowflake)
     return future.Future.new(function()
@@ -89,8 +98,8 @@ function Guild.Prototype.deleteSlashCommandAsync(self: Guild, slashCommandId: ap
 end
 
 --[=[
-	@within Classes.Guild
-	Edit an existing guild application command.
+    @within Classes.Guild
+    Edit an existing guild application command.
 ]=]
 function Guild.Prototype.editSlashCommandAsync(
     self: Guild,
@@ -111,8 +120,8 @@ function Guild.Prototype.editSlashCommandAsync(
 end
 
 --[=[
-	@within Classes.Guild
-	Get a list of guild application commands.
+    @within Classes.Guild
+    Get a list of guild application commands.
 ]=]
 function Guild.Prototype.getSlashCommandsAsync(self: Guild, withLocalizations: boolean?)
     return future.Future.new(function()
@@ -137,9 +146,9 @@ function Guild.Prototype.getSlashCommandsAsync(self: Guild, withLocalizations: b
 end
 
 --[=[
-	@within Classes.Guild
-	Overwrite all guild application commands. This will skip over commands that are the same as the current commands,
-	and will not remove any existing commands.
+    @within Classes.Guild
+    Overwrite all guild application commands. This will skip over commands that are the same as the current commands,
+    and will not remove any existing commands.
 ]=]
 function Guild.Prototype.overwriteSlashCommandsAsync(self: Guild, slashCommands: { builders.interactionJSON })
     return future.Future.new(function()
@@ -163,9 +172,9 @@ function Guild.Prototype.overwriteSlashCommandsAsync(self: Guild, slashCommands:
 end
 
 --[=[
-	@within Classes.Guild
-	Returns the guild preview object for the given id. If the user is not in the guild, then the guild must be
-	discoverable.
+    @within Classes.Guild
+    Returns the guild preview object for the given id. If the user is not in the guild, then the guild must be
+    discoverable.
 ]=]
 function Guild.Prototype.getPreviewAsync(self: Guild)
     return future.Future.new(function()
@@ -181,9 +190,9 @@ function Guild.Prototype.getPreviewAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Modify a guild's settings. Requires the MANAGE_GUILD permission.
-	Returns the updated guild object on success. Fires a Guild Update Gateway event.
+    @within Classes.Guild
+    Modify a guild's settings. Requires the MANAGE_GUILD permission.
+    Returns the updated guild object on success. Fires a Guild Update Gateway event.
 ]=]
 function Guild.Prototype.modifyAsync(self: Guild, json: builders.guildJSON, reason: string?)
     return future.Future.new(function()
@@ -201,9 +210,9 @@ function Guild.Prototype.modifyAsync(self: Guild, json: builders.guildJSON, reas
 end
 
 --[=[
-	@within Classes.Guild
-	Delete a guild permanently. User must be owner.
-	Returns 204 No Content on success. Fires a Guild Delete Gateway event.
+    @within Classes.Guild
+    Delete a guild permanently. User must be owner.
+    Returns 204 No Content on success. Fires a Guild Delete Gateway event.
 ]=]
 function Guild.Prototype.deleteAsync(self: Guild)
     return future.Future.new(function()
@@ -218,13 +227,13 @@ function Guild.Prototype.deleteAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild channel objects. Does not include threads.
+    @within Classes.Guild
+    Returns a list of guild channel objects. Does not include threads.
 
-	Typed as unknown because the API returns a variety of channel types, and luau's type system is not currently
-	capable of handling this.
+    Typed as unknown because the API returns a variety of channel types, and luau's type system is not currently
+    capable of handling this.
 
-	Please use explicit functions for specific channel types, for example: getTextChannelsAsync, getVoiceChannelsAsync, etc.
+    Please use explicit functions for specific channel types, for example: getTextChannelsAsync, getVoiceChannelsAsync, etc.
 ]=]
 function Guild.Prototype.getChannelsAsync(self: Guild)
     return future.Future.new(function()
@@ -245,8 +254,8 @@ function Guild.Prototype.getChannelsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild text channel objects.
+    @within Classes.Guild
+    Returns a list of guild text channel objects.
 ]=]
 function Guild.Prototype.getTextChannelsAsync(self: Guild)
     return future.Future.new(function()
@@ -271,8 +280,8 @@ function Guild.Prototype.getTextChannelsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild voice channel objects.
+    @within Classes.Guild
+    Returns a list of guild voice channel objects.
 ]=]
 function Guild.Prototype.getVoiceChannelsAsync(self: Guild)
     return future.Future.new(function()
@@ -297,8 +306,8 @@ function Guild.Prototype.getVoiceChannelsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild category channel objects.
+    @within Classes.Guild
+    Returns a list of guild category channel objects.
 ]=]
 function Guild.Prototype.getCategoryChannelsAsync(self: Guild)
     return future.Future.new(function()
@@ -323,8 +332,8 @@ function Guild.Prototype.getCategoryChannelsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild announcement channel objects.
+    @within Classes.Guild
+    Returns a list of guild announcement channel objects.
 ]=]
 function Guild.Prototype.getAnnouncementChannelsAsync(self: Guild)
     return future.Future.new(function()
@@ -349,8 +358,8 @@ function Guild.Prototype.getAnnouncementChannelsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild stage voice channel objects.
+    @within Classes.Guild
+    Returns a list of guild stage voice channel objects.
 ]=]
 function Guild.Prototype.getStageVoiceChannelsAsync(self: Guild)
     return future.Future.new(function()
@@ -375,8 +384,8 @@ function Guild.Prototype.getStageVoiceChannelsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild directory channel objects.
+    @within Classes.Guild
+    Returns a list of guild directory channel objects.
 ]=]
 function Guild.Prototype.getDirectoryChannelsAsync(self: Guild)
     return future.Future.new(function()
@@ -401,11 +410,11 @@ function Guild.Prototype.getDirectoryChannelsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Create a new channel object for the guild. Requires the MANAGE_CHANNELS permission.
-	If setting permission overwrites, only permissions your bot has in the guild can be allowed/denied.
-	Setting MANAGE_ROLES permission in channels is only possible for guild administrators.
-	Returns the new channel object on success. Fires a Channel Create Gateway event.
+    @within Classes.Guild
+    Create a new channel object for the guild. Requires the MANAGE_CHANNELS permission.
+    If setting permission overwrites, only permissions your bot has in the guild can be allowed/denied.
+    Setting MANAGE_ROLES permission in channels is only possible for guild administrators.
+    Returns the new channel object on success. Fires a Channel Create Gateway event.
 ]=]
 function Guild.Prototype.createChannelAsync<T>(self: Guild, json: builders.channelJSON, reason: string?)
     return future.Future.new(function()
@@ -420,14 +429,14 @@ function Guild.Prototype.createChannelAsync<T>(self: Guild, json: builders.chann
 end
 
 --[=[
-	@within Classes.Guild
-	Returns all active threads in the guild, including public and private threads.
-	Threads are ordered by their id, in descending order.
+    @within Classes.Guild
+    Returns all active threads in the guild, including public and private threads.
+    Threads are ordered by their id, in descending order.
 
-	Typed as unknown because the API returns a variety of channel types, and luau's type system is not currently
-	capable of handling this.
+    Typed as unknown because the API returns a variety of channel types, and luau's type system is not currently
+    capable of handling this.
 
-	Please use explicit functions for specific channel types, for example: getMediaThreadsAsync, getAnnouncementThreadsAsync, etc.
+    Please use explicit functions for specific channel types, for example: getMediaThreadsAsync, getAnnouncementThreadsAsync, etc.
 ]=]
 function Guild.Prototype.getThreadsAsync(self: Guild)
     return future.Future.new(function()
@@ -448,8 +457,8 @@ function Guild.Prototype.getThreadsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild announcement thread objects.
+    @within Classes.Guild
+    Returns a list of guild announcement thread objects.
 ]=]
 function Guild.Prototype.getAnnouncementThreadsAsync(self: Guild)
     return future.Future.new(function()
@@ -474,8 +483,8 @@ function Guild.Prototype.getAnnouncementThreadsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of public guild thread objects.
+    @within Classes.Guild
+    Returns a list of public guild thread objects.
 ]=]
 function Guild.Prototype.getPublicThreadsAsync(self: Guild)
     return future.Future.new(function()
@@ -500,8 +509,8 @@ function Guild.Prototype.getPublicThreadsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of private guild thread objects.
+    @within Classes.Guild
+    Returns a list of private guild thread objects.
 ]=]
 function Guild.Prototype.getPrivateThreadsAsync(self: Guild)
     return future.Future.new(function()
@@ -526,8 +535,8 @@ function Guild.Prototype.getPrivateThreadsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a guild member object for the specified user.
+    @within Classes.Guild
+    Returns a guild member object for the specified user.
 ]=]
 function Guild.Prototype.getMemberAsync(self: Guild, userId: string)
     return future.Future.new(function()
@@ -543,8 +552,8 @@ function Guild.Prototype.getMemberAsync(self: Guild, userId: string)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild member objects that are members of the guild.
+    @within Classes.Guild
+    Returns a list of guild member objects that are members of the guild.
 ]=]
 function Guild.Prototype.listMembersAsync(self: Guild, lastSnowflake: string?, limit: number?)
     return future.Future.new(function()
@@ -570,8 +579,8 @@ function Guild.Prototype.listMembersAsync(self: Guild, lastSnowflake: string?, l
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of guild member objects whose username or nickname starts with a provided string.
+    @within Classes.Guild
+    Returns a list of guild member objects whose username or nickname starts with a provided string.
 ]=]
 function Guild.Prototype.searchMembersAsync(self: Guild, query: string, limit: number?)
     return future.Future.new(function()
@@ -597,12 +606,12 @@ function Guild.Prototype.searchMembersAsync(self: Guild, query: string, limit: n
 end
 
 --[=[
-	@within Classes.Guild
-	Adds a user to the guild, provided you have a valid oauth2 access token for the user with the guilds.join scope.
+    @within Classes.Guild
+    Adds a user to the guild, provided you have a valid oauth2 access token for the user with the guilds.join scope.
 
-	For guilds with Membership Screening enabled, this endpoint will default to adding new members as pending in the
-	guild member object. Members that are pending will have to complete membership screening before they become full
-	members that can talk.
+    For guilds with Membership Screening enabled, this endpoint will default to adding new members as pending in the
+    guild member object. Members that are pending will have to complete membership screening before they become full
+    members that can talk.
 ]=]
 function Guild.Prototype.addMemberAsync(
     self: Guild,
@@ -639,8 +648,8 @@ function Guild.Prototype.addMemberAsync(
 end
 
 --[=[
-	@within Classes.Guild
-	Removes a role from a guild member. Requires the MANAGE_ROLES permission.
+    @within Classes.Guild
+    Removes a role from a guild member. Requires the MANAGE_ROLES permission.
 ]=]
 function Guild.Prototype.kickMemberAsync(self: Guild, userId: apiTypes.Snowflake, reason: string?)
     return future.Future.new(function()
@@ -655,8 +664,8 @@ function Guild.Prototype.kickMemberAsync(self: Guild, userId: apiTypes.Snowflake
 end
 
 --[=[
-	@within Classes.Guild
-	Create a guild ban, and optionally delete previous messages sent by the banned user.
+    @within Classes.Guild
+    Create a guild ban, and optionally delete previous messages sent by the banned user.
 ]=]
 function Guild.Prototype.banMemberAsync(
     self: Guild,
@@ -692,8 +701,8 @@ function Guild.Prototype.banMemberAsync(
 end
 
 --[=[
-	@within Classes.Guild
-	Create a guild ban for multiple users, and optionally delete previous messages sent by the banned users.
+    @within Classes.Guild
+    Create a guild ban for multiple users, and optionally delete previous messages sent by the banned users.
 ]=]
 function Guild.Prototype.bulkBanAsync(
     self: Guild,
@@ -732,8 +741,8 @@ function Guild.Prototype.bulkBanAsync(
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of ban objects for the users banned from this guild.
+    @within Classes.Guild
+    Returns a list of ban objects for the users banned from this guild.
 ]=]
 function Guild.Prototype.getBansAsync(
     self: Guild,
@@ -765,8 +774,8 @@ function Guild.Prototype.getBansAsync(
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a ban object for the given user or a 404 not found if the ban cannot be found.
+    @within Classes.Guild
+    Returns a ban object for the given user or a 404 not found if the ban cannot be found.
 ]=]
 function Guild.Prototype.getBanAsync(self: Guild, userId: apiTypes.Snowflake)
     return future.Future.new(function()
@@ -787,8 +796,8 @@ function Guild.Prototype.getBanAsync(self: Guild, userId: apiTypes.Snowflake)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of role objects for the guild.
+    @within Classes.Guild
+    Returns a list of role objects for the guild.
 ]=]
 function Guild.Prototype.getRolesAsync(self: Guild)
     return future.Future.new(function()
@@ -811,8 +820,8 @@ function Guild.Prototype.getRolesAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a role object for the specified role.
+    @within Classes.Guild
+    Returns a role object for the specified role.
 ]=]
 function Guild.Prototype.getRoleAsync(self: Guild, roleId: apiTypes.Snowflake)
     return future.Future.new(function()
@@ -837,9 +846,9 @@ function Guild.Prototype.getRoleAsync(self: Guild, roleId: apiTypes.Snowflake)
 end
 
 --[=[
-	@within Classes.Guild
-	Create a new role for the guild. Requires the MANAGE_ROLES permission.
-	Returns the new role object on success.
+    @within Classes.Guild
+    Create a new role for the guild. Requires the MANAGE_ROLES permission.
+    Returns the new role object on success.
 ]=]
 function Guild.Prototype.createRoleAsync(self: Guild, roleJson: builders.roleJSON, reason: string?)
     return future.Future.new(function()
@@ -854,8 +863,8 @@ function Guild.Prototype.createRoleAsync(self: Guild, roleJson: builders.roleJSO
 end
 
 --[=[
-	@within Classes.Guild
-	Modify a guild's MFA level. Requires guild ownership. Returns the updated level on success.
+    @within Classes.Guild
+    Modify a guild's MFA level. Requires guild ownership. Returns the updated level on success.
 ]=]
 function Guild.Prototype.setMFALevelAsync(self: Guild, mfaLevel: apiTypes.MFALevel, reason: string?)
     return future.Future.new(function()
@@ -874,13 +883,13 @@ function Guild.Prototype.setMFALevelAsync(self: Guild, mfaLevel: apiTypes.MFALev
 end
 
 --[=[
-	@within Classes.Guild
-	Returns an object with one pruned key indicating the number of members that would be removed in a prune operation.
-	Requires the MANAGE_GUILD and KICK_MEMBERS permissions.
+    @within Classes.Guild
+    Returns an object with one pruned key indicating the number of members that would be removed in a prune operation.
+    Requires the MANAGE_GUILD and KICK_MEMBERS permissions.
 
-	By default, prune will not remove users with roles. You can optionally include specific roles in your prune by
-	providing the include_roles parameter. Any inactive user that has a subset of the provided role(s) will be
-	counted in the prune and users with additional roles will not.
+    By default, prune will not remove users with roles. You can optionally include specific roles in your prune by
+    providing the include_roles parameter. Any inactive user that has a subset of the provided role(s) will be
+    counted in the prune and users with additional roles will not.
 ]=]
 function Guild.Prototype.getPruneCountAsync(self: Guild, days: number?, includedRoles: { apiTypes.Snowflake }?)
     return future.Future.new(function()
@@ -900,15 +909,15 @@ function Guild.Prototype.getPruneCountAsync(self: Guild, days: number?, included
 end
 
 --[=[
-	@within Classes.Guild
-	Begin a prune operation. Requires the MANAGE_GUILD and KICK_MEMBERS permissions.
-	Returns an object with one pruned key indicating the number of members that were removed in the prune operation.
-	
-	For large guilds it's recommended to set the compute_prune_count option to false, forcing pruned to null
+    @within Classes.Guild
+    Begin a prune operation. Requires the MANAGE_GUILD and KICK_MEMBERS permissions.
+    Returns an object with one pruned key indicating the number of members that were removed in the prune operation.
+    
+    For large guilds it's recommended to set the compute_prune_count option to false, forcing pruned to null
 
-	By default, prune will not remove users with roles. You can optionally include specific roles in your prune by
-	providing the include_roles parameter. Any inactive user that has a subset of the provided role(s)
-	will be included in the prune and users with additional roles will not.
+    By default, prune will not remove users with roles. You can optionally include specific roles in your prune by
+    providing the include_roles parameter. Any inactive user that has a subset of the provided role(s)
+    will be included in the prune and users with additional roles will not.
 ]=]
 function Guild.Prototype.beginPruneAsync(
     self: Guild,
@@ -940,8 +949,8 @@ function Guild.Prototype.beginPruneAsync(
 end
 
 --[=[
-	@within Classes.Guild
-	Returns an array of voice region objects that can be used when setting a voice or stage channel's rtc_region.
+    @within Classes.Guild
+    Returns an array of voice region objects that can be used when setting a voice or stage channel's rtc_region.
 ]=]
 function Guild.Prototype.getVoiceRegionsAsync(self: Guild)
     return future.Future.new(function()
@@ -962,8 +971,8 @@ function Guild.Prototype.getVoiceRegionsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of invite objects (with invite metadata) for the guild. Requires the MANAGE_GUILD permission.
+    @within Classes.Guild
+    Returns a list of invite objects (with invite metadata) for the guild. Requires the MANAGE_GUILD permission.
 ]=]
 function Guild.Prototype.getInvitesAsync(self: Guild)
     return future.Future.new(function()
@@ -984,8 +993,8 @@ function Guild.Prototype.getInvitesAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a list of integration objects for the guild. Requires the MANAGE_GUILD permission.
+    @within Classes.Guild
+    Returns a list of integration objects for the guild. Requires the MANAGE_GUILD permission.
 ]=]
 function Guild.Prototype.getIntegrationsAsync(self: Guild)
     return future.Future.new(function()
@@ -1006,11 +1015,11 @@ function Guild.Prototype.getIntegrationsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Delete the attached integration object for the guild. Deletes any associated webhooks and kicks the associated
-	bot if there is one.
-	
-	Requires the MANAGE_GUILD permission.
+    @within Classes.Guild
+    Delete the attached integration object for the guild. Deletes any associated webhooks and kicks the associated
+    bot if there is one.
+    
+    Requires the MANAGE_GUILD permission.
 ]=]
 function Guild.Prototype.deleteIntegrationAsync(self: Guild, integrationId: string)
     return future.Future.new(function()
@@ -1025,8 +1034,8 @@ function Guild.Prototype.deleteIntegrationAsync(self: Guild, integrationId: stri
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a guild widget settings object. Requires the MANAGE_GUILD permission.
+    @within Classes.Guild
+    Returns a guild widget settings object. Requires the MANAGE_GUILD permission.
 ]=]
 function Guild.Prototype.getWidgetSettingsAsync(self: Guild)
     return future.Future.new(function()
@@ -1041,9 +1050,9 @@ function Guild.Prototype.getWidgetSettingsAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Modify a guild widget settings object for the guild. All attributes may be passed in with JSON and modified.
-	Requires the MANAGE_GUILD permission. Returns the updated guild widget settings object. 
+    @within Classes.Guild
+    Modify a guild widget settings object for the guild. All attributes may be passed in with JSON and modified.
+    Requires the MANAGE_GUILD permission. Returns the updated guild widget settings object. 
 ]=]
 function Guild.Prototype.modifyWidgetAsync(self: Guild, json: builders.widgetSettingsJSON, reason: string?)
     return future.Future.new(function()
@@ -1058,9 +1067,9 @@ function Guild.Prototype.modifyWidgetAsync(self: Guild, json: builders.widgetSet
 end
 
 --[=[
-	@within Classes.Guild
-	Returns the widget for the guild. Fires an Invite Create Gateway event when an invite channel is defined
-	and a new Invite is generated.
+    @within Classes.Guild
+    Returns the widget for the guild. Fires an Invite Create Gateway event when an invite channel is defined
+    and a new Invite is generated.
 ]=]
 function Guild.Prototype.getWidgetAsync(self: Guild)
     return future.Future.new(function()
@@ -1075,9 +1084,9 @@ function Guild.Prototype.getWidgetAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a partial invite object for guilds with that feature enabled. Requires the MANAGE_GUILD permission.
-	code will be null if a vanity url for the guild is not set.
+    @within Classes.Guild
+    Returns a partial invite object for guilds with that feature enabled. Requires the MANAGE_GUILD permission.
+    code will be null if a vanity url for the guild is not set.
 ]=]
 function Guild.Prototype.getVanityUrlAsync(self: Guild)
     return future.Future.new(function()
@@ -1092,8 +1101,8 @@ function Guild.Prototype.getVanityUrlAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Returns a PNG image widget for the guild. Requires no permissions or authentication.
+    @within Classes.Guild
+    Returns a PNG image widget for the guild. Requires no permissions or authentication.
 ]=]
 function Guild.Prototype.getWidgetImageAsync(
     self: Guild,
@@ -1115,10 +1124,10 @@ function Guild.Prototype.getWidgetImageAsync(
 end
 
 --[=[
-	@within Classes.Guild
-	Returns the Welcome Screen object for the guild. If the welcome screen is not enabled.
-	
-	the MANAGE_GUILD permission is required.
+    @within Classes.Guild
+    Returns the Welcome Screen object for the guild. If the welcome screen is not enabled.
+    
+    the MANAGE_GUILD permission is required.
 ]=]
 function Guild.Prototype.getWelcomeScreenAsync(self: Guild)
     return future.Future.new(function()
@@ -1133,8 +1142,8 @@ function Guild.Prototype.getWelcomeScreenAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Modify the guild's Welcome Screen. Requires the MANAGE_GUILD permission.
+    @within Classes.Guild
+    Modify the guild's Welcome Screen. Requires the MANAGE_GUILD permission.
 ]=]
 function Guild.Prototype.modifyWelcomeScreenAsync(self: Guild, json: builders.welcomeScreenJSON, reason: string?)
     return future.Future.new(function()
@@ -1149,8 +1158,8 @@ function Guild.Prototype.modifyWelcomeScreenAsync(self: Guild, json: builders.we
 end
 
 --[=[
-	@within Classes.Guild
-	Returns the Onboarding object for the guild.
+    @within Classes.Guild
+    Returns the Onboarding object for the guild.
 ]=]
 function Guild.Prototype.getOnboardingAsync(self: Guild)
     return future.Future.new(function()
@@ -1165,9 +1174,9 @@ function Guild.Prototype.getOnboardingAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Modifies the onboarding configuration of the guild. Returns a 200 with the Onboarding object for the guild.
-	Requires the MANAGE_GUILD and MANAGE_ROLES permissions.
+    @within Classes.Guild
+    Modifies the onboarding configuration of the guild. Returns a 200 with the Onboarding object for the guild.
+    Requires the MANAGE_GUILD and MANAGE_ROLES permissions.
 ]=]
 function Guild.Prototype.modifyOnboardingAsync(self: Guild, json: builders.onboardingJSON, reason: string?)
     return future.Future.new(function()
@@ -1182,14 +1191,14 @@ function Guild.Prototype.modifyOnboardingAsync(self: Guild, json: builders.onboa
 end
 
 --[=[
-	@within Classes.Guild
-	Returns an audit log object for the guild. Requires the VIEW_AUDIT_LOG permission.
+    @within Classes.Guild
+    Returns an audit log object for the guild. Requires the VIEW_AUDIT_LOG permission.
 
-	The returned list of audit log entries is ordered based on whether you use before or after. When using before, the
-		list is ordered by the audit log entry ID descending (newer entries first). If after is used, the list is reversed
-		and appears in ascending order (older entries first). Omitting both before and after defaults to before the current
-		timestamp and will show the most recent entries in descending order by ID, the opposite can be achieved using after=0
-		(showing oldest entries).
+    The returned list of audit log entries is ordered based on whether you use before or after. When using before, the
+        list is ordered by the audit log entry ID descending (newer entries first). If after is used, the list is reversed
+        and appears in ascending order (older entries first). Omitting both before and after defaults to before the current
+        timestamp and will show the most recent entries in descending order by ID, the opposite can be achieved using after=0
+        (showing oldest entries).
 ]=]
 function Guild.Prototype.getGuildAuditLogAsync(
     self: Guild,
@@ -1219,8 +1228,8 @@ function Guild.Prototype.getGuildAuditLogAsync(
 end
 
 --[=[
-	@within Classes.Guild
-	Get a list of all rules currently configured for the guild. Returns a list of auto moderation rule objects for the given guild.
+    @within Classes.Guild
+    Get a list of all rules currently configured for the guild. Returns a list of auto moderation rule objects for the given guild.
 ]=]
 function Guild.Prototype.listAutomoderationRulesAsync(self: Guild)
     return future.Future.new(function()
@@ -1241,8 +1250,8 @@ function Guild.Prototype.listAutomoderationRulesAsync(self: Guild)
 end
 
 --[=[
-	@within Classes.Guild
-	Get a single rule. Returns an auto moderation rule object.
+    @within Classes.Guild
+    Get a single rule. Returns an auto moderation rule object.
 ]=]
 function Guild.Prototype.getAutomoderationRuleAsync(self: Guild, ruleId: apiTypes.Snowflake)
     return future.Future.new(function()
@@ -1257,8 +1266,8 @@ function Guild.Prototype.getAutomoderationRuleAsync(self: Guild, ruleId: apiType
 end
 
 --[=[
-	@within Classes.Guild
-	Create a new rule. Returns an auto moderation rule on success.
+    @within Classes.Guild
+    Create a new rule. Returns an auto moderation rule on success.
 ]=]
 function Guild.Prototype.createAutomoderationRuleAsync(
     self: Guild,
@@ -1277,9 +1286,9 @@ function Guild.Prototype.createAutomoderationRuleAsync(
 end
 
 --[=[
-	@private
-	@within Classes.Guild
-	Synchronizes the guild object with the data from the API.
+    @private
+    @within Classes.Guild
+    Synchronizes the guild object with the data from the API.
 ]=]
 function Guild.Prototype.sync(self: Guild, guildData: apiTypes.GuildObject)
     local emojiArray = {}
@@ -1303,299 +1312,299 @@ function Guild.Prototype.sync(self: Guild, guildData: apiTypes.GuildObject)
     end
 
     --[=[
-		@within Classes.Guild
-		@prop stickers {Classes.Sticker}
-		Collection of stickers in the guild
-	]=]
+        @within Classes.Guild
+        @prop stickers {Classes.Sticker}
+        Collection of stickers in the guild
+    ]=]
     self.stickers = stickerArray
 
     --[=[
-		@within Classes.Guild
-		@prop roles {Classes.Role}
-		Collection of roles in the guild
-	]=]
+        @within Classes.Guild
+        @prop roles {Classes.Role}
+        Collection of roles in the guild
+    ]=]
     self.roles = rolesArray
 
     --[=[
-		@within Classes.Guild
-		@prop emojis {Classes.Emoji}
-		Collection of emojis in the guild
-	]=]
+        @within Classes.Guild
+        @prop emojis {Classes.Emoji}
+        Collection of emojis in the guild
+    ]=]
     self.emojis = emojiArray
 
     --[=[
-		@within Classes.Guild
-		@prop verificationLevel string
-		Verification level required for the guild
-	]=]
+        @within Classes.Guild
+        @prop verificationLevel string
+        Verification level required for the guild
+    ]=]
     self.verificationLevel = apiTypes.guild.VerificationLevel[guildData.verification_level]
 
     --[=[
-		@within Classes.Guild
-		@prop defaultMessageNotifications string
-		Default message notifications level
-	]=]
+        @within Classes.Guild
+        @prop defaultMessageNotifications string
+        Default message notifications level
+    ]=]
     self.defaultMessageNotifications =
         apiTypes.guild.DefaultMessageNotification[guildData.default_message_notifications]
 
     --[=[
-		@within Classes.Guild
-		@prop explicitContentFilter string
-		Explicit content filter level
-	]=]
+        @within Classes.Guild
+        @prop explicitContentFilter string
+        Explicit content filter level
+    ]=]
     self.explicitContentFilter = apiTypes.guild.ExplicitContentFilterLevel[guildData.explicit_content_filter]
 
     --[=[
-		@within Classes.Guild
-		@prop premiumTier string
-		Premium tier (Server Boost level)
-	]=]
+        @within Classes.Guild
+        @prop premiumTier string
+        Premium tier (Server Boost level)
+    ]=]
     self.premiumTier = apiTypes.guild.PremiumTier[guildData.premium_tier]
 
     --[=[
-		@within Classes.Guild
-		@prop nsfwLevel string
-		NSFW level of the guild
-	]=]
+        @within Classes.Guild
+        @prop nsfwLevel string
+        NSFW level of the guild
+    ]=]
     self.nsfwLevel = apiTypes.guild.NSFWLevel[guildData.nsfw_level]
 
     --[=[
-		@within Classes.Guild
-		@prop mfaLevel string
-		Required MFA level for the guild
-	]=]
+        @within Classes.Guild
+        @prop mfaLevel string
+        Required MFA level for the guild
+    ]=]
     self.mfaLevel = apiTypes.guild.MFALevel[guildData.mfa_level]
 
     --[=[
-		@within Classes.Guild
-		@prop systemChannelFlags Classes.SystemChannelBitflag
-		System channel flags
-	]=]
+        @within Classes.Guild
+        @prop systemChannelFlags Classes.SystemChannelBitflag
+        System channel flags
+    ]=]
     self.systemChannelFlags = guildData.system_channel_flags
         and systemChannelBitflag.new(guildData.system_channel_flags)
 
     --[=[
-		@within Classes.Guild
-		@prop icon string?
-		Icon hash of the guild
-	]=]
+        @within Classes.Guild
+        @prop icon string?
+        Icon hash of the guild
+    ]=]
     self.icon = guildData.icon
 
     --[=[
-		@within Classes.Guild
-		@prop iconHash string?
-		The hash of the guild's icon
-	]=]
+        @within Classes.Guild
+        @prop iconHash string?
+        The hash of the guild's icon
+    ]=]
     self.iconHash = guildData.icon_hash
 
     --[=[
-		@within Classes.Guild
-		@prop name string?
-		The name of the guild
-	]=]
+        @within Classes.Guild
+        @prop name string?
+        The name of the guild
+    ]=]
     self.name = guildData.name
 
     --[=[
-		@within Classes.Guild
-		@prop splash string?
-		Splash hash
-	]=]
+        @within Classes.Guild
+        @prop splash string?
+        Splash hash
+    ]=]
     self.splash = guildData.splash
 
     --[=[
-		@within Classes.Guild
-		@prop discoverySplash string?
-		Discovery splash hash
-	]=]
+        @within Classes.Guild
+        @prop discoverySplash string?
+        Discovery splash hash
+    ]=]
     self.discoverySplash = guildData.discovery_splash
 
     --[=[
-		@within Classes.Guild
-		@prop owner boolean?
-		Whether the user is the owner of the guild
-	]=]
+        @within Classes.Guild
+        @prop owner boolean?
+        Whether the user is the owner of the guild
+    ]=]
     self.owner = guildData.owner
 
     --[=[
-		@within Classes.Guild
-		@prop ownerId string?
-		ID of guild owner
-	]=]
+        @within Classes.Guild
+        @prop ownerId string?
+        ID of guild owner
+    ]=]
     self.ownerId = guildData.owner_id
 
     --[=[
-		@within Classes.Guild
-		@prop permissions string?
-		Total permissions for the user in the guild (excludes overwrites)
-	]=]
+        @within Classes.Guild
+        @prop permissions string?
+        Total permissions for the user in the guild (excludes overwrites)
+    ]=]
     self.permissions = guildData.permissions
 
     --[=[
-		@within Classes.Guild
-		@prop region string?
-		Voice region id for the guild
-	]=]
+        @within Classes.Guild
+        @prop region string?
+        Voice region id for the guild
+    ]=]
     self.region = guildData.region
 
     --[=[
-		@within Classes.Guild
-		@prop afkChannelId string?
-		ID of AFK channel
-	]=]
+        @within Classes.Guild
+        @prop afkChannelId string?
+        ID of AFK channel
+    ]=]
     self.afkChannelId = guildData.afk_channel_id
 
     --[=[
-		@within Classes.Guild
-		@prop afkTimeout number?
-		AFK timeout in seconds
-	]=]
+        @within Classes.Guild
+        @prop afkTimeout number?
+        AFK timeout in seconds
+    ]=]
     self.afkTimeout = guildData.afk_timeout
 
     --[=[
-		@within Classes.Guild
-		@prop widgetEnabled boolean?
-		Whether the server widget is enabled
-	]=]
+        @within Classes.Guild
+        @prop widgetEnabled boolean?
+        Whether the server widget is enabled
+    ]=]
     self.widgetEnabled = guildData.widget_enabled
 
     --[=[
-		@within Classes.Guild
-		@prop widgetChannelId string?
-		The channel id that the widget will generate an invite to
-	]=]
+        @within Classes.Guild
+        @prop widgetChannelId string?
+        The channel id that the widget will generate an invite to
+    ]=]
     self.widgetChannelId = guildData.widget_channel_id
 
     --[=[
-		@within Classes.Guild
-		@prop features {string}?
-		Array of guild features
-	]=]
+        @within Classes.Guild
+        @prop features {string}?
+        Array of guild features
+    ]=]
     self.features = guildData.features
 
     --[=[
-		@within Classes.Guild
-		@prop applicationId string?
-		Application ID of the guild creator if it is bot-created
-	]=]
+        @within Classes.Guild
+        @prop applicationId string?
+        Application ID of the guild creator if it is bot-created
+    ]=]
     self.applicationId = guildData.application_id
 
     --[=[
-		@within Classes.Guild
-		@prop systemChannelId string?
-		The id of the channel where guild notices are posted
-	]=]
+        @within Classes.Guild
+        @prop systemChannelId string?
+        The id of the channel where guild notices are posted
+    ]=]
     self.systemChannelId = guildData.system_channel_id
 
     --[=[
-		@within Classes.Guild
-		@prop rulesChannelId string?
-		ID of the rules channel
-	]=]
+        @within Classes.Guild
+        @prop rulesChannelId string?
+        ID of the rules channel
+    ]=]
     self.rulesChannelId = guildData.rules_channel_id
 
     --[=[
-		@within Classes.Guild
-		@prop maxPresences number?
-		The maximum number of presences for the guild
-	]=]
+        @within Classes.Guild
+        @prop maxPresences number?
+        The maximum number of presences for the guild
+    ]=]
     self.maxPresences = guildData.max_presences
 
     --[=[
-		@within Classes.Guild
-		@prop maxMembers number?
-		The maximum number of members for the guild
-	]=]
+        @within Classes.Guild
+        @prop maxMembers number?
+        The maximum number of members for the guild
+    ]=]
     self.maxMembers = guildData.max_members
 
     --[=[
-		@within Classes.Guild
-		@prop vanityUrlCode string?
-		The vanity URL code for the guild
-	]=]
+        @within Classes.Guild
+        @prop vanityUrlCode string?
+        The vanity URL code for the guild
+    ]=]
     self.vanityUrlCode = guildData.vanity_url_code
 
     --[=[
-		@within Classes.Guild
-		@prop description string?
-		The description of the guild
-	]=]
+        @within Classes.Guild
+        @prop description string?
+        The description of the guild
+    ]=]
     self.description = guildData.description
 
     --[=[
-		@within Classes.Guild
-		@prop banner string?
-		Banner hash
-	]=]
+        @within Classes.Guild
+        @prop banner string?
+        Banner hash
+    ]=]
     self.banner = guildData.banner
 
     --[=[
-		@within Classes.Guild
-		@prop premiumSubscriptionCount number?
-		The number of boosts this guild currently has
-	]=]
+        @within Classes.Guild
+        @prop premiumSubscriptionCount number?
+        The number of boosts this guild currently has
+    ]=]
     self.premiumSubscriptionCount = guildData.premium_subscription_count
 
     --[=[
-		@within Classes.Guild
-		@prop preferredLocale string?
-		The preferred locale of a Community guild
-	]=]
+        @within Classes.Guild
+        @prop preferredLocale string?
+        The preferred locale of a Community guild
+    ]=]
     self.preferredLocale = guildData.preferred_locale
 
     --[=[
-		@within Classes.Guild
-		@prop publicUpdatesChannelId string?
-		The id of the channel where admins and moderators receive notices from Discord
-	]=]
+        @within Classes.Guild
+        @prop publicUpdatesChannelId string?
+        The id of the channel where admins and moderators receive notices from Discord
+    ]=]
     self.publicUpdatesChannelId = guildData.public_updates_channel_id
 
     --[=[
-		@within Classes.Guild
-		@prop maxVideoChannelUsers number?
-		The maximum amount of users in a video channel
-	]=]
+        @within Classes.Guild
+        @prop maxVideoChannelUsers number?
+        The maximum amount of users in a video channel
+    ]=]
     self.maxVideoChannelUsers = guildData.max_video_channel_users
 
     --[=[
-		@within Classes.Guild
-		@prop maxStageVideoChannelUsers number?
-		The maximum amount of users in a stage video channel
-	]=]
+        @within Classes.Guild
+        @prop maxStageVideoChannelUsers number?
+        The maximum amount of users in a stage video channel
+    ]=]
     self.maxStageVideoChannelUsers = guildData.max_stage_video_channel_users
 
     --[=[
-		@within Classes.Guild
-		@prop approximateMemberCount number?
-		Approximate number of members in this guild
-	]=]
+        @within Classes.Guild
+        @prop approximateMemberCount number?
+        Approximate number of members in this guild
+    ]=]
     self.approximateMemberCount = guildData.approximate_member_count
 
     --[=[
-		@within Classes.Guild
-		@prop approximatePresenceCount number?
-		Approximate number of non-offline members in this guild
-	]=]
+        @within Classes.Guild
+        @prop approximatePresenceCount number?
+        Approximate number of non-offline members in this guild
+    ]=]
     self.approximatePresenceCount = guildData.approximate_presence_count
 
     --[=[
-		@within Classes.Guild
-		@prop premiumProgressBarEnabled boolean?
-		Whether the guild has the boost progress bar enabled
-	]=]
+        @within Classes.Guild
+        @prop premiumProgressBarEnabled boolean?
+        Whether the guild has the boost progress bar enabled
+    ]=]
     self.premiumProgressBarEnabled = guildData.premium_progress_bar_enabled
 
     --[=[
-		@within Classes.Guild
-		@prop safetyAlertsChannelId string?
-		The id of the channel where admins and moderators receive safety alerts from Discord
-	]=]
+        @within Classes.Guild
+        @prop safetyAlertsChannelId string?
+        The id of the channel where admins and moderators receive safety alerts from Discord
+    ]=]
     self.safetyAlertsChannelId = guildData.safety_alerts_channel_id
 end
 
 --[=[
-	@private
-	@within Classes.Guild
-	Creates a new Guild instance with the specified guild data.
+    @private
+    @within Classes.Guild
+    Creates a new Guild instance with the specified guild data.
 ]=]
 function Guild.Interface.new(state: state.State, guildData: apiTypes.GuildObject): Guild
     local self = setmetatable(

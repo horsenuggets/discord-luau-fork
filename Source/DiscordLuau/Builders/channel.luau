@@ -1,130 +1,138 @@
+--[[
+
+channel
+
+Implementation of a discord Channel as a luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Channel
-	@__index Prototype
+    @class Builders.Channel
+    @__index Prototype
 
-	Implementation of a discord Channel as a luau builder.	
+    Implementation of a discord Channel as a luau builder.    
 
-	https://discord.com/developers/docs/resources/guild#create-guild-channel
+    https://discord.com/developers/docs/resources/guild#create-guild-channel
 ]=]
 
 --[=[
-	@prop id string?
-	@within Builders.Channel
-	The id of the channel.
+    @prop id string?
+    @within Builders.Channel
+    The id of the channel.
 ]=]
 
 --[=[
-	@prop name string?
-	@within Builders.Channel
-	The name of the channel.
+    @prop name string?
+    @within Builders.Channel
+    The name of the channel.
 ]=]
 
 --[=[
-	@prop type apiTypes.ChannelType
-	@within Builders.Channel
-	The type of the channel.
+    @prop type apiTypes.ChannelType
+    @within Builders.Channel
+    The type of the channel.
 ]=]
 
 --[=[
-	@prop position number?
-	@within Builders.Channel
-	Position of the channel in the list.
+    @prop position number?
+    @within Builders.Channel
+    Position of the channel in the list.
 ]=]
 
 --[=[
-	@prop icon string?
-	@within Builders.Channel
-	The base64 icon for the channel (used in DMs).
+    @prop icon string?
+    @within Builders.Channel
+    The base64 icon for the channel (used in DMs).
 ]=]
 
 --[=[
-	@prop flags number?
-	@within Builders.Channel
-	Bitfield flags for the channel.
+    @prop flags number?
+    @within Builders.Channel
+    Bitfield flags for the channel.
 ]=]
 
 --[=[
-	@prop topic string?
-	@within Builders.Channel
-	The topic of the text channel.
+    @prop topic string?
+    @within Builders.Channel
+    The topic of the text channel.
 ]=]
 
 --[=[
-	@prop rateLimitPerUser number?
-	@within Builders.Channel
-	Slowmode in seconds for users.
-	]=]
+    @prop rateLimitPerUser number?
+    @within Builders.Channel
+    Slowmode in seconds for users.
+    ]=]
 
 --[=[
-	@prop parentId string?
-	@within Builders.Channel
-	Parent category ID.
+    @prop parentId string?
+    @within Builders.Channel
+    Parent category ID.
 ]=]
 
 --[=[
-	@prop nsfw boolean?
-	@within Builders.Channel
-	Whether the channel is marked as NSFW.
+    @prop nsfw boolean?
+    @within Builders.Channel
+    Whether the channel is marked as NSFW.
 ]=]
 
 --[=[
-	@prop defaultAutoArchiveDuration number?
-	@within Builders.Channel
-	Default auto archive duration in minutes.
+    @prop defaultAutoArchiveDuration number?
+    @within Builders.Channel
+    Default auto archive duration in minutes.
 ]=]
 
 --[=[
-	@prop defaultThreadRateLimitPerUser number?
-	@within Builders.Channel
-	Slowmode in seconds for thread messages.
+    @prop defaultThreadRateLimitPerUser number?
+    @within Builders.Channel
+    Slowmode in seconds for thread messages.
 ]=]
 
 --[=[
-	@prop defaultReactionEmoji apiTypes.DefaultReactionObject?
-	@within Builders.Channel
-	Default reaction emoji object.
+    @prop defaultReactionEmoji apiTypes.DefaultReactionObject?
+    @within Builders.Channel
+    Default reaction emoji object.
 ]=]
 
 --[=[
-	@prop availableTags { apiTypes.ForumTagObject }?
-	@within Builders.Channel
-	Available forum tags.
+    @prop availableTags { apiTypes.ForumTagObject }?
+    @within Builders.Channel
+    Available forum tags.
 ]=]
 
 --[=[
-	@prop defaultSortOrder apiTypes.ForumSortOrder?
-	@within Builders.Channel
-	Default sort order for threads.
+    @prop defaultSortOrder apiTypes.ForumSortOrder?
+    @within Builders.Channel
+    Default sort order for threads.
 ]=]
 
 --[=[
-	@prop defaultForumLayout apiTypes.ForumLayout?
-	@within Builders.Channel
-	Default forum layout type.
-	]=]
+    @prop defaultForumLayout apiTypes.ForumLayout?
+    @within Builders.Channel
+    Default forum layout type.
+    ]=]
 
 --[=[
-	@prop videoQualityMode apiTypes.VideoQualityMode?
-	@within Builders.Channel
-	Voice channel video quality mode.
+    @prop videoQualityMode apiTypes.VideoQualityMode?
+    @within Builders.Channel
+    Voice channel video quality mode.
 ]=]
 
 --[=[
-	@prop rtcRegion string?
-	@within Builders.Channel
-	Voice region id for the channel.
+    @prop rtcRegion string?
+    @within Builders.Channel
+    Voice region id for the channel.
 ]=]
 
 --[=[
-	@prop userLimit number?
-	@within Builders.Channel
-	Maximum number of users allowed in the voice channel.
+    @prop userLimit number?
+    @within Builders.Channel
+    Maximum number of users allowed in the voice channel.
 ]=]
 
 --[=[
-	@prop bitrate number?
-	@within Builders.Channel
-	Bitrate of the voice channel in bits.
+    @prop bitrate number?
+    @within Builders.Channel
+    Bitrate of the voice channel in bits.
 ]=]
 
 local apiTypes = require("../ApiTypes")
@@ -136,9 +144,9 @@ Channel.Prototype = {}
 Channel.Interface = {}
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Set the name of this Channel
+    Set the name of this Channel
 ]=]
 function Channel.Prototype.setName(self: Channel, tagName: string): Channel
     assert(#tagName <= 100, `Channel name must be less than 100 characters.`)
@@ -152,9 +160,9 @@ function Channel.Prototype.setName(self: Channel, tagName: string): Channel
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Set the Type of channel this is.
+    Set the Type of channel this is.
 ]=]
 function Channel.Prototype.setType(self: Channel, channelType: apiTypes.ChannelType): Channel
     self.type = channelType
@@ -163,9 +171,9 @@ function Channel.Prototype.setType(self: Channel, channelType: apiTypes.ChannelT
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the position of the channel in the discord channels list. Channels with the same position are sorted by id.
+    Sets the position of the channel in the discord channels list. Channels with the same position are sorted by id.
 ]=]
 function Channel.Prototype.setPosition(self: Channel, channelPosition: number): Channel
     self.position = channelPosition
@@ -174,10 +182,10 @@ function Channel.Prototype.setPosition(self: Channel, channelPosition: number): 
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Adds an overwrite object to the channel's permission overwrites. Channel overwrites are responsible for handling
-	user/role permission on a specific channel.
+    Adds an overwrite object to the channel's permission overwrites. Channel overwrites are responsible for handling
+    user/role permission on a specific channel.
 ]=]
 function Channel.Prototype.setOverwrites(self: Channel, overwriteObjects: { apiTypes.OverwriteObject }): Channel
     self.permissionOverwrites = overwriteObjects
@@ -186,10 +194,10 @@ function Channel.Prototype.setOverwrites(self: Channel, overwriteObjects: { apiT
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the channels topic, topics appear at the top of the discord app and help to inform players about the
-	channel's purpose.
+    Sets the channels topic, topics appear at the top of the discord app and help to inform players about the
+    channel's purpose.
 ]=]
 function Channel.Prototype.setTopic(self: Channel, channelTopic: string): Channel
     assert(
@@ -209,9 +217,9 @@ function Channel.Prototype.setTopic(self: Channel, channelTopic: string): Channe
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the bitrate of the voice channel, the bitrate (in bits) of the voice or stage channel.
+    Sets the bitrate of the voice channel, the bitrate (in bits) of the voice or stage channel.
 ]=]
 function Channel.Prototype.setBitrate(self: Channel, bitrate: number): Channel
     assert(
@@ -228,10 +236,10 @@ function Channel.Prototype.setBitrate(self: Channel, bitrate: number): Channel
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	The user limit of the voice channel. The user limit of a voice channel is the maximum number of users allowed in
-	the channel at one time.
+    The user limit of the voice channel. The user limit of a voice channel is the maximum number of users allowed in
+    the channel at one time.
 ]=]
 function Channel.Prototype.setUserLimit(self: Channel, userLimit: number?): Channel
     assert(
@@ -245,10 +253,10 @@ function Channel.Prototype.setUserLimit(self: Channel, userLimit: number?): Chan
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Amount of seconds a user has to wait before sending another message. Bots and users with certain permissions are
-	unaffected.
+    Amount of seconds a user has to wait before sending another message. Bots and users with certain permissions are
+    unaffected.
 ]=]
 function Channel.Prototype.setRateLimitPerUser(self: Channel, rateLimitPerUser: number?): Channel
     assert(
@@ -269,9 +277,9 @@ function Channel.Prototype.setRateLimitPerUser(self: Channel, rateLimitPerUser: 
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Set the parent of the channel. Channel parents are categories and can help organize a discord guild.
+    Set the parent of the channel. Channel parents are categories and can help organize a discord guild.
 ]=]
 function Channel.Prototype.setParentId(self: Channel, parentId: apiTypes.Snowflake?): Channel
     assert(
@@ -290,9 +298,9 @@ function Channel.Prototype.setParentId(self: Channel, parentId: apiTypes.Snowfla
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Set whether this channel is NSFW or not.
+    Set whether this channel is NSFW or not.
 ]=]
 function Channel.Prototype.setNSFW(self: Channel, isNSFW: boolean): Channel
     assert(
@@ -310,10 +318,10 @@ function Channel.Prototype.setNSFW(self: Channel, isNSFW: boolean): Channel
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Set the voice region (requires querying voice region ids). Voice regions are regions that Discord uses to host
-	voice channels.
+    Set the voice region (requires querying voice region ids). Voice regions are regions that Discord uses to host
+    voice channels.
 ]=]
 function Channel.Prototype.setVoiceRegion(self: Channel, voiceRegionId: string): Channel
     assert(
@@ -327,9 +335,9 @@ function Channel.Prototype.setVoiceRegion(self: Channel, voiceRegionId: string):
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the video quality mode of the voice channel.
+    Sets the video quality mode of the voice channel.
 ]=]
 function Channel.Prototype.setVideoQualityMode(self: Channel, videoQualityMode: apiTypes.VideoQualityMode): Channel
     assert(
@@ -343,10 +351,10 @@ function Channel.Prototype.setVideoQualityMode(self: Channel, videoQualityMode: 
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the default auto archive duration for the channel. This is the default duration in minutes for newly created
-	threads to automatically archive after recent activity.
+    Sets the default auto archive duration for the channel. This is the default duration in minutes for newly created
+    threads to automatically archive after recent activity.
 ]=]
 function Channel.Prototype.setDefaultAutoArchiveDuration(self: Channel, autoArchiveDuration: number): Channel
     assert(
@@ -363,9 +371,9 @@ function Channel.Prototype.setDefaultAutoArchiveDuration(self: Channel, autoArch
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the default reaction emoji for either a forum or media channel.
+    Sets the default reaction emoji for either a forum or media channel.
 ]=]
 function Channel.Prototype.setDefaultReactionEmoji(
     self: Channel,
@@ -382,9 +390,9 @@ function Channel.Prototype.setDefaultReactionEmoji(
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Specify channel forum tags that are available to the channel.
+    Specify channel forum tags that are available to the channel.
 ]=]
 function Channel.Prototype.setForumTags(self: Channel, forumTags: { apiTypes.ForumTagObject }): Channel
     assert(
@@ -398,9 +406,9 @@ function Channel.Prototype.setForumTags(self: Channel, forumTags: { apiTypes.For
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the default sort order for the channel.
+    Sets the default sort order for the channel.
 ]=]
 function Channel.Prototype.setDefaultSortOrder(self: Channel, sortOrder: apiTypes.ForumSortOrder): Channel
     assert(
@@ -414,9 +422,9 @@ function Channel.Prototype.setDefaultSortOrder(self: Channel, sortOrder: apiType
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the default forum layout for the channel.
+    Sets the default forum layout for the channel.
 ]=]
 function Channel.Prototype.setDefaultForumLayout(self: Channel, forumLayout: apiTypes.ForumLayout): Channel
     assert(self.type == "GuildForum", `Channel forum layout is only supported for forum channels.`)
@@ -427,9 +435,9 @@ function Channel.Prototype.setDefaultForumLayout(self: Channel, forumLayout: api
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the default thread rate limit per user for the channel.
+    Sets the default thread rate limit per user for the channel.
 ]=]
 function Channel.Prototype.setDefaultThreadRateLimitPerUser(self: Channel, threadRateLimitPerUser: number): Channel
     assert(
@@ -446,9 +454,9 @@ function Channel.Prototype.setDefaultThreadRateLimitPerUser(self: Channel, threa
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the channel flags using a bitfield value.
+    Sets the channel flags using a bitfield value.
 ]=]
 function Channel.Prototype.setFlags(self: Channel, bitflags: number): Channel
     self.flags = bitflags
@@ -457,9 +465,9 @@ function Channel.Prototype.setFlags(self: Channel, bitflags: number): Channel
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Sets the channel icon using the provided icon data.
+    Sets the channel icon using the provided icon data.
 ]=]
 function Channel.Prototype.setIcon(self: Channel, iconData: string): Channel
     self.icon = iconData
@@ -468,9 +476,9 @@ function Channel.Prototype.setIcon(self: Channel, iconData: string): Channel
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Responsible for building the channel object that the Discord API can understand.
+    Responsible for building the channel object that the Discord API can understand.
 ]=]
 function Channel.Prototype.build(self: Channel): JSON
     return {
@@ -502,9 +510,9 @@ function Channel.Prototype.build(self: Channel): JSON
 end
 
 --[=[
-	@within Builders.Channel
+    @within Builders.Channel
 
-	Constructor for the Discord Channel Builder.
+    Constructor for the Discord Channel Builder.
 ]=]
 function Channel.Interface.new(resource: {
     channelName: string?,
@@ -515,10 +523,10 @@ function Channel.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop permissionOverwrites { Builders.OverwriteObject }
-				@within Builders.Channel
-				List of permission overwrites applied to the channel.
-			]=]
+                @prop permissionOverwrites { Builders.OverwriteObject }
+                @within Builders.Channel
+                List of permission overwrites applied to the channel.
+            ]=]
             permissionOverwrites = {},
         } :: Channel,
         { __index = Channel.Prototype }

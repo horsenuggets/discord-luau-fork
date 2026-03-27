@@ -1,10 +1,18 @@
+--[[
+
+member
+
+Implementation of the Discord Member class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.TeamMember
-	@__index Prototype
+    @class Classes.TeamMember
+    @__index Prototype
 
-	Implementation of the Discord Member class in Luau
+    Implementation of the Discord Member class in Luau
 
-	https://discord.com/developers/docs/topics/teams#data-models-team-object
+    https://discord.com/developers/docs/topics/teams#data-models-team-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -17,43 +25,43 @@ Member.Interface = {}
 Member.Prototype = {}
 
 --[=[
-	@within Classes.TeamMember
-	@private
+    @within Classes.TeamMember
+    @private
 
-	Responsible for syncing data to this member object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this member object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Member.Prototype.sync(self: Member, memberData: apiTypes.TeamMemberObject)
     --[=[
-		@prop membershipState apiTypes.MembershipState
-		@within Classes.TeamMember
+        @prop membershipState apiTypes.MembershipState
+        @within Classes.TeamMember
 
-		The state of the team member's membership. Represents the current status of this member within the team.
-	]=]
+        The state of the team member's membership. Represents the current status of this member within the team.
+    ]=]
     self.membershipState = apiTypes.application.MembershipState[memberData.membership_state]
 
     --[=[
-		@prop teamId string
-		@within Classes.TeamMember
+        @prop teamId string
+        @within Classes.TeamMember
 
-		The unique identifier of the team this member belongs to.
-	]=]
+        The unique identifier of the team this member belongs to.
+    ]=]
     self.teamId = memberData.team_id
 
     --[=[
-		@prop user Classes.User
-		@within Classes.TeamMember
+        @prop user Classes.User
+        @within Classes.TeamMember
 
-		The user object associated with this team member. Contains detailed information about the user's profile.
-	]=]
+        The user object associated with this team member. Contains detailed information about the user's profile.
+    ]=]
     self.user = user.new(memberData.user)
 
     --[=[
-		@prop role apiTypes.TeamRole
-		@within Classes.TeamMember
+        @prop role apiTypes.TeamRole
+        @within Classes.TeamMember
 
-		The role assigned to this team member. Can be either Admin, Developer, or ReadOnly, determining their permissions.
-	]=]
+        The role assigned to this team member. Can be either Admin, Developer, or ReadOnly, determining their permissions.
+    ]=]
     self.role = (
         memberData.role == "Admin" and "Admin"
         or memberData.role == "Developer" and "Developer"
@@ -62,10 +70,10 @@ function Member.Prototype.sync(self: Member, memberData: apiTypes.TeamMemberObje
 end
 
 --[=[
-	@within Classes.TeamMember
-	@private
+    @within Classes.TeamMember
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Member.Interface.new(memberData: apiTypes.TeamMemberObject): Member
     local self = setmetatable({} :: Member, { __index = Member.Prototype })

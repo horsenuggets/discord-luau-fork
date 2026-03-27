@@ -1,10 +1,18 @@
+--[[
+
+groupDm
+
+Implementation of the Discord GroupDM class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.GroupDM
-	@__index Prototype
+    @class Classes.GroupDM
+    @__index Prototype
 
-	Implementation of the Discord GroupDM class in Luau
+    Implementation of the Discord GroupDM class in Luau
 
-	https://discord.com/developers/docs/resources/channel#channel-object
+    https://discord.com/developers/docs/resources/channel#channel-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -25,11 +33,11 @@ GroupDM.Behaviours = {
 }
 
 --[=[
-	@within Classes.GroupDM
-	@private
+    @within Classes.GroupDM
+    @private
 
-	Responsible for syncing data to this group DM object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this group DM object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function GroupDM.Prototype.sync(self: GroupDM, channelData: apiTypes.ChannelObject)
     for _, behaviour in GroupDM.Behaviours do
@@ -39,18 +47,18 @@ function GroupDM.Prototype.sync(self: GroupDM, channelData: apiTypes.ChannelObje
 end
 
 --[=[
-	@within Classes.GroupDM
-	@private
+    @within Classes.GroupDM
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function GroupDM.Interface.new(state: state.State, channelData: apiTypes.ChannelObject): GroupDM
     local self = setmetatable(
         {
             --[=[
-				@prop state Classes.State
-				@within Classes.GroupDM
-			]=]
+                @prop state Classes.State
+                @within Classes.GroupDM
+            ]=]
             state = state,
         } :: GroupDM,
         { __index = GroupDM.Prototype }

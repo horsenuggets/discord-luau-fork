@@ -1,10 +1,18 @@
+--[[
+
+member
+
+Implementation of the Discord Member class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Member
-	@__index Member.Prototype
-	
-	Implementation of the Discord Member class in Luau
-	
-	https://discord.com/developers/docs/resources/guild#guild-member-object
+    @class Classes.Member
+    @__index Member.Prototype
+    
+    Implementation of the Discord Member class in Luau
+    
+    https://discord.com/developers/docs/resources/guild#guild-member-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -23,8 +31,8 @@ Member.Interface = {}
 Member.Prototype = {}
 
 --[=[
-	@within Classes.Member
-	Create a guild ban, and optionally delete previous messages sent by the banned user.
+    @within Classes.Member
+    Create a guild ban, and optionally delete previous messages sent by the banned user.
 ]=]
 function Member.Prototype.banAsync(
     self: Member,
@@ -61,8 +69,8 @@ function Member.Prototype.banAsync(
 end
 
 --[=[
-	@within Classes.Member
-	Removes a role from a guild member. Requires the MANAGE_ROLES permission.
+    @within Classes.Member
+    Removes a role from a guild member. Requires the MANAGE_ROLES permission.
 ]=]
 function Member.Prototype.kickAsync(self: Member, reason: string?)
     return future.Future.new(function()
@@ -79,9 +87,9 @@ function Member.Prototype.kickAsync(self: Member, reason: string?)
 end
 
 --[=[
-	@within Classes.Member
-	Modify attributes of a guild member. Returns updated guild member. If the channel_id is set to null, this will
-	force the target user to be disconnected from voice.
+    @within Classes.Member
+    Modify attributes of a guild member. Returns updated guild member. If the channel_id is set to null, this will
+    force the target user to be disconnected from voice.
 ]=]
 function Member.Prototype.modifyAsync(
     self: Member,
@@ -120,8 +128,8 @@ function Member.Prototype.modifyAsync(
 end
 
 --[=[
-	@within Classes.Member
-	Will mute the user in voice channels the user is in. Returns the updated Member.
+    @within Classes.Member
+    Will mute the user in voice channels the user is in. Returns the updated Member.
 ]=]
 function Member.Prototype.muteAsync(self: Member, reason: string?)
     return self:modifyAsync({
@@ -130,8 +138,8 @@ function Member.Prototype.muteAsync(self: Member, reason: string?)
 end
 
 --[=[
-	@within Classes.Member
-	Will unmute the user in voice channels the user is in. Returns the updated Member.
+    @within Classes.Member
+    Will unmute the user in voice channels the user is in. Returns the updated Member.
 ]=]
 function Member.Prototype.unmuteAsync(self: Member, reason: string?)
     return self:modifyAsync({
@@ -140,8 +148,8 @@ function Member.Prototype.unmuteAsync(self: Member, reason: string?)
 end
 
 --[=[
-	@within Classes.Member
-	Will deafen the user in voice channels the user is in. Returns the updated Member.
+    @within Classes.Member
+    Will deafen the user in voice channels the user is in. Returns the updated Member.
 ]=]
 function Member.Prototype.deafenAsync(self: Member, reason: string?)
     return self:modifyAsync({
@@ -150,8 +158,8 @@ function Member.Prototype.deafenAsync(self: Member, reason: string?)
 end
 
 --[=[
-	@within Classes.Member
-	Will undeafen the user in voice channels the user is in. Returns the updated Member.
+    @within Classes.Member
+    Will undeafen the user in voice channels the user is in. Returns the updated Member.
 ]=]
 function Member.Prototype.undeafenAsync(self: Member, reason: string?)
     return self:modifyAsync({
@@ -160,8 +168,8 @@ function Member.Prototype.undeafenAsync(self: Member, reason: string?)
 end
 
 --[=[
-	@within Classes.Member
-	Will set the nickname of the user. Returns the updated Member.
+    @within Classes.Member
+    Will set the nickname of the user. Returns the updated Member.
 ]=]
 function Member.Prototype.setNicknameAsync(self: Member, nickname: string, reason: string?)
     return self:modifyAsync({
@@ -170,8 +178,8 @@ function Member.Prototype.setNicknameAsync(self: Member, nickname: string, reaso
 end
 
 --[=[
-	@within Classes.Member
-	Will set all roles that the user has in this guild. Returns the updated Member.
+    @within Classes.Member
+    Will set all roles that the user has in this guild. Returns the updated Member.
 ]=]
 function Member.Prototype.setRolesAsync(self: Member, roles: { apiTypes.Snowflake }, reason: string?)
     return self:modifyAsync({
@@ -180,8 +188,8 @@ function Member.Prototype.setRolesAsync(self: Member, roles: { apiTypes.Snowflak
 end
 
 --[=[
-	@within Classes.Member
-	Will move the user between different voice channels. Returns the updated Member.
+    @within Classes.Member
+    Will move the user between different voice channels. Returns the updated Member.
 ]=]
 function Member.Prototype.moveVoiceChannelAsync(self: Member, channelId: apiTypes.Snowflake, reason: string?)
     return self:modifyAsync({
@@ -190,8 +198,8 @@ function Member.Prototype.moveVoiceChannelAsync(self: Member, channelId: apiType
 end
 
 --[=[
-	@within Classes.Member
-	Will disconnect the user from voice channels the user is in. Returns the updated Member.
+    @within Classes.Member
+    Will disconnect the user from voice channels the user is in. Returns the updated Member.
 ]=]
 function Member.Prototype.disconnectFromVoiceChannelAsync(self: Member, reason: string?)
     return self:modifyAsync({
@@ -200,8 +208,8 @@ function Member.Prototype.disconnectFromVoiceChannelAsync(self: Member, reason: 
 end
 
 --[=[
-	@within Classes.Member
-	Disables the users communication up to a specific time. Returns the updated Member.
+    @within Classes.Member
+    Disables the users communication up to a specific time. Returns the updated Member.
 ]=]
 function Member.Prototype.disableAsync(self: Member, disabledUntil: stdPolyfills.DateTime, reason: string?)
     return self:modifyAsync({
@@ -210,8 +218,8 @@ function Member.Prototype.disableAsync(self: Member, disabledUntil: stdPolyfills
 end
 
 --[=[
-	@within Classes.Member
-	Add a role to a guild member.
+    @within Classes.Member
+    Add a role to a guild member.
 ]=]
 function Member.Prototype.addRoleAsync(self: Member, roleId: apiTypes.Snowflake, reason: string?)
     return future.Future.new(function()
@@ -228,8 +236,8 @@ function Member.Prototype.addRoleAsync(self: Member, roleId: apiTypes.Snowflake,
 end
 
 --[=[
-	@within Classes.Member
-	Remove a role from a guild member.
+    @within Classes.Member
+    Remove a role from a guild member.
 ]=]
 function Member.Prototype.removeRoleAsync(self: Member, roleId: apiTypes.Snowflake, reason: string?)
     return future.Future.new(function()
@@ -247,31 +255,31 @@ function Member.Prototype.removeRoleAsync(self: Member, roleId: apiTypes.Snowfla
 end
 
 --[=[
-	@within Classes.Member
-	@private
-	Synchronizes the member object with the data from the API.
+    @within Classes.Member
+    @private
+    Synchronizes the member object with the data from the API.
 ]=]
 function Member.Prototype.sync(self: Member, guildMemberData: apiTypes.GuildMemberObject)
     --[=[
-		@within Classes.Member
-		@prop user Classes.User
-		The user this member represents.
-	]=]
+        @within Classes.Member
+        @prop user Classes.User
+        The user this member represents.
+    ]=]
     self.user = guildMemberData.user and user.new(guildMemberData.user)
 
     --[=[
-		@within Classes.Member
-		@prop communicationDisabledUntil DateTime
-		When the member's communication is disabled until.
-	]=]
+        @within Classes.Member
+        @prop communicationDisabledUntil DateTime
+        When the member's communication is disabled until.
+    ]=]
     self.communicationDisabledUntil = guildMemberData.communication_disabled_until
         and stdPolyfills.datetime.fromIsoDate(guildMemberData.communication_disabled_until)
 
     --[=[
-		@within Classes.Member
-		@prop avatarDecorationData Classes.AvatarDecoration
-		The member's avatar decoration data.
-	]=]
+        @within Classes.Member
+        @prop avatarDecorationData Classes.AvatarDecoration
+        The member's avatar decoration data.
+    ]=]
     self.avatarDecorationData = guildMemberData.avatar_decoration_data
         and avatarDecoration.new(
             guildMemberData.avatar_decoration_data.asset,
@@ -279,81 +287,81 @@ function Member.Prototype.sync(self: Member, guildMemberData: apiTypes.GuildMemb
         )
 
     --[=[
-		@within Classes.Member
-		@prop flags Classes.GuildMemberBitflag
-		Member flags combined as a bitfield.
-	]=]
+        @within Classes.Member
+        @prop flags Classes.GuildMemberBitflag
+        Member flags combined as a bitfield.
+    ]=]
     self.flags = guildMemberData.flags and guildMemberBitflag.new(guildMemberData.flags)
 
     --[=[
-		@within Classes.Member
-		@prop joinedAt DateTime
-		When the member joined the guild.
-	]=]
+        @within Classes.Member
+        @prop joinedAt DateTime
+        When the member joined the guild.
+    ]=]
     self.joinedAt = stdPolyfills.datetime.fromIsoDate(guildMemberData.joined_at)
 
     --[=[
-		@within Classes.Member
-		@prop premiumSince DateTime
-		When the member started boosting the guild.
-	]=]
+        @within Classes.Member
+        @prop premiumSince DateTime
+        When the member started boosting the guild.
+    ]=]
     self.premiumSince = guildMemberData.premium_since
         and stdPolyfills.datetime.fromIsoDate(guildMemberData.premium_since)
 
     --[=[
-		@within Classes.Member
-		@prop nick string
-		The member's nickname.
-	]=]
+        @within Classes.Member
+        @prop nick string
+        The member's nickname.
+    ]=]
     self.nick = guildMemberData.nick
 
     --[=[
-		@within Classes.Member
-		@prop avatar string
-		The member's avatar hash.
-	]=]
+        @within Classes.Member
+        @prop avatar string
+        The member's avatar hash.
+    ]=]
     self.avatar = guildMemberData.avatar
 
     --[=[
-		@within Classes.Member
-		@prop roles { string }
-		The member's role IDs.
-	]=]
+        @within Classes.Member
+        @prop roles { string }
+        The member's role IDs.
+    ]=]
     self.roles = guildMemberData.roles
 
     --[=[
-		@within Classes.Member
-		@prop deaf boolean
-		Whether the member is deafened.
-	]=]
+        @within Classes.Member
+        @prop deaf boolean
+        Whether the member is deafened.
+    ]=]
     self.deaf = guildMemberData.deaf
 
     --[=[
-		@within Classes.Member
-		@prop mute boolean
-		Whether the member is muted.
-	]=]
+        @within Classes.Member
+        @prop mute boolean
+        Whether the member is muted.
+    ]=]
     self.mute = guildMemberData.mute
 
     --[=[
-		@within Classes.Member
-		@prop pending boolean
-		Whether the member has not yet passed the guild's Membership Screening requirements.
-	]=]
+        @within Classes.Member
+        @prop pending boolean
+        Whether the member has not yet passed the guild's Membership Screening requirements.
+    ]=]
     self.pending = guildMemberData.pending
 
     --[=[
-		@within Classes.Member
-		@prop permissions string
-		The member's permissions.
-	]=]
+        @within Classes.Member
+        @prop permissions string
+        The member's permissions.
+    ]=]
     self.permissions = guildMemberData.permissions
 end
 
 --[=[
-	@private
-	@within Classes.Member
-	Creates a new Member instance with the specified member data.
+    @private
+    @within Classes.Member
+    Creates a new Member instance with the specified member data.
 ]=]
 function Member.Interface.new(
     state: state.State,
@@ -363,17 +371,17 @@ function Member.Interface.new(
     local self = setmetatable(
         {
             --[=[
-				@within Classes.Member
-				@prop state State
-				The state object for this member.
-			]=]
+                @within Classes.Member
+                @prop state State
+                The state object for this member.
+            ]=]
             state = state,
 
             --[=[
-				@within Classes.Member
-				@prop guildId string
-				The ID of the guild this member belongs to.
-			]=]
+                @within Classes.Member
+                @prop guildId string
+                The ID of the guild this member belongs to.
+            ]=]
             guildId = guildId,
         } :: Member,
         { __index = Member.Prototype }

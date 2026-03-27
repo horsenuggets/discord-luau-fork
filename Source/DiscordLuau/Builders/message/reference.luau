@@ -1,10 +1,18 @@
+--[[
+
+reference
+
+Implementation of discords Reference object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Reference
-	@__index Prototype
+    @class Builders.Reference
+    @__index Prototype
 
-	Implementation of discords Reference object as a Luau builder.	
+    Implementation of discords Reference object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/message#message-reference-structure
+    https://discord.com/developers/docs/resources/message#message-reference-structure
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -15,9 +23,9 @@ Reference.Prototype = {}
 Reference.Interface = {}
 
 --[=[
-	@within Builders.Reference
+    @within Builders.Reference
 
-	The type of reference.
+    The type of reference.
 ]=]
 function Reference.Prototype.setType(self: Reference, type: apiTypes.MessageReferenceType): Reference
     self.type = type
@@ -26,9 +34,9 @@ function Reference.Prototype.setType(self: Reference, type: apiTypes.MessageRefe
 end
 
 --[=[
-	@within Builders.Reference
+    @within Builders.Reference
 
-	The id of the originating message.
+    The id of the originating message.
 ]=]
 function Reference.Prototype.setMessageId(self: Reference, messageId: string): Reference
     self.messageId = messageId
@@ -37,9 +45,9 @@ function Reference.Prototype.setMessageId(self: Reference, messageId: string): R
 end
 
 --[=[
-	@within Builders.Reference
+    @within Builders.Reference
 
-	The id of the originating message's channel.
+    The id of the originating message's channel.
 ]=]
 function Reference.Prototype.setChannelId(self: Reference, channelId: string): Reference
     self.channelId = channelId
@@ -48,9 +56,9 @@ function Reference.Prototype.setChannelId(self: Reference, channelId: string): R
 end
 
 --[=[
-	@within Builders.Reference
+    @within Builders.Reference
 
-	The id of the originating message's guild.
+    The id of the originating message's guild.
 ]=]
 function Reference.Prototype.setGuildId(self: Reference, guildId: string): Reference
     self.guildId = guildId
@@ -59,9 +67,9 @@ function Reference.Prototype.setGuildId(self: Reference, guildId: string): Refer
 end
 
 --[=[
-	@within Builders.Reference
+    @within Builders.Reference
 
-	When sending, whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message, default true.
+    When sending, whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message, default true.
 ]=]
 function Reference.Prototype.setFailIfNotExists(self: Reference, failIfNotExists: boolean): Reference
     self.failIfNotExists = failIfNotExists
@@ -70,9 +78,9 @@ function Reference.Prototype.setFailIfNotExists(self: Reference, failIfNotExists
 end
 
 --[=[
-	@within Builders.Reference
+    @within Builders.Reference
 
-	Responsible for building the Reference JSON that can be parsed by the Discord API.
+    Responsible for building the Reference JSON that can be parsed by the Discord API.
 ]=]
 function Reference.Prototype.build(self: Reference): JSON
     return {
@@ -85,9 +93,9 @@ function Reference.Prototype.build(self: Reference): JSON
 end
 
 --[=[
-	@within Builders.Reference
+    @within Builders.Reference
 
-	Responsible for creating a new Reference.
+    Responsible for creating a new Reference.
 ]=]
 function Reference.Interface.new(resource: {
     type: apiTypes.MessageReferenceType?,
@@ -99,29 +107,29 @@ function Reference.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop type api_types.MessageReferenceType
-				The type of reference.
-			]=]
+                @prop type api_types.MessageReferenceType
+                The type of reference.
+            ]=]
 
             --[=[
-				@prop messageId string
-				The id of the originating message.
-			]=]
+                @prop messageId string
+                The id of the originating message.
+            ]=]
 
             --[=[
-				@prop channelId string
-				The id of the originating message's channel.
-			]=]
+                @prop channelId string
+                The id of the originating message's channel.
+            ]=]
 
             --[=[
-				@prop guildId string
-				The id of the originating message's guild.
-			]=]
+                @prop guildId string
+                The id of the originating message's guild.
+            ]=]
 
             --[=[
-				@prop failIfNotExists boolean
-				When sending, whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message.
-			]=]
+                @prop failIfNotExists boolean
+                When sending, whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message.
+            ]=]
         } :: Reference,
         {
             __index = Reference.Prototype,

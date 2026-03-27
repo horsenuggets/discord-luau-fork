@@ -1,54 +1,64 @@
+--[[
+
+state
+
+State class, this class is responsible for storing the state of the bot as as well as
+providing a way to interact with the state. This class is responsible for storing the
+following elements: - Token - Discord Cache - Discord REST API - Discord Gateway Manager.
+
+--]]
+
 --[=[
-	@class State.State
-	@__index Prototype
+    @class State.State
+    @__index Prototype
 
-	State class, this class is responsible for storing the state of the bot as
-	as well as providing a way to interact with the state.
+    State class, this class is responsible for storing the state of the bot as
+    as well as providing a way to interact with the state.
 
-	This class is responsible for storing the following elements:
-	- Token
-	- Discord Cache
-	- Discord REST API
-	- Discord Gateway Manager
+    This class is responsible for storing the following elements:
+    - Token
+    - Discord Cache
+    - Discord REST API
+    - Discord Gateway Manager
 ]=]
 
 --[=[
-	@prop token Secret
-	@within State.State
+    @prop token Secret
+    @within State.State
 ]=]
 
 --[=[
-	@prop applicationId string
-	@within State.State
+    @prop applicationId string
+    @within State.State
 ]=]
 
 --[=[
-	@prop rest State.Rest
-	@within State.State
+    @prop rest State.Rest
+    @within State.State
 ]=]
 
 --[=[
-	@prop webSocketManager WebSocket.Manager
-	@within State.State
+    @prop webSocketManager WebSocket.Manager
+    @within State.State
 ]=]
 
 --[=[
-	@prop intents number
-	@within State.State
+    @prop intents number
+    @within State.State
 ]=]
 
 --[=[
-	@prop version number
-	@within State.State
+    @prop version number
+    @within State.State
 ]=]
 
 --[=[
-	@interface cache
-	@within State.State
-		.guilds Cache<apiTypes.Snowflake, apiTypes.GuildObject>
-		.users Cache<apiTypes.Snowflake, apiTypes.UserObject>
-		.channels Cache<apiTypes.Snowflake, apiTypes.ChannelObject>
-		.roles Cache<apiTypes.Snowflake, apiTypes.GuildRoleObject>
+    @interface cache
+    @within State.State
+        .guilds Cache<apiTypes.Snowflake, apiTypes.GuildObject>
+        .users Cache<apiTypes.Snowflake, apiTypes.UserObject>
+        .channels Cache<apiTypes.Snowflake, apiTypes.ChannelObject>
+        .roles Cache<apiTypes.Snowflake, apiTypes.GuildRoleObject>
 ]=]
 
 local cache = require("./cache")
@@ -65,18 +75,18 @@ State.Interface = {}
 State.Prototype = {}
 
 --[=[
-	@within State.State
+    @within State.State
 
-	Will set the current application ID
+    Will set the current application ID
 ]=]
 function State.Prototype.setApplicationId(self: State, applicationId: apiTypes.Snowflake)
     self.applicationId = applicationId
 end
 
 --[=[
-	@within State.State
+    @within State.State
 
-	Constructor for the State class.
+    Constructor for the State class.
 ]=]
 function State.Interface.new(settings: {
     token: string,

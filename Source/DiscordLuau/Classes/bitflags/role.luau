@@ -1,10 +1,18 @@
+--[[
+
+role
+
+Implementation of the Discord Role Bitflags in Luau.
+
+--]]
+
 --[=[
-	@class Classes.RoleBitflag
-	@__index Prototype
+    @class Classes.RoleBitflag
+    @__index Prototype
 
-	Implementation of the Discord Role Bitflags in Luau
+    Implementation of the Discord Role Bitflags in Luau
 
-	https://discord.com/developers/docs/topics/permissions#role-object-role-flags
+    https://discord.com/developers/docs/topics/permissions#role-object-role-flags
 ]=]
 
 local bit = require("../../Bit")
@@ -15,10 +23,10 @@ RoleBitflag.Interface = {}
 RoleBitflag.Prototype = {}
 
 --[=[
-	@within Classes.RoleBitflag
-	@private
+    @within Classes.RoleBitflag
+    @private
 
-	Checks if the role is in an onboarding prompt.
+    Checks if the role is in an onboarding prompt.
 ]=]
 function RoleBitflag.Prototype.isInOnboardingPrompt(self: RoleBitflag)
     local targetBit = bit.lshift(1, 0)
@@ -27,18 +35,18 @@ function RoleBitflag.Prototype.isInOnboardingPrompt(self: RoleBitflag)
 end
 
 --[=[
-	@within Classes.RoleBitflag
-	@private
+    @within Classes.RoleBitflag
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function RoleBitflag.Interface.new(flag: number): RoleBitflag
     local self = setmetatable(
         {
             --[=[
-				@prop flag number
-				@within Classes.RoleBitflag
-			]=]
+                @prop flag number
+                @within Classes.RoleBitflag
+            ]=]
             flag = flag,
         } :: RoleBitflag,
         { __index = RoleBitflag.Prototype }

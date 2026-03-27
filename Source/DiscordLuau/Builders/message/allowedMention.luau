@@ -1,10 +1,18 @@
+--[[
+
+allowedMention
+
+Implementation of discords AllowedMention object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.AllowedMention
-	@__index Prototype
+    @class Builders.AllowedMention
+    @__index Prototype
 
-	Implementation of discords AllowedMention object as a Luau builder.	
+    Implementation of discords AllowedMention object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/message#allowed-mentions-object
+    https://discord.com/developers/docs/resources/message#allowed-mentions-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -15,9 +23,9 @@ AllowedMention.Prototype = {}
 AllowedMention.Interface = {}
 
 --[=[
-	@within Builders.AllowedMention
+    @within Builders.AllowedMention
 
-	Add a user mention to the allowed mentions for this message.
+    Add a user mention to the allowed mentions for this message.
 ]=]
 function AllowedMention.Prototype.addUserMention(self: AllowedMention, userId: string): AllowedMention
     if not table.find(self.parse, "users") then
@@ -30,9 +38,9 @@ function AllowedMention.Prototype.addUserMention(self: AllowedMention, userId: s
 end
 
 --[=[
-	@within Builders.AllowedMention
+    @within Builders.AllowedMention
 
-	Add a role mention to the allowed mentions for this message.
+    Add a role mention to the allowed mentions for this message.
 ]=]
 function AllowedMention.Prototype.addRoleMention(self: AllowedMention, roleId: string): AllowedMention
     if not table.find(self.parse, "roles") then
@@ -45,9 +53,9 @@ function AllowedMention.Prototype.addRoleMention(self: AllowedMention, roleId: s
 end
 
 --[=[
-	@within Builders.AllowedMention
+    @within Builders.AllowedMention
 
-	For replies, whether to mention the author of the message being replied to (default false)
+    For replies, whether to mention the author of the message being replied to (default false)
 ]=]
 function AllowedMention.Prototype.setRepliedUser(self: AllowedMention, repliedUser: boolean): AllowedMention
     self.repliedUser = repliedUser
@@ -56,9 +64,9 @@ function AllowedMention.Prototype.setRepliedUser(self: AllowedMention, repliedUs
 end
 
 --[=[
-	@within Builders.AllowedMention
+    @within Builders.AllowedMention
 
-	Controls @everyone and @here mentions
+    Controls @everyone and @here mentions
 ]=]
 function AllowedMention.Prototype.setMentionsEveryone(self: AllowedMention, mentionsEveryone: boolean): AllowedMention
     if mentionsEveryone then
@@ -77,9 +85,9 @@ function AllowedMention.Prototype.setMentionsEveryone(self: AllowedMention, ment
 end
 
 --[=[
-	@within Builders.AllowedMention
+    @within Builders.AllowedMention
 
-	Responsible for building the AllowedMention JSON that can be parsed by the Discord API.
+    Responsible for building the AllowedMention JSON that can be parsed by the Discord API.
 ]=]
 function AllowedMention.Prototype.build(self: AllowedMention): JSON
     return {
@@ -91,9 +99,9 @@ function AllowedMention.Prototype.build(self: AllowedMention): JSON
 end
 
 --[=[
-	@within Builders.AllowedMention
+    @within Builders.AllowedMention
 
-	Responsible for creating a new AllowedMention.
+    Responsible for creating a new AllowedMention.
 ]=]
 function AllowedMention.Interface.new(resource: {
     roles: { apiTypes.Snowflake },
@@ -104,31 +112,31 @@ function AllowedMention.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop parse { apiTypes.AllowedMentionTypes }
-				@within Builders.AllowedMention
-				An array of allowed mention types to parse from the content.
-			]=]
+                @prop parse { apiTypes.AllowedMentionTypes }
+                @within Builders.AllowedMention
+                An array of allowed mention types to parse from the content.
+            ]=]
             parse = {},
 
             --[=[
-				@prop roles { string }
-				@within Builders.AllowedMention
-				Array of role_ids to mention (Max size of 100).
-			]=]
+                @prop roles { string }
+                @within Builders.AllowedMention
+                Array of role_ids to mention (Max size of 100).
+            ]=]
             roles = {},
 
             --[=[
-				@prop users { string }
-				@within Builders.AllowedMention
-				Array of user_ids to mention (Max size of 100).
-			]=]
+                @prop users { string }
+                @within Builders.AllowedMention
+                Array of user_ids to mention (Max size of 100).
+            ]=]
             users = {},
 
             --[=[
-				@prop repliedUser boolean?
-				@within Builders.AllowedMention
-				For replies, whether to mention the author of the message being replied to.
-			]=]
+                @prop repliedUser boolean?
+                @within Builders.AllowedMention
+                For replies, whether to mention the author of the message being replied to.
+            ]=]
         } :: AllowedMention,
         {
             __index = AllowedMention.Prototype,

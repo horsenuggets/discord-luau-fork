@@ -1,3 +1,11 @@
+--[[
+
+interaction
+
+REST API methods for Discord interaction endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.interaction
+    @class Rest.interaction
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/interactions/receiving-and-responding
+    - https://discord.com/developers/docs/interactions/receiving-and-responding
 ]=]
 local interaction = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
+    https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
 ]=]
 function interaction.createInteractionResponseAsync(
     instance: request.Request,
@@ -51,9 +59,9 @@ function interaction.createInteractionResponseAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#get-original-interaction-response
+    https://discord.com/developers/docs/interactions/receiving-and-responding#get-original-interaction-response
 ]=]
 function interaction.getOriginalInteractionResponseAsync(
     instance: request.Request,
@@ -85,9 +93,9 @@ function interaction.getOriginalInteractionResponseAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#edit-original-interaction-response
+    https://discord.com/developers/docs/interactions/receiving-and-responding#edit-original-interaction-response
 ]=]
 function interaction.editOriginalInteractionResponseAsync(
     instance: request.Request,
@@ -121,9 +129,9 @@ function interaction.editOriginalInteractionResponseAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#delete-original-interaction-response
+    https://discord.com/developers/docs/interactions/receiving-and-responding#delete-original-interaction-response
 ]=]
 function interaction.deleteOriginalInteractionResponseAsync(
     instance: request.Request,
@@ -150,9 +158,9 @@ function interaction.deleteOriginalInteractionResponseAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message
+    https://discord.com/developers/docs/interactions/receiving-and-responding#create-followup-message
 ]=]
 function interaction.createFollowupMessageAsync(
     instance: request.Request,
@@ -183,9 +191,9 @@ function interaction.createFollowupMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#get-followup-message
+    https://discord.com/developers/docs/interactions/receiving-and-responding#get-followup-message
 ]=]
 function interaction.getFollowupMessageAsync(
     instance: request.Request,
@@ -215,9 +223,9 @@ function interaction.getFollowupMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#edit-followup-message
+    https://discord.com/developers/docs/interactions/receiving-and-responding#edit-followup-message
 ]=]
 function interaction.editFollowupMessageAsync(
     instance: request.Request,
@@ -249,9 +257,9 @@ function interaction.editFollowupMessageAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#delete-followup-message
+    https://discord.com/developers/docs/interactions/receiving-and-responding#delete-followup-message
 ]=]
 function interaction.deleteFollowupMessageAsync(
     instance: request.Request,

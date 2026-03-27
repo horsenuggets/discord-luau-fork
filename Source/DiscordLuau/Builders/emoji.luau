@@ -1,10 +1,18 @@
+--[[
+
+emoji
+
+Implementation of discords Emoji object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Emoji
-	@__index Prototype
+    @class Builders.Emoji
+    @__index Prototype
 
-	Implementation of discords Emoji object as a Luau builder.	
+    Implementation of discords Emoji object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/emoji#emoji-object
+    https://discord.com/developers/docs/resources/emoji#emoji-object
 ]=]
 
 local util = require("../Utilities")
@@ -15,9 +23,9 @@ Emoji.Prototype = {}
 Emoji.Interface = {}
 
 --[=[
-	@within Builders.Emoji
+    @within Builders.Emoji
 
-	Set the ID of the emoji to use.
+    Set the ID of the emoji to use.
 ]=]
 function Emoji.Prototype.setId(self: Emoji, emojiId: string): Emoji
     self.emojiId = emojiId
@@ -26,9 +34,9 @@ function Emoji.Prototype.setId(self: Emoji, emojiId: string): Emoji
 end
 
 --[=[
-	@within Builders.Emoji
+    @within Builders.Emoji
 
-	Set the name of the emoji to use.
+    Set the name of the emoji to use.
 ]=]
 function Emoji.Prototype.setName(self: Emoji, emojiName: string): Emoji
     assert(util.validateKebabCase(emojiName), `Emoji names are Kebab case!`)
@@ -39,9 +47,9 @@ function Emoji.Prototype.setName(self: Emoji, emojiName: string): Emoji
 end
 
 --[=[
-	@within Builders.Emoji
+    @within Builders.Emoji
 
-	Responsible for building the Emoji JSON that can be parsed by the Discord API.
+    Responsible for building the Emoji JSON that can be parsed by the Discord API.
 ]=]
 function Emoji.Prototype.build(self: Emoji): JSON
     assert(self.emojiId, `Emoji ID is required.`)
@@ -54,16 +62,16 @@ function Emoji.Prototype.build(self: Emoji): JSON
 end
 
 --[=[
-	@within Builders.Emoji
+    @within Builders.Emoji
 
-	Responsible for creating a new Emoji.
+    Responsible for creating a new Emoji.
 
-	```luau
-	local emoji = Emoji.new({
-		emojiId = "123456789",
-		emojiName = "my-emoji"
-	})
-	```
+    ```luau
+    local emoji = Emoji.new({
+        emojiId = "123456789",
+        emojiName = "my-emoji"
+    })
+    ```
 ]=]
 function Emoji.Interface.new(resource: {
     emojiId: string,
@@ -72,17 +80,17 @@ function Emoji.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop emojiId string?
-				@within Builders.Emoji
-				The ID of the emoji.
-			]=]
+                @prop emojiId string?
+                @within Builders.Emoji
+                The ID of the emoji.
+            ]=]
             emojiId = nil,
 
             --[=[
-				@prop emojiName string?
-				@within Builders.Emoji
-				The name of the emoji.
-			]=]
+                @prop emojiName string?
+                @within Builders.Emoji
+                The name of the emoji.
+            ]=]
             emojiName = nil,
         } :: Emoji,
         {

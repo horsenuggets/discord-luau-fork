@@ -1,19 +1,30 @@
+--[[
+
+Secret
+
+Implementation of a basic secret object in Luau, primarily used to store bot tokens so
+that they can't be accidentally leaked into the console through a `print` ```luau local a
+a = secret.new("SOMETHING_SECRET") print(a) --> "Secret(SOMETHIN--------)" a =
+secret.new(12222) print(a) --> "Secret(number)" ```.
+
+--]]
+
 --[=[
-	@class Secret
-	@__index Prototype
+    @class Secret
+    @__index Prototype
 
-	Implementation of a basic secret object in Luau, primarily used to store bot tokens so that
-	they can't be accidentally leaked into the console through a `print`
+    Implementation of a basic secret object in Luau, primarily used to store bot tokens so that
+    they can't be accidentally leaked into the console through a `print`
 
-	```luau
-	local a
-	
-	a = secret.new("SOMETHING_SECRET")
-	print(a) --> "Secret(SOMETHIN--------)"
+    ```luau
+    local a
+    
+    a = secret.new("SOMETHING_SECRET")
+    print(a) --> "Secret(SOMETHIN--------)"
 
-	a = secret.new(12222)
-	print(a) --> "Secret(number)"
-	```
+    a = secret.new(12222)
+    print(a) --> "Secret(number)"
+    ```
 ]=]
 
 local Secret = {}
@@ -22,9 +33,9 @@ Secret.Interface = {}
 Secret.Prototype = {}
 
 --[=[
-	@within Secret
+    @within Secret
 
-	Creates a new Secret
+    Creates a new Secret
 ]=]
 function Secret.Interface.new<T>(value: T): Secret<T>
     local self = setmetatable(

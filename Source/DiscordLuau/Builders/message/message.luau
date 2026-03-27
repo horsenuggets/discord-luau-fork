@@ -1,10 +1,18 @@
+--[[
+
+message
+
+Implementation of discords Message object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Message
-	@__index Prototype
+    @class Builders.Message
+    @__index Prototype
 
-	Implementation of discords Message object as a Luau builder.	
+    Implementation of discords Message object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/message#message-object
+    https://discord.com/developers/docs/resources/message#message-object
 ]=]
 
 local allowedMention = require("./allowedMention")
@@ -24,9 +32,9 @@ Message.Prototype = {}
 Message.Interface = {}
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Sets the content of the message.
+    Sets the content of the message.
 ]=]
 function Message.Prototype.setContent(self: Message, content: string): Message
     assert(#content < 2000, `Message content must be less than 2000 characters.`)
@@ -37,9 +45,9 @@ function Message.Prototype.setContent(self: Message, content: string): Message
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Sets the nonce of the message.
+    Sets the nonce of the message.
 ]=]
 function Message.Prototype.setNonce(self: Message, nonce: string): Message
     assert(#nonce < 25, `Message nonse must be less than 25 characters.`)
@@ -50,9 +58,9 @@ function Message.Prototype.setNonce(self: Message, nonce: string): Message
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Sets whether the message is text-to-speech.
+    Sets whether the message is text-to-speech.
 ]=]
 function Message.Prototype.setTTS(self: Message, tts: boolean): Message
     self.tts = tts
@@ -61,9 +69,9 @@ function Message.Prototype.setTTS(self: Message, tts: boolean): Message
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Adds an embed to the message.
+    Adds an embed to the message.
 ]=]
 function Message.Prototype.addEmbed(self: Message, embedData: embed.JSON): Message
     local embeds = self.embeds or {}
@@ -76,9 +84,9 @@ function Message.Prototype.addEmbed(self: Message, embedData: embed.JSON): Messa
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Sets the allowed mentions for the message.
+    Sets the allowed mentions for the message.
 ]=]
 function Message.Prototype.setAllowedMentions(self: Message, mentions: allowedMention.JSON): Message
     self.allowedMentions = mentions
@@ -87,9 +95,9 @@ function Message.Prototype.setAllowedMentions(self: Message, mentions: allowedMe
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Sets the message reference.
+    Sets the message reference.
 ]=]
 function Message.Prototype.setMessageReference(self: Message, ref: reference.JSON): Message
     self.messageReference = ref
@@ -98,9 +106,9 @@ function Message.Prototype.setMessageReference(self: Message, ref: reference.JSO
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Adds a component to the message.
+    Adds a component to the message.
 ]=]
 function Message.Prototype.addComponent(
     self: Message,
@@ -116,9 +124,9 @@ function Message.Prototype.addComponent(
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Adds a sticker ID to the message.
+    Adds a sticker ID to the message.
 ]=]
 function Message.Prototype.addStickerId(self: Message, stickerId: string): Message
     local stickerIds = self.stickerIds or {}
@@ -131,9 +139,9 @@ function Message.Prototype.addStickerId(self: Message, stickerId: string): Messa
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Adds an attachment to the message.
+    Adds an attachment to the message.
 ]=]
 function Message.Prototype.addAttachment(self: Message, data: string, name: string?): Message
     table.insert(self.attachments, {
@@ -145,9 +153,9 @@ function Message.Prototype.addAttachment(self: Message, data: string, name: stri
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Sets the flags for the message.
+    Sets the flags for the message.
 ]=]
 function Message.Prototype.setFlags(self: Message, flags: number): Message
     self.flags = flags
@@ -156,9 +164,9 @@ function Message.Prototype.setFlags(self: Message, flags: number): Message
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	If true and nonce is present, it will be checked for uniqueness in the past few minutes.
+    If true and nonce is present, it will be checked for uniqueness in the past few minutes.
 ]=]
 function Message.Prototype.setEnforceNonce(self: Message, enforceNonce: boolean): Message
     self.enforceNonce = enforceNonce
@@ -167,9 +175,9 @@ function Message.Prototype.setEnforceNonce(self: Message, enforceNonce: boolean)
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Sets the poll for the message.
+    Sets the poll for the message.
 ]=]
 function Message.Prototype.setPoll(self: Message, poll: poll.JSON): Message
     self.poll = poll
@@ -178,9 +186,9 @@ function Message.Prototype.setPoll(self: Message, poll: poll.JSON): Message
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Responsible for building the Message JSON that can be parsed by the Discord API.
+    Responsible for building the Message JSON that can be parsed by the Discord API.
 ]=]
 function Message.Prototype.build(self: Message): JSON
     return {
@@ -200,9 +208,9 @@ function Message.Prototype.build(self: Message): JSON
 end
 
 --[=[
-	@within Builders.Message
+    @within Builders.Message
 
-	Responsible for creating a new Message.
+    Responsible for creating a new Message.
 ]=]
 function Message.Interface.new(resource: {
     content: string?,
@@ -221,62 +229,62 @@ function Message.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop embeds { Builders.Embed }
-				@within Builders.Message
-				Embedded rich content (up to 10 embeds).
-			]=]
+                @prop embeds { Builders.Embed }
+                @within Builders.Message
+                Embedded rich content (up to 10 embeds).
+            ]=]
             embeds = {},
 
             --[=[
-				@prop allowedMentions Builders.AllowedMention?
-				@within Builders.Message
-				Allowed mentions for the message.
-			]=]
+                @prop allowedMentions Builders.AllowedMention?
+                @within Builders.Message
+                Allowed mentions for the message.
+            ]=]
 
             --[=[
-				@prop messageReference Builders.Reference?
-				@within Builders.Message
-				Include to make your message a reply.
-			]=]
+                @prop messageReference Builders.Reference?
+                @within Builders.Message
+                Include to make your message a reply.
+            ]=]
 
             --[=[
-				@prop components { Builders.Button | Builders.TextInput | Builders.SelectMenu | Builders.ActionRow }
-				@within Builders.Message
-				Components to include with the message.
-			]=]
+                @prop components { Builders.Button | Builders.TextInput | Builders.SelectMenu | Builders.ActionRow }
+                @within Builders.Message
+                Components to include with the message.
+            ]=]
             components = {},
 
             --[=[
-				@prop stickerIds { string }
-				@within Builders.Message
-				IDs of up to 3 stickers in the server to send in the message.
-			]=]
+                @prop stickerIds { string }
+                @within Builders.Message
+                IDs of up to 3 stickers in the server to send in the message.
+            ]=]
             stickerIds = {},
 
             --[=[
-				@prop attachments { Attachment }
-				@within Builders.Message
-				Attachment objects with filename and description.
-			]=]
+                @prop attachments { Attachment }
+                @within Builders.Message
+                Attachment objects with filename and description.
+            ]=]
             attachments = {},
 
             --[=[
-				@prop flags number?
-				@within Builders.Message
-				Message flags combined as a bitfield.
-			]=]
+                @prop flags number?
+                @within Builders.Message
+                Message flags combined as a bitfield.
+            ]=]
 
             --[=[
-				@prop enforceNonce boolean?
-				@within Builders.Message
-				Whether to check nonce uniqueness.
-			]=]
+                @prop enforceNonce boolean?
+                @within Builders.Message
+                Whether to check nonce uniqueness.
+            ]=]
 
             --[=[
-				@prop poll Builders.Poll?
-				@within Builders.Message
-				Poll data for the message.
-			]=]
+                @prop poll Builders.Poll?
+                @within Builders.Message
+                Poll data for the message.
+            ]=]
         } :: Message,
         {
             __index = Message.Prototype,

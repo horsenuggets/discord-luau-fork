@@ -1,10 +1,18 @@
+--[[
+
+channel
+
+Implementation of discords WelcomeScreenChannel object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.WelcomeScreenChannel
-	@__index Prototype
+    @class Builders.WelcomeScreenChannel
+    @__index Prototype
 
-	Implementation of discords WelcomeScreenChannel object as a Luau builder.	
+    Implementation of discords WelcomeScreenChannel object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/guild#welcome-screen-object-welcome-screen-channel-structure
+    https://discord.com/developers/docs/resources/guild#welcome-screen-object-welcome-screen-channel-structure
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -15,9 +23,9 @@ WelcomeScreenChannel.Prototype = {}
 WelcomeScreenChannel.Interface = {}
 
 --[=[
-	@within Builders.WelcomeScreenChannel
+    @within Builders.WelcomeScreenChannel
 
-	Set the channel id for this welcome screen channel
+    Set the channel id for this welcome screen channel
 ]=]
 function WelcomeScreenChannel.Prototype.setChannelId(
     self: WelcomeScreenChannel,
@@ -29,9 +37,9 @@ function WelcomeScreenChannel.Prototype.setChannelId(
 end
 
 --[=[
-	@within Builders.WelcomeScreenChannel
+    @within Builders.WelcomeScreenChannel
 
-	Set the description for this welcome screen channel
+    Set the description for this welcome screen channel
 ]=]
 function WelcomeScreenChannel.Prototype.setDescription(
     self: WelcomeScreenChannel,
@@ -45,9 +53,9 @@ function WelcomeScreenChannel.Prototype.setDescription(
 end
 
 --[=[
-	@within Builders.WelcomeScreenChannel
+    @within Builders.WelcomeScreenChannel
 
-	Set the emoji id for this welcome screen channel
+    Set the emoji id for this welcome screen channel
 ]=]
 function WelcomeScreenChannel.Prototype.setEmojiId(
     self: WelcomeScreenChannel,
@@ -59,9 +67,9 @@ function WelcomeScreenChannel.Prototype.setEmojiId(
 end
 
 --[=[
-	@within Builders.WelcomeScreenChannel
+    @within Builders.WelcomeScreenChannel
 
-	Set the emoji name for this welcome screen channel
+    Set the emoji name for this welcome screen channel
 ]=]
 function WelcomeScreenChannel.Prototype.setEmojiName(
     self: WelcomeScreenChannel,
@@ -73,9 +81,9 @@ function WelcomeScreenChannel.Prototype.setEmojiName(
 end
 
 --[=[
-	@within Builders.WelcomeScreenChannel
+    @within Builders.WelcomeScreenChannel
 
-	Responsible for building the WelcomeScreenChannelObject JSON that can be parsed by the Discord API.
+    Responsible for building the WelcomeScreenChannelObject JSON that can be parsed by the Discord API.
 ]=]
 function WelcomeScreenChannel.Prototype.build(self: WelcomeScreenChannel): JSON
     return {
@@ -87,9 +95,9 @@ function WelcomeScreenChannel.Prototype.build(self: WelcomeScreenChannel): JSON
 end
 
 --[=[
-	@within Builders.WelcomeScreenChannel
+    @within Builders.WelcomeScreenChannel
 
-	Responsible for creating a new WelcomeScreenChannel.
+    Responsible for creating a new WelcomeScreenChannel.
 ]=]
 function WelcomeScreenChannel.Interface.new(resource: {
     channelId: apiTypes.Snowflake?,
@@ -100,31 +108,31 @@ function WelcomeScreenChannel.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop channelId string?
-				@within Builders.WelcomeScreenChannel
-				The id of the channel shown in the welcome screen.
-			]=]
+                @prop channelId string?
+                @within Builders.WelcomeScreenChannel
+                The id of the channel shown in the welcome screen.
+            ]=]
             channelId = nil,
 
             --[=[
-				@prop description string
-				@within Builders.WelcomeScreenChannel
-				The description shown for the channel in the welcome screen.
-			]=]
+                @prop description string
+                @within Builders.WelcomeScreenChannel
+                The description shown for the channel in the welcome screen.
+            ]=]
             description = nil,
 
             --[=[
-				@prop emojiId string?
-				@within Builders.WelcomeScreenChannel
-				The id of the emoji shown in the welcome screen channel.
-			]=]
+                @prop emojiId string?
+                @within Builders.WelcomeScreenChannel
+                The id of the emoji shown in the welcome screen channel.
+            ]=]
             emojiId = nil,
 
             --[=[
-				@prop emojiName string?
-				@within Builders.WelcomeScreenChannel
-				The name of the emoji shown in the welcome screen channel.
-			]=]
+                @prop emojiName string?
+                @within Builders.WelcomeScreenChannel
+                The name of the emoji shown in the welcome screen channel.
+            ]=]
             emojiName = nil,
         } :: WelcomeScreenChannel,
         {

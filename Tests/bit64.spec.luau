@@ -1,3 +1,11 @@
+--[[
+
+bit64.spec
+
+Tests for the bit64 module.
+
+--]]
+
 local frktest = require("../../../lune_packages/frktest")
 
 local bit = require("../src")

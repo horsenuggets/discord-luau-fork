@@ -1,10 +1,18 @@
+--[[
+
+footer
+
+Implementation of discords Footer object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Footer
-	@__index Prototype
+    @class Builders.Footer
+    @__index Prototype
 
-	Implementation of discords Footer object as a Luau builder.	
+    Implementation of discords Footer object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/message#embed-object-embed-footer-structure
+    https://discord.com/developers/docs/resources/message#embed-object-embed-footer-structure
 ]=]
 
 local Footer = {}
@@ -13,9 +21,9 @@ Footer.Prototype = {}
 Footer.Interface = {}
 
 --[=[
-	@within Builders.Footer
+    @within Builders.Footer
 
-	Sets the footer text content.
+    Sets the footer text content.
 ]=]
 function Footer.Prototype.setText(self: Footer, text: string): Footer
     assert(#text <= 2048, "Name must be less than 2048 characters")
@@ -27,9 +35,9 @@ function Footer.Prototype.setText(self: Footer, text: string): Footer
 end
 
 --[=[
-	@within Builders.Footer
+    @within Builders.Footer
 
-	Sets the footer icon URL and optional proxy icon URL.
+    Sets the footer icon URL and optional proxy icon URL.
 ]=]
 function Footer.Prototype.setIcon(self: Footer, iconUrl: string, proxyIconUrl: string?): Footer
     self.iconUrl = iconUrl
@@ -39,9 +47,9 @@ function Footer.Prototype.setIcon(self: Footer, iconUrl: string, proxyIconUrl: s
 end
 
 --[=[
-	@within Builders.Footer
+    @within Builders.Footer
 
-	Responsible for building the Footer JSON that can be parsed by the Discord API.
+    Responsible for building the Footer JSON that can be parsed by the Discord API.
 ]=]
 function Footer.Prototype.build(self: Footer): JSON
     assert(self.text, `Footer must have a text`)
@@ -54,16 +62,16 @@ function Footer.Prototype.build(self: Footer): JSON
 end
 
 --[=[
-	@within Builders.Footer
+    @within Builders.Footer
 
-	Responsible for creating a new Footer.
+    Responsible for creating a new Footer.
 
-	```luau
-	local footer = Footer.new({
-		text = "Footer text",
-		iconUrl = "https://example.com/icon.png"
-	})
-	```
+    ```luau
+    local footer = Footer.new({
+        text = "Footer text",
+        iconUrl = "https://example.com/icon.png"
+    })
+    ```
 ]=]
 function Footer.Interface.new(resource: {
     text: string?,
@@ -73,24 +81,24 @@ function Footer.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop text string?
-				@within Builders.Footer
-				The text content that appears in the footer.
-			]=]
+                @prop text string?
+                @within Builders.Footer
+                The text content that appears in the footer.
+            ]=]
             text = nil,
 
             --[=[
-				@prop iconUrl string?
-				@within Builders.Footer
-				The URL of the footer icon.
-			]=]
+                @prop iconUrl string?
+                @within Builders.Footer
+                The URL of the footer icon.
+            ]=]
             iconUrl = nil,
 
             --[=[
-				@prop proxyIconUrl string?
-				@within Builders.Footer
-				The proxied URL of the footer icon.
-			]=]
+                @prop proxyIconUrl string?
+                @within Builders.Footer
+                The proxied URL of the footer icon.
+            ]=]
             proxyIconUrl = nil,
         } :: Footer,
         {

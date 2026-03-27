@@ -1,3 +1,11 @@
+--[[
+
+stream.spec
+
+Tests for the stream module.
+
+--]]
+
 local frktest = require("../../../lune_packages/frktest")
 local stream = require("../src")
 

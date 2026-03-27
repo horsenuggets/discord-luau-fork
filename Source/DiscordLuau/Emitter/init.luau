@@ -1,9 +1,18 @@
---[=[
-	@class Emitter
-	@__index Prototype
+--[[
 
-	An emitter that can be used to emit events, this class will be used to push updates from the Discord Websockets
-		out to the Consumers of this library.
+Emitter
+
+An emitter that can be used to emit events, this class will be used to push updates from
+the Discord Websockets out to the Consumers of this library.
+
+--]]
+
+--[=[
+    @class Emitter
+    @__index Prototype
+
+    An emitter that can be used to emit events, this class will be used to push updates from the Discord Websockets
+        out to the Consumers of this library.
 ]=]
 
 local Emitter = {}
@@ -12,9 +21,9 @@ Emitter.Interface = {}
 Emitter.Prototype = {}
 
 --[=[
-	@within Emitter
+    @within Emitter
 
-	Listen to this event, returns a function that can be called to disconnect the listener
+    Listen to this event, returns a function that can be called to disconnect the listener
 ]=]
 function Emitter.Prototype.listen<T...>(self: Emitter<T...>, callback: (T...) -> ()): () -> ()
     local thread = coroutine.create(function()
@@ -42,9 +51,9 @@ function Emitter.Prototype.listen<T...>(self: Emitter<T...>, callback: (T...) ->
 end
 
 --[=[
-	@within Emitter
+    @within Emitter
 
-	Listen to this event once, this will automatically disconnect after the first invocation
+    Listen to this event once, this will automatically disconnect after the first invocation
 ]=]
 function Emitter.Prototype.listenOnce<T...>(self: Emitter<T...>, callback: (T...) -> ()): () -> ()
     local disconnect
@@ -59,9 +68,9 @@ function Emitter.Prototype.listenOnce<T...>(self: Emitter<T...>, callback: (T...
 end
 
 --[=[
-	@within Emitter
+    @within Emitter
 
-	Wait for this event to be emitted from, returns the result of the emittion
+    Wait for this event to be emitted from, returns the result of the emittion
 ]=]
 function Emitter.Prototype.wait<T...>(self: Emitter<T...>): T...
     table.insert(self._yieldingThreads, coroutine.running())
@@ -70,11 +79,11 @@ function Emitter.Prototype.wait<T...>(self: Emitter<T...>): T...
 end
 
 --[=[
-	@within Emitter
+    @within Emitter
 
-	Responsible for invoking all the threads that are listening to this emitter.
+    Responsible for invoking all the threads that are listening to this emitter.
 
-	This will additionally resume all the threads that are currently waiting for an event to be emitted.
+    This will additionally resume all the threads that are currently waiting for an event to be emitted.
 ]=]
 function Emitter.Prototype.invoke<T...>(self: Emitter<T...>, ...: any): ()
     local callback = coroutine.wrap(function(...)
@@ -101,9 +110,9 @@ function Emitter.Prototype.invoke<T...>(self: Emitter<T...>, ...: any): ()
 end
 
 --[=[
-	@within Emitter
+    @within Emitter
 
-	Constructor for the Emitter object, will return a new instance of the Emitter object.
+    Constructor for the Emitter object, will return a new instance of the Emitter object.
 ]=]
 function Emitter.Interface.new<T...>(): Emitter<T...>
     return setmetatable(

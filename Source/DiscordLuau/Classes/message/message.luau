@@ -1,10 +1,18 @@
+--[[
+
+message
+
+Implementation of the Discord Message class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Message
-	@__index Message.Prototype
-	
-	Implementation of the Discord Message class in Luau
-	
-	https://discord.com/developers/docs/resources/message#message-object
+    @class Classes.Message
+    @__index Message.Prototype
+    
+    Implementation of the Discord Message class in Luau
+    
+    https://discord.com/developers/docs/resources/message#message-object
 ]=]
 
 local stdPolyfills = require("../../StdPolyfills")
@@ -46,8 +54,8 @@ Message.Interface = {}
 Message.Prototype = {}
 
 --[=[
-	@within Classes.Message
-	Creates a new thread from an existing message.
+    @within Classes.Message
+    Creates a new thread from an existing message.
 ]=]
 function Message.Prototype.startThreadAsync(
     self: Message,
@@ -74,8 +82,8 @@ function Message.Prototype.startThreadAsync(
 end
 
 --[=[
-	@within Classes.Message
-	Add a reaction to a message. Requires READ_MESSAGE_HISTORY and ADD_REACTIONS permissions.
+    @within Classes.Message
+    Add a reaction to a message. Requires READ_MESSAGE_HISTORY and ADD_REACTIONS permissions.
 ]=]
 function Message.Prototype.addReactionAsync(self: Message, emoji: builders.emojiJSON | string)
     return future.Future.new(function()
@@ -98,8 +106,8 @@ function Message.Prototype.addReactionAsync(self: Message, emoji: builders.emoji
 end
 
 --[=[
-	@within Classes.Message
-	Remove the current user's reaction from a message
+    @within Classes.Message
+    Remove the current user's reaction from a message
 ]=]
 function Message.Prototype.removeOwnReactionAsync(self: Message, emoji: builders.emojiJSON | string)
     return future.Future.new(function()
@@ -122,8 +130,8 @@ function Message.Prototype.removeOwnReactionAsync(self: Message, emoji: builders
 end
 
 --[=[
-	@within Classes.Message
-	Remove another user's reaction from a message. Requires MANAGE_MESSAGES permission.
+    @within Classes.Message
+    Remove another user's reaction from a message. Requires MANAGE_MESSAGES permission.
 ]=]
 function Message.Prototype.deleteUserReactionAsync(
     self: Message,
@@ -151,8 +159,8 @@ function Message.Prototype.deleteUserReactionAsync(
 end
 
 --[=[
-	@within Classes.Message
-	Get a list of users that reacted with a specific emoji
+    @within Classes.Message
+    Get a list of users that reacted with a specific emoji
 ]=]
 function Message.Prototype.getReactionsAsync(
     self: Message,
@@ -193,8 +201,8 @@ function Message.Prototype.getReactionsAsync(
 end
 
 --[=[
-	@within Classes.Message
-	Remove all reactions from a message. Requires MANAGE_MESSAGES permission.
+    @within Classes.Message
+    Remove all reactions from a message. Requires MANAGE_MESSAGES permission.
 ]=]
 function Message.Prototype.deleteAllReactionsAsync(self: Message)
     return future.Future.new(function()
@@ -209,8 +217,8 @@ function Message.Prototype.deleteAllReactionsAsync(self: Message)
 end
 
 --[=[
-	@within Classes.Message
-	Remove all reactions of a specific emoji from a message. Requires MANAGE_MESSAGES permission.
+    @within Classes.Message
+    Remove all reactions of a specific emoji from a message. Requires MANAGE_MESSAGES permission.
 ]=]
 function Message.Prototype.deleteAllReactionsForEmojiAsync(self: Message, emoji: builders.emojiJSON | string)
     return future.Future.new(function()
@@ -234,8 +242,8 @@ function Message.Prototype.deleteAllReactionsForEmojiAsync(self: Message, emoji:
 end
 
 --[=[
-	@within Classes.Message
-	Edit a message. The current user must be the author of the message.
+    @within Classes.Message
+    Edit a message. The current user must be the author of the message.
 ]=]
 function Message.Prototype.editAsync(self: Message, message: builders.messageJSON)
     return future.Future.new(function()
@@ -263,9 +271,9 @@ function Message.Prototype.editAsync(self: Message, message: builders.messageJSO
 end
 
 --[=[
-	@within Classes.Message
-	Delete a message. If operating on a guild channel and trying to delete a message that was not sent by the current user,
-	this endpoint requires the MANAGE_MESSAGES permission.
+    @within Classes.Message
+    Delete a message. If operating on a guild channel and trying to delete a message that was not sent by the current user,
+    this endpoint requires the MANAGE_MESSAGES permission.
 ]=]
 function Message.Prototype.deleteAsync(self: Message, reason: string?)
     return future.Future.new(function()
@@ -280,8 +288,8 @@ function Message.Prototype.deleteAsync(self: Message, reason: string?)
 end
 
 --[=[
-	@within Classes.Message
-	Reply to a message by creating a new message that references this one.
+    @within Classes.Message
+    Reply to a message by creating a new message that references this one.
 ]=]
 function Message.Prototype.replyAsync(self: Message, message: builders.messageJSON)
     return future.Future.new(function()
@@ -307,8 +315,8 @@ function Message.Prototype.replyAsync(self: Message, message: builders.messageJS
 end
 
 --[=[
-	@within Classes.Message
-	Pin this message to the channel. Requires MANAGE_MESSAGES permission.
+    @within Classes.Message
+    Pin this message to the channel. Requires MANAGE_MESSAGES permission.
 ]=]
 function Message.Prototype.pinAsync(self: Message)
     return future.Future.new(function()
@@ -325,8 +333,8 @@ function Message.Prototype.pinAsync(self: Message)
 end
 
 --[=[
-	@within Classes.Message
-	Unpin this message from the channel. Requires MANAGE_MESSAGES permission.
+    @within Classes.Message
+    Unpin this message from the channel. Requires MANAGE_MESSAGES permission.
 ]=]
 function Message.Prototype.unpinAsync(self: Message)
     return future.Future.new(function()
@@ -343,9 +351,9 @@ function Message.Prototype.unpinAsync(self: Message)
 end
 
 --[=[
-	@within Classes.Message
-	@private
-	Synchronizes the message object with the data from the API.
+    @within Classes.Message
+    @private
+    Synchronizes the message object with the data from the API.
 ]=]
 function Message.Prototype.sync(self: Message, messageData: apiTypes.MessageObject)
     self.type = apiTypes.message.MessageType[messageData.type]
@@ -397,239 +405,239 @@ function Message.Prototype.sync(self: Message, messageData: apiTypes.MessageObje
     end
 
     --[=[
-		@prop id string
-		@within Classes.Message
-		The ID of the message.
-	]=]
+        @prop id string
+        @within Classes.Message
+        The ID of the message.
+    ]=]
     self.id = messageData.id :: string
 
     --[=[
-		@prop channelId string
-		@within Classes.Message
-		The ID of the channel the message was sent in.
-	]=]
+        @prop channelId string
+        @within Classes.Message
+        The ID of the channel the message was sent in.
+    ]=]
     self.channelId = messageData.channel_id :: string
 
     --[=[
-		@prop author Classes.User
-		@within Classes.Message
-		The author of this message.
-	]=]
+        @prop author Classes.User
+        @within Classes.Message
+        The author of this message.
+    ]=]
     self.author = messageData.author and user.new(messageData.author)
 
     --[=[
-		@prop content string
-		@within Classes.Message
-		The content of the message.
-	]=]
+        @prop content string
+        @within Classes.Message
+        The content of the message.
+    ]=]
     self.content = messageData.content
 
     --[=[
-		@prop timestamp DateTime
-		@within Classes.Message
-		When this message was sent.
-	]=]
+        @prop timestamp DateTime
+        @within Classes.Message
+        When this message was sent.
+    ]=]
     self.timestamp = messageData.timestamp and stdPolyfills.datetime.fromIsoDate(messageData.timestamp)
 
     --[=[
-		@prop tts boolean
-		@within Classes.Message
-		Whether this was a TTS message.
-	]=]
+        @prop tts boolean
+        @within Classes.Message
+        Whether this was a TTS message.
+    ]=]
     self.tts = messageData.tts
 
     --[=[
-		@prop mentionEveryone boolean
-		@within Classes.Message
-		Whether this message mentions everyone.
-	]=]
+        @prop mentionEveryone boolean
+        @within Classes.Message
+        Whether this message mentions everyone.
+    ]=]
     self.mentionEveryone = messageData.mention_everyone
 
     --[=[
-		@prop mentionChannels { Classes.ChannelMention }
-		@within Classes.Message
-		Channels specifically mentioned in this message.
-	]=]
+        @prop mentionChannels { Classes.ChannelMention }
+        @within Classes.Message
+        Channels specifically mentioned in this message.
+    ]=]
     self.mentionChannels = mentionArray
 
     --[=[
-		@prop mentionRoles { Classes.Role }
-		@within Classes.Message
-		Roles specifically mentioned in this message.
-	]=]
+        @prop mentionRoles { Classes.Role }
+        @within Classes.Message
+        Roles specifically mentioned in this message.
+    ]=]
     self.mentionRoles = roleArray
 
     --[=[
-		@prop mentionChannels { Classes.ChannelMention }
-		@within Classes.Message
-		Channels specifically mentioned in this message.
-	]=]
+        @prop mentionChannels { Classes.ChannelMention }
+        @within Classes.Message
+        Channels specifically mentioned in this message.
+    ]=]
     self.mentionChannels = channelMentionArray
 
     --[=[
-		@prop attachments { Classes.Attachment }
-		@within Classes.Message
-		Any attachments to the message.
-	]=]
+        @prop attachments { Classes.Attachment }
+        @within Classes.Message
+        Any attachments to the message.
+    ]=]
     self.attachments = attachmentArray
 
     --[=[
-		@prop embeds { Classes.Embed }
-		@within Classes.Message
-		Any embedded content in the message.
-	]=]
+        @prop embeds { Classes.Embed }
+        @within Classes.Message
+        Any embedded content in the message.
+    ]=]
     self.embeds = embedArray
 
     --[=[
-		@prop reactions { Classes.Reaction }
-		@within Classes.Message
-		Reactions to the message.
-	]=]
+        @prop reactions { Classes.Reaction }
+        @within Classes.Message
+        Reactions to the message.
+    ]=]
     self.reactions = reactionArray
 
     --[=[
-		@prop nonce string
-		@within Classes.Message
-		Used for validating a message was sent.
-	]=]
+        @prop nonce string
+        @within Classes.Message
+        Used for validating a message was sent.
+    ]=]
     self.nonce = tostring(messageData.nonce)
 
     --[=[
-		@prop pinned boolean
-		@within Classes.Message
-		Whether this message is pinned.
-	]=]
+        @prop pinned boolean
+        @within Classes.Message
+        Whether this message is pinned.
+    ]=]
     self.pinned = messageData.pinned
 
     --[=[
-		@prop webhookId string
-		@within Classes.Message
-		If the message is generated by a webhook, this is the webhook's ID.
-	]=]
+        @prop webhookId string
+        @within Classes.Message
+        If the message is generated by a webhook, this is the webhook's ID.
+    ]=]
     self.webhookId = messageData.webhook_id
 
     --[=[
-		@prop activity Classes.Activity
-		@within Classes.Message
-		Activity information for Rich Presence messages.
-	]=]
+        @prop activity Classes.Activity
+        @within Classes.Message
+        Activity information for Rich Presence messages.
+    ]=]
     self.activity = messageData.activity and activity.new(messageData.activity)
 
     --[=[
-		@prop application Classes.Application
-		@within Classes.Message
-		Application information for Rich Presence messages.
-	]=]
+        @prop application Classes.Application
+        @within Classes.Message
+        Application information for Rich Presence messages.
+    ]=]
     self.application = messageData.application and application.new(self.state, messageData.application)
 
     --[=[
-		@prop applicationId string
-		@within Classes.Message
-		If the message is an Interaction or application-owned webhook, this is the ID of the application.
-	]=]
+        @prop applicationId string
+        @within Classes.Message
+        If the message is an Interaction or application-owned webhook, this is the ID of the application.
+    ]=]
     self.applicationId = messageData.application_id
 
     --[=[
-		@prop flags Classes.MessageBitflag
-		@within Classes.Message
-		Message flags combined as a bitfield.
-	]=]
+        @prop flags Classes.MessageBitflag
+        @within Classes.Message
+        Message flags combined as a bitfield.
+    ]=]
     self.flags = messageData.flags and messageBitflag.new(messageData.flags)
 
     --[=[
-		@prop messageReference Classes.Reference
-		@within Classes.Message
-		Reference data for crossposted messages and replies.
-	]=]
+        @prop messageReference Classes.Reference
+        @within Classes.Message
+        Reference data for crossposted messages and replies.
+    ]=]
     self.messageReference = messageData.message_reference and reference.new(messageData.message_reference)
 
     --[=[
-		@prop referencedMessage Classes.Message
-		@within Classes.Message
-		The message that was referenced in a reply.
-	]=]
+        @prop referencedMessage Classes.Message
+        @within Classes.Message
+        The message that was referenced in a reply.
+    ]=]
     self.referencedMessage = messageData.referenced_message
         and Message.Interface.new(self.state, messageData.referenced_message)
 
     --[=[
-		@prop interactionMetadata Classes.IneractionMetadata
-		@within Classes.Message
-		Metadata for interaction messages.
-	]=]
+        @prop interactionMetadata Classes.IneractionMetadata
+        @within Classes.Message
+        Metadata for interaction messages.
+    ]=]
     self.interactionMetadata = messageData.interaction_metadata
         and interactionMetadata.new(messageData.interaction_metadata)
 
     --[=[
-		@prop interaction Classes.Interaction
-		@within Classes.Message
-		Interaction information if the message is a response to an Interaction.
-	]=]
+        @prop interaction Classes.Interaction
+        @within Classes.Message
+        Interaction information if the message is a response to an Interaction.
+    ]=]
     self.interaction = messageData.interaction and interaction.new(self.state, messageData.interaction)
 
     --[=[
-		@prop components { Classes.TextInput | Classes.SelectMenu | Classes.ActionRow | Classes.Button }
-		@within Classes.Message
-		Components attached to the message.
-	]=]
+        @prop components { Classes.TextInput | Classes.SelectMenu | Classes.ActionRow | Classes.Button }
+        @within Classes.Message
+        Components attached to the message.
+    ]=]
     self.components = componentArray
 
     --[=[
-		@prop stickerItems { Classes.StickerItem }
-		@within Classes.Message
-		Stickers attached to the message.
-	]=]
+        @prop stickerItems { Classes.StickerItem }
+        @within Classes.Message
+        Stickers attached to the message.
+    ]=]
     self.stickerItems = stickerItemArray
 
     --[=[
-		@prop position number
-		@within Classes.Message
-		Position of the message in a thread.
-	]=]
+        @prop position number
+        @within Classes.Message
+        Position of the message in a thread.
+    ]=]
     self.position = messageData.position
 
     --[=[
-		@prop roleSubscriptionData Classes.RoleSubscriptionData
-		@within Classes.Message
-		Data for role subscription purchase or renewal notifications.
-	]=]
+        @prop roleSubscriptionData Classes.RoleSubscriptionData
+        @within Classes.Message
+        Data for role subscription purchase or renewal notifications.
+    ]=]
     self.roleSubscriptionData = messageData.role_subscription_data
         and roleSubscriptionData.new(messageData.role_subscription_data)
 
     --[=[
-		@prop poll Classes.Poll
-		@within Classes.Message
-		Poll attached to the message.
-	]=]
+        @prop poll Classes.Poll
+        @within Classes.Message
+        Poll attached to the message.
+    ]=]
     self.poll = messageData.poll and poll.new(messageData.poll)
 
     --[=[
-		@prop call Classes.Call
-		@within Classes.Message
-		Call information if this message started a call.
-	]=]
+        @prop call Classes.Call
+        @within Classes.Message
+        Call information if this message started a call.
+    ]=]
     self.call = messageData.call and call.new(messageData.call)
 
     -- cyclic dependency, can only require during runtime.
     --[=[
-		@prop resolved table
-		@within Classes.Message
-		Resolved objects from the interaction data.
-	]=]
+        @prop resolved table
+        @within Classes.Message
+        Resolved objects from the interaction data.
+    ]=]
     self.resolved = messageData.resolved and _require("../resolved").new(self.state, messageData.resolved)
 end
 
 --[=[
-	@private
-	@within Classes.Message
-	Creates a new Message instance with the specified message data.
+    @private
+    @within Classes.Message
+    Creates a new Message instance with the specified message data.
 ]=]
 function Message.Interface.new(state: state.State, messageData: apiTypes.MessageObject): Message
     local self = setmetatable(
         {
             --[=[
-				@prop state State
-				The state object for this message.
-			]=]
+                @prop state State
+                The state object for this message.
+            ]=]
             state = state,
         } :: Message,
         { __index = Message.Prototype }

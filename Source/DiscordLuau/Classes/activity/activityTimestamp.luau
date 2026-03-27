@@ -1,10 +1,18 @@
+--[[
+
+activityTimestamp
+
+Implementation of the Discord ActivityTimestamps class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.ActivityTimestamp
-	@__index Prototype
+    @class Classes.ActivityTimestamp
+    @__index Prototype
 
-	Implementation of the Discord ActivityTimestamps class in Luau
+    Implementation of the Discord ActivityTimestamps class in Luau
 
-	https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-timestamps
+    https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-timestamps
 ]=]
 
 local stdPolyfills = require("../../StdPolyfills")
@@ -15,28 +23,28 @@ ActivityTimestamp.Interface = {}
 ActivityTimestamp.Prototype = {}
 
 --[=[
-	@within Classes.ActivityTimestamp
-	@private
+    @within Classes.ActivityTimestamp
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function ActivityTimestamp.Interface.new(startTime: number, endTime: number): ActivityTimestamp
     local self = setmetatable(
         {
             --[=[
-				@prop startTime std_polyfills.DateTime
-				@within Classes.ActivityTimestamp
+                @prop startTime std_polyfills.DateTime
+                @within Classes.ActivityTimestamp
 
-				The start time of the activity. This represents when the activity began.
-			]=]
+                The start time of the activity. This represents when the activity began.
+            ]=]
             startTime = stdPolyfills.datetime.fromUnixTimestamp(startTime),
 
             --[=[
-				@prop endTime std_polyfills.DateTime
-				@within Classes.ActivityTimestamp
+                @prop endTime std_polyfills.DateTime
+                @within Classes.ActivityTimestamp
 
-				The end time of the activity. This represents when the activity will end.
-			]=]
+                The end time of the activity. This represents when the activity will end.
+            ]=]
             endTime = stdPolyfills.datetime.fromUnixTimestamp(endTime),
         } :: ActivityTimestamp,
         { __index = ActivityTimestamp.Prototype }

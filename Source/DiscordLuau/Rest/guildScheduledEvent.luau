@@ -1,3 +1,11 @@
+--[[
+
+guildScheduledEvent
+
+REST API methods for Discord guildScheduledEvent endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.guildScheduledEvent
+    @class Rest.guildScheduledEvent
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/guild-scheduled-event
+    - https://discord.com/developers/docs/resources/guild-scheduled-event
 ]=]
 local guildScheduledEvent = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild
+    https://discord.com/developers/docs/resources/guild-scheduled-event#list-scheduled-events-for-guild
 ]=]
 function guildScheduledEvent.listScheduledEventsForGuildAsync(
     instance: request.Request,
@@ -49,9 +57,9 @@ function guildScheduledEvent.listScheduledEventsForGuildAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
+    https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
 ]=]
 function guildScheduledEvent.createGuildScheduledEvent(
     instance: request.Request,
@@ -79,9 +87,9 @@ function guildScheduledEvent.createGuildScheduledEvent(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event
+    https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event
 ]=]
 function guildScheduledEvent.getScheduledEventsForGuildAsync(
     instance: request.Request,
@@ -114,9 +122,9 @@ function guildScheduledEvent.getScheduledEventsForGuildAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
+    https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
 ]=]
 function guildScheduledEvent.modifyGuildScheduledEvent(
     instance: request.Request,
@@ -145,9 +153,9 @@ function guildScheduledEvent.modifyGuildScheduledEvent(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-scheduled-event#delete-guild-scheduled-event
+    https://discord.com/developers/docs/resources/guild-scheduled-event#delete-guild-scheduled-event
 ]=]
 function guildScheduledEvent.deleteGuildScheduledEvent(
     instance: request.Request,
@@ -172,9 +180,9 @@ function guildScheduledEvent.deleteGuildScheduledEvent(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users
+    https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users
 ]=]
 function guildScheduledEvent.getGuildScheduledEventUsers(
     instance: request.Request,

@@ -1,29 +1,37 @@
+--[[
+
+reflect
+
+Swaps the keys and values of a table while keeping the original key-value pairs.
+
+--]]
+
 --[=[
-	@function Utilities.tableReflect
-	@within Utilities
+    @function Utilities.tableReflect
+    @within Utilities
 
-	Will swap the K, V's, as well as keep the original K, Vs, for example:
+    Will swap the K, V's, as well as keep the original K, Vs, for example:
 
-	```luau
-	local a = { a = 1, b = 2, c = 3 }
-	
-	tableReflect(a)
-	
-	--[[
-	a = {
-		-- default values
-		a = 1,
-		b = 2,
-		c = 3,
-		-- reflected values
-		[1] = "a",
-		[2] = "b",
-		[3] = "c"
-	}
-	]]
-	```
+    ```luau
+    local a = { a = 1, b = 2, c = 3 }
+    
+    tableReflect(a)
+    
+    --[[
+    a = {
+        -- default values
+        a = 1,
+        b = 2,
+        c = 3,
+        -- reflected values
+        [1] = "a",
+        [2] = "b",
+        [3] = "c"
+    }
+    ]]
+    ```
 
-	@return thread
+    @return thread
 ]=]
 return function(source)
     local reversed = {}

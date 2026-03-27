@@ -1,10 +1,18 @@
+--[[
+
+activityParty
+
+Implementation of the Discord ActivityParty class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.ActivityParty
-	@__index Prototype
+    @class Classes.ActivityParty
+    @__index Prototype
 
-	Implementation of the Discord ActivityParty class in Luau
+    Implementation of the Discord ActivityParty class in Luau
 
-	https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-party
+    https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-party
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -15,36 +23,36 @@ ActivityParty.Interface = {}
 ActivityParty.Prototype = {}
 
 --[=[
-	@within Classes.ActivityParty
-	@private
+    @within Classes.ActivityParty
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function ActivityParty.Interface.new(id: apiTypes.Snowflake, currentSize: number, maxSize: number): ActivityParty
     local self = setmetatable(
         {
             --[=[
-				@prop id string
-				@within Classes.ActivityParty
-				
-				The unique identifier for this activity party
-			]=]
+                @prop id string
+                @within Classes.ActivityParty
+                
+                The unique identifier for this activity party
+            ]=]
             id = id,
 
             --[=[
-				@prop currentSize number
-				@within Classes.ActivityParty
-				
-				The current size of the party
-			]=]
+                @prop currentSize number
+                @within Classes.ActivityParty
+                
+                The current size of the party
+            ]=]
             currentSize = currentSize,
 
             --[=[
-				@prop maxSize number
-				@within Classes.ActivityParty
-				
-				The maximum size the party can be
-			]=]
+                @prop maxSize number
+                @within Classes.ActivityParty
+                
+                The maximum size the party can be
+            ]=]
             maxSize = maxSize,
         } :: ActivityParty,
         { __index = ActivityParty.Prototype }

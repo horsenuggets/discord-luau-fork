@@ -1,3 +1,11 @@
+--[[
+
+voice
+
+REST API methods for Discord voice endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.voice
+    @class Rest.voice
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/voice
+    - https://discord.com/developers/docs/resources/voice
 ]=]
 local voice = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/voice#list-voice-regions
+    https://discord.com/developers/docs/resources/voice#list-voice-regions
 ]=]
 function voice.listVoiceRegionsAsync(
     instance: request.Request
@@ -37,9 +45,9 @@ function voice.listVoiceRegionsAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/voice#get-current-user-voice-state
+    https://discord.com/developers/docs/resources/voice#get-current-user-voice-state
 ]=]
 function voice.getCurrentUserVoiceStateAsync(
     instance: request.Request,
@@ -60,9 +68,9 @@ function voice.getCurrentUserVoiceStateAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/voice#get-user-voice-state
+    https://discord.com/developers/docs/resources/voice#get-user-voice-state
 ]=]
 function voice.getUserVoiceStateAsync(
     instance: request.Request,
@@ -84,9 +92,9 @@ function voice.getUserVoiceStateAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state
+    https://discord.com/developers/docs/resources/voice#modify-current-user-voice-state
 ]=]
 function voice.modifyCurrentUserVoiceStateAsync(
     instance: request.Request,
@@ -109,9 +117,9 @@ function voice.modifyCurrentUserVoiceStateAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/voice#modify-user-voice-state
+    https://discord.com/developers/docs/resources/voice#modify-user-voice-state
 ]=]
 function voice.modifyUserVoiceStateAsync(
     instance: request.Request,

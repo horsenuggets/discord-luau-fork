@@ -1,3 +1,11 @@
+--[[
+
+guildTemplate
+
+REST API methods for Discord guildTemplate endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.guildTemplate
+    @class Rest.guildTemplate
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/guild-template
+    - https://discord.com/developers/docs/resources/guild-template
 ]=]
 local guildTemplate = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-template#get-guild-template
+    https://discord.com/developers/docs/resources/guild-template#get-guild-template
 ]=]
 function guildTemplate.getGuildTemplateAsync(
     instance: request.Request,
@@ -38,9 +46,9 @@ function guildTemplate.getGuildTemplateAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-template#create-guild-from-guild-template
+    https://discord.com/developers/docs/resources/guild-template#create-guild-from-guild-template
 ]=]
 function guildTemplate.createGuildFromGuildTemplateAsync(
     instance: request.Request,
@@ -66,9 +74,9 @@ function guildTemplate.createGuildFromGuildTemplateAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-template#get-guild-templates
+    https://discord.com/developers/docs/resources/guild-template#get-guild-templates
 ]=]
 function guildTemplate.getGuildTemplatesAsync(
     instance: request.Request,
@@ -89,9 +97,9 @@ function guildTemplate.getGuildTemplatesAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-template#create-guild-template
+    https://discord.com/developers/docs/resources/guild-template#create-guild-template
 ]=]
 function guildTemplate.createGuildTemplateAsync(
     instance: request.Request,
@@ -114,9 +122,9 @@ function guildTemplate.createGuildTemplateAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-template#sync-guild-template
+    https://discord.com/developers/docs/resources/guild-template#sync-guild-template
 ]=]
 function guildTemplate.syncGuildTemplateAsync(
     instance: request.Request,
@@ -138,9 +146,9 @@ function guildTemplate.syncGuildTemplateAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-template#modify-guild-template
+    https://discord.com/developers/docs/resources/guild-template#modify-guild-template
 ]=]
 function guildTemplate.modifyGuildTemplateAsync(
     instance: request.Request,
@@ -164,9 +172,9 @@ function guildTemplate.modifyGuildTemplateAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/guild-template#delete-guild-template
+    https://discord.com/developers/docs/resources/guild-template#delete-guild-template
 ]=]
 function guildTemplate.deleteGuildTemplateAsync(
     instance: request.Request,

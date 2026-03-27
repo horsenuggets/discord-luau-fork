@@ -1,10 +1,18 @@
+--[[
+
+option
+
+Implementation of discords Option object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.Onboarding.Option
-	@__index Prototype
+    @class Builders.Onboarding.Option
+    @__index Prototype
 
-	Implementation of discords Option object as a Luau builder.	
+    Implementation of discords Option object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-option-structure
+    https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-option-structure
 ]=]
 
 local Option = {}
@@ -13,9 +21,9 @@ Option.Prototype = {}
 Option.Interface = {}
 
 --[=[
-	@within Builders.Onboarding.Option
+    @within Builders.Onboarding.Option
 
-	Add a Channel to this option
+    Add a Channel to this option
 ]=]
 function Option.Prototype.addChannelId(self: Option, channelId: string): Option
     table.insert(self.channelIds, channelId)
@@ -24,9 +32,9 @@ function Option.Prototype.addChannelId(self: Option, channelId: string): Option
 end
 
 --[=[
-	@within Builders.Onboarding.Option
+    @within Builders.Onboarding.Option
 
-	Add a Role to this option
+    Add a Role to this option
 ]=]
 function Option.Prototype.addRoleId(self: Option, roleId: string): Option
     table.insert(self.roleIds, roleId)
@@ -35,9 +43,9 @@ function Option.Prototype.addRoleId(self: Option, roleId: string): Option
 end
 
 --[=[
-	@within Builders.Onboarding.Option
+    @within Builders.Onboarding.Option
 
-	Sets the emoji of this option.
+    Sets the emoji of this option.
 ]=]
 function Option.Prototype.setEmoji(self: Option, emojiId: string, emojiName: string, isAnimated: boolean?): Option
     self.emojiId = emojiId
@@ -48,9 +56,9 @@ function Option.Prototype.setEmoji(self: Option, emojiId: string, emojiName: str
 end
 
 --[=[
-	@within Builders.Onboarding.Option
+    @within Builders.Onboarding.Option
 
-	Sets the title of this option.
+    Sets the title of this option.
 ]=]
 function Option.Prototype.setTitle(self: Option, title: string): Option
     self.title = title
@@ -59,9 +67,9 @@ function Option.Prototype.setTitle(self: Option, title: string): Option
 end
 
 --[=[
-	@within Builders.Onboarding.Option
+    @within Builders.Onboarding.Option
 
-	Sets the description of this option.
+    Sets the description of this option.
 ]=]
 function Option.Prototype.setDescription(self: Option, description: string): Option
     self.description = description
@@ -70,9 +78,9 @@ function Option.Prototype.setDescription(self: Option, description: string): Opt
 end
 
 --[=[
-	@within Builders.Onboarding.Option
+    @within Builders.Onboarding.Option
 
-	Responsible for building the OptionObject JSON that can be parsed by the Discord API.
+    Responsible for building the OptionObject JSON that can be parsed by the Discord API.
 ]=]
 function Option.Prototype.build(self: Option): JSON
     return {
@@ -90,9 +98,9 @@ function Option.Prototype.build(self: Option): JSON
 end
 
 --[=[
-	@within Builders.Onboarding.Option
+    @within Builders.Onboarding.Option
 
-	Responsible for creating a new Option.
+    Responsible for creating a new Option.
 ]=]
 function Option.Interface.new(resource: {
     channelIds: { string }?,
@@ -106,48 +114,48 @@ function Option.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop channelIds {string}
-				@within Builders.Onboarding.Option
-				Array of channel IDs that are associated with this option.
-			]=]
+                @prop channelIds {string}
+                @within Builders.Onboarding.Option
+                Array of channel IDs that are associated with this option.
+            ]=]
             channelIds = {},
 
             --[=[
-				@prop roleIds {string}
-				@within Builders.Onboarding.Option
-				Array of role IDs that are associated with this option.
-			]=]
+                @prop roleIds {string}
+                @within Builders.Onboarding.Option
+                Array of role IDs that are associated with this option.
+            ]=]
             roleIds = {},
 
             --[=[
-				@prop emojiId string?
-				@within Builders.Onboarding.Option
-				The ID of the emoji used for this option.
-			]=]
+                @prop emojiId string?
+                @within Builders.Onboarding.Option
+                The ID of the emoji used for this option.
+            ]=]
 
             --[=[
-				@prop emojiName string?
-				@within Builders.Onboarding.Option
-				The name of the emoji used for this option.
-			]=]
+                @prop emojiName string?
+                @within Builders.Onboarding.Option
+                The name of the emoji used for this option.
+            ]=]
 
             --[=[
-				@prop emojiAnimated boolean?
-				@within Builders.Onboarding.Option
-				Whether the emoji used for this option is animated.
-			]=]
+                @prop emojiAnimated boolean?
+                @within Builders.Onboarding.Option
+                Whether the emoji used for this option is animated.
+            ]=]
 
             --[=[
-				@prop title string
-				@within Builders.Onboarding.Option
-				The title displayed for this option.
-			]=]
+                @prop title string
+                @within Builders.Onboarding.Option
+                The title displayed for this option.
+            ]=]
 
             --[=[
-				@prop description string?
-				@within Builders.Onboarding.Option
-				The description displayed for this option.
-			]=]
+                @prop description string?
+                @within Builders.Onboarding.Option
+                The description displayed for this option.
+            ]=]
         } :: Option,
         {
             __index = Option.Prototype,

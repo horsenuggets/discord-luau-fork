@@ -1,10 +1,18 @@
+--[[
+
+actionRow
+
+Implementation of discords ActionRow object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.ActionRow
-	@__index Prototype
+    @class Builders.ActionRow
+    @__index Prototype
 
-	Implementation of discords ActionRow object as a Luau builder.	
+    Implementation of discords ActionRow object as a Luau builder.    
 
-	https://discord.com/developers/docs/interactions/message-components#action-rows
+    https://discord.com/developers/docs/interactions/message-components#action-rows
 ]=]
 
 local button = require("./button")
@@ -17,9 +25,9 @@ ActionRow.Prototype = {}
 ActionRow.Interface = {}
 
 --[=[
-	@within Builders.ActionRow
+    @within Builders.ActionRow
 
-	Adds a component to the action row. Components can be buttons, text inputs, or select menus.
+    Adds a component to the action row. Components can be buttons, text inputs, or select menus.
 ]=]
 function ActionRow.Prototype.addComponent(
     self: ActionRow,
@@ -31,9 +39,9 @@ function ActionRow.Prototype.addComponent(
 end
 
 --[=[
-	@within Builders.ActionRow
+    @within Builders.ActionRow
 
-	Responsible for building the ActionRow JSON that can be parsed by the Discord API.
+    Responsible for building the ActionRow JSON that can be parsed by the Discord API.
 ]=]
 function ActionRow.Prototype.build(self: ActionRow): JSON
     return {
@@ -43,15 +51,15 @@ function ActionRow.Prototype.build(self: ActionRow): JSON
 end
 
 --[=[
-	@within Builders.ActionRow
+    @within Builders.ActionRow
 
-	Responsible for creating a new ActionRow.
+    Responsible for creating a new ActionRow.
 
-	```luau
-	local row = ActionRow.new()
-		:addComponent(button)
-		:build()
-	```
+    ```luau
+    local row = ActionRow.new()
+        :addComponent(button)
+        :build()
+    ```
 ]=]
 function ActionRow.Interface.new(resource: {
     components: { button.JSON | textInput.JSON | selectMenu.JSON | JSON },
@@ -59,10 +67,10 @@ function ActionRow.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop components {Builders.Button | Builders.TextInput | Builders.SelectMenu}
-				@within Builders.ActionRow
-				The components that are part of this action row. Can include buttons, text inputs, and select menus.
-			]=]
+                @prop components {Builders.Button | Builders.TextInput | Builders.SelectMenu}
+                @within Builders.ActionRow
+                The components that are part of this action row. Can include buttons, text inputs, and select menus.
+            ]=]
             components = {},
         } :: ActionRow,
         {

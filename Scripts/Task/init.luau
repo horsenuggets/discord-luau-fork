@@ -1,4 +1,10 @@
---> An internal library for lune scripts to execute tasks in CI/CD
+--[[
+
+Task
+
+An internal library for lune scripts to execute tasks in CI/CD.
+
+--]]
 
 -- NOTE: We use the `Lune` runtime in the CI/CD environment, so we're not going to be using the `@std-polyfills`
 -- package that the discord-luau package uses.
@@ -13,7 +19,7 @@ Task.Prototype = {}
 Task.Interface = {}
 
 --[[
-	Responsible for adding an argument to the executable.
+    Responsible for adding an argument to the executable.
 ]]
 function Task.Prototype.addArgument(self: Task, argument: string): Task
     table.insert(self.arguments, argument)
@@ -22,7 +28,7 @@ function Task.Prototype.addArgument(self: Task, argument: string): Task
 end
 
 --[[
-	Responsible for setting the current working directory for this task
+    Responsible for setting the current working directory for this task
 ]]
 function Task.Prototype.setcwd(self: Task, cwd: string): Task
     self.cwd = cwd
@@ -31,9 +37,9 @@ function Task.Prototype.setcwd(self: Task, cwd: string): Task
 end
 
 --[[
-	Responsible for executing the task.
+    Responsible for executing the task.
 
-	Inherits the standard IO of the process.
+    Inherits the standard IO of the process.
 ]]
 function Task.Prototype.execute(self: Task)
     local spawnResult = process.create(self.executable, self.arguments, {
@@ -64,7 +70,7 @@ function Task.Prototype.execute(self: Task)
 end
 
 --[[
-	Constructor for the Task object.
+    Constructor for the Task object.
 ]]
 function Task.Interface.new(executable: string): Task
     return setmetatable(

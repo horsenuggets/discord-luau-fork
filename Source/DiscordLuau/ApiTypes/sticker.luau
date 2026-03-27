@@ -1,5 +1,13 @@
+--[[
+
+sticker
+
+Type definitions for Discord sticker API objects.
+
+--]]
+
 --[=[
-	@class Types.sticker
+    @class Types.sticker
 ]=]
 
 local util = require("../Utilities")

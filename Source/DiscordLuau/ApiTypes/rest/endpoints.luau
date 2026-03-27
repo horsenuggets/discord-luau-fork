@@ -1,7 +1,15 @@
---[=[
-	@class StdPolyfills.rest.endpoints
+--[[
 
-	Mapping out all discord V10 endpoints.
+endpoints
+
+Mapping out all discord V10 endpoints.
+
+--]]
+
+--[=[
+    @class StdPolyfills.rest.endpoints
+
+    Mapping out all discord V10 endpoints.
 ]=]
 
 local endpoints = table.freeze({

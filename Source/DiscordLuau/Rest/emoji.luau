@@ -1,3 +1,11 @@
+--[[
+
+emoji
+
+REST API methods for Discord emoji endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.emoji
+    @class Rest.emoji
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/emoji#emoji-resource
+    - https://discord.com/developers/docs/resources/emoji#emoji-resource
 ]=]
 local emoji = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/emoji#list-guild-emojis
+    https://discord.com/developers/docs/resources/emoji#list-guild-emojis
 ]=]
 function emoji.listGuildEmojisAsync(instance: request.Request, guildId: apiTypes.Snowflake)
     return future.Future.new(function()
@@ -35,9 +43,9 @@ function emoji.listGuildEmojisAsync(instance: request.Request, guildId: apiTypes
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/emoji#get-guild-emoji
+    https://discord.com/developers/docs/resources/emoji#get-guild-emoji
 ]=]
 function emoji.getGuildEmojiAsync(instance: request.Request, guildId: apiTypes.Snowflake, emojId: apiTypes.Snowflake)
     return future.Future.new(function()
@@ -55,9 +63,9 @@ function emoji.getGuildEmojiAsync(instance: request.Request, guildId: apiTypes.S
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/emoji#create-guild-emoji
+    https://discord.com/developers/docs/resources/emoji#create-guild-emoji
 ]=]
 function emoji.createGuildEmojiAsync(
     instance: request.Request,
@@ -82,9 +90,9 @@ function emoji.createGuildEmojiAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/emoji#modify-guild-emoji
+    https://discord.com/developers/docs/resources/emoji#modify-guild-emoji
 ]=]
 function emoji.modifyGuildEmojiAsync(
     instance: request.Request,
@@ -110,9 +118,9 @@ function emoji.modifyGuildEmojiAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/emoji#delete-guild-emoji
+    https://discord.com/developers/docs/resources/emoji#delete-guild-emoji
 ]=]
 function emoji.deleteGuildEmojiAsync(
     instance: request.Request,

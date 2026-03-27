@@ -1,12 +1,22 @@
+--[[
+
+reaction
+
+Implementation of a discord default reaction object as a luau builder. An object that
+specifies the emoji to use as the default way to react to a forum post. Exactly one of
+emoji_id and emoji_name must be set.
+
+--]]
+
 --[=[
-	@class Builders.DefaultReaction
-	@__index Prototype
+    @class Builders.DefaultReaction
+    @__index Prototype
 
-	Implementation of a discord default reaction object as a luau builder.	
+    Implementation of a discord default reaction object as a luau builder.    
 
-	An object that specifies the emoji to use as the default way to react to a forum post. Exactly one of emoji_id and emoji_name must be set.
+    An object that specifies the emoji to use as the default way to react to a forum post. Exactly one of emoji_id and emoji_name must be set.
 
-	https://discord.com/developers/docs/resources/channel#default-reaction-object
+    https://discord.com/developers/docs/resources/channel#default-reaction-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -17,9 +27,9 @@ DefaultReaction.Prototype = {}
 DefaultReaction.Interface = {}
 
 --[=[
-	@within Builders.DefaultReaction
+    @within Builders.DefaultReaction
 
-	Responsible for buillding the default reaction object that the Discord API can understand.
+    Responsible for buillding the default reaction object that the Discord API can understand.
 ]=]
 function DefaultReaction.Prototype.build(self: DefaultReaction): JSON
     return {
@@ -29,13 +39,13 @@ function DefaultReaction.Prototype.build(self: DefaultReaction): JSON
 end
 
 --[=[
-	@within Builders.DefaultReaction
+    @within Builders.DefaultReaction
 
-	Constructor for the Discord Default Reaction Builder.
+    Constructor for the Discord Default Reaction Builder.
 
-	```luau
-	local defaultReaction = DefaultReaction.new("000000000000000000", "secret-emoji"):build()
-	```
+    ```luau
+    local defaultReaction = DefaultReaction.new("000000000000000000", "secret-emoji"):build()
+    ```
 ]=]
 function DefaultReaction.Interface.new(resource: {
     emojiId: apiTypes.Snowflake?,
@@ -44,17 +54,17 @@ function DefaultReaction.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop emojiId string?
-				@within Builders.DefaultReaction
-				The id of a guild's custom emoji.
-			]=]
+                @prop emojiId string?
+                @within Builders.DefaultReaction
+                The id of a guild's custom emoji.
+            ]=]
             emojiId = resource.emojiId,
 
             --[=[
-				@prop emojiName string?
-				@within Builders.DefaultReaction
-				The unicode character of the emoji.
-			]=]
+                @prop emojiName string?
+                @within Builders.DefaultReaction
+                The unicode character of the emoji.
+            ]=]
             emojiName = resource.emojiName,
         } :: DefaultReaction,
         { __index = DefaultReaction.Prototype }

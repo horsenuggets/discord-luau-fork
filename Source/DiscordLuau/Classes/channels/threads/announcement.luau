@@ -1,10 +1,18 @@
+--[[
+
+announcement
+
+Implementation of the Discord Announcement class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Announcement
-	@__index Prototype
+    @class Classes.Announcement
+    @__index Prototype
 
-	Implementation of the Discord Announcement class in Luau
+    Implementation of the Discord Announcement class in Luau
 
-	https://discord.com/developers/docs/resources/channel#channel-object
+    https://discord.com/developers/docs/resources/channel#channel-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -27,11 +35,11 @@ Announcement.Behaviours = {
 }
 
 --[=[
-	@within Classes.Announcement
-	@private
+    @within Classes.Announcement
+    @private
 
-	Responsible for syncing data to this announcement object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this announcement object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Announcement.Prototype.sync(self: Announcement, channelData: apiTypes.ChannelObject)
     for _, behaviour in Announcement.Behaviours do
@@ -41,18 +49,18 @@ function Announcement.Prototype.sync(self: Announcement, channelData: apiTypes.C
 end
 
 --[=[
-	@within Classes.Announcement
-	@private
+    @within Classes.Announcement
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Announcement.Interface.new(state: state.State, channelData: apiTypes.ChannelObject): Announcement
     local self = setmetatable(
         {
             --[=[
-				@prop state Classes.State
-				@within Classes.Announcement
-			]=]
+                @prop state Classes.State
+                @within Classes.Announcement
+            ]=]
             state = state,
         } :: Announcement,
         { __index = Announcement.Prototype }

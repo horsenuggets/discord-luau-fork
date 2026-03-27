@@ -1,10 +1,18 @@
+--[[
+
+choice
+
+Implementation of the Application Command Option Choice Structure in Luau.
+
+--]]
+
 --[=[
-	@class Builders.Choice
-	@__index Prototype
+    @class Builders.Choice
+    @__index Prototype
 
-	Implementation of the Application Command Option Choice Structure in Luau.
+    Implementation of the Application Command Option Choice Structure in Luau.
 
-	https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
+    https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -17,9 +25,9 @@ Choice.Prototype = {}
 Choice.Interface = {}
 
 --[=[
-	@within Builders.Choice
+    @within Builders.Choice
 
-	Responsible for setting the name of the choice. Name must be kebab case, with 1-100 characters.
+    Responsible for setting the name of the choice. Name must be kebab case, with 1-100 characters.
 ]=]
 function Choice.Prototype.setName(self: Choice, name: string): Choice
     assert(#name <= 100, "name must be less than 100 characters")
@@ -33,9 +41,9 @@ function Choice.Prototype.setName(self: Choice, name: string): Choice
 end
 
 --[=[
-	@within Builders.Choice
+    @within Builders.Choice
 
-	Adding localization to the Name of the choice, enabling developers to create milti-language support.
+    Adding localization to the Name of the choice, enabling developers to create milti-language support.
 ]=]
 function Choice.Prototype.setNameLocalization(
     self: Choice,
@@ -53,9 +61,9 @@ function Choice.Prototype.setNameLocalization(
 end
 
 --[=[
-	@within Builders.Choice
+    @within Builders.Choice
 
-	Set the value of the choice, value can only be either a string or number.
+    Set the value of the choice, value can only be either a string or number.
 ]=]
 function Choice.Prototype.setValue(self: Choice, value: string | number): Choice
     local typeofValue = type(value)
@@ -72,9 +80,9 @@ function Choice.Prototype.setValue(self: Choice, value: string | number): Choice
 end
 
 --[=[
-	@within Builders.Choice
+    @within Builders.Choice
 
-	Responsible for buillding the default reaction object that the Discord API can understand.
+    Responsible for buillding the default reaction object that the Discord API can understand.
 ]=]
 function Choice.Prototype.build(self: Choice): JSON
     assert(self.name, `Missing name for choice: {self.name}`)
@@ -88,16 +96,16 @@ function Choice.Prototype.build(self: Choice): JSON
 end
 
 --[=[
-	@within Builders.Choice
+    @within Builders.Choice
 
-	Constructor for the Discord Default Reaction Builder.
+    Constructor for the Discord Default Reaction Builder.
 
-	```luau
-	local defaultReaction = Choice.new({
-		name = "example-choice",
-		value = "example-value",
-	}):build()
-	```
+    ```luau
+    local defaultReaction = Choice.new({
+        name = "example-choice",
+        value = "example-value",
+    }):build()
+    ```
 ]=]
 function Choice.Interface.new(resource: {
     name: string?,
@@ -107,24 +115,24 @@ function Choice.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop name string
-				@within Builders.Choice
-				The name of the choice that is displayed to users.
-			]=]
+                @prop name string
+                @within Builders.Choice
+                The name of the choice that is displayed to users.
+            ]=]
             name = resource and resource.name,
 
             --[=[
-				@prop nameLocalizations { [apiTypes.LanguageLocales]: string }
-				@within Builders.Choice
-				Dictionary of localization entries for the choice name.
-			]=]
+                @prop nameLocalizations { [apiTypes.LanguageLocales]: string }
+                @within Builders.Choice
+                Dictionary of localization entries for the choice name.
+            ]=]
             nameLocalizations = {},
 
             --[=[
-				@prop value string | number
-				@within Builders.Choice
-				The value that is sent to your application when this choice is selected.
-			]=]
+                @prop value string | number
+                @within Builders.Choice
+                The value that is sent to your application when this choice is selected.
+            ]=]
             value = resource and resource.value,
         } :: Choice,
         { __index = Choice.Prototype }

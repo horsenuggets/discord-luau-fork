@@ -1,5 +1,13 @@
+--[[
+
+poll
+
+Type definitions for Discord poll API objects.
+
+--]]
+
 --[=[
-	@class Types.poll
+    @class Types.poll
 ]=]
 
 export type PollLayoutType = "Default"

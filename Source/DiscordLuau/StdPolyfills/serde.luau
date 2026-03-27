@@ -1,5 +1,13 @@
+--[[
+
+serde
+
+Standard library polyfill for serde.
+
+--]]
+
 --[=[
-	@class StdPolyfills.serde
+    @class StdPolyfills.serde
 ]=]
 
 local runtime = require("./runtime")
@@ -7,9 +15,9 @@ local runtime = require("./runtime")
 local serde = {}
 
 --[=[
-	@within StdPolyfills.serde
+    @within StdPolyfills.serde
 
-	Encodes the given value using the given format.
+    Encodes the given value using the given format.
 ]=]
 function serde.encode(format: EncodeDecodeFormat, value: any, pretty: boolean?): string
     local target = runtime.assertRuntime()
@@ -22,9 +30,9 @@ function serde.encode(format: EncodeDecodeFormat, value: any, pretty: boolean?):
 end
 
 --[=[
-	@within StdPolyfills.serde
+    @within StdPolyfills.serde
 
-	Decodes the given string using the given format into a lua value.
+    Decodes the given string using the given format into a lua value.
 ]=]
 function serde.decode(format: EncodeDecodeFormat, encoded: buffer | string): any
     local target = runtime.assertRuntime()
@@ -37,9 +45,9 @@ function serde.decode(format: EncodeDecodeFormat, encoded: buffer | string): any
 end
 
 --[=[
-	@within StdPolyfills.serde
+    @within StdPolyfills.serde
 
-	Decompresses the given string using the given format.
+    Decompresses the given string using the given format.
 ]=]
 function serde.decompress(format: CompressDecompressFormat, s: buffer | string): string
     local target = runtime.assertRuntime()
@@ -52,9 +60,9 @@ function serde.decompress(format: CompressDecompressFormat, s: buffer | string):
 end
 
 --[=[
-	@within StdPolyfills.serde
+    @within StdPolyfills.serde
 
-	Compresses the given string using the given format.
+    Compresses the given string using the given format.
 ]=]
 function serde.compress(format: CompressDecompressFormat, s: buffer | string, level: number?): string
     local target = runtime.assertRuntime()

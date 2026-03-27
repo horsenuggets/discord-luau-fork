@@ -1,3 +1,11 @@
+--[[
+
+autoModeration
+
+REST API methods for Discord autoModeration endpoints.
+
+--]]
+
 local stdPolyfills = require("../StdPolyfills")
 
 local apiTypes = require("../ApiTypes")
@@ -6,18 +14,18 @@ local future = require("@packages/Future")
 local request = require("./request")
 
 --[=[
-	@class Rest.autoModeration
+    @class Rest.autoModeration
 
-	HTTP Rest API implementation for the following Resource:
+    HTTP Rest API implementation for the following Resource:
 
-	- https://discord.com/developers/docs/resources/auto-moderation
+    - https://discord.com/developers/docs/resources/auto-moderation
 ]=]
 local autoModeration = {}
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/auto-moderation#list-auto-moderation-rules-for-guild
+    https://discord.com/developers/docs/resources/auto-moderation#list-auto-moderation-rules-for-guild
 ]=]
 function autoModeration.listAutoModerationRulesForGuildAsync(
     instance: request.Request,
@@ -43,9 +51,9 @@ function autoModeration.listAutoModerationRulesForGuildAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/auto-moderation#get-auto-moderation-rule
+    https://discord.com/developers/docs/resources/auto-moderation#get-auto-moderation-rule
 ]=]
 function autoModeration.getAutoModerationRuleForGuildAsync(
     instance: request.Request,
@@ -70,9 +78,9 @@ function autoModeration.getAutoModerationRuleForGuildAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule
+    https://discord.com/developers/docs/resources/auto-moderation#create-auto-moderation-rule
 ]=]
 function autoModeration.createAutoModerationRuleAsync(
     instance: request.Request,
@@ -100,9 +108,9 @@ function autoModeration.createAutoModerationRuleAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/auto-moderation#modify-auto-moderation-rule
+    https://discord.com/developers/docs/resources/auto-moderation#modify-auto-moderation-rule
 ]=]
 function autoModeration.modifyAutoModerationRuleAsync(
     instance: request.Request,
@@ -131,9 +139,9 @@ function autoModeration.modifyAutoModerationRuleAsync(
 end
 
 --[=[
-	@within Rest.application
+    @within Rest.application
 
-	https://discord.com/developers/docs/resources/auto-moderation#delete-auto-moderation-rule
+    https://discord.com/developers/docs/resources/auto-moderation#delete-auto-moderation-rule
 ]=]
 function autoModeration.deleteAutoModerationRuleAsync(
     instance: request.Request,

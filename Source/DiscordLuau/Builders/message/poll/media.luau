@@ -1,10 +1,18 @@
+--[[
+
+media
+
+Implementation of discords PollMedia object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.PollMedia
-	@__index Prototype
+    @class Builders.PollMedia
+    @__index Prototype
 
-	Implementation of discords PollMedia object as a Luau builder.	
+    Implementation of discords PollMedia object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/poll#poll-media-object-poll-media-object-structure
+    https://discord.com/developers/docs/resources/poll#poll-media-object-poll-media-object-structure
 ]=]
 
 local emojiBuilder = require("../../emoji")
@@ -15,9 +23,9 @@ PollMedia.Prototype = {}
 PollMedia.Interface = {}
 
 --[=[
-	@within Builders.PollMedia
+    @within Builders.PollMedia
 
-	Sets the text for the PollMedia.
+    Sets the text for the PollMedia.
 ]=]
 function PollMedia.Prototype.setText(self: PollMedia, text: string): PollMedia
     self.text = text
@@ -26,9 +34,9 @@ function PollMedia.Prototype.setText(self: PollMedia, text: string): PollMedia
 end
 
 --[=[
-	@within Builders.PollMedia
+    @within Builders.PollMedia
 
-	Responsible for setting the emoji for the PollMedia.
+    Responsible for setting the emoji for the PollMedia.
 ]=]
 function PollMedia.Prototype.setEmoji(self: PollMedia, emoji: emojiBuilder.JSON): PollMedia
     self.emoji = emoji
@@ -37,9 +45,9 @@ function PollMedia.Prototype.setEmoji(self: PollMedia, emoji: emojiBuilder.JSON)
 end
 
 --[=[
-	@within Builders.PollMedia
+    @within Builders.PollMedia
 
-	Responsible for building the PollMedia JSON that can be parsed by the Discord API.
+    Responsible for building the PollMedia JSON that can be parsed by the Discord API.
 ]=]
 function PollMedia.Prototype.build(self: PollMedia): JSON
     return {
@@ -49,16 +57,16 @@ function PollMedia.Prototype.build(self: PollMedia): JSON
 end
 
 --[=[
-	@within Builders.PollMedia
+    @within Builders.PollMedia
 
-	Responsible for creating a new PollMedia.
+    Responsible for creating a new PollMedia.
 
-	```luau
-	local media = PollMedia.new({
-		text = "Sample text",
-		emoji = emojiBuilder.new():build()
-	})
-	```
+    ```luau
+    local media = PollMedia.new({
+        text = "Sample text",
+        emoji = emojiBuilder.new():build()
+    })
+    ```
 ]=]
 function PollMedia.Interface.new(resource: {
     text: string?,
@@ -67,17 +75,17 @@ function PollMedia.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop text string?
-				@within Builders.PollMedia
-				The text content of the poll media.
-			]=]
+                @prop text string?
+                @within Builders.PollMedia
+                The text content of the poll media.
+            ]=]
             text = nil,
 
             --[=[
-				@prop emoji Builders.Emoji?
-				@within Builders.PollMedia
-				The emoji associated with this poll media.
-			]=]
+                @prop emoji Builders.Emoji?
+                @within Builders.PollMedia
+                The emoji associated with this poll media.
+            ]=]
             emoji = nil,
         } :: PollMedia,
         {

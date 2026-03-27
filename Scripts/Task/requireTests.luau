@@ -1,4 +1,10 @@
---> Runs tests located in the tests/ directory
+--[[
+
+requireTests
+
+Runs tests located in the tests/ directory.
+
+--]]
 
 -- NOTE: we're using the `Lune` runtime in the CI/CD environment, so we're not going to be using the `@std-polyfills`
 -- package that the discord-luau package uses.

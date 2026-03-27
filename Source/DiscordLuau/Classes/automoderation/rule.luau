@@ -1,10 +1,18 @@
+--[[
+
+rule
+
+Implementation of the Discord AutomoderationRule class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.AutomoderationRule
-	@__index Prototype
+    @class Classes.AutomoderationRule
+    @__index Prototype
 
-	Implementation of the Discord AutomoderationRule class in Luau
+    Implementation of the Discord AutomoderationRule class in Luau
 
-	https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object
+    https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -22,9 +30,9 @@ AutomoderationRule.Interface = {}
 AutomoderationRule.Prototype = {}
 
 --[=[
-	@within Classes.AutomoderationRule
+    @within Classes.AutomoderationRule
 
-	Modify an existing rule. Returns an auto moderation rule on success.
+    Modify an existing rule. Returns an auto moderation rule on success.
 ]=]
 function AutomoderationRule.Prototype.modifyAsync(
     self: AutomoderationRule,
@@ -47,9 +55,9 @@ function AutomoderationRule.Prototype.modifyAsync(
 end
 
 --[=[
-	@within Classes.AutomoderationRule
+    @within Classes.AutomoderationRule
 
-	Deletes an automoderation rule.
+    Deletes an automoderation rule.
 ]=]
 function AutomoderationRule.Prototype.deleteAsync(self: AutomoderationRule, auditLogReason: string?)
     return future.Future.new(function()
@@ -65,11 +73,11 @@ function AutomoderationRule.Prototype.deleteAsync(self: AutomoderationRule, audi
 end
 
 --[=[
-	@within Classes.AutomoderationRule
-	@private
+    @within Classes.AutomoderationRule
+    @private
 
-	Responsible for syncing data to this automoderation rule object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this automoderation rule object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function AutomoderationRule.Prototype.sync(
     self: AutomoderationRule,
@@ -82,100 +90,100 @@ function AutomoderationRule.Prototype.sync(
     end
 
     --[=[
-		@prop id string
-		@within Classes.AutomoderationRule
+        @prop id string
+        @within Classes.AutomoderationRule
 
-		The unique identifier for this automoderation rule.
-	]=]
+        The unique identifier for this automoderation rule.
+    ]=]
     self.id = automoderationData.id
 
     --[=[
-		@prop guildId string
-		@within Classes.AutomoderationRule
+        @prop guildId string
+        @within Classes.AutomoderationRule
 
-		The ID of the guild this automoderation rule belongs to.
-	]=]
+        The ID of the guild this automoderation rule belongs to.
+    ]=]
     self.guildId = automoderationData.guild_id
 
     --[=[
-		@prop name string
-		@within Classes.AutomoderationRule
+        @prop name string
+        @within Classes.AutomoderationRule
 
-		The name of this automoderation rule.
-	]=]
+        The name of this automoderation rule.
+    ]=]
     self.name = automoderationData.name
 
     --[=[
-		@prop creatorId string
-		@within Classes.AutomoderationRule
+        @prop creatorId string
+        @within Classes.AutomoderationRule
 
-		The ID of the user who created this automoderation rule.
-	]=]
+        The ID of the user who created this automoderation rule.
+    ]=]
     self.creatorId = automoderationData.creator_id
 
     --[=[
-		@prop eventType apiTypes.EventTypes
-		@within Classes.AutomoderationRule
+        @prop eventType apiTypes.EventTypes
+        @within Classes.AutomoderationRule
 
-		The type of event that triggers this automoderation rule.
-	]=]
+        The type of event that triggers this automoderation rule.
+    ]=]
     self.eventType = apiTypes.guild.EventTypes[automoderationData.event_type]
 
     --[=[
-		@prop triggerType apiTypes.TriggerTypes
-		@within Classes.AutomoderationRule
+        @prop triggerType apiTypes.TriggerTypes
+        @within Classes.AutomoderationRule
 
-		The type of trigger that activates this automoderation rule.
-	]=]
+        The type of trigger that activates this automoderation rule.
+    ]=]
     self.triggerType = apiTypes.guild.TriggerType[automoderationData.trigger_type]
 
     --[=[
-		@prop triggerMetadata Classes.TriggerMetadata?
-		@within Classes.AutomoderationRule
+        @prop triggerMetadata Classes.TriggerMetadata?
+        @within Classes.AutomoderationRule
 
-		Additional metadata about the trigger conditions for this automoderation rule.
-	]=]
+        Additional metadata about the trigger conditions for this automoderation rule.
+    ]=]
     self.triggerMetadata = automoderationData.trigger_metadata
         and triggerMetadata.new(automoderationData.trigger_metadata)
 
     --[=[
-		@prop actions {Classes.Action}
-		@within Classes.AutomoderationRule
+        @prop actions {Classes.Action}
+        @within Classes.AutomoderationRule
 
-		Array of actions to be executed when the rule is triggered.
-	]=]
+        Array of actions to be executed when the rule is triggered.
+    ]=]
     self.actions = actions
 
     --[=[
-		@prop enabled boolean?
-		@within Classes.AutomoderationRule
+        @prop enabled boolean?
+        @within Classes.AutomoderationRule
 
-		Whether this automoderation rule is enabled.
-	]=]
+        Whether this automoderation rule is enabled.
+    ]=]
     self.enabled = automoderationData.enabled
 
     --[=[
-		@prop exemptRoles {string}?
-		@within Classes.AutomoderationRule
+        @prop exemptRoles {string}?
+        @within Classes.AutomoderationRule
 
-		Array of role IDs that are exempt from this automoderation rule.
-	]=]
+        Array of role IDs that are exempt from this automoderation rule.
+    ]=]
     self.exemptRoles = automoderationData.exempt_roles
 
     --[=[
-		@prop exemptChannels {string}?
-		@within Classes.AutomoderationRule
+        @prop exemptChannels {string}?
+        @within Classes.AutomoderationRule
 
-		Array of channel IDs that are exempt from this automoderation rule.
-	]=]
+        Array of channel IDs that are exempt from this automoderation rule.
+    ]=]
     self.exemptChannels = automoderationData.exempt_channels
 end
 
 --[=[
-	@within Classes.AutomoderationRule
-	@private
+    @within Classes.AutomoderationRule
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function AutomoderationRule.Interface.new(
     state: state.State,

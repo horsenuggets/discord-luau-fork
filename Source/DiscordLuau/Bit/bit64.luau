@@ -1,11 +1,16 @@
 --[[
-	An optimized 64-bit library to provide 64-bit binary operations in Luau
-	using 32-bit operations and `bit32` for improved performance.
-]]
+
+bit64
+
+An optimized 64-bit library to provide 64-bit binary operations in Luau using 32-bit
+operations and `bit32` for improved performance.
+
+--]]
+
 local Bit64 = {}
 
 --[[
-	Splits a 64-bit integer into high and low 32-bit integers
+    Splits a 64-bit integer into high and low 32-bit integers
 ]]
 local function split64(value: number): (number, number)
     local low = bit32.band(value, 0xFFFFFFFF)
@@ -15,14 +20,14 @@ local function split64(value: number): (number, number)
 end
 
 --[[
-	Combines high and low 32-bit integers into a 64-bit integer
+    Combines high and low 32-bit integers into a 64-bit integer
 ]]
 local function combine64(low: number, high: number): number
     return (high * 4294967296) + low
 end
 
 --[[
-	Binary NOT operation
+    Binary NOT operation
 ]]
 function Bit64.bnot(value: number): number
     local low, high = split64(value)
@@ -33,7 +38,7 @@ function Bit64.bnot(value: number): number
 end
 
 --[[
-	Binary OR operation
+    Binary OR operation
 ]]
 function Bit64.bor(value0: number, value1: number): number
     local low0, high0 = split64(value0)
@@ -45,7 +50,7 @@ function Bit64.bor(value0: number, value1: number): number
 end
 
 --[[
-	Binary AND operation
+    Binary AND operation
 ]]
 function Bit64.band(value0: number, value1: number): number
     local low0, high0 = split64(value0)
@@ -57,7 +62,7 @@ function Bit64.band(value0: number, value1: number): number
 end
 
 --[[
-	Binary SHIFT operation
+    Binary SHIFT operation
 ]]
 function Bit64.shift(value: number, displacement: number): number
     if displacement == 0 then

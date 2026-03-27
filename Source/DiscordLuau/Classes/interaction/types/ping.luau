@@ -1,10 +1,18 @@
+--[[
+
+ping
+
+Implementation of the Discord Ping Interaction class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Ping
-	@__index Prototype
+    @class Classes.Ping
+    @__index Prototype
 
-	Implementation of the Discord Ping Interaction class in Luau
+    Implementation of the Discord Ping Interaction class in Luau
 
-	https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
+    https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
 ]=]
 
 -- selene: allow(unused_variable)
@@ -24,9 +32,9 @@ Ping.Behaviours = {
 }
 
 --[=[
-	@within Classes.Ping
-	
-	Acknowledge an interaction ping
+    @within Classes.Ping
+    
+    Acknowledge an interaction ping
 ]=]
 function Ping.Prototype.pongAsync(self: Ping)
     local request = self.state.rest:newRequest()
@@ -48,11 +56,11 @@ function Ping.Prototype.pongAsync(self: Ping)
 end
 
 --[=[
-	@within Classes.Ping
-	@private
+    @within Classes.Ping
+    @private
 
-	Responsible for syncing data to this interaction object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this interaction object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Ping.Prototype.sync(self: Ping, interactionData: apiTypes.InteractionObject)
     for _, behaviour in Ping.Behaviours do
@@ -62,10 +70,10 @@ function Ping.Prototype.sync(self: Ping, interactionData: apiTypes.InteractionOb
 end
 
 --[=[
-	@within Classes.Ping
-	@private
+    @within Classes.Ping
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Ping.Interface.new(state: state.State, interactionData: apiTypes.InteractionObject): Ping
     local self = setmetatable(

@@ -1,10 +1,18 @@
+--[[
+
+noMessageThread
+
+Implementation of discords NoMessageThread object as a Luau builder.
+
+--]]
+
 --[=[
-	@class Builders.NoMessageThread
-	@__index Prototype
+    @class Builders.NoMessageThread
+    @__index Prototype
 
-	Implementation of discords NoMessageThread object as a Luau builder.	
+    Implementation of discords NoMessageThread object as a Luau builder.    
 
-	https://discord.com/developers/docs/resources/channel#start-thread-without-message-json-params
+    https://discord.com/developers/docs/resources/channel#start-thread-without-message-json-params
 ]=]
 
 local apiTypes = require("../../ApiTypes")
@@ -15,10 +23,10 @@ NoMessageThread.Prototype = {}
 NoMessageThread.Interface = {}
 
 --[=[
-	@within Builders.NoMessageThread
+    @within Builders.NoMessageThread
 
-	Sets the name of the thread.
-	Name must be between 1-100 characters.
+    Sets the name of the thread.
+    Name must be between 1-100 characters.
 ]=]
 function NoMessageThread.Prototype.setName(self: NoMessageThread, name: string): NoMessageThread
     assert(#name <= 100, "Name must be less than 100 characters")
@@ -30,10 +38,10 @@ function NoMessageThread.Prototype.setName(self: NoMessageThread, name: string):
 end
 
 --[=[
-	@within Builders.NoMessageThread
+    @within Builders.NoMessageThread
 
-	Sets the duration in minutes before the thread is automatically archived.
-	Valid values are 60, 1440, 4320, or 10080.
+    Sets the duration in minutes before the thread is automatically archived.
+    Valid values are 60, 1440, 4320, or 10080.
 ]=]
 function NoMessageThread.Prototype.setAutoArchiveDuration(self: NoMessageThread, duration: number): NoMessageThread
     assert(
@@ -47,10 +55,10 @@ function NoMessageThread.Prototype.setAutoArchiveDuration(self: NoMessageThread,
 end
 
 --[=[
-	@within Builders.NoMessageThread
+    @within Builders.NoMessageThread
 
-	Sets the type of thread channel.
-	Must be a valid Discord channel type.
+    Sets the type of thread channel.
+    Must be a valid Discord channel type.
 ]=]
 function NoMessageThread.Prototype.setType(self: NoMessageThread, type: apiTypes.ChannelType): NoMessageThread
     assert(apiTypes.channel.ChannelTypes[type], `Invalid channel type: {type}`)
@@ -61,9 +69,9 @@ function NoMessageThread.Prototype.setType(self: NoMessageThread, type: apiTypes
 end
 
 --[=[
-	@within Builders.NoMessageThread
+    @within Builders.NoMessageThread
 
-	Sets whether non-moderators can add other non-moderators to the thread.
+    Sets whether non-moderators can add other non-moderators to the thread.
 ]=]
 function NoMessageThread.Prototype.setInvitable(self: NoMessageThread, invitable: boolean): NoMessageThread
     self.invitable = invitable
@@ -72,10 +80,10 @@ function NoMessageThread.Prototype.setInvitable(self: NoMessageThread, invitable
 end
 
 --[=[
-	@within Builders.NoMessageThread
+    @within Builders.NoMessageThread
 
-	Sets the amount of seconds a user has to wait before sending another message.
-	Must be less than or equal to 21600 seconds (6 hours).
+    Sets the amount of seconds a user has to wait before sending another message.
+    Must be less than or equal to 21600 seconds (6 hours).
 ]=]
 function NoMessageThread.Prototype.setRateLimitPerUser(self: NoMessageThread, rateLimit: number): NoMessageThread
     assert(rateLimit <= 21600, "Rate limit must be less than or equal to 21600")
@@ -86,9 +94,9 @@ function NoMessageThread.Prototype.setRateLimitPerUser(self: NoMessageThread, ra
 end
 
 --[=[
-	@within Builders.NoMessageThread
+    @within Builders.NoMessageThread
 
-	Responsible for building the NoMessageThread JSON that can be parsed by the Discord API.
+    Responsible for building the NoMessageThread JSON that can be parsed by the Discord API.
 ]=]
 function NoMessageThread.Prototype.build(self: NoMessageThread): JSON
     assert(self.name, `Name must be set`)
@@ -103,9 +111,9 @@ function NoMessageThread.Prototype.build(self: NoMessageThread): JSON
 end
 
 --[=[
-	@within Builders.NoMessageThread
+    @within Builders.NoMessageThread
 
-	Responsible for creating a new NoMessageThread.
+    Responsible for creating a new NoMessageThread.
 ]=]
 function NoMessageThread.Interface.new(resource: {
     name: string?,
@@ -117,38 +125,38 @@ function NoMessageThread.Interface.new(resource: {
     local self = setmetatable(
         {
             --[=[
-				@prop name string?
-				@within Builders.NoMessageThread
-				The name of the thread that is displayed.
-			]=]
+                @prop name string?
+                @within Builders.NoMessageThread
+                The name of the thread that is displayed.
+            ]=]
             name = nil,
 
             --[=[
-				@prop autoArchiveDuration number?
-				@within Builders.NoMessageThread
-				Duration in minutes to automatically archive the thread after recent activity.
-			]=]
+                @prop autoArchiveDuration number?
+                @within Builders.NoMessageThread
+                Duration in minutes to automatically archive the thread after recent activity.
+            ]=]
             autoArchiveDuration = nil,
 
             --[=[
-				@prop type api_types.ChannelType?
-				@within Builders.NoMessageThread
-				The type of thread channel.
-			]=]
+                @prop type api_types.ChannelType?
+                @within Builders.NoMessageThread
+                The type of thread channel.
+            ]=]
             type = nil,
 
             --[=[
-				@prop invitable boolean?
-				@within Builders.NoMessageThread
-				Whether non-moderators can add other non-moderators to the thread.
-			]=]
+                @prop invitable boolean?
+                @within Builders.NoMessageThread
+                Whether non-moderators can add other non-moderators to the thread.
+            ]=]
             invitable = nil,
 
             --[=[
-				@prop rateLimitPerUser number?
-				@within Builders.NoMessageThread
-				Amount of seconds a user has to wait before sending another message.
-			]=]
+                @prop rateLimitPerUser number?
+                @within Builders.NoMessageThread
+                Amount of seconds a user has to wait before sending another message.
+            ]=]
             rateLimitPerUser = nil,
         } :: NoMessageThread,
         {

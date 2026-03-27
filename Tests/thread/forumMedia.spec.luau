@@ -1,3 +1,11 @@
+--[[
+
+forumMedia.spec
+
+Tests for the forumMedia module.
+
+--]]
+
 local forumMediaThread = require("../../src/thread/forumMedia")
 local frktest = require("../../../../lune_packages/frktest")
 

@@ -1,3 +1,11 @@
+--[[
+
+defaultReaction.spec
+
+Tests for the defaultReaction module.
+
+--]]
+
 local defaultReaction = require("../src/default/reaction")
 local frktest = require("../../../lune_packages/frktest")
 

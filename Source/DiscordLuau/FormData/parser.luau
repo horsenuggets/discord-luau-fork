@@ -1,12 +1,13 @@
 --[[
-	A multipart/form-data parser.
 
-	This parser is based on the following spec(s):
-		- https://www.rfc-editor.org/rfc/rfc2388
-		- https://www.rfc-editor.org/rfc/rfc1867
-		- https://www.rfc-editor.org/rfc/rfc2047
-		- https://andreubotella.github.io/multipart-form-data/#multipart-form-data-parser
-]]
+parser
+
+A multipart/form-data parser. This parser is based on the following spec(s): -
+https://www.rfc-editor.org/rfc/rfc2388 - https://www.rfc-editor.org/rfc/rfc1867 -
+https://www.rfc-editor.org/rfc/rfc2047 -
+https://andreubotella.github.io/multipart-form-data/#multipart-form-data-parser.
+
+--]]
 
 local Stream = require("../Stream")
 
@@ -34,7 +35,7 @@ local ILLEGAL_HTTP_TOKEN_CHARACTERS = table.freeze({
 }) :: { [string]: boolean }
 
 --[[
-	Validate that the name of the Content-Disposition header is valid ABNF grammar as defined in RFC 2047.
+    Validate that the name of the Content-Disposition header is valid ABNF grammar as defined in RFC 2047.
 ]]
 local function validateEncodedToken_RFC2047(source: string)
     local sourceSplit = string.split(source, "")
@@ -49,7 +50,7 @@ local function validateEncodedToken_RFC2047(source: string)
 end
 
 --[[
-	This function is responsible for parsing the Content-Disposition header.
+    This function is responsible for parsing the Content-Disposition header.
 ]]
 local function parseMultipartContentDisposition(stream: Stream.Stream): (string, string?)
     local header = stream:advance(20)
@@ -94,7 +95,7 @@ local function parseMultipartContentDisposition(stream: Stream.Stream): (string,
 end
 
 --[[
-	This function is responsible for parsing the Content-Type header.
+    This function is responsible for parsing the Content-Type header.
 ]]
 local function parseContentType(stream: Stream.Stream): string
     local header = stream:advance(13)
@@ -120,7 +121,7 @@ local function parseContentType(stream: Stream.Stream): string
 end
 
 --[[
-	This function is responsible for parsing the optional Content-Transfer-Encoding header.
+    This function is responsible for parsing the optional Content-Transfer-Encoding header.
 ]]
 local function parseContentTransferEncoding(stream: Stream.Stream): string?
     local header = stream:peek(26)
@@ -147,8 +148,8 @@ local function parseContentTransferEncoding(stream: Stream.Stream): string?
 end
 
 --[[
-	This function is responsible for parsing the entire form data, it uses a combination of the above
-		functions to parse the form data.
+    This function is responsible for parsing the entire form data, it uses a combination of the above
+        functions to parse the form data.
 ]]
 local function parseMultipartFormDataValue(stream: Stream.Stream): DecodedFormDataValue
     local name, filename = parseMultipartContentDisposition(stream)
@@ -171,7 +172,7 @@ local function parseMultipartFormDataValue(stream: Stream.Stream): DecodedFormDa
 end
 
 --[[
-	The main function that is called to parse the form data.
+    The main function that is called to parse the form data.
 ]]
 local function parseMultipartFormData(stream: Stream.Stream, boundary: string): { DecodedFormDataValue }
     local formData = {}
@@ -214,7 +215,7 @@ local function parseMultipartFormData(stream: Stream.Stream, boundary: string): 
 end
 
 --[[
-	This function is responsible for parsing the mime type. Returning the 'boundary' from the mime parameters.
+    This function is responsible for parsing the mime type. Returning the 'boundary' from the mime parameters.
 ]]
 local function parseMultipartMime(stream: Stream.Stream): string
     local matchedBoundary
@@ -226,7 +227,7 @@ local function parseMultipartMime(stream: Stream.Stream): string
     )
 
     -- as defined in the examples in RFC1867 - ; can be used alongside , to split the parameters of this
-    -- 		mime type
+    --         mime type
     assert(stream:peek() == ";" or stream:peek() == ",", `Invalid mime type: {stream.textSource} (unknown delimiter)`)
 
     -- skip the token since we only :peek() above

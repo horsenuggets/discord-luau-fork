@@ -1,5 +1,13 @@
+--[[
+
+embed
+
+Type definitions for Discord embed API objects.
+
+--]]
+
 --[=[
-	@class Types.embed
+    @class Types.embed
 ]=]
 
 local util = require("../Utilities")

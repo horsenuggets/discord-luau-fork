@@ -1,3 +1,11 @@
+--[[
+
+intents.spec
+
+Tests for the intents module.
+
+--]]
+
 local frktest = require("../../../lune_packages/frktest")
 local intents = require("../src/intents")
 

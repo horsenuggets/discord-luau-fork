@@ -1,10 +1,18 @@
+--[[
+
+media
+
+Implementation of the Discord Media class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.Media
-	@__index Prototype
+    @class Classes.Media
+    @__index Prototype
 
-	Implementation of the Discord Media class in Luau
+    Implementation of the Discord Media class in Luau
 
-	https://discord.com/developers/docs/resources/channel#channel-object
+    https://discord.com/developers/docs/resources/channel#channel-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -29,11 +37,11 @@ Media.Behaviours = {
 }
 
 --[=[
-	@within Classes.Media
-	@private
+    @within Classes.Media
+    @private
 
-	Responsible for syncing data to this media object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this media object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Media.Prototype.sync(self: Media, channelData: apiTypes.ChannelObject)
     for _, behaviour in Media.Behaviours do
@@ -43,18 +51,18 @@ function Media.Prototype.sync(self: Media, channelData: apiTypes.ChannelObject)
 end
 
 --[=[
-	@within Classes.Media
-	@private
+    @within Classes.Media
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Media.Interface.new(state: state.State, channelData: apiTypes.ChannelObject): Media
     local self = setmetatable(
         {
             --[=[
-				@prop state Classes.State
-				@within Classes.Media
-			]=]
+                @prop state Classes.State
+                @within Classes.Media
+            ]=]
             state = state,
         } :: Media,
         { __index = Media.Prototype }

@@ -1,10 +1,18 @@
+--[[
+
+application
+
+Implementation of the Discord Integration Application class in Luau.
+
+--]]
+
 --[=[
-	@class Classes.IntegrationApplication
-	@__index Prototype
+    @class Classes.IntegrationApplication
+    @__index Prototype
 
-	Implementation of the Discord Integration Application class in Luau
+    Implementation of the Discord Integration Application class in Luau
 
-	https://discord.com/developers/docs/resources/guild#integration-application-object
+    https://discord.com/developers/docs/resources/guild#integration-application-object
 ]=]
 
 local apiTypes = require("../../../ApiTypes")
@@ -17,59 +25,59 @@ Application.Interface = {}
 Application.Prototype = {}
 
 --[=[
-	@within Classes.IntegrationApplication
-	@private
+    @within Classes.IntegrationApplication
+    @private
 
-	Responsible for syncing data to this application object. This is typically called by the API when this object is
-	created or updated.
+    Responsible for syncing data to this application object. This is typically called by the API when this object is
+    created or updated.
 ]=]
 function Application.Prototype.sync(self: Application, applicationData: apiTypes.IntegrationApplicationObject)
     --[=[
-		@prop id string
-		@within Classes.IntegrationApplication
+        @prop id string
+        @within Classes.IntegrationApplication
 
-		The unique identifier for this application
-	]=]
+        The unique identifier for this application
+    ]=]
     self.id = applicationData.id
 
     --[=[
-		@prop name string
-		@within Classes.IntegrationApplication
+        @prop name string
+        @within Classes.IntegrationApplication
 
-		The name of the application
-	]=]
+        The name of the application
+    ]=]
     self.name = applicationData.name
 
     --[=[
-		@prop icon string?
-		@within Classes.IntegrationApplication
+        @prop icon string?
+        @within Classes.IntegrationApplication
 
-		The icon hash of the application, if one exists
-	]=]
+        The icon hash of the application, if one exists
+    ]=]
     self.icon = applicationData.icon
 
     --[=[
-		@prop description string
-		@within Classes.IntegrationApplication
+        @prop description string
+        @within Classes.IntegrationApplication
 
-		The description of the application
-	]=]
+        The description of the application
+    ]=]
     self.description = applicationData.description
 
     --[=[
-		@prop bot Classes.User?
-		@within Classes.IntegrationApplication
+        @prop bot Classes.User?
+        @within Classes.IntegrationApplication
 
-		The bot user associated with this application, if it is a bot application
-	]=]
+        The bot user associated with this application, if it is a bot application
+    ]=]
     self.bot = applicationData.bot and user.new(applicationData.bot)
 end
 
 --[=[
-	@within Classes.IntegrationApplication
-	@private
+    @within Classes.IntegrationApplication
+    @private
 
-	Responsible for constructing this class.
+    Responsible for constructing this class.
 ]=]
 function Application.Interface.new(applicationData: apiTypes.IntegrationApplicationObject): Application
     local self = setmetatable({} :: Application, { __index = Application.Prototype })
