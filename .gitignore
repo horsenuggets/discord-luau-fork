@@ -3,8 +3,8 @@
 .env.luau
 
 # Package directories (installed by Wally)
-Packages/
 DevPackages/
+Packages/
 
 # Build artifacts
 build/
@@ -12,10 +12,11 @@ sourcemap.json
 wally.lock
 
 # IDE
-.idea/
-*.swp
 *.swo
+*.swp
+.idea/
 
 # OS
 .DS_Store
 Thumbs.db
+TODO.md
