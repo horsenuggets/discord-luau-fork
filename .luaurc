@@ -9,7 +9,7 @@
         "warn"
     ],
     "aliases": {
-        "lune": "~/.lune/.typedefs/0.10.4-horse.14.0/",
+        "lune": "~/.lune/.typedefs/0.10.4-horse.14.1/",
         "discordluau": "Source/DiscordLuau",
         "packages": "Packages",
         "devpackages": "DevPackages",
