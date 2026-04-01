@@ -1,15 +1,28 @@
 {
+    "aliases": {
+        "devpackages": "./DevPackages/",
+        "discordluau": "./Source/DiscordLuau/",
+        "lune": "~/.lune/.typedefs/0.10.4-horse.14.5/",
+        "packages": "./Packages/",
+        "scripts": "./Scripts/",
+        "tests": "./Tests/"
+    },
+    "globals": [
+        "afterAll",
+        "afterEach",
+        "beforeAll",
+        "beforeEach",
+        "describe",
+        "expect",
+        "fail",
+        "fdescribe",
+        "fit",
+        "it",
+        "xdescribe",
+        "xit"
+    ],
     "languageMode": "strict",
     "lint": {
         "*": true
-    },
-    "globals": [],
-    "aliases": {
-        "lune": "~/.lune/.typedefs/0.10.4-horse.14.5/",
-        "discordluau": "Source/DiscordLuau",
-        "packages": "Packages",
-        "devpackages": "DevPackages",
-        "tests": "Tests",
-        "scripts": "Scripts"
     }
 }

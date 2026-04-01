@@ -1,20 +1,35 @@
 # Build artifacts
-sourcemap.json
-wally.lock
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
+/Build
 
 # Dependencies
 /DevPackages
 /Packages
+/ServerPackages
 
 # Editor and environment
+.claude
 .DS_Store
 .env
-.env.luau
-.idea/
+.local
+.mcp.json
 .vscode
-*.swo
-*.swp
-Thumbs.db
+
+# Generated files
+*.bak
+*.gen.*
+*.lock
+!.assetfile.lock
+/*sourcemap.json
+
+# Legacy
+aftman.toml
 
 # Project
 /TODO.md
+
+# Repo-specific
+.env.luau
