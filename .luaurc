@@ -5,7 +5,7 @@
     },
     "globals": [],
     "aliases": {
-        "lune": "~/.lune/.typedefs/0.10.4-horse.14.2/",
+        "lune": "~/.lune/.typedefs/0.10.4-horse.14.3/",
         "discordluau": "Source/DiscordLuau",
         "packages": "Packages",
         "devpackages": "DevPackages",
