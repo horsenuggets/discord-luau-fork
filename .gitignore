@@ -1,21 +1,20 @@
-# Environment files
-.env
-.env.luau
-
-# Package directories (installed by Wally)
-Packages/
-DevPackages/
-
 # Build artifacts
-build/
 sourcemap.json
 wally.lock
 
-# IDE
-.idea/
-*.swp
-*.swo
+# Dependencies
+/DevPackages
+/Packages
 
-# OS
+# Editor and environment
 .DS_Store
+.env
+.env.luau
+.idea/
+.vscode
+*.swo
+*.swp
 Thumbs.db
+
+# Project
+/TODO.md

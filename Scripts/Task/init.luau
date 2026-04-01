@@ -73,7 +73,7 @@ end
     Constructor for the Task object.
 ]]
 function Task.Interface.new(executable: string): Task
-    return setmetatable(
+    local self = setmetatable(
         {
             executable = executable,
 
@@ -83,6 +83,8 @@ function Task.Interface.new(executable: string): Task
             __index = Task.Prototype,
         }
     )
+
+    return (self :: any) :: Task
 end
 
 export type Task = typeof(Task.Prototype) & {
