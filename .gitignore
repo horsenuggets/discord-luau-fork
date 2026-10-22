@@ -29,7 +29,12 @@
 aftman.toml
 
 # Project
+/CONTEXT.md
 /TODO.md
 
 # Repo-specific
 .env.luau
+
+# Worktrees
+/.worktrees/
+/.wt/
