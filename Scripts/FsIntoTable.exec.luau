@@ -2,9 +2,11 @@
 
 --[[
 
-fsIntoTable
+FsIntoTable.exec
 
-Script for fsIntoTable.
+Prints a Luau table that requires every module in a package directory, nested by folder.
+
+[Usage] ./Scripts/FsIntoTable.exec.luau <packageDir>
 
 --]]
 
@@ -45,8 +47,14 @@ local function readFolder(dir)
     end
 end
 
-readFolder(packageDir)
+local FsIntoTable = {}
 
-luaTableSource ..= "}\n"
+function FsIntoTable.exec()
+    readFolder(packageDir)
 
-print(luaTableSource)
+    luaTableSource ..= "}\n"
+
+    print(luaTableSource)
+end
+
+FsIntoTable.exec()

@@ -2,9 +2,11 @@
 
 --[[
 
-ConvertAliasesToRelative
+ConvertAliasesToRelative.exec
 
 Converts @discordluau/ alias requires to relative paths for Wally compatibility.
+
+[Usage] ./Scripts/ConvertAliasesToRelative.exec.luau
 
 --]]
 
@@ -66,10 +68,12 @@ local function processDirectory(dirPath: string)
     end
 end
 
-local function convertAliasesToRelative()
+const ConvertAliasesToRelative = {}
+
+function ConvertAliasesToRelative.exec()
     print("Converting @discordluau aliases to relative paths...")
     processDirectory(SOURCE_DIR)
     print("Done!")
 end
 
-convertAliasesToRelative()
+ConvertAliasesToRelative.exec()

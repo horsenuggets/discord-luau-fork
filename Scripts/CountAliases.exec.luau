@@ -2,16 +2,16 @@
 
 --[[
 
-countAliases
+CountAliases.exec
 
-Script for countAliases.
+Prints every file in a package directory that requires a module through an alias.
+
+[Usage] ./Scripts/CountAliases.exec.luau <packageDir>
 
 --]]
 
 local fs = require("@lune/fs")
 local process = require("@lune/process")
-
-local packageDir = process.args[1]
 
 local function patchFile(dir, fileName)
     local fileData = fs.readFile(`{dir}/{fileName}`)
@@ -33,4 +33,12 @@ local function readFolder(dir)
     end
 end
 
-readFolder(packageDir)
+local CountAliases = {}
+
+function CountAliases.exec()
+    local packageDir = process.args[1]
+
+    readFolder(packageDir)
+end
+
+CountAliases.exec()

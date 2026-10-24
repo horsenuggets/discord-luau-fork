@@ -9,7 +9,7 @@ Please note we have a [code of conduct](CODE_OF_CONDUCT.md), please follow it in
 2. Install all tools *(`rokit install`)*
 3. Install all dependencies *(`wally install`)*
 4. Copy `.env.template` to `.env` and fill in your bot token
-5. Run tests with `lune run Scripts/RunTests.luau`
+5. Run tests with `./Scripts/RunTests.exec.luau`
 
 ## Code Style Guide
 - **Classes:** Use PascalCase for classes.

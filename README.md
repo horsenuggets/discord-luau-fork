@@ -83,7 +83,7 @@ end
 2. Copy `.env.template` to `.env` and fill in your bot token
 3. Run `rokit install` to install tools
 4. Run `wally install` to install dependencies
-5. Run `lune run Scripts/RunTests.luau` to run tests
+5. Run `./Scripts/RunTests.exec.luau` to run tests
 
 ## Credits
 

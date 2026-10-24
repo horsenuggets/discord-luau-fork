@@ -2,17 +2,19 @@
 
 --[[
 
-Lint
+Lint.exec
 
 Runs luau-lsp analyze to report type errors and deprecation warnings.
 
-[Usage] ./Scripts/Lint.luau
+[Usage] ./Scripts/Lint.exec.luau
 
 --]]
 
 local process = require("@lune/process")
 
-local function lint()
+const Lint = {}
+
+function Lint.exec()
     local result = process.exec("luau-lsp", {
         "analyze",
         "--platform=lune",
@@ -38,4 +40,4 @@ local function lint()
     end
 end
 
-lint()
+Lint.exec()

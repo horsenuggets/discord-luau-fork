@@ -2,35 +2,37 @@
 
 --[[
 
-RunTests
+RunTests.exec
 
 Executes all test suites and exits with appropriate status code. Optionally pass a test
 name as an argument to run only that test suite.
 
-[Usage] lune run ./Scripts/RunTests.luau [TestName]
+[Usage] ./Scripts/RunTests.exec.luau [TestName]
 
 --]]
 
+local Dotenv = require("@devpackages/Dotenv")
 local Testable = require("@devpackages/Testable")
 local process = require("@lune/process")
 local stdio = require("@lune/stdio")
-
--- Load environment variables from .env file (optional)
-local Dotenv = require("@devpackages/Dotenv")
-pcall(Dotenv.load)
-
--- Disable parallel execution for integration tests that make API calls
--- This prevents rate limiting issues with the Discord API
-Testable.configure({
-    Parallel = false,
-})
 
 -- TODO: Tests need to be migrated from frktest to Testable and updated to use new paths
 -- The original tests use old require paths (../src/, ../../../lune_packages/frktest)
 -- which no longer exist in the restructured project
 local TESTS: { { Name: string, Func: () -> () } } = {}
 
-local function runTests()
+local RunTests = {}
+
+function RunTests.exec()
+    -- Load environment variables from .env file (optional)
+    pcall(Dotenv.load)
+
+    -- Disable parallel execution for integration tests that make API calls
+    -- This prevents rate limiting issues with the Discord API
+    Testable.configure({
+        Parallel = false,
+    })
+
     local filterName = process.args[1]
 
     local testsToRun = {}
@@ -78,4 +80,4 @@ local function runTests()
     end
 end
 
-runTests()
+RunTests.exec()
