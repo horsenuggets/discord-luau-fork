@@ -202,7 +202,12 @@ export type WebSocketClosedEvent = {
     byRemote: boolean,
 }
 
-export type LavalinkEvent = TrackStartEvent | TrackEndEvent | TrackExceptionEvent | TrackStuckEvent | WebSocketClosedEvent
+export type LavalinkEvent =
+    TrackStartEvent
+    | TrackEndEvent
+    | TrackExceptionEvent
+    | TrackStuckEvent
+    | WebSocketClosedEvent
 
 export type NodeOptions = {
     name: string,

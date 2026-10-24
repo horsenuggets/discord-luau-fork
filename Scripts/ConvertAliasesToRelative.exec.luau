@@ -2,27 +2,29 @@
 
 --[[
 
-ConvertAliasesToRelative
+ConvertAliasesToRelative.exec
 
 Converts @discordluau/ alias requires to relative paths for Wally compatibility.
 
+[Usage] ./Scripts/ConvertAliasesToRelative.exec.luau
+
 --]]
 
-local fs = require("@lune/fs")
+const fs = require("@lune/fs")
 
-local SOURCE_DIR = "Source/DiscordLuau"
+const SOURCE_DIR = "Source/DiscordLuau"
 
-local function getRelativePath(fromFile: string, toModule: string): string
+const function getRelativePath(fromFile: string, toModule: string): string
     -- fromFile: Source/DiscordLuau/Bot.luau
     -- toModule: ApiTypes (from @discordluau/ApiTypes)
 
-    local fromDir = fromFile:match("(.+)/[^/]+%.luau$")
+    const fromDir = fromFile:match("(.+)/[^/]+%.luau$")
     if not fromDir then
         return "./" .. toModule
     end
 
     -- Count how many directories deep from SOURCE_DIR
-    local fromRelative = fromDir:gsub("^" .. SOURCE_DIR .. "/?", "")
+    const fromRelative = fromDir:gsub("^" .. SOURCE_DIR .. "/?", "")
     local depth = 0
     for _ in fromRelative:gmatch("/") do
         depth += 1
@@ -34,18 +36,18 @@ local function getRelativePath(fromFile: string, toModule: string): string
     if depth == 0 then
         return "./" .. toModule
     else
-        local prefix = string.rep("../", depth)
+        const prefix = string.rep("../", depth)
         return prefix .. toModule
     end
 end
 
-local function processFile(filePath: string)
-    local content = fs.readFile(filePath)
+const function processFile(filePath: string)
+    const content = fs.readFile(filePath)
     local modified = false
 
-    local newContent = content:gsub('require%("@discordluau/([^"]+)"%)', function(module)
+    const newContent = content:gsub('require%("@discordluau/([^"]+)"%)', function(module)
         modified = true
-        local relativePath = getRelativePath(filePath, module)
+        const relativePath = getRelativePath(filePath, module)
         return `require("{relativePath}")`
     end)
 
@@ -55,9 +57,9 @@ local function processFile(filePath: string)
     end
 end
 
-local function processDirectory(dirPath: string)
+const function processDirectory(dirPath: string)
     for _, entry in fs.readDir(dirPath) do
-        local fullPath = `{dirPath}/{entry}`
+        const fullPath = `{dirPath}/{entry}`
         if fs.isDir(fullPath) then
             processDirectory(fullPath)
         elseif entry:match("%.luau$") then
@@ -66,10 +68,12 @@ local function processDirectory(dirPath: string)
     end
 end
 
-local function convertAliasesToRelative()
+const ConvertAliasesToRelative = {}
+
+function ConvertAliasesToRelative.exec()
     print("Converting @discordluau aliases to relative paths...")
     processDirectory(SOURCE_DIR)
     print("Done!")
 end
 
-convertAliasesToRelative()
+ConvertAliasesToRelative.exec()
