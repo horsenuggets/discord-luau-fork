@@ -35,6 +35,11 @@ aftman.toml
 # Repo-specific
 .env.luau
 
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
 # Worktrees
 /.worktrees/
 /.wt/
