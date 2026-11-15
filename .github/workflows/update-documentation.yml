@@ -9,8 +9,8 @@ on:
       - release
 
 jobs:
-  dispatch:
-    name: Dispatch to docs repo
+  dispatch-docs-update:
+    name: dispatch-docs-update
     runs-on: ubuntu-latest
     steps:
       - name: Trigger docs update
