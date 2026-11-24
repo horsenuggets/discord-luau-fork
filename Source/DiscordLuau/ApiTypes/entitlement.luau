@@ -20,7 +20,7 @@ local EntitlementType = table.freeze(util.tableReflect({
     FreePurchase = 5,
     UserGift = 6,
     PremiumPurchase = 7,
-    ApplicationSubscription = 8,
+    ApplicationSubscription = 8
 }))
 
 export type EntitlementType =
@@ -34,5 +34,5 @@ export type EntitlementType =
     | "ApplicationSubscription"
 
 return {
-    EntitlementType = EntitlementType,
+    EntitlementType = EntitlementType
 }

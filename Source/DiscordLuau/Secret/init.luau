@@ -40,7 +40,7 @@ Secret.Prototype = {}
 function Secret.Interface.new<T>(value: T): Secret<T>
     local self = setmetatable(
         {
-            value = value,
+            value = value
         } :: Secret<T>,
         {
             __concat = function(_self: Secret<T>, otherValue: string)
@@ -76,7 +76,7 @@ function Secret.Interface.new<T>(value: T): Secret<T>
                 else
                     return `Secret({typeOfValue})`
                 end
-            end,
+            end
         }
     )
 
@@ -84,7 +84,7 @@ function Secret.Interface.new<T>(value: T): Secret<T>
 end
 
 export type Secret<T> = typeof(Secret.Prototype) & {
-    value: T,
+    value: T
 }
 
 return Secret.Interface

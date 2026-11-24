@@ -78,7 +78,7 @@ function Onboarding.Prototype.build(self: Onboarding): JSON
         prompts = self.prompts,
         default_channel_ids = self.defaultChannelIds,
         enabled = self.enabled,
-        mode = self.mode,
+        mode = self.mode
     }
 end
 
@@ -91,7 +91,7 @@ function Onboarding.Interface.new(resource: {
     prompts: { prompt.JSON }?,
     defaultChannelIds: { string }?,
     enabled: boolean?,
-    mode: apiTypes.OnboardingMode?,
+    mode: apiTypes.OnboardingMode?
 }?): Onboarding
     local self = setmetatable(
         {
@@ -107,7 +107,7 @@ function Onboarding.Interface.new(resource: {
                 @within Builders.Onboarding
                 Array of channel IDs that members get opted into automatically
             ]=]
-            defaultChannelIds = {},
+            defaultChannelIds = {}
 
             --[=[
                 @prop enabled boolean
@@ -122,7 +122,7 @@ function Onboarding.Interface.new(resource: {
             ]=]
         } :: Onboarding,
         {
-            __index = Onboarding.Prototype,
+            __index = Onboarding.Prototype
         }
     )
 
@@ -155,7 +155,7 @@ export type Onboarding = typeof(Onboarding.Prototype) & {
     prompts: { prompt.JSON },
     defaultChannelIds: { string },
     enabled: boolean,
-    mode: apiTypes.OnboardingMode,
+    mode: apiTypes.OnboardingMode
 }
 
 export type JSON = typeof(Onboarding.Prototype.build(nil :: any))

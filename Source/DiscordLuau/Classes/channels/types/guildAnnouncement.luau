@@ -31,7 +31,7 @@ GuildAnnouncement.Prototype = {}
 GuildAnnouncement.Behaviours = {
     channelBehaviour,
     guildBehaviour,
-    textBehaviour,
+    textBehaviour
 }
 
 --[=[
@@ -65,7 +65,7 @@ function GuildAnnouncement.Prototype.followAsync(self: GuildAnnouncement, target
 
         local response = rest.channel
             .followAnnouncementChannelAsync(request, self.id, {
-                webhook_channel_id = targetChannelId,
+                webhook_channel_id = targetChannelId
             })
             :await()
 
@@ -102,7 +102,7 @@ function GuildAnnouncement.Interface.new(state: state.State, channelData: apiTyp
     ]=]
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: GuildAnnouncement,
         { __index = GuildAnnouncement.Prototype }
     )
@@ -113,7 +113,7 @@ function GuildAnnouncement.Interface.new(state: state.State, channelData: apiTyp
 end
 
 export type GuildAnnouncement = typeof(GuildAnnouncement.Prototype) & {
-    state: state.State,
+    state: state.State
 } & channelBehaviour.ChannelBehaviour & textBehaviour.TextBehaviour & guildBehaviour.GuildBehaviour
 
 return GuildAnnouncement.Interface

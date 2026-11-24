@@ -179,7 +179,7 @@ export type Option = typeof(Option.Prototype) & {
     maxValue: number?,
     minLength: number?,
     maxLength: number?,
-    autocomplete: boolean?,
+    autocomplete: boolean?
 }
 
 return Option.Interface

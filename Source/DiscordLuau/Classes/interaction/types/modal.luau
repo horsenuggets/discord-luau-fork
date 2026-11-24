@@ -31,7 +31,7 @@ Modal.Interface = {}
 Modal.Prototype = {}
 Modal.Behaviours = {
     interactionBehaviour,
-    interactableBehaviour,
+    interactableBehaviour
 }
 
 --[=[
@@ -79,7 +79,7 @@ end
 function Modal.Interface.new(state: state.State, interactionData: apiTypes.InteractionObject): Modal
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: Modal,
         { __index = Modal.Prototype }
     )

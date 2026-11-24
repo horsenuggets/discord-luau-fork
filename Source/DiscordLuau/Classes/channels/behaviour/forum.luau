@@ -118,7 +118,7 @@ type Channel<T> = T & ForumBehaviour & {
     state: state.State,
     id: string,
 
-    sync: (...any) -> (),
+    sync: (...any) -> ()
 }
 
 export type ForumBehaviourMethods = typeof(ForumBehaviour.Prototype)
@@ -127,7 +127,7 @@ export type ForumBehaviourProperties = {
     defaultReaction: defaultReaction.DefaultReaction?,
     appliedTags: { apiTypes.Snowflake },
     defaultSortOrder: apiTypes.ForumSortOrder,
-    defaultForumLayout: apiTypes.ForumLayout,
+    defaultForumLayout: apiTypes.ForumLayout
 }
 
 export type ForumBehaviour = ForumBehaviourMethods & ForumBehaviourProperties

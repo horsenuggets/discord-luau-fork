@@ -152,7 +152,7 @@ function AuditLogs.Interface.new(state: state.State, auditLogsData: apiTypes.Aud
 
                 Array of webhooks that have been created, updated, or deleted in the guild.
             ]=]
-            webhooks = {},
+            webhooks = {}
         } :: AuditLogs,
         { __index = AuditLogs.Prototype }
     )
@@ -172,7 +172,7 @@ export type AuditLogs = typeof(AuditLogs.Prototype) & {
     integrations: { integration.Integration },
     threads: { publicThread.Public },
     users: { user.User },
-    webhooks: { webhook.Webhook },
+    webhooks: { webhook.Webhook }
 }
 
 return AuditLogs.Interface

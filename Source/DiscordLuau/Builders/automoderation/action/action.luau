@@ -51,7 +51,7 @@ end
 function Action.Prototype.build(self: Action): JSON
     return {
         type = apiTypes.guild.ActionTypes[self.type],
-        metadata = self.metadata,
+        metadata = self.metadata
     }
 end
 
@@ -62,7 +62,7 @@ end
 ]=]
 function Action.Interface.new(resource: {
     type: apiTypes.ActionTypes?,
-    metadata: metadata.JSON?,
+    metadata: metadata.JSON?
 }?): Action
     local self = setmetatable(
         {
@@ -78,10 +78,10 @@ function Action.Interface.new(resource: {
                 @within Builders.Action
                 Additional metadata needed during execution for this specific action type.
             ]=]
-            metadata = nil,
+            metadata = nil
         } :: Action,
         {
-            __index = Action.Prototype,
+            __index = Action.Prototype
         }
     )
 
@@ -100,7 +100,7 @@ end
 
 export type Action = typeof(Action.Prototype) & {
     type: apiTypes.ActionTypes,
-    metadata: metadata.JSON?,
+    metadata: metadata.JSON?
 }
 
 export type JSON = typeof(Action.Prototype.build(nil :: any))

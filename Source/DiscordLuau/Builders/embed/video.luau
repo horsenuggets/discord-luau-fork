@@ -64,7 +64,7 @@ function Video.Prototype.build(self: Video): JSON
         url = self.url,
         proxy_url = self.proxyUrl,
         height = self.height,
-        width = self.width,
+        width = self.width
     }
 end
 
@@ -85,7 +85,7 @@ function Video.Interface.new(resource: {
     url: string,
     proxyUrl: string?,
     height: number?,
-    width: number?,
+    width: number?
 }?): Video
     local self = setmetatable(
         {
@@ -115,10 +115,10 @@ function Video.Interface.new(resource: {
                 @within Builders.Video
                 Width of video
             ]=]
-            width = nil,
+            width = nil
         } :: Video,
         {
-            __index = Video.Prototype,
+            __index = Video.Prototype
         }
     )
 
@@ -143,7 +143,7 @@ export type Video = typeof(Video.Prototype) & {
     url: string,
     proxyUrl: string?,
     height: number?,
-    width: number?,
+    width: number?
 }
 
 export type JSON = typeof(Video.Prototype.build({} :: any))

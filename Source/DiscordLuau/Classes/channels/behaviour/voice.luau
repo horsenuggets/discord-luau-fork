@@ -97,7 +97,7 @@ export type VoiceBehaviourProperties = {
     bitrate: number,
     userLimit: number,
     rtcRegion: string?,
-    videoQualityMode: apiTypes.VideoQualityMode,
+    videoQualityMode: apiTypes.VideoQualityMode
 }
 
 export type VoiceBehaviour = VoiceBehaviourMethods & VoiceBehaviourProperties

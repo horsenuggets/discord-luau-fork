@@ -127,7 +127,7 @@ function Invite.Prototype.build(self: Invite): JSON
         unique = self.unique,
         target_type = apiTypes.guild.InviteTargetType[self.targetType],
         target_user_id = self.targetUserId,
-        target_application_id = self.targetApplicationId,
+        target_application_id = self.targetApplicationId
     }
 end
 
@@ -143,7 +143,7 @@ function Invite.Interface.new(resource: {
     unique: boolean?,
     targetType: apiTypes.InviteTargetType?,
     targetUserId: string?,
-    targetApplicationId: string?,
+    targetApplicationId: string?
 }?): Invite
     local self = setmetatable(
         {
@@ -190,7 +190,7 @@ function Invite.Interface.new(resource: {
             ]=]
         } :: Invite,
         {
-            __index = Invite.Prototype,
+            __index = Invite.Prototype
         }
     )
 
@@ -234,7 +234,7 @@ export type Invite = typeof(Invite.Prototype) & {
     unique: boolean?,
     targetType: apiTypes.InviteTargetType?,
     targetUserId: string?,
-    targetApplicationId: string?,
+    targetApplicationId: string?
 }
 
 export type JSON = typeof(Invite.Prototype.build(nil :: any))

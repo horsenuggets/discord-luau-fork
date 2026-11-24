@@ -567,7 +567,7 @@ function channel.getThreadMemberAsync(
     channelId: apiTypes.Snowflake,
     userId: apiTypes.Snowflake,
     urlParams: {
-        withMember: boolean?,
+        withMember: boolean?
     }
 ): future.FutureLike<string, apiTypes.GetThreadMemberResponse>
     return future.Future.new(function()
@@ -597,7 +597,7 @@ function channel.listThreadMembersAsync(
     urlParams: {
         withMember: boolean?,
         after: apiTypes.Snowflake?,
-        limit: number?,
+        limit: number?
     }
 ): future.FutureLike<string, apiTypes.ListThreadMembersResponse>
     return future.Future.new(function()
@@ -628,7 +628,7 @@ function channel.listPublicArchivedThreadsAsync(
     channelId: apiTypes.Snowflake,
     urlParams: {
         before: string?,
-        limit: number?,
+        limit: number?
     }
 ): future.FutureLike<string, apiTypes.ListPublicArchivedThreadsResponse>
     return future.Future.new(function()
@@ -658,7 +658,7 @@ function channel.listPrivateArchivedThreadsAsync(
     channelId: apiTypes.Snowflake,
     urlParams: {
         before: string?,
-        limit: number?,
+        limit: number?
     }
 ): future.FutureLike<string, apiTypes.ListPrivateArchivedThreadsResponse>
     return future.Future.new(function()
@@ -688,7 +688,7 @@ function channel.listJoinedPrivateArchivedThreadsAsync(
     channelId: apiTypes.Snowflake,
     urlParams: {
         before: string?,
-        limit: number?,
+        limit: number?
     }
 ): future.FutureLike<
     string,

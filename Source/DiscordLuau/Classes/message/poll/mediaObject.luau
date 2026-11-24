@@ -63,7 +63,7 @@ end
 
 export type MediaObject = typeof(MediaObject.Prototype) & {
     text: string?,
-    emoji: emoji.Emoji?,
+    emoji: emoji.Emoji?
 }
 
 return MediaObject.Interface

@@ -17,7 +17,7 @@ local InteractionType = table.freeze(util.tableReflect({
     ApplicationCommand = 2,
     MessageComponent = 3,
     ApplicationCommandAutocomplete = 4,
-    ModalSubmit = 5,
+    ModalSubmit = 5
 }))
 
 local ApplicationCommandOptionType = table.freeze(util.tableReflect({
@@ -31,20 +31,20 @@ local ApplicationCommandOptionType = table.freeze(util.tableReflect({
     Role = 8,
     Mentionable = 9,
     Number = 10,
-    Attachment = 11,
+    Attachment = 11
 }))
 
 local InteractionContextType = table.freeze(util.tableReflect({
     Guild = 0,
     BotDm = 1,
-    PrivateChannel = 2,
+    PrivateChannel = 2
 }))
 
 local ApplicationCommandType = table.freeze(util.tableReflect({
     ChatInput = 1,
     User = 2,
     Message = 3,
-    PrimaryEntryPoiant = 4,
+    PrimaryEntryPoiant = 4
 }))
 
 local ComponentTypes = table.freeze(util.tableReflect({
@@ -55,7 +55,7 @@ local ComponentTypes = table.freeze(util.tableReflect({
     UserSelect = 5,
     RoleSelect = 6,
     MentionableSelect = 7,
-    ChannelSelect = 8,
+    ChannelSelect = 8
 }))
 
 export type InteractionType =
@@ -97,5 +97,5 @@ return {
     ApplicationCommandOptionType = ApplicationCommandOptionType,
     InteractionContextType = InteractionContextType,
     ApplicationCommandType = ApplicationCommandType,
-    ComponentTypes = ComponentTypes,
+    ComponentTypes = ComponentTypes
 }

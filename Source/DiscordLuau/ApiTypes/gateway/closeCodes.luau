@@ -26,7 +26,7 @@ local CloseCodes = table.freeze({
     ShardingRequired = 4011,
     InvalidAPIVersion = 4012,
     InvalidIntents = 4013,
-    DisallowedIntents = 4014,
+    DisallowedIntents = 4014
 })
 
 export type CloseCode =

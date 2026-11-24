@@ -20,7 +20,7 @@ local SendEvents = table.freeze({
     Heartbeat = "Heartbeat",
     RequestGuildMembers = "RequestGuildMembers",
     UpdateVoiceState = "UpdateVoiceState",
-    UpdatePresence = "UpdatePresence",
+    UpdatePresence = "UpdatePresence"
 })
 
 export type SendEvent =

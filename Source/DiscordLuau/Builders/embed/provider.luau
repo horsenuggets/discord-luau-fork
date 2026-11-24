@@ -53,7 +53,7 @@ end
 function Provider.Prototype.build(self: Provider): JSON
     return {
         name = self.name,
-        url = self.url,
+        url = self.url
     }
 end
 
@@ -64,7 +64,7 @@ end
 ]=]
 function Provider.Interface.new(resource: {
     name: string?,
-    url: string?,
+    url: string?
 }?): Provider
     local self = setmetatable(
         {
@@ -80,10 +80,10 @@ function Provider.Interface.new(resource: {
                 @within Builders.Provider
                 The url of the provider.
             ]=]
-            url = nil,
+            url = nil
         } :: Provider,
         {
-            __index = Provider.Prototype,
+            __index = Provider.Prototype
         }
     )
 
@@ -102,7 +102,7 @@ end
 
 export type Provider = typeof(Provider.Prototype) & {
     name: string?,
-    url: string?,
+    url: string?
 }
 
 export type JSON = typeof(Provider.Prototype.build({} :: any))

@@ -88,7 +88,7 @@ function Ban.Interface.new(state: state.State, guildId: string, banData: apiType
                 @prop guildId string
                 @within Classes.Ban
             ]=]
-            guildId = guildId,
+            guildId = guildId
         } :: Ban,
         { __index = Ban.Prototype }
     )
@@ -103,7 +103,7 @@ export type Ban = typeof(Ban.Prototype) & {
     guildId: string,
 
     user: user.User,
-    reason: string?,
+    reason: string?
 }
 
 return Ban.Interface

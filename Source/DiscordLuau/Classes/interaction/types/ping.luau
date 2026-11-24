@@ -28,7 +28,7 @@ local Ping = {}
 Ping.Interface = {}
 Ping.Prototype = {}
 Ping.Behaviours = {
-    interactionBehaviour,
+    interactionBehaviour
 }
 
 --[=[
@@ -43,9 +43,9 @@ function Ping.Prototype.pongAsync(self: Ping)
         local response = rest.interaction
             .createInteractionResponseAsync(request, self.id, self.token, {
                 type = 1,
-                data = {},
+                data = {}
             }, {
-                withResponse = false,
+                withResponse = false
             })
             :await()
 
@@ -78,7 +78,7 @@ end
 function Ping.Interface.new(state: state.State, interactionData: apiTypes.InteractionObject): Ping
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: Ping,
         { __index = Ping.Prototype }
     )

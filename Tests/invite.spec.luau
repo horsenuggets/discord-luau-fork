@@ -52,7 +52,7 @@ return function()
             unique = true,
             targetType = "Stream" :: "Stream", -- using a valid invite target type.
             targetUserId = "111111111111111111",
-            targetApplicationId = "222222222222222222",
+            targetApplicationId = "222222222222222222"
         }
         local inv = Invite.new(resource)
         local json = inv:build()

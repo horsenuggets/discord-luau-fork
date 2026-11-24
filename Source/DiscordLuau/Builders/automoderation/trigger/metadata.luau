@@ -113,7 +113,7 @@ function TriggerMetadata.Prototype.build(self: TriggerMetadata): JSON
         presets = presets,
         allow_list = self.allowList,
         mention_total_limit = self.mentionTotalLimit,
-        mention_raid_protection_enabled = self.mentionRaidProtectionEnabled,
+        mention_raid_protection_enabled = self.mentionRaidProtectionEnabled
     }
 end
 
@@ -135,7 +135,7 @@ function TriggerMetadata.Interface.new(resource: {
     presets: { apiTypes.KeywordPresetType }?,
     allowList: { string }?,
     mentionTotalLimit: number?,
-    mentionRaidProtectionEnabled: boolean?,
+    mentionRaidProtectionEnabled: boolean?
 }?): TriggerMetadata
     local self = setmetatable(
         {
@@ -179,10 +179,10 @@ function TriggerMetadata.Interface.new(resource: {
                 @within Builders.TriggerMetadata
                 Whether to automatically detect mention raids and remove them.
             ]=]
-            mentionRaidProtectionEnabled = nil,
+            mentionRaidProtectionEnabled = nil
         } :: TriggerMetadata,
         {
-            __index = TriggerMetadata.Prototype,
+            __index = TriggerMetadata.Prototype
         }
     )
 
@@ -221,7 +221,7 @@ export type TriggerMetadata = typeof(TriggerMetadata.Prototype) & {
     presets: { apiTypes.KeywordPresetType },
     allowList: { string },
     mentionTotalLimit: number,
-    mentionRaidProtectionEnabled: boolean,
+    mentionRaidProtectionEnabled: boolean
 }
 
 export type JSON = typeof(TriggerMetadata.Prototype.build(nil :: any))

@@ -78,7 +78,7 @@ export type Author = typeof(Author.Prototype) & {
     name: string,
     url: string?,
     iconUrl: string?,
-    proxyIconUrl: string?,
+    proxyIconUrl: string?
 }
 
 return Author.Interface

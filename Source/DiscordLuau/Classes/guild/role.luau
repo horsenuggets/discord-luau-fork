@@ -75,7 +75,7 @@ function Role.Prototype.modifyPositionAsync(self: Role, position: number, reason
         local response = rest.guild
             .modifyGuildRolePositionsAsync(request, self.guildId, {
                 id = self.id,
-                position = position,
+                position = position
             }, reason)
             :await()
 
@@ -97,7 +97,7 @@ end
 ]=]
 function Role.Prototype.setNameAsync(self: Role, name: string, reason: string?)
     return self:modifyAsync({
-        name = name,
+        name = name
     }, reason)
 end
 
@@ -111,7 +111,7 @@ function Role.Prototype.addPermissionAsync(self: Role, permission: apiTypes.Perm
     permissionBuilder:addPermission(permission)
 
     return self:modifyAsync({
-        permissions = permissionBuilder:build(),
+        permissions = permissionBuilder:build()
     }, reason)
 end
 
@@ -125,7 +125,7 @@ function Role.Prototype.removePermissionAsync(self: Role, permission: apiTypes.P
     permissionBuilder:removePermission(permission)
 
     return self:modifyAsync({
-        permissions = permissionBuilder:build(),
+        permissions = permissionBuilder:build()
     }, reason)
 end
 
@@ -135,7 +135,7 @@ end
 ]=]
 function Role.Prototype.setColorAsync(self: Role, color: number, reason: string?)
     return self:modifyAsync({
-        color = color,
+        color = color
     }, reason)
 end
 
@@ -145,7 +145,7 @@ end
 ]=]
 function Role.Prototype.setHoistedAsync(self: Role, hoisted: boolean, reason: string?)
     return self:modifyAsync({
-        hoist = hoisted,
+        hoist = hoisted
     }, reason)
 end
 
@@ -155,7 +155,7 @@ end
 ]=]
 function Role.Prototype.setIconAsync(self: Role, iconData: string, reason: string?)
     return self:modifyAsync({
-        icon = iconData,
+        icon = iconData
     }, reason)
 end
 
@@ -165,7 +165,7 @@ end
 ]=]
 function Role.Prototype.setEmojiAsync(self: Role, emoji: string, reason: string?)
     return self:modifyAsync({
-        emoji = emoji,
+        emoji = emoji
     }, reason)
 end
 
@@ -175,7 +175,7 @@ end
 ]=]
 function Role.Prototype.setMentionableAsync(self: Role, mentionable: boolean, reason: string?)
     return self:modifyAsync({
-        mentionable = mentionable,
+        mentionable = mentionable
     }, reason)
 end
 
@@ -295,7 +295,7 @@ function Role.Interface.new(state: state.State, guildId: apiTypes.Snowflake, rol
                 @prop guildId string
                 The ID of the guild this role belongs to.
             ]=]
-            guildId = guildId,
+            guildId = guildId
         } :: Role,
         { __index = Role.Prototype }
     )
@@ -320,7 +320,7 @@ export type Role = typeof(Role.Prototype) & {
     managed: boolean,
     mentionable: boolean,
     tags: { roleTags.RoleTag }?,
-    flags: roleBitflag.RoleBitflag,
+    flags: roleBitflag.RoleBitflag
 }
 
 return Role.Interface

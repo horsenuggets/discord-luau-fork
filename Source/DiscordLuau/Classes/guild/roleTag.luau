@@ -93,7 +93,7 @@ export type RoleTag = typeof(RoleTag.Prototype) & {
     premiumSubscriber: nil?,
     subscriptionListingId: apiTypes.Snowflake?,
     availableForPurchase: nil?,
-    guildConnections: nil?,
+    guildConnections: nil?
 }
 
 return RoleTag.Interface

@@ -96,7 +96,7 @@ export type Reaction = typeof(Reaction.Prototype) & {
     me: boolean,
     meBurst: boolean,
     emoji: emoji.Emoji,
-    burstColors: { string },
+    burstColors: { string }
 }
 
 return Reaction.Interface

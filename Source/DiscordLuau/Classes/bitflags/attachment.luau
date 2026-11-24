@@ -53,7 +53,7 @@ function AttachmentBitflag.Interface.new(flag: number): AttachmentBitflag
                 @within Classes.AttachmentBitflag
                 The bitfield representing the attachment flags.
             ]=]
-            flag = flag,
+            flag = flag
         } :: AttachmentBitflag,
         { __index = AttachmentBitflag.Prototype }
     )
@@ -62,7 +62,7 @@ function AttachmentBitflag.Interface.new(flag: number): AttachmentBitflag
 end
 
 export type AttachmentBitflag = typeof(AttachmentBitflag.Prototype) & {
-    flag: number,
+    flag: number
 }
 
 return AttachmentBitflag.Interface

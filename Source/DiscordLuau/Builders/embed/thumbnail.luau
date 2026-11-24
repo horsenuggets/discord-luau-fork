@@ -64,7 +64,7 @@ function Thumbnail.Prototype.build(self: Thumbnail): JSON
         url = self.url,
         proxy_url = self.proxyUrl,
         height = self.height,
-        width = self.width,
+        width = self.width
     }
 end
 
@@ -85,7 +85,7 @@ function Thumbnail.Interface.new(resource: {
     url: string,
     proxyUrl: string?,
     height: number?,
-    width: number?,
+    width: number?
 }?): Thumbnail
     local self = setmetatable(
         {
@@ -115,10 +115,10 @@ function Thumbnail.Interface.new(resource: {
                 @within Builders.Thumbnail
                 The width of the thumbnail.
             ]=]
-            width = nil,
+            width = nil
         } :: Thumbnail,
         {
-            __index = Thumbnail.Prototype,
+            __index = Thumbnail.Prototype
         }
     )
 
@@ -143,7 +143,7 @@ export type Thumbnail = typeof(Thumbnail.Prototype) & {
     url: string,
     proxyUrl: string?,
     height: number?,
-    width: number?,
+    width: number?
 }
 
 export type JSON = typeof(Thumbnail.Prototype.build({} :: any))

@@ -71,7 +71,7 @@ end
 
 export type Call = typeof(Call.Prototype) & {
     participants: { user.User },
-    endedTimestamp: stdPolyfills.DateTime,
+    endedTimestamp: stdPolyfills.DateTime
 }
 
 return Call.Interface

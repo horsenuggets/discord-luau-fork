@@ -244,9 +244,9 @@ export type InteractionProperties = {
     guildLocale: apiTypes.LanguageLocales?,
     entitlements: { entitlement.Entitlement },
     authorizingIntegrationOwners: {
-        [apiTypes.IntegrationTypesConfig]: apiTypes.Snowflake,
+        [apiTypes.IntegrationTypesConfig]: apiTypes.Snowflake
     },
-    context: apiTypes.InteractionContextType?,
+    context: apiTypes.InteractionContextType?
 }
 
 export type Interaction = InteractionMethods & InteractionProperties

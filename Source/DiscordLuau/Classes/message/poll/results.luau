@@ -69,7 +69,7 @@ end
 
 export type Results = typeof(Results.Prototype) & {
     isFinalized: boolean,
-    answerCounts: { answerCount.AnswerCount },
+    answerCounts: { answerCount.AnswerCount }
 }
 
 return Results.Interface

@@ -51,7 +51,7 @@ function UnavailableGuild.Interface.new(state: state.State, id: apiTypes.Snowfla
                 @within Classes.UnavailableGuild
                 Indicates whether this guild is currently unavailable, typically due to an outage
             ]=]
-            isUnavailable = true,
+            isUnavailable = true
         } :: UnavailableGuild,
         { __index = UnavailableGuild.Prototype }
     )
@@ -63,7 +63,7 @@ export type UnavailableGuild = typeof(UnavailableGuild.Prototype) & {
     state: state.State,
 
     id: apiTypes.Snowflake,
-    isUnavailable: boolean,
+    isUnavailable: boolean
 }
 
 return UnavailableGuild.Interface

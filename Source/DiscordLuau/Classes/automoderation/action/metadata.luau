@@ -76,7 +76,7 @@ end
 export type ActionMetadata = typeof(ActionMetadata.Prototype) & {
     channelId: apiTypes.Snowflake,
     durationSeconds: number,
-    customMessage: string?,
+    customMessage: string?
 }
 
 return ActionMetadata.Interface

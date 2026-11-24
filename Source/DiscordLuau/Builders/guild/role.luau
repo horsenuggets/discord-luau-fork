@@ -108,7 +108,7 @@ function Role.Prototype.build(self: Role): JSON
         hoist = self.isHoisted,
         icon = self.icon,
         unicode_emoji = self.unicodeEmoji,
-        mentionable = self.isMentionable,
+        mentionable = self.isMentionable
     }
 end
 
@@ -127,7 +127,7 @@ end
 ]=]
 function Role.Interface.new(resource: {
     roleName: string?,
-    rolePermissions: { apiTypes.Permissions }?,
+    rolePermissions: { apiTypes.Permissions }?
 }?): Role
     local self = setmetatable(
         {
@@ -142,7 +142,7 @@ function Role.Interface.new(resource: {
                 @within Builders.Role
                 The permissions assigned to the role.
             ]=]
-            permissionFlags = {},
+            permissionFlags = {}
 
             --[=[
                 @prop color number?
@@ -198,7 +198,7 @@ export type Role = typeof(Role.Prototype) & {
     isHoisted: boolean?,
     icon: string?,
     unicodeEmoji: string?,
-    isMentionable: boolean?,
+    isMentionable: boolean?
 }
 
 export type JSON = typeof(Role.Prototype.build(nil :: any))

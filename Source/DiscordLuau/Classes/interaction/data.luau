@@ -159,7 +159,7 @@ end
 function Data.Interface.new(state: state.State, dataObject: apiTypes.InteractionDataObject): Data
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: Data,
         { __index = Data.Prototype }
     )
@@ -182,7 +182,7 @@ export type Data = typeof(Data.Prototype) & {
     targetId: apiTypes.Snowflake?,
     customId: string?,
     componentType: apiTypes.ComponentTypes?,
-    components: { button.Button | textInput.TextInput | selectMenu.SelectMenu | actionRow.ActionRow }?,
+    components: { button.Button | textInput.TextInput | selectMenu.SelectMenu | actionRow.ActionRow }?
 }
 
 return Data.Interface

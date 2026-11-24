@@ -31,7 +31,7 @@ function guildScheduledEvent.listScheduledEventsForGuildAsync(
     instance: request.Request,
     guildId: apiTypes.Snowflake,
     urlParams: {
-        withUserCount: boolean?,
+        withUserCount: boolean?
     }
 ): future.FutureLike<
     string,
@@ -96,7 +96,7 @@ function guildScheduledEvent.getScheduledEventsForGuildAsync(
     guildId: apiTypes.Snowflake,
     scheduledEventId: apiTypes.Snowflake,
     urlParams: {
-        withUserCount: boolean?,
+        withUserCount: boolean?
     }
 ): future.FutureLike<
     string,

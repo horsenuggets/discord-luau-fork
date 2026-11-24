@@ -126,7 +126,7 @@ export type TextInput = typeof(TextInput.Prototype) & {
     maxLength: number?,
     required: boolean?,
     value: string?,
-    placeholder: string?,
+    placeholder: string?
 }
 
 return TextInput.Interface

@@ -42,5 +42,5 @@ return {
         @prop rest State.Rest 
         @within State
     ]=]
-    rest = rest,
+    rest = rest
 }

@@ -84,7 +84,7 @@ local ReceiveEvents = table.freeze({
     VoiceServerUpdate = "VOICE_SERVER_UPDATE",
     WebhooksUpdate = "WEBHOOKS_UPDATE",
     MessagePollVoteAdd = "MESSAGE_POLL_VOTE_ADD",
-    MessagePollVoteRemove = "MESSAGE_POLL_VOTE_REMOVE",
+    MessagePollVoteRemove = "MESSAGE_POLL_VOTE_REMOVE"
 })
 
 export type ReceiveEvent =

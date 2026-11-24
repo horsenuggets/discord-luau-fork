@@ -193,7 +193,7 @@ function Interaction.Prototype.build(self: Interaction): JSON
         integration_types = integrationTypeArray,
         contexts = contexts,
         type = apiTypes.interaction.ApplicationCommandType[self.type] or nil,
-        nsfw = self.nsfw,
+        nsfw = self.nsfw
     }
 end
 
@@ -211,7 +211,7 @@ function Interaction.Interface.new(resource: {
     defaultMemberPermissions: string?,
     integrationTypes: { apiTypes.IntegrationTypesConfig }?,
     contexts: { apiTypes.InteractionContextType }?,
-    nsfw: boolean?,
+    nsfw: boolean?
 }?): Interaction
     --[=[
         @prop name string
@@ -264,7 +264,7 @@ function Interaction.Interface.new(resource: {
             descriptionLocalizations = {},
             options = {},
             integrationTypes = {},
-            contexts = {},
+            contexts = {}
         } :: Interaction,
         { __index = Interaction.Prototype }
     )
@@ -328,7 +328,7 @@ export type Interaction = typeof(Interaction.Prototype) & {
     integrationTypes: { apiTypes.IntegrationTypesConfig },
     contexts: { apiTypes.InteractionContextType },
     type: apiTypes.ApplicationCommandType,
-    nsfw: boolean?,
+    nsfw: boolean?
 }
 
 export type JSON = typeof(Interaction.Prototype.build(nil :: any))

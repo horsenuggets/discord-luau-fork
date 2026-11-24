@@ -267,7 +267,7 @@ function Shard.Prototype.heartbeatAsync(self: Shard, requested: boolean?)
 
         self:sendAsync(stdPolyfills.serde.encode("json", {
             ["op"] = apiTypes.gateway.opcodes.Heartbeat,
-            ["d"] = self.lastSequence or false,
+            ["d"] = self.lastSequence or false
         }, true)):await()
     end) :: future.FutureLike<string, nil>
 end
@@ -290,14 +290,14 @@ function Shard.Prototype.identifyAsync(self: Shard)
                 ["large_threshold"] = self.largeThreshold or 250,
                 ["shard"] = {
                     self.shardId,
-                    self.shardCount,
+                    self.shardCount
                 },
                 ["properties"] = {
                     ["os"] = stdPolyfills.process.getPlatform(),
                     ["browser"] = LIBRARY_IDENTIFIER,
-                    ["device"] = LIBRARY_IDENTIFIER,
-                },
-            },
+                    ["device"] = LIBRARY_IDENTIFIER
+                }
+            }
         }, true)):await()
     end) :: future.FutureLike<string, nil>
 end
@@ -458,8 +458,8 @@ function Shard.Prototype.resumeAsync(self: Shard)
                 ["d"] = {
                     ["token"] = self.token,
                     ["session_id"] = self.sessionId,
-                    ["seq"] = self.lastSequence,
-                },
+                    ["seq"] = self.lastSequence
+                }
             }, true))
                 :andThen(function(response)
                     return future.Future.new(function()
@@ -633,7 +633,7 @@ function Shard.Interface.new(settings: {
 
     logLevel: logger.LogLevel,
 
-    largeThreshold: number?,
+    largeThreshold: number?
 }): Shard
     local self = setmetatable(
         {
@@ -662,7 +662,7 @@ function Shard.Interface.new(settings: {
             socketActive = false,
             socketReconnecting = false,
             socketDisconnecting = false,
-            socketIdentified = false,
+            socketIdentified = false
         } :: Shard,
         { __index = Shard.Prototype }
     )
@@ -890,7 +890,7 @@ export type Shard = typeof(Shard.Prototype) & {
     socketVersion: number?,
     socketUrl: string?,
     socketInstance: any?,
-    socketThread: thread?,
+    socketThread: thread?
 }
 
 return Shard.Interface

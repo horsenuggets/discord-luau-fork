@@ -41,7 +41,7 @@ export type CreateAutoModerationRuleRequest = Request<{
     actions: { objects.AutomoderationActionObject }, -- the actions which will execute when the rule is triggered
     enabled: boolean?, -- whether the rule is enabled (False by default)
     exempt_roles: { objects.Snowflake }?, -- the role ids that should not be affected by the rule (Maximum of 20)
-    exempt_channels: { objects.Snowflake }?, -- the channel ids that should not be affected by the rule (Maximum of 50)
+    exempt_channels: { objects.Snowflake }? -- the channel ids that should not be affected by the rule (Maximum of 50)
 }>
 
 -- https://discord.com/developers/docs/resources/auto-moderation#modify-auto-moderation-rule
@@ -52,7 +52,7 @@ export type ModifyAutoModerationRuleRequest = Request<{
     actions: { objects.AutomoderationActionObject }, -- the actions which will execute when the rule is triggered
     enabled: boolean?, -- whether the rule is enabled (False by default)
     exempt_roles: { objects.Snowflake }?, -- the role ids that should not be affected by the rule (Maximum of 20)
-    exempt_channels: { objects.Snowflake }?, -- the channel ids that should not be affected by the rule (Maximum of 50)
+    exempt_channels: { objects.Snowflake }? -- the channel ids that should not be affected by the rule (Maximum of 50)
 }>
 
 -- https://discord.com/developers/docs/resources/application#edit-current-application
@@ -66,7 +66,7 @@ export type EditCurrentApplicationRequest = Request<{
     icon: string?, -- Icon for the app
     cover_image: string?, -- Default rich presence invite cover image for the app
     interactions_endpoint_url: string, -- Interactions endpoint URL for the app
-    tags: { string }, -- List of tags describing the content and functionality of the app (max of 20 characters per tag). Max of 5 tags.
+    tags: { string } -- List of tags describing the content and functionality of the app (max of 20 characters per tag). Max of 5 tags.
 }>
 
 -- https://discord.com/developers/docs/resources/channel#modify-channel
@@ -90,7 +90,7 @@ export type ModifyChannelRequest = Request<{
     default_reaction_emoji: objects.DefaultReactionObject?, -- the emoji to show in the add reaction button on a thread in a GUILD_FORUM or a GUILD_MEDIA channel
     default_thread_rate_limit_per_user: number?, -- the initial rate_limit_per_user to set on newly created threads in a channel. this field is copied to the thread at creation time and does not live update.
     default_sort_order: objects.SortOrderType?, -- the default sort order type used to order posts in GUILD_FORUM and GUILD_MEDIA channels
-    default_forum_layout: objects.ForumLayoutType?, -- the default forum layout type used to display posts in GUILD_FORUM channels
+    default_forum_layout: objects.ForumLayoutType? -- the default forum layout type used to display posts in GUILD_FORUM channels
 }>
 
 -- https://discord.com/developers/docs/resources/channel#create-message
@@ -108,7 +108,7 @@ export type CreateMessageRequest = Request<{
     attachments: { objects.AttachmentObject }?, -- Attachment objects with filename and description. See Uploading Files
     flags: number?, -- Message flags combined as a bitfield (only SUPPRESS_EMBEDS and SUPPRESS_NOTIFICATIONS can be set)
     enforce_nonce: boolean?, -- If true and nonce is present, it will be checked for uniqueness in the past few minutes. If another message was created by the same author with the same nonce, that message will be returned and no new message will be created.
-    poll: objects.PollObject?, -- The discord poll object
+    poll: objects.PollObject? -- The discord poll object
 }>
 
 -- https://discord.com/developers/docs/resources/channel#edit-message
@@ -120,7 +120,7 @@ export type EditMessageRequest = Request<{
     -- files: { },
     -- payload_json: string,
     attachments: { objects.AttachmentObject }?, -- Attachment objects with filename and description. See Uploading Files
-    flags: number?, -- Message flags combined as a bitfield (only SUPPRESS_EMBEDS and SUPPRESS_NOTIFICATIONS can be set)
+    flags: number? -- Message flags combined as a bitfield (only SUPPRESS_EMBEDS and SUPPRESS_NOTIFICATIONS can be set)
 }>
 
 -- https://discord.com/developers/docs/resources/channel#create-channel-invite
@@ -131,30 +131,30 @@ export type CreateChannelInviteRequest = Request<{
     unique: boolean?, -- if true, don't try to reuse a similar invite (useful for creating many unique one time use invites)
     target_type: objects.InviteTargetTypes?, -- the type of target for this voice channel invite
     target_user_id: objects.Snowflake?, -- the id of the user whose stream to display for this invite, required if target_type is 1, the user must be streaming in the channel
-    target_application_id: objects.Snowflake?, -- the id of the embedded application to open for this invite, required if target_type is 2, the application must have the EMBEDDED flag
+    target_application_id: objects.Snowflake? -- the id of the embedded application to open for this invite, required if target_type is 2, the application must have the EMBEDDED flag
 }>
 
 -- https://discord.com/developers/docs/resources/channel#bulk-delete-messages
 export type BulkDeleteMessagesRequest = Request<{
-    messages: { objects.Snowflake },
+    messages: { objects.Snowflake }
 }>
 
 -- https://discord.com/developers/docs/resources/channel#follow-announcement-channel
 export type FollowAnnouncementChannelRequest = Request<{
-    webhook_channel_id: objects.Snowflake, -- id of target channel
+    webhook_channel_id: objects.Snowflake -- id of target channel
 }>
 
 -- https://discord.com/developers/docs/resources/channel#group-dm-add-recipient
 export type GroupDMAddRecipientRequest = Request<{
     access_token: string, -- access token of a user that has granted your app the gdm.join scope
-    nick: string, -- nickname of the user being added
+    nick: string -- nickname of the user being added
 }>
 
 -- https://discord.com/developers/docs/resources/channel#start-thread-from-message
 export type StartThreadFromMessageRequest = Request<{
     name: string, -- 1-100 character channel name
     auto_archive_duration: number?, -- the thread will stop showing in the channel list after auto_archive_duration minutes of inactivity, can be set to: 60, 1440, 4320, 10080
-    rate_limit_per_user: number?, -- amount of seconds a user has to wait before sending another message (0-21600)
+    rate_limit_per_user: number? -- amount of seconds a user has to wait before sending another message (0-21600)
 }>
 
 -- https://discord.com/developers/docs/resources/channel#start-thread-without-message
@@ -163,7 +163,7 @@ export type StartThreadWithoutMessageRequest = Request<{
     auto_archive_duration: number?, -- the thread will stop showing in the channel list after auto_archive_duration minutes of inactivity, can be set to: 60, 1440, 4320, 10080
     type: objects.ChannelType?, -- the type of thread to create
     invitable: boolean?, -- whether non-moderators can add other non-moderators to a thread; only available when creating a private thread
-    rate_limit_per_user: number?, -- amount of seconds a user has to wait before sending another message (0-21600)
+    rate_limit_per_user: number? -- amount of seconds a user has to wait before sending another message (0-21600)
 }>
 
 -- https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel
@@ -174,20 +174,20 @@ export type StartThreadInForumOrMediaChannelRequest = Request<{
     --files: { },
     -- payload_json: string,
     applied_tags: { objects.Snowflake }?, -- the IDs of the set of tags that have been applied to a thread in a GUILD_FORUM or a GUILD_MEDIA channel
-    message: objects.ForumAndMediaThreadMessageObject?, -- contents of the first message in the forum/media thread
+    message: objects.ForumAndMediaThreadMessageObject? -- contents of the first message in the forum/media thread
 }>
 
 -- https://discord.com/developers/docs/resources/emoji#create-guild-emoji
 export type CreateGuildEmojiRequest = Request<{
     name: string, -- name of the emoji
     image: string, -- the 128x128 emoji image
-    roles: { objects.Snowflake }, -- roles allowed to use this emoji
+    roles: { objects.Snowflake } -- roles allowed to use this emoji
 }>
 
 -- https://discord.com/developers/docs/resources/emoji#modify-guild-emoji
 export type ModifyGuildEmojiRequest = Request<{
     name: string, -- name of the emoji
-    roles: { objects.Snowflake }, -- roles allowed to use this emoji
+    roles: { objects.Snowflake } -- roles allowed to use this emoji
 }>
 
 -- https://discord.com/developers/docs/resources/guild#create-guild
@@ -203,7 +203,7 @@ export type CreateGuildRequest = Request<{
     afk_channel_id: objects.Snowflake?, -- id for afk channel
     afk_timeout: number?, -- afk timeout in seconds, can be set to: 60, 300, 900, 1800, 3600
     system_channel_id: objects.Snowflake?, -- the id of the channel where guild notices such as welcome messages and boost events are posted
-    system_channel_flags: objects.SystemChannelFlags?, -- system channel flags
+    system_channel_flags: objects.SystemChannelFlags? -- system channel flags
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-guild
@@ -228,7 +228,7 @@ export type ModifyGuildRequest = Request<
         features: { objects.GuildFeature }?, -- enabled guild features
         description: string?, -- the description for the guild
         premium_progress_bar_enabled: boolean?, -- whether the guild's boost progress bar should be enabled
-        safety_alerts_channel_id: objects.Snowflake?, -- the id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
+        safety_alerts_channel_id: objects.Snowflake? -- the id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
     }>
 >
 
@@ -252,7 +252,7 @@ export type CreateGuildChannelRequest = Request<
         available_tags: { objects.ForumTagObject }?, -- set of tags that can be used in a GUILD_FORUM or a GUILD_MEDIA channel
         default_sort_order: objects.SortOrderType?, -- the default sort order type used to order posts in GUILD_FORUM and GUILD_MEDIA channels
         default_forum_layout: objects.ForumLayoutType?, -- the default forum layout view used to display posts in GUILD_FORUM channels
-        default_thread_rate_limit_per_user: number?, -- the initial rate_limit_per_user to set on newly created threads in a channel. this field is copied to the thread at creation time and does not live update.
+        default_thread_rate_limit_per_user: number? -- the initial rate_limit_per_user to set on newly created threads in a channel. this field is copied to the thread at creation time and does not live update.
     }>
 >
 
@@ -263,7 +263,7 @@ export type ModifyGuildChannelPositionsRequest = Request<
             id: objects.Snowflake, -- channel id
             position: number?, -- sorting position of the channel (channels with the same position are sorted by id)
             lock_permissions: boolean?, -- syncs the permission overwrites with the new parent, if moving to a new category
-            parent_id: objects.Snowflake?, -- the new parent ID for the channel that is moved
+            parent_id: objects.Snowflake? -- the new parent ID for the channel that is moved
         }
     }
 >
@@ -274,7 +274,7 @@ export type AddGuildMemberRequest = Request<{
     nick: string?, -- value to set user's nickname to
     roles: { objects.Snowflake }?, -- array of role ids the member is assigned
     mute: boolean?, -- whether the user is muted in voice channels
-    deaf: boolean?, -- whether the user is deafened in voice channels
+    deaf: boolean? -- whether the user is deafened in voice channels
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-guild-member
@@ -285,24 +285,24 @@ export type ModifyGuildMemberRequest = Request<{
     deaf: boolean?, -- whether the user is deafened in voice channels. Will throw a 400 error if the user is not in a voice channel
     channel_id: (objects.Snowflake | boolean)?, -- id of channel to move user to (if they are connected to voice)
     communication_disabled_until: string?, -- when the user's timeout will expire and the user will be able to communicate in the guild again (up to 28 days in the future), set to null to remove timeout. Will throw a 403 error if the user has the ADMINISTRATOR permission or is the owner of the guild
-    flags: objects.GuildMemberFlags?, -- guild member flags
+    flags: objects.GuildMemberFlags? -- guild member flags
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-current-member
 export type ModifyCurrentMemberRequest = Request<{
-    nick: string, -- value to set user's nickname to
+    nick: string -- value to set user's nickname to
 }>
 
 -- https://discord.com/developers/docs/resources/guild#create-guild-ban
 export type CreateGuildBanRequest = Request<{
     delete_message_days: number?, -- number of days to delete messages for (0-7) (deprecated)
-    delete_message_seconds: number?, -- number of seconds to delete messages for, between 0 and 604800 (7 days)
+    delete_message_seconds: number? -- number of seconds to delete messages for, between 0 and 604800 (7 days)
 }>
 
 -- https://discord.com/developers/docs/resources/guild#bulk-guild-ban
 export type BulkGuildBanRequest = Request<{
     user_ids: { objects.Snowflake }, -- list of user ids to ban (max 200)
-    delete_message_seconds: number?, -- number of seconds to delete messages for, between 0 and 604800 (7 days)
+    delete_message_seconds: number? -- number of seconds to delete messages for, between 0 and 604800 (7 days)
 }>
 
 -- https://discord.com/developers/docs/resources/guild#create-guild-role
@@ -313,13 +313,13 @@ export type CreateGuildRoleRequest = Request<{
     hoist: boolean?, -- whether the role should be displayed separately in the sidebar
     icon: string?, -- the role's icon image (if the guild has the ROLE_ICONS feature)
     unicode_emoji: string?, -- the role's unicode emoji as a standard emoji (if the guild has the ROLE_ICONS feature)
-    mentionable: boolean?, -- whether the role should be mentionable
+    mentionable: boolean? -- whether the role should be mentionable
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-guild-role-positions
 export type ModifyGuildRolePositionsRequest = Request<{
     id: objects.Snowflake, -- the target role id
-    position: number, -- sorting position of the role (roles with the same position are sorted by id)
+    position: number -- sorting position of the role (roles with the same position are sorted by id)
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-guild-role
@@ -330,12 +330,12 @@ export type ModifyGuildRoleRequest = Request<{
     hoist: boolean?, -- whether the role should be displayed separately in the sidebar
     icon: string?, -- the role's icon image (if the guild has the ROLE_ICONS feature)
     unicode_emoji: string?, -- the role's unicode emoji as a standard emoji (if the guild has the ROLE_ICONS feature)
-    mentionable: boolean?, -- whether the role should be mentionable
+    mentionable: boolean? -- whether the role should be mentionable
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-guild-mfa-level
 export type ModifyGuildMFALevelRequest = Request<{
-    level: objects.MFALevel, -- The updated MFA level
+    level: objects.MFALevel -- The updated MFA level
 }>
 
 -- https://discord.com/developers/docs/resources/guild#begin-guild-prune
@@ -343,14 +343,14 @@ export type BeginGuildPruneRequest = Request<{
     days: number, -- number of days to prune (1-30)
     compute_prune_count: boolean, -- whether pruned is returned, discouraged for large guilds
     include_ruoles: { objects.Snowflake }, -- role(s) to include
-    reason: string?, -- reason for the prune (deprecated)
+    reason: string? -- reason for the prune (deprecated)
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-guild-welcome-screen
 export type ModifyGuildWelcomeScreenRequest = Request<{
     enabled: boolean?, -- whether the welcome screen is enabled
     welcome_channels: { objects.WelcomeScreenChannelObject }, -- channels linked in the welcome screen and their display options
-    description: string?, -- the server description to show in the welcome screen
+    description: string? -- the server description to show in the welcome screen
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-guild-onboarding
@@ -358,20 +358,20 @@ export type ModifyGuildOnboardingRequest = Request<{
     prompts: { objects.OnboardingPromptObject }?, -- Prompts shown during onboarding and in customize community
     default_channel_ids: { objects.Snowflake }?, -- Channel IDs that members get opted into automatically
     enabled: boolean?, -- Whether onboarding is enabled in the guild
-    mode: objects.OnboardingMode?, -- Current mode of onboarding
+    mode: objects.OnboardingMode? -- Current mode of onboarding
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-current-user-voice-state
 export type ModifyCurrentUserVoiceStateRequest = Request<{
     channel_id: objects.Snowflake?, -- the id of the channel the user is currently in
     suppress: boolean?, -- toggles the user's suppress state
-    request_to_speak_timestamp: string?, -- sets the user's request to speak
+    request_to_speak_timestamp: string? -- sets the user's request to speak
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-user-voice-state
 export type ModifyUserVoiceStateRequest = Request<{
     channel_id: objects.Snowflake?, -- the id of the channel the user is currently in
-    suppress: boolean?, -- toggles the user's suppress state
+    suppress: boolean? -- toggles the user's suppress state
 }>
 
 -- https://discord.com/developers/docs/resources/guild-scheduled-event#create-guild-scheduled-event
@@ -384,7 +384,7 @@ export type CreateGuildScheduledEventRequest = Request<{
     scheduled_end_time: string?, -- the time when the scheduled event is scheduled to end
     description: string?, -- the description of the scheduled event
     entity_type: objects.GuildScheduledEventEntityType, -- the entity type of the scheduled event
-    image: string?, -- the cover image of the scheduled event
+    image: string? -- the cover image of the scheduled event
 }>
 
 -- https://discord.com/developers/docs/resources/guild-scheduled-event#modify-guild-scheduled-event
@@ -398,25 +398,25 @@ export type ModifyGuildScheduledEventRequest = Request<{
     description: string?, -- the description of the scheduled event
     entity_type: objects.GuildScheduledEventEntityType, -- the entity type of the scheduled event
     status: objects.GuildScheduledEventStatus?, -- the status of the scheduled event
-    image: string?, -- the cover image of the scheduled event
+    image: string? -- the cover image of the scheduled event
 }>
 
 -- https://discord.com/developers/docs/resources/guild-template#create-guild-from-guild-template
 export type CreateGuildFromGuildTemplateRequest = Request<{
     name: string, -- name of the guild (2-100 characters)
-    icon: string?, -- base64 128x128 image for the guild icon
+    icon: string? -- base64 128x128 image for the guild icon
 }>
 
 -- https://discord.com/developers/docs/resources/guild-template#create-guild-template
 export type CreateGuildTemplateRequest = Request<{
     name: string, -- name of the template (1-100 characters)
-    description: string?, -- description for the template (0-120 characters)
+    description: string? -- description for the template (0-120 characters)
 }>
 
 -- https://discord.com/developers/docs/resources/guild-template#modify-guild-template
 export type ModifyGuildTemplateRequest = Request<{
     name: string?, -- name of the template (1-100 characters)
-    description: string?, -- description for the template (0-120 characters)
+    description: string? -- description for the template (0-120 characters)
 }>
 
 -- https://discord.com/developers/docs/resources/stage-instance#create-stage-instance
@@ -425,13 +425,13 @@ export type CreateStageInstanceRequest = Request<{
     topic: string, -- The topic of the Stage instance (1-120 characters)
     privacy_level: objects.PrivacyLevel?, -- The privacy level of the Stage instance (default GUILD_ONLY)
     send_start_notification: boolean?, -- Notify @everyone that a Stage instance has started
-    guild_scheduled_event_id: objects.Snowflake?, -- The guild scheduled event associated with this Stage instance
+    guild_scheduled_event_id: objects.Snowflake? -- The guild scheduled event associated with this Stage instance
 }>
 
 -- https://discord.com/developers/docs/resources/stage-instance#modify-stage-instance
 export type ModifyStageInstanceRequest = Request<{
     topic: string, -- The topic of the Stage instance (1-120 characters)
-    privacy_level: objects.PrivacyLevel, -- The privacy level of the Stage instance
+    privacy_level: objects.PrivacyLevel -- The privacy level of the Stage instance
 }>
 
 -- https://discord.com/developers/docs/resources/sticker#create-guild-sticker
@@ -439,52 +439,52 @@ export type CreateGuildStickerRequest = Request<{
     name: string, -- name of the sticker (2-30 characters)
     description: string, -- description of the sticker (empty or 2-100 characters)
     tags: { string }, -- autocomplete/suggestion tags for the sticker (max 200 characters)
-    file: string, -- the sticker file to upload, must be a PNG, APNG, GIF, or Lottie JSON file, max 512 KiB
+    file: string -- the sticker file to upload, must be a PNG, APNG, GIF, or Lottie JSON file, max 512 KiB
 }>
 
 -- https://discord.com/developers/docs/resources/sticker#modify-guild-sticker
 export type ModifyGuildStickerRequest = Request<{
     name: string, -- name of the sticker (2-30 characters)
     description: string?, -- description of the sticker (2-100 characters)
-    tags: string, -- autocomplete/suggestion tags for the sticker (max 200 characters)
+    tags: string -- autocomplete/suggestion tags for the sticker (max 200 characters)
 }>
 
 -- https://discord.com/developers/docs/resources/user#modify-current-user
 export type ModifyCurrentUserRequest = Request<{
     username: string, -- user's username, if changed may cause the user's discriminator to be randomized.
     avatar: string?, -- if passed, modifies the user's avatar
-    banner: string?, -- if passed, modifies the user's banner
+    banner: string? -- if passed, modifies the user's banner
 }>
 
 -- https://discord.com/developers/docs/resources/user#create-dm
 export type CreateDMRequest = Request<{
-    recipient_id: objects.Snowflake, -- the recipient to open a DM channel with
+    recipient_id: objects.Snowflake -- the recipient to open a DM channel with
 }>
 
 -- https://discord.com/developers/docs/resources/user#create-group-dm
 export type CreateGroupDMRequest = Request<{
     access_tokens: { string }, -- access tokens of users that have granted your app the gdm.join scope
-    nicks: { [objects.Snowflake]: string }, -- a dictionary of user ids to their respective nicknames
+    nicks: { [objects.Snowflake]: string } -- a dictionary of user ids to their respective nicknames
 }>
 
 -- https://discord.com/developers/docs/resources/user#update-current-user-application-role-connection
 export type UpdateCurrentUserApplicationRoleConnectionRequest = Request<{
     platform_name: string?, -- the vanity name of the platform a bot has connected (max 50 characters)
     platform_username: string?, -- the username on the platform a bot has connected (max 100 characters)
-    metadata: objects.ApplicationRoleConnectionMetadataObject?, -- object mapping application role connection metadata keys to their string-ified value (max 100 characters) for the user on the platform a bot has connected
+    metadata: objects.ApplicationRoleConnectionMetadataObject? -- object mapping application role connection metadata keys to their string-ified value (max 100 characters) for the user on the platform a bot has connected
 }>
 
 -- https://discord.com/developers/docs/resources/webhook#create-webhook
 export type CreateWebhookRequest = Request<{
     name: string, -- name of the webhook (1-80 characters)
-    avatar: string?, -- image for the default webhook avatar
+    avatar: string? -- image for the default webhook avatar
 }>
 
 -- https://discord.com/developers/docs/resources/webhook#modify-webhook
 export type ModifyWebhookRequest = Request<{
     name: string,
     avatar: string,
-    channel_id: objects.Snowflake,
+    channel_id: objects.Snowflake
 }>
 
 -- https://discord.com/developers/docs/resources/webhook#execute-webhook
@@ -502,7 +502,7 @@ export type ExecuteWebhookRequest = Request<{
     flags: number, -- message flags combined as a bitfield (only SUPPRESS_EMBEDS and SUPPRESS_NOTIFICATIONS can be set can be set)
     thread_name: string, -- name of thread to create (requires the webhook channel to be a forum or media channel)
     applied_tags: { objects.Snowflake }, -- array of tag ids to apply to the thread (requires the webhook channel to be a forum or media channel)
-    poll: objects.PollObject, -- discord poll
+    poll: objects.PollObject -- discord poll
 }>
 
 -- https://discord.com/developers/docs/resources/webhook#execute-slackcompatible-webhook
@@ -524,14 +524,14 @@ export type EditWebhookMessageRequest = Request<{
     components: { objects.ComponentObjects }, -- the components to include with the message
     -- files: { },
     -- payload_json: string,
-    attachments: objects.AttachmentObject, -- attached files to keep and possible descriptions for new files
+    attachments: objects.AttachmentObject -- attached files to keep and possible descriptions for new files
 }>
 
 -- https://discord.com/developers/docs/resources/channel#edit-channel-permissions
 export type EditChannelPermissionsRequest = Request<{
     allow: string?, -- the bitwise value of all allowed permissions (default "0")
     deny: string?, -- the bitwise value of all disallowed permissions (default "0")
-    type: number, -- 0 for a role or 1 for a member
+    type: number -- 0 for a role or 1 for a member
 }>
 
 -- https://discord.com/developers/docs/resources/guild#modify-guild-widget
@@ -550,7 +550,7 @@ export type CreateGlobalApplicationCommandRequest = Request<{
     integration_types: { objects.IntegrationType }?, -- Installation context(s) where the command is available
     contexts: { objects.InteractionContextType }?, -- Interaction context(s) where the command can be used
     type: objects.ApplicationCommandType?, -- Type of command, defaults 1 if not set
-    nsfw: boolean?, -- Indicates whether the command is age-restricted
+    nsfw: boolean? -- Indicates whether the command is age-restricted
 }>
 
 -- https://discord.com/developers/docs/interactions/application-commands#edit-global-application-command
@@ -565,7 +565,7 @@ export type EditGlobalApplicationCommandRequest = Request<{
     default_permission: boolean, -- Replaced by default_member_permissions and will be deprecated in the future. Indicates whether the command is enabled by default when the app is added to a guild. Defaults to true
     integration_types: { objects.IntegrationType }?, -- Installation context(s) where the command is available
     contexts: { objects.InteractionContextType }?, -- Interaction context(s) where the command can be used
-    nsfw: boolean?, -- Indicates whether the command is age-restricted
+    nsfw: boolean? -- Indicates whether the command is age-restricted
 }>
 
 -- https://discord.com/developers/docs/interactions/application-commands#create-guild-application-command
@@ -581,7 +581,7 @@ export type CreateGuildApplicationCommandRequest = Request<{
     integration_types: { objects.IntegrationType }?, -- Installation context(s) where the command is available
     contexts: { objects.InteractionContextType }?, -- Interaction context(s) where the command can be used
     type: objects.ApplicationCommandType?, -- Type of command, defaults 1 if not set
-    nsfw: boolean?, -- Indicates whether the command is age-restricted
+    nsfw: boolean? -- Indicates whether the command is age-restricted
 }>
 
 -- https://discord.com/developers/docs/interactions/application-commands#edit-guild-application-command
@@ -596,7 +596,7 @@ export type EditGuildApplicationCommandRequest = Request<{
     default_permission: boolean, -- Replaced by default_member_permissions and will be deprecated in the future. Indicates whether the command is enabled by default when the app is added to a guild. Defaults to true
     integration_types: { objects.IntegrationType }?, -- Installation context(s) where the command is available
     contexts: { objects.InteractionContextType }?, -- Interaction context(s) where the command can be used
-    nsfw: boolean?, -- Indicates whether the command is age-restricted
+    nsfw: boolean? -- Indicates whether the command is age-restricted
 }>
 
 -- https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
@@ -618,14 +618,14 @@ export type BulkOverwriteGuildApplicationCommandsRequest = Request<
             integration_types: { objects.IntegrationType }?, -- Installation context(s) where the command is available
             contexts: { objects.InteractionContextType }?, -- Interaction context(s) where the command can be used
             type: objects.ApplicationCommandType?, -- Type of command, defaults 1 if not set
-            nsfw: boolean?, -- Indicates whether the command is age-restricted
+            nsfw: boolean? -- Indicates whether the command is age-restricted
         }
     }
 >
 
 -- https://discord.com/developers/docs/interactions/application-commands#edit-application-command-permissions
 export type EditApplicationCommandPermissionsRequest = Request<{
-    permissions: { objects.GuildApplicationCommandPermissionObject },
+    permissions: { objects.GuildApplicationCommandPermissionObject }
 }>
 
 -- [[ Responses ]] --
@@ -829,21 +829,21 @@ export type ListThreadMembersResponse = Response<{ objects.ThreadMemberObject }>
 export type ListPublicArchivedThreadsResponse = Response<{
     threads: { objects.ChannelObject }, -- the public, archived threads
     members: { objects.ThreadMemberObject }, -- a thread member object for each returned thread the current user has joined
-    has_more: boolean, -- whether there are potentially additional threads that could be returned on a subsequent call
+    has_more: boolean -- whether there are potentially additional threads that could be returned on a subsequent call
 }>
 
 -- https://discord.com/developers/docs/resources/channel#list-private-archived-threads
 export type ListPrivateArchivedThreadsResponse = Response<{
     threads: { objects.ChannelObject }, -- the public, archived threads
     members: { objects.ThreadMemberObject }, -- a thread member object for each returned thread the current user has joined
-    has_more: boolean, -- whether there are potentially additional threads that could be returned on a subsequent call
+    has_more: boolean -- whether there are potentially additional threads that could be returned on a subsequent call
 }>
 
 -- https://discord.com/developers/docs/resources/channel#list-joined-private-archived-threads
 export type ListJoinedPrivateArchivedThreadsResponse = Response<{
     threads: { objects.ChannelObject }, -- the public, archived threads
     members: { objects.ThreadMemberObject }, -- a thread member object for each returned thread the current user has joined
-    has_more: boolean, -- whether there are potentially additional threads that could be returned on a subsequent call
+    has_more: boolean -- whether there are potentially additional threads that could be returned on a subsequent call
 }>
 
 -- https://discord.com/developers/docs/resources/emoji#list-guild-emojis
@@ -888,7 +888,7 @@ export type ModifyGuildChannelPositionsResponse = Response<nil>
 -- https://discord.com/developers/docs/resources/guild#list-active-guild-threads
 export type ListActiveGuildThreadsResponse = Response<{
     threads: { objects.ChannelObject }, -- the active threads
-    members: { objects.ThreadMemberObject }, -- a thread member object for each returned thread the current user has joined
+    members: { objects.ThreadMemberObject } -- a thread member object for each returned thread the current user has joined
 }>
 
 -- https://discord.com/developers/docs/resources/guild#get-guild-member
@@ -933,7 +933,7 @@ export type RemoveGuildBanResponse = Response<nil>
 -- https://discord.com/developers/docs/resources/guild#bulk-guild-ban
 export type BulkGuildBanResponse = Response<{
     banned_users: { objects.Snowflake },
-    failed_users: { objects.Snowflake },
+    failed_users: { objects.Snowflake }
 }>
 
 -- https://discord.com/developers/docs/resources/guild#get-guild-roles
@@ -1077,7 +1077,7 @@ export type GetStickerResponse = Response<objects.StickerObject>
 
 -- https://discord.com/developers/docs/resources/sticker#list-sticker-packs
 export type ListStickerPacksResponse = Response<{
-    sticker_packs: { objects.StickerPackObject }, -- array of sticker pack objects
+    sticker_packs: { objects.StickerPackObject } -- array of sticker pack objects
 }>
 
 -- https://discord.com/developers/docs/resources/sticker#list-guild-stickers
@@ -1178,21 +1178,21 @@ export type DeleteWebhookMessageResponse = Response<nil>
 
 -- https://discord.com/developers/docs/topics/gateway#get-gateway
 export type GetGatewayResponse = Response<{
-    url: string, -- WSS URL that can be used for connecting to the Gateway
+    url: string -- WSS URL that can be used for connecting to the Gateway
 }>
 
 -- https://discord.com/developers/docs/topics/gateway#get-gateway-bot
 export type GetGatewayBotResponse = Response<{
     url: string, -- WSS URL that can be used for connecting to the Gateway
     shards: number, -- Recommended number of shards to use when connecting
-    session_start_limit: objects.SessionStartLimitObject, -- Information on the current session start limit
+    session_start_limit: objects.SessionStartLimitObject -- Information on the current session start limit
 }>
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response
 export type CreateInteractionResponse = Response<{
     resource: {
-        message: objects.MessageObject?,
-    },
+        message: objects.MessageObject?
+    }
 }>
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#get-original-interaction-response

@@ -134,17 +134,17 @@ function Stream.Interface.new(textSource: string): Stream
     return setmetatable(
         {
             textSource = textSource,
-            cursorPosition = 0,
+            cursorPosition = 0
         } :: Stream,
         {
-            __index = Stream.Prototype,
+            __index = Stream.Prototype
         }
     )
 end
 
 export type Stream = typeof(Stream.Prototype) & {
     textSource: string,
-    cursorPosition: number,
+    cursorPosition: number
 }
 
 return Stream.Interface

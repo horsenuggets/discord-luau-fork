@@ -173,7 +173,7 @@ export type Attachment = typeof(Attachment.Prototype) & {
     ephemeral: boolean?,
     durationSeconds: number?,
     waveform: string?,
-    flags: attachmentBitflag.AttachmentBitflag?,
+    flags: attachmentBitflag.AttachmentBitflag?
 }
 
 return Attachment.Interface

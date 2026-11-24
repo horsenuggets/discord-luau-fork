@@ -146,7 +146,7 @@ end
 function Message.Prototype.addAttachment(self: Message, data: string, name: string?): Message
     table.insert(self.attachments, {
         content = data,
-        filename = name,
+        filename = name
     })
 
     return self
@@ -203,7 +203,7 @@ function Message.Prototype.build(self: Message): JSON
         attachments = #self.attachments > 0 and self.attachments or nil,
         flags = self.flags,
         enforce_nonce = self.enforceNonce,
-        poll = self.poll,
+        poll = self.poll
     }
 end
 
@@ -224,7 +224,7 @@ function Message.Interface.new(resource: {
     attachments: { Attachment }?,
     flags: number?,
     enforceNonce: boolean?,
-    poll: poll.JSON?,
+    poll: poll.JSON?
 }?): Message
     local self = setmetatable(
         {
@@ -266,7 +266,7 @@ function Message.Interface.new(resource: {
                 @within Builders.Message
                 Attachment objects with filename and description.
             ]=]
-            attachments = {},
+            attachments = {}
 
             --[=[
                 @prop flags number?
@@ -287,7 +287,7 @@ function Message.Interface.new(resource: {
             ]=]
         } :: Message,
         {
-            __index = Message.Prototype,
+            __index = Message.Prototype
         }
     )
 
@@ -354,7 +354,7 @@ end
 
 export type Attachment = {
     content: string,
-    filename: string?,
+    filename: string?
 }
 
 export type Message = typeof(Message.Prototype) & {
@@ -369,7 +369,7 @@ export type Message = typeof(Message.Prototype) & {
     attachments: { Attachment },
     flags: number?,
     enforceNonce: boolean?,
-    poll: poll.JSON?,
+    poll: poll.JSON?
 }
 
 export type JSON = typeof(Message.Prototype.build(nil :: any))

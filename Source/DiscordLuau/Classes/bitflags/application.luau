@@ -140,7 +140,7 @@ end
 function ApplicationBitflag.Interface.new(flag: number): ApplicationBitflag
     local self = setmetatable(
         {
-            flag = flag,
+            flag = flag
         } :: ApplicationBitflag,
         { __index = ApplicationBitflag.Prototype }
     )
@@ -149,7 +149,7 @@ function ApplicationBitflag.Interface.new(flag: number): ApplicationBitflag
 end
 
 export type ApplicationBitflag = typeof(ApplicationBitflag.Prototype) & {
-    flag: number,
+    flag: number
 }
 
 return ApplicationBitflag.Interface

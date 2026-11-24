@@ -52,7 +52,7 @@ end
 function WidgetSettings.Prototype.build(self: WidgetSettings): JSON
     return {
         enabled = self.enabled,
-        channel_id = self.channelId,
+        channel_id = self.channelId
     }
 end
 
@@ -70,7 +70,7 @@ end
 ]=]
 function WidgetSettings.Interface.new(resource: {
     enabled: boolean?,
-    channelId: string?,
+    channelId: string?
 }?): WidgetSettings
     local self = setmetatable(
         {
@@ -86,10 +86,10 @@ function WidgetSettings.Interface.new(resource: {
                 @within Builders.WidgetSettings
                 The channel id that the widget will generate an invite to.
             ]=]
-            channelId = nil,
+            channelId = nil
         } :: WidgetSettings,
         {
-            __index = WidgetSettings.Prototype,
+            __index = WidgetSettings.Prototype
         }
     )
 
@@ -108,7 +108,7 @@ end
 
 export type WidgetSettings = typeof(WidgetSettings.Prototype) & {
     enabled: boolean?,
-    channelId: apiTypes.Snowflake?,
+    channelId: apiTypes.Snowflake?
 }
 
 export type JSON = typeof(WidgetSettings.Prototype.build(nil :: any))

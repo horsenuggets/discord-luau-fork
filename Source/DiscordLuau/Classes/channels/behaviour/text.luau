@@ -50,7 +50,7 @@ function TextBehaviour.Prototype.bulkDeleteMessagesAsync<T>(self: Channel<T>, me
 
         local response = rest.message
             .bulkDeleteMessagesAsync(request, self.id, {
-                messages = messageIds,
+                messages = messageIds
             }, reason)
             :await()
 
@@ -79,7 +79,7 @@ function TextBehaviour.Prototype.getMessagesAsync<T>(
                 around = around,
                 before = before,
                 after = after,
-                limit = limit,
+                limit = limit
             })
             :await()
 
@@ -248,14 +248,14 @@ type Channel<T> = T & TextBehaviour & {
     id: string,
     guildId: string,
 
-    sync: (...any) -> (),
+    sync: (...any) -> ()
 }
 
 export type TextBehaviourMethods = typeof(TextBehaviour.Prototype)
 export type TextBehaviourProperties = {
     lastMessageId: string?,
     lastPinTimestamp: stdPolyfills.DateTime?,
-    rateLimitPerUser: number,
+    rateLimitPerUser: number
 }
 
 export type TextBehaviour = TextBehaviourMethods & TextBehaviourProperties

@@ -60,7 +60,7 @@ function ActivityEmoji.Interface.new(id: apiTypes.Snowflake, emojiData: apiTypes
                 @prop id string
                 @within Classes.ActivityEmoji
             ]=]
-            id = id,
+            id = id
         } :: ActivityEmoji,
         { __index = ActivityEmoji.Prototype }
     )
@@ -75,7 +75,7 @@ end
 export type ActivityEmoji = typeof(ActivityEmoji.Prototype) & {
     id: apiTypes.Snowflake,
     name: string,
-    animated: boolean?,
+    animated: boolean?
 }
 
 return ActivityEmoji.Interface

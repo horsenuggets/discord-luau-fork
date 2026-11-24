@@ -19,7 +19,7 @@ export type Payload<DATA> = {
     op: number,
     d: DATA,
     s: number?,
-    t: string?,
+    t: string?
 }
 
 -- [[ Send Events - https://discord.com/developers/docs/topics/gateway-events#send-events ]] --
@@ -32,14 +32,14 @@ export type IdentifyPayload = Payload<{
     large_threshold: number?, -- Value between 50 and 250, total number of members where the gateway will stop sending offline members in the guild member list
     shard: { number }?, -- Used for Guild Sharding
     presence: objects.ActivityObject?, -- Presence structure for initial presence information
-    intents: number, -- Gateway Intents you wish to receive
+    intents: number -- Gateway Intents you wish to receive
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#resume
 export type ResumePayload = Payload<{
     token: string, -- Session token
     session_id: string, -- Session ID
-    seq: number, -- Last sequence number received
+    seq: number -- Last sequence number received
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#heartbeat
@@ -52,7 +52,7 @@ export type RequestGuildMembersPayload = Payload<{
     limit: number, -- maximum number of members to send matching the query; a limit of 0 can be used with an empty string query to return all members
     presences: boolean?, -- used to specify if we want the presences of the matched members
     user_ids: { objects.Snowflake }?, -- used to specify which users you wish to fetch
-    nonce: string?, -- nonce to identify the Guild Members Chunk response
+    nonce: string? -- nonce to identify the Guild Members Chunk response
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#update-voice-state
@@ -60,7 +60,7 @@ export type UpdateVoiceStatePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
     channel_id: string?, -- ID of the voice channel client wants to join (null if disconnecting)
     self_mute: boolean, -- Whether the client is muted
-    self_deaf: boolean, -- Whether the client deafened
+    self_deaf: boolean -- Whether the client deafened
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#update-presence
@@ -70,7 +70,7 @@ export type UpdatePresencePayload = Payload<objects.PresenceObject>
 
 -- https://discord.com/developers/docs/topics/gateway-events#hello
 export type HelloPayload = Payload<{
-    heartbeat_interval: number, -- Interval (in milliseconds) an app should heartbeat with
+    heartbeat_interval: number -- Interval (in milliseconds) an app should heartbeat with
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#ready
@@ -81,7 +81,7 @@ export type ReadyPayload = Payload<{
     session_id: string,
     resume_gateway_url: string,
     shard: { number }?,
-    application: objects.ApplicationObject,
+    application: objects.ApplicationObject
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#resumed
@@ -114,7 +114,7 @@ export type ApplicationCommandPermissionsExecutionPayload = Payload<{
     alert_system_message_id: objects.Snowflake?, -- ID of any system auto moderation messages posted as a result of this action **
     content: string, -- User-generated text content
     matched_keyword: string?, -- Word or phrase configured in the rule that triggered the rule
-    matched_content: string?, -- Substring in content that triggered the rule
+    matched_content: string? -- Substring in content that triggered the rule
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#channel-create
@@ -130,7 +130,7 @@ export type DeleteChannelPayload = Payload<objects.ChannelObject>
 export type ChannelPinsUpdatePayload = Payload<{
     guild_id: objects.Snowflake?,
     channel_id: objects.Snowflake,
-    last_pin_timestamp: string?,
+    last_pin_timestamp: string?
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#thread-create
@@ -147,12 +147,12 @@ export type ThreadListSyncPayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
     channel_ids: { objects.Snowflake }?, -- Parent channel IDs whose threads are being synced. If omitted, then threads were synced for the entire guild. This array may contain channel_ids that have no active threads as well, so you know to clear that data.
     threads: { objects.ChannelObject }, -- All active threads in the given channels that the current user can access
-    members: { objects.ThreadMemberObject }, -- All thread member objects from the synced threads for the current user, indicating which threads the current user has been added to
+    members: { objects.ThreadMemberObject } -- All thread member objects from the synced threads for the current user, indicating which threads the current user has been added to
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#thread-member-update
 export type ThreadMemberUpdatePayload = Payload<{
-    guild_id: objects.Snowflake, -- ID of the guild
+    guild_id: objects.Snowflake -- ID of the guild
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#thread-member-update
@@ -161,7 +161,7 @@ export type ThreadMembersUpdatePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
     member_count: number, -- Approximate number of members in the thread, capped at 50
     added_members: { objects.ThreadMemberObject }?, -- Users who were added to the thread
-    removed_member_ids: { objects.Snowflake }?, -- ID of the users who were removed from the thread
+    removed_member_ids: { objects.Snowflake }? -- ID of the users who were removed from the thread
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#entitlement-create
@@ -186,7 +186,7 @@ export type GuildCreatePayload = Payload<
         threads: { objects.ChannelObject }, -- All active threads in the guild that current user has permission to view
         presences: { objects.PresenceUpdateObject }, -- Presences of the members in the guild, will only include non-offline members if the size is greater than large threshold
         stage_instances: { objects.StageInstanceObject }, -- Stage instances in the guild
-        guild_scheduled_events: { objects.GuildScheduledEventObject }, -- Scheduled events in the guild
+        guild_scheduled_events: { objects.GuildScheduledEventObject } -- Scheduled events in the guild
     })
 >
 
@@ -199,43 +199,43 @@ export type GuildDeletePayload = Payload<objects.UnavailableGuildObject>
 -- https://discord.com/developers/docs/topics/gateway-events#guild-ban-add
 export type GuildBanAddPayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
-    user: objects.UserObject, -- User who was banned
+    user: objects.UserObject -- User who was banned
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-ban-remove
 export type GuildBanRemovePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
-    user: objects.UserObject, -- User who was unbanned
+    user: objects.UserObject -- User who was unbanned
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-emojis-update
 export type GuildEmojisUpdatePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
-    emojis: { objects.EmojiObject }, -- Array of emojis
+    emojis: { objects.EmojiObject } -- Array of emojis
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-stickers-update
 export type GuildStickersUpdatePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
-    stickers: { objects.StickerObject }, -- Array of stickers
+    stickers: { objects.StickerObject } -- Array of stickers
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-integrations-update
 export type GuildIntegrationsUpdatePayload = Payload<{
-    guild_id: objects.Snowflake, -- ID of the guild
+    guild_id: objects.Snowflake -- ID of the guild
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-member-add
 export type GuildMemberAddPayload = Payload<
     objects.GuildMemberObject & {
-        guild_id: objects.Snowflake, -- ID of the guild
+        guild_id: objects.Snowflake -- ID of the guild
     }
 >
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-member-remove
 export type GuildMemberRemovePayload = Payload<{
     guild_id: objects.Snowflake, --ID of the guild
-    user: objects.UserObject, -- User who was removed
+    user: objects.UserObject -- User who was removed
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-member-update
@@ -252,7 +252,7 @@ export type GuildMemberUpdatePayload = Payload<{
     pending: boolean?, -- Whether the user has not yet passed the guild's Membership Screening requirements
     communication_disabled_until: string?, -- When the user's timeout will expire and the user will be able to communicate in the guild again, null or a time in the past if the user is not timed out
     flags: number?, -- Guild member flags represented as a bit set, defaults to 0
-    avatar_decoration_data: objects.AvatarDecorationDataObject?, -- Data for the member's guild avatar decoration
+    avatar_decoration_data: objects.AvatarDecorationDataObject? -- Data for the member's guild avatar decoration
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-members-chunk
@@ -263,25 +263,25 @@ export type GuildMembersChunkPayload = Payload<{
     chunk_count: number, -- Total number of expected chunks for this response
     not_found: { unknown }?, -- When passing an invalid ID to REQUEST_GUILD_MEMBERS, it will be returned here
     presences: { objects.PresenceObject }?, -- When passing true to REQUEST_GUILD_MEMBERS, presences of the returned members will be here
-    nonce: string?, -- Nonce used in the Guild Members Request
+    nonce: string? -- Nonce used in the Guild Members Request
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-role-create
 export type GuildRoleCreatePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
-    role: objects.GuildRoleObject, -- Role that was created
+    role: objects.GuildRoleObject -- Role that was created
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-role-update
 export type GuildRoleUpdatePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
-    role: objects.GuildRoleObject, -- Role that was updated
+    role: objects.GuildRoleObject -- Role that was updated
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-role-delete
 export type GuildRoleDeletePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
-    role_id: objects.Snowflake, -- ID of the role
+    role_id: objects.Snowflake -- ID of the role
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-create
@@ -297,27 +297,27 @@ export type GuildScheduledEventDeletePayload = Payload<objects.GuildScheduledEve
 export type GuildScheduledEventUserAddPayload = Payload<{
     guild_scheduled_event_id: objects.Snowflake, -- ID of the guild scheduled event
     user_id: objects.Snowflake, -- ID of the user
-    guild_id: objects.Snowflake, -- ID of the guild
+    guild_id: objects.Snowflake -- ID of the guild
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#guild-scheduled-event-create
 export type GuildScheduledEventUserRemovePayload = Payload<{
     guild_scheduled_event_id: objects.Snowflake, -- ID of the guild scheduled event
     user_id: objects.Snowflake, -- ID of the user
-    guild_id: objects.Snowflake, -- ID of the guild
+    guild_id: objects.Snowflake -- ID of the guild
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#integration-create
 export type IntegrationCreatePayload = Payload<
     objects.IntegrationObject & {
-        guild_id: objects.Snowflake?, -- ID of the guild
+        guild_id: objects.Snowflake? -- ID of the guild
     }
 >
 
 -- https://discord.com/developers/docs/topics/gateway-events#integration-update
 export type IntegrationUpdatePayload = Payload<
     objects.IntegrationObject & {
-        guild_id: objects.Snowflake?, -- ID of the guild
+        guild_id: objects.Snowflake? -- ID of the guild
     }
 >
 
@@ -326,7 +326,7 @@ export type IntegrationDeletePayload = Payload<
     objects.IntegrationObject & {
         id: objects.Snowflake?, -- Integration ID
         guild_id: objects.Snowflake, -- ID of the guild
-        application_id: objects.Snowflake?, -- ID of the bot/OAuth2 application for this discord integration
+        application_id: objects.Snowflake? -- ID of the bot/OAuth2 application for this discord integration
     }
 >
 
@@ -346,14 +346,14 @@ export type InviteCreatePayload = Payload<{
     target_user: objects.UserObject?, -- User whose stream to display for this voice channel stream invite
     target_application: objects.ApplicationObject?, -- Embedded application to open for this voice channel embedded application invite
     temporary: boolean, -- Whether or not the invite is temporary (invited users will be kicked on disconnect unless they're assigned a role)
-    uses: number, -- How many times the invite has been used (always will be 0)
+    uses: number -- How many times the invite has been used (always will be 0)
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#invite-delete
 export type InviteDeletePayload = Payload<{
     channel_id: objects.Snowflake, -- Channel of the invite
     code: string, -- Unique invite code
-    guild_id: objects.Snowflake?, -- Guild of the invite
+    guild_id: objects.Snowflake? -- Guild of the invite
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#message-create
@@ -361,7 +361,7 @@ export type MessageCreatePayload = Payload<
     objects.MessageObject & {
         mentions: { objects.UserObject & { member: objects.GuildMemberObject } }, -- Users specifically mentioned in the message
         member: objects.GuildMemberObject?, -- Member properties for this message's author. Missing for ephemeral messages and messages from webhooks
-        guild_id: objects.Snowflake?, -- ID of the guild the message was sent in - unless it is an ephemeral message
+        guild_id: objects.Snowflake? -- ID of the guild the message was sent in - unless it is an ephemeral message
     }
 >
 
@@ -370,7 +370,7 @@ export type MessageUpdatePayload = Payload<
     objects.MessageObject & {
         mentions: { objects.UserObject & { member: objects.GuildMemberObject } }, -- Users specifically mentioned in the message
         member: objects.GuildMemberObject?, -- Member properties for this message's author. Missing for ephemeral messages and messages from webhooks
-        guild_id: objects.Snowflake?, -- ID of the guild the message was sent in - unless it is an ephemeral message
+        guild_id: objects.Snowflake? -- ID of the guild the message was sent in - unless it is an ephemeral message
     }
 >
 
@@ -378,14 +378,14 @@ export type MessageUpdatePayload = Payload<
 export type MessageDeletePayload = Payload<{
     id: objects.Snowflake, -- ID of the messages
     channel_id: objects.Snowflake, -- ID of the channel
-    guild_id: objects.Snowflake?, -- ID of the guild
+    guild_id: objects.Snowflake? -- ID of the guild
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#message-delete-bulk
 export type MessageDeleteBulkPayload = Payload<{
     ids: { objects.Snowflake }, -- IDs of the messages
     channel_id: objects.Snowflake, -- ID of the channel
-    guild_id: objects.Snowflake?, -- ID of the guild
+    guild_id: objects.Snowflake? -- ID of the guild
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#message-reaction-add
@@ -399,7 +399,7 @@ export type MessageReactionAddPayload = Payload<{
     message_author_id: objects.Snowflake?, -- ID of the user who authored the message which was reacted to
     burst: boolean, -- true if this is a super-reaction
     burst_colors: { string }, -- Colors used for super-reaction animation in "#rrggbb" format
-    type: objects.ReactionType, -- The type of reaction
+    type: objects.ReactionType -- The type of reaction
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove
@@ -410,14 +410,14 @@ export type MessageReactionRemovePayload = Payload<{
     guild_id: objects.Snowflake?, -- ID of the guild
     emoji: objects.EmojiObject, -- Emoji used to react - example
     burst: boolean, -- true if this was a super-reaction
-    type: objects.ReactionType, -- The type of reaction
+    type: objects.ReactionType -- The type of reaction
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove-all
 export type MessageReactionRemoveAllPayload = Payload<{
     channel_id: objects.Snowflake, -- ID of the channel
     message_id: objects.Snowflake, -- ID of the guild
-    guild_id: objects.Snowflake?, -- ID of the message
+    guild_id: objects.Snowflake? -- ID of the message
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#message-reaction-remove-emoji
@@ -425,7 +425,7 @@ export type MessageReactionRemoveEmojiPayload = Payload<{
     channel_id: objects.Snowflake, -- ID of the channel
     message_id: objects.Snowflake, -- ID of the guild
     guild_id: objects.Snowflake?, -- ID of the message
-    emoji: objects.EmojiObject, -- Emoji that was removed
+    emoji: objects.EmojiObject -- Emoji that was removed
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#presence-update
@@ -434,7 +434,7 @@ export type PresenceUpdatePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
     status: string, -- Either "idle", "dnd", "online", or "offline"
     activities: { objects.ActivityObject }, -- User's current activities
-    client_status: objects.ClientStatusObject, -- User's platform-dependent status
+    client_status: objects.ClientStatusObject -- User's platform-dependent status
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#stage-instance-create
@@ -452,7 +452,7 @@ export type TypingStartPayload = Payload<{
     guild_id: objects.Snowflake?, -- ID of the guild
     user_id: objects.Snowflake, -- ID of the user
     timestamp: number, -- Unix time (in seconds) of when the user started typing
-    member: objects.GuildMemberObject?, -- Member who started typing if this happened in a guild
+    member: objects.GuildMemberObject? -- Member who started typing if this happened in a guild
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#user-update
@@ -461,20 +461,20 @@ export type UserUpdatePayload = Payload<objects.UserObject>
 export type VoiceStateUpdatePayload = Payload<{
     token: string, -- Voice connection token
     guild_id: objects.Snowflake, -- Guild this voice server update is for
-    endpoint: string?, -- Voice server host
+    endpoint: string? -- Voice server host
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#voice-server-update
 export type VoiceServerUpdatePayload = Payload<{
     token: string, -- Voice connection token
     guild_id: objects.Snowflake, -- Guild this voice server update is for
-    endpoint: string?, -- Voice server host
+    endpoint: string? -- Voice server host
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#webhooks-update
 export type WebhooksUpdatePayload = Payload<{
     guild_id: objects.Snowflake, -- ID of the guild
-    channel_id: objects.Snowflake, -- ID of the channel=
+    channel_id: objects.Snowflake -- ID of the channel=
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-add
@@ -483,7 +483,7 @@ export type MessagePollVoteAdd = Payload<{
     channel_id: objects.Snowflake, -- ID of the channel
     message_id: objects.Snowflake, -- ID of the message
     guild_id: objects.Snowflake?, -- ID of the guild
-    answer_id: number, -- ID of the answer
+    answer_id: number -- ID of the answer
 }>
 
 -- https://discord.com/developers/docs/topics/gateway-events#message-poll-vote-remove
@@ -492,7 +492,7 @@ export type MessagePollVoteRemove = Payload<{
     channel_id: objects.Snowflake, -- ID of the channel
     message_id: objects.Snowflake, -- ID of the message
     guild_id: objects.Snowflake?, -- ID of the guild
-    answer_id: number, -- ID of the answer
+    answer_id: number -- ID of the answer
 }>
 
 return "DISCORD_V10_PAYLOAD_TYPES"

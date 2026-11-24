@@ -86,7 +86,7 @@ function ThreadMember.Interface.new(
     local self = setmetatable(
         {
             state = state,
-            guildId = guildId,
+            guildId = guildId
         } :: ThreadMember,
         { __index = ThreadMember.Prototype }
     )
@@ -104,7 +104,7 @@ export type ThreadMember = typeof(ThreadMember.Prototype) & {
     userId: apiTypes.Snowflake?,
     joinTimestamp: stdPolyfills.DateTime,
     flags: threadMemberBitflag.ThreadMemberBitflag,
-    member: member.Member?,
+    member: member.Member?
 }
 
 return ThreadMember.Interface

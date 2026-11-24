@@ -51,7 +51,7 @@ function ActivitySecrets.Interface.new(join: string?, spectate: string?, match: 
 
                 The secret for a specific instanced match
             ]=]
-            match = match,
+            match = match
         } :: ActivitySecrets,
         { __index = ActivitySecrets.Prototype }
     )
@@ -62,7 +62,7 @@ end
 export type ActivitySecrets = typeof(ActivitySecrets.Prototype) & {
     join: string?,
     spectate: string?,
-    match: string?,
+    match: string?
 }
 
 return ActivitySecrets.Interface

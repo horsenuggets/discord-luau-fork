@@ -62,7 +62,7 @@ function ActionMetadata.Prototype.build(self: ActionMetadata): JSON
     return {
         channel_id = self.channelId,
         duration_seconds = self.durationSeconds,
-        custom_message = self.customMessage,
+        custom_message = self.customMessage
     }
 end
 
@@ -82,7 +82,7 @@ end
 function ActionMetadata.Interface.new(resource: {
     channelId: apiTypes.Snowflake?,
     durationSeconds: number?,
-    customMessage: string?,
+    customMessage: string?
 }?): ActionMetadata
     local self = setmetatable(
         {
@@ -105,10 +105,10 @@ function ActionMetadata.Interface.new(resource: {
                 @within Builders.ActionMetadata
                 A custom message that will be shown to members when the action is taken.
             ]=]
-            customMessage = nil,
+            customMessage = nil
         } :: ActionMetadata,
         {
-            __index = ActionMetadata.Prototype,
+            __index = ActionMetadata.Prototype
         }
     )
 
@@ -132,7 +132,7 @@ end
 export type ActionMetadata = typeof(ActionMetadata.Prototype) & {
     channelId: apiTypes.Snowflake,
     durationSeconds: number,
-    customMessage: string?,
+    customMessage: string?
 }
 
 export type JSON = typeof(ActionMetadata.Prototype.build(nil :: any))

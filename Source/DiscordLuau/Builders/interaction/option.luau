@@ -231,7 +231,7 @@ function Option.Prototype.build(self: Option): JSON
         max_value = self.maxValue,
         min_length = self.minLength,
         max_length = self.maxLength,
-        autocomplete = self.autocomplete,
+        autocomplete = self.autocomplete
     }
 end
 
@@ -254,7 +254,7 @@ function Option.Interface.new(resource: {
     maxValue: number?,
     minLength: number?,
     maxLength: number?,
-    autocomplete: boolean?,
+    autocomplete: boolean?
 }?): Option
     --[=[
         @prop type apiTypes.ApplicationCommandOptionType?
@@ -342,7 +342,7 @@ function Option.Interface.new(resource: {
             maxValue = resource and resource.maxValue,
             minLength = resource and resource.minLength,
             maxLength = resource and resource.maxLength,
-            autocomplete = resource and resource.autocomplete,
+            autocomplete = resource and resource.autocomplete
         } :: Option,
         { __index = Option.Prototype }
     )
@@ -363,7 +363,7 @@ export type Option = typeof(Option.Prototype) & {
     maxValue: number?,
     minLength: number?,
     maxLength: number?,
-    autocomplete: boolean?,
+    autocomplete: boolean?
 }
 
 export type JSON = typeof(Option.Prototype.build(nil :: any))

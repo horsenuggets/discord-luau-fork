@@ -31,7 +31,7 @@ function invite.getInviteAsync(
     urlParams: {
         withCounts: number?,
         withExpiration: boolean?,
-        guildScheduledEventId: apiTypes.Snowflake?,
+        guildScheduledEventId: apiTypes.Snowflake?
     }
 ): future.FutureLike<string, apiTypes.GetInviteResponse>
     return future.Future.new(function()

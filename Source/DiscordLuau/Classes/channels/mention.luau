@@ -81,7 +81,7 @@ export type ChannelMention = typeof(ChannelMention.Prototype) & {
     id: apiTypes.Snowflake,
     guildId: apiTypes.Snowflake,
     type: apiTypes.ChannelType,
-    name: string,
+    name: string
 }
 
 return ChannelMention.Interface

@@ -91,7 +91,7 @@ export type ForumTag = typeof(ForumTag.Prototype) & {
     name: string,
     moderated: boolean,
     emojiId: string?,
-    emojiName: string?,
+    emojiName: string?
 }
 
 return ForumTag.Interface

@@ -260,7 +260,7 @@ function webhook.executeWebhookAsync(
     jsonParams: apiTypes.ExecuteWebhookRequest,
     urlParams: {
         wait: boolean?,
-        threadId: apiTypes.Snowflake?,
+        threadId: apiTypes.Snowflake?
     }
 ): future.FutureLike<string, apiTypes.ExecuteWebhookResponse>
     return future.Future.new(function()
@@ -292,7 +292,7 @@ function webhook.getWebhookMessageAsync(
     webhookToken: string,
     messageId: apiTypes.Snowflake,
     urlParams: {
-        threadId: apiTypes.Snowflake?,
+        threadId: apiTypes.Snowflake?
     }
 ): future.FutureLike<string, apiTypes.GetWebhookMessageResponse>
     return future.Future.new(function()
@@ -323,7 +323,7 @@ function webhook.editWebhookMessageAsync(
     messageId: apiTypes.Snowflake,
     jsonParams: apiTypes.EditWebhookMessageRequest,
     urlParams: {
-        threadId: apiTypes.Snowflake?,
+        threadId: apiTypes.Snowflake?
     }
 ): future.FutureLike<string, apiTypes.EditWebhookMessageResponse>
     return future.Future.new(function()
@@ -354,7 +354,7 @@ function webhook.deleteWebhookMessageAsync(
     webhookToken: string,
     messageId: apiTypes.Snowflake,
     urlParams: {
-        threadId: apiTypes.Snowflake?,
+        threadId: apiTypes.Snowflake?
     }
 ): future.FutureLike<string, apiTypes.DeleteWebhookMessageResponse>
     return future.Future.new(function()

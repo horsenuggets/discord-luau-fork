@@ -85,7 +85,7 @@ export type Reference = typeof(Reference.Prototype) & {
     messageId: apiTypes.Snowflake?,
     channelId: apiTypes.Snowflake?,
     guildId: apiTypes.Snowflake?,
-    failIfNotExists: boolean?,
+    failIfNotExists: boolean?
 }
 
 return Reference.Interface

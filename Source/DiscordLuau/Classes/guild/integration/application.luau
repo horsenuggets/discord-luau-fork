@@ -92,7 +92,7 @@ export type Application = typeof(Application.Prototype) & {
     name: string,
     icon: string?,
     description: string,
-    bot: user.User?,
+    bot: user.User?
 }
 
 return Application.Interface

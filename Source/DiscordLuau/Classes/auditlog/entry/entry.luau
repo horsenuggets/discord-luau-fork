@@ -126,7 +126,7 @@ export type AuditLogEntry = typeof(AuditLogEntry.Prototype) & {
     id: apiTypes.Snowflake,
     actionType: apiTypes.AuditLogEvent,
     options: { auditLogInfo.AuditLogEntryInfo },
-    reason: string?,
+    reason: string?
 }
 
 return AuditLogEntry.Interface

@@ -180,7 +180,7 @@ function Integration.Interface.new(
     local self = setmetatable(
         {
             state = state,
-            guildId = guildId,
+            guildId = guildId
         } :: Integration,
         { __index = Integration.Prototype }
     )
@@ -209,7 +209,7 @@ export type Integration = typeof(Integration.Prototype) & {
     subscriberCount: number?,
     revoked: boolean?,
     application: application.Application?,
-    scopes: { apiTypes.OAuth2Scopes }?,
+    scopes: { apiTypes.OAuth2Scopes }?
 }
 
 return Integration.Interface

@@ -92,7 +92,7 @@ end
 export type ActionRow = typeof(ActionRow.Prototype) & {
     type: number,
 
-    components: { button.Button | textInput.TextInput | selectMenu.SelectMenu },
+    components: { button.Button | textInput.TextInput | selectMenu.SelectMenu }
 }
 
 return ActionRow.Interface

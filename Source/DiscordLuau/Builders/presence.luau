@@ -88,7 +88,7 @@ function Presence.Prototype.build(self: Presence): JSON
         since = self.since or 0,
         activities = self.activities,
         afk = self.afk or false,
-        status = self.status and apiTypes.client.Status[self.status] or "online",
+        status = self.status and apiTypes.client.Status[self.status] or "online"
     }
 end
 
@@ -102,7 +102,7 @@ function Presence.Interface.new(resource: {
     status: string?,
     afk: boolean?,
     since: number?,
-    activities: { activity.JSON }?,
+    activities: { activity.JSON }?
 }?): Presence
     local self = setmetatable(
         {
@@ -111,7 +111,7 @@ function Presence.Interface.new(resource: {
                 @within Builders.Presence
                 An array of activity objects that represent what the client is currently doing.
             ]=]
-            activities = {},
+            activities = {}
 
             --[=[
                 @prop since number?
@@ -156,7 +156,7 @@ export type Presence = typeof(Presence.Prototype) & {
     activities: { activity.JSON },
     since: number?,
     afk: boolean?,
-    status: string?,
+    status: string?
 }
 
 export type JSON = typeof(Presence.Prototype.build(nil :: any))

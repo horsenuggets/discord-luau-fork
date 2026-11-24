@@ -17,7 +17,7 @@ return function()
     test.case("ForumTag builder builds JSON with provided tag properties", function()
         local tag = ForumTag.new({
             tagName = "test-tag",
-            emoji = { name = "smiley-face", id = "123456789012345678" },
+            emoji = { name = "smiley-face", id = "123456789012345678" }
         })
         tag:setModerated(false)
         local json = tag:build()
@@ -40,7 +40,7 @@ return function()
         local tag = ForumTag.fromId({
             tagId = "111111111111111111",
             tagName = "resource-tag",
-            emoji = { name = "happy-emoji", id = "222222222222222222" },
+            emoji = { name = "happy-emoji", id = "222222222222222222" }
         })
         local json = tag:build()
 

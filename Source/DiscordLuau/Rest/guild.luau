@@ -55,7 +55,7 @@ function guild.getGuildAsync(
     instance: request.Request,
     guildId: apiTypes.Snowflake,
     urlParams: {
-        withCounts: boolean?,
+        withCounts: boolean?
     }
 ): future.FutureLike<string, apiTypes.GetGuildResponse>
     return future.Future.new(function()
@@ -279,7 +279,7 @@ function guild.listGuildMembersAsync(
     guildId: apiTypes.Snowflake,
     urlParams: {
         limit: number?,
-        after: string?,
+        after: string?
     }
 ): future.FutureLike<string, apiTypes.ListGuildMembersResponse>
     return future.Future.new(function()
@@ -309,7 +309,7 @@ function guild.searchGuildMembersAsync(
     guildId: apiTypes.Snowflake,
     urlParams: {
         query: string,
-        limit: number?,
+        limit: number?
     }
 ): future.FutureLike<string, apiTypes.SearchGuildMembersResponse>
     return future.Future.new(function()
@@ -501,7 +501,7 @@ function guild.getGuildBansAsync(
     urlParams: {
         limit: number?,
         before: apiTypes.Snowflake?,
-        after: apiTypes.Snowflake?,
+        after: apiTypes.Snowflake?
     }
 ): future.FutureLike<string, apiTypes.GetGuildBansResponse>
     return future.Future.new(function()
@@ -819,7 +819,7 @@ function guild.getGuildPruneCountAsync(
     guildId: apiTypes.Snowflake,
     urlParams: {
         days: number,
-        includeRoles: string,
+        includeRoles: string
     }
 ): future.FutureLike<string, apiTypes.GetGuildPruneCountResponse>
     return future.Future.new(function()
@@ -1066,7 +1066,7 @@ function guild.getGuildWidgetImageAsync(
     instance: request.Request,
     guildId: apiTypes.Snowflake,
     urlParams: {
-        style: ("shield" | "banner1" | "banner2" | "banner3" | "banner4")?,
+        style: ("shield" | "banner1" | "banner2" | "banner3" | "banner4")?
     }
 ): future.FutureLike<string, apiTypes.GetGuildWidgetImageResponse>
     return future.Future.new(function()

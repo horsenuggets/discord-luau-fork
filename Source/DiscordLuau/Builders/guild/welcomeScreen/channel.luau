@@ -90,7 +90,7 @@ function WelcomeScreenChannel.Prototype.build(self: WelcomeScreenChannel): JSON
         channel_id = self.channelId,
         description = self.description,
         emoji_id = self.emojiId,
-        emoji_name = self.emojiName,
+        emoji_name = self.emojiName
     }
 end
 
@@ -103,7 +103,7 @@ function WelcomeScreenChannel.Interface.new(resource: {
     channelId: apiTypes.Snowflake?,
     description: string?,
     emojiId: apiTypes.Snowflake?,
-    emojiName: string?,
+    emojiName: string?
 }?): WelcomeScreenChannel
     local self = setmetatable(
         {
@@ -133,10 +133,10 @@ function WelcomeScreenChannel.Interface.new(resource: {
                 @within Builders.WelcomeScreenChannel
                 The name of the emoji shown in the welcome screen channel.
             ]=]
-            emojiName = nil,
+            emojiName = nil
         } :: WelcomeScreenChannel,
         {
-            __index = WelcomeScreenChannel.Prototype,
+            __index = WelcomeScreenChannel.Prototype
         }
     )
 
@@ -165,7 +165,7 @@ export type WelcomeScreenChannel = typeof(WelcomeScreenChannel.Prototype) & {
     channelId: apiTypes.Snowflake?,
     description: string,
     emojiId: apiTypes.Snowflake?,
-    emojiName: string?,
+    emojiName: string?
 }
 
 export type JSON = typeof(WelcomeScreenChannel.Prototype.build(nil :: any))

@@ -94,7 +94,7 @@ function State.Interface.new(settings: {
     version: number,
     reconnect: boolean,
     globalRatelimit: number,
-    logLevel: logger.LogLevel?,
+    logLevel: logger.LogLevel?
 }): State
     local secretToken = secret.new(settings.token)
 
@@ -108,7 +108,7 @@ function State.Interface.new(settings: {
                 logLevel = settings.logLevel,
                 intents = settings.intents,
                 version = settings.version,
-                globalRatelimit = settings.globalRatelimit,
+                globalRatelimit = settings.globalRatelimit
             }),
 
             webSocketManager = websocket.manager.new({
@@ -116,7 +116,7 @@ function State.Interface.new(settings: {
                 intents = settings.intents,
                 webSocketVersion = settings.version,
                 largeThreshold = 250,
-                reconnect = settings.reconnect,
+                reconnect = settings.reconnect
             }),
 
             intents = settings.intents,
@@ -126,11 +126,11 @@ function State.Interface.new(settings: {
                 guilds = cache.new(1 * 60 * 60),
                 users = cache.new(1 * 60 * 60),
                 channels = cache.new(1 * 60 * 60),
-                roles = cache.new(1 * 60 * 60),
-            },
+                roles = cache.new(1 * 60 * 60)
+            }
         } :: State,
         {
-            __index = State.Prototype,
+            __index = State.Prototype
         }
     )
 
@@ -148,8 +148,8 @@ export type State = typeof(State.Prototype) & {
         guilds: cache.Cache<apiTypes.Snowflake, apiTypes.GuildObject>,
         users: cache.Cache<apiTypes.Snowflake, apiTypes.UserObject>,
         channels: cache.Cache<apiTypes.Snowflake, apiTypes.ChannelObject>,
-        roles: cache.Cache<apiTypes.Snowflake, apiTypes.GuildRoleObject>,
-    },
+        roles: cache.Cache<apiTypes.Snowflake, apiTypes.GuildRoleObject>
+    }
 }
 
 return State.Interface

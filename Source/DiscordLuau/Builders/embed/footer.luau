@@ -57,7 +57,7 @@ function Footer.Prototype.build(self: Footer): JSON
     return {
         text = self.text,
         icon_url = self.iconUrl,
-        proxy_icon_url = self.proxyIconUrl,
+        proxy_icon_url = self.proxyIconUrl
     }
 end
 
@@ -76,7 +76,7 @@ end
 function Footer.Interface.new(resource: {
     text: string?,
     iconUrl: string?,
-    proxyIconUrl: string?,
+    proxyIconUrl: string?
 }?): Footer
     local self = setmetatable(
         {
@@ -99,10 +99,10 @@ function Footer.Interface.new(resource: {
                 @within Builders.Footer
                 The proxied URL of the footer icon.
             ]=]
-            proxyIconUrl = nil,
+            proxyIconUrl = nil
         } :: Footer,
         {
-            __index = Footer.Prototype,
+            __index = Footer.Prototype
         }
     )
 
@@ -122,7 +122,7 @@ end
 export type Footer = typeof(Footer.Prototype) & {
     text: string?,
     iconUrl: string?,
-    proxyIconUrl: string?,
+    proxyIconUrl: string?
 }
 
 export type JSON = typeof(Footer.Prototype.build({} :: any))

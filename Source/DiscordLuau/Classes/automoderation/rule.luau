@@ -209,7 +209,7 @@ export type AutomoderationRule = typeof(AutomoderationRule.Prototype) & {
     actions: { action.Action },
     enabled: boolean?,
     exemptRoles: { apiTypes.Snowflake }?,
-    exemptChannels: { apiTypes.Snowflake }?,
+    exemptChannels: { apiTypes.Snowflake }?
 }
 
 return AutomoderationRule.Interface

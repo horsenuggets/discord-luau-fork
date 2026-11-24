@@ -220,7 +220,7 @@ export type Activity = typeof(Activity.Prototype) & {
     secrets: activitySecrets.ActivitySecrets?,
     instance: boolean?,
     flags: number?,
-    buttons: { activityButton.ActivityButton },
+    buttons: { activityButton.ActivityButton }
 }
 
 return Activity.Interface

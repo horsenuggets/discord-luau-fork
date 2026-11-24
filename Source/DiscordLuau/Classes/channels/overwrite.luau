@@ -83,7 +83,7 @@ export type Overwrite = typeof(Overwrite.Prototype) & {
     id: apiTypes.Snowflake,
     type: OverwriteType,
     allow: string,
-    deny: string,
+    deny: string
 }
 
 return Overwrite.Interface

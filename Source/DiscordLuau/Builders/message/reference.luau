@@ -88,7 +88,7 @@ function Reference.Prototype.build(self: Reference): JSON
         message_id = self.messageId,
         channel_id = self.channelId,
         guild_id = self.guildId,
-        fail_if_not_exists = self.failIfNotExists,
+        fail_if_not_exists = self.failIfNotExists
     }
 end
 
@@ -102,7 +102,7 @@ function Reference.Interface.new(resource: {
     messageId: string?,
     channelId: string?,
     guildId: string?,
-    failIfNotExists: boolean?,
+    failIfNotExists: boolean?
 }?): Reference
     local self = setmetatable(
         {
@@ -132,7 +132,7 @@ function Reference.Interface.new(resource: {
             ]=]
         } :: Reference,
         {
-            __index = Reference.Prototype,
+            __index = Reference.Prototype
         }
     )
 
@@ -166,7 +166,7 @@ export type Reference = typeof(Reference.Prototype) & {
     messageId: apiTypes.Snowflake?,
     channelId: apiTypes.Snowflake?,
     guildId: apiTypes.Snowflake?,
-    failIfNotExists: boolean?,
+    failIfNotExists: boolean?
 }
 
 export type JSON = typeof(Reference.Prototype.build(nil :: any))

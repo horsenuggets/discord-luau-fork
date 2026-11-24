@@ -64,5 +64,5 @@ return {
         @prop net StdPolyfills.net 
         @within StdPolyfills
     ]=]
-    net = net,
+    net = net
 }

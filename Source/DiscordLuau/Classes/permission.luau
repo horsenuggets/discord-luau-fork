@@ -70,7 +70,7 @@ function Permission.Interface.new(permission: string): Permission
                 @within Classes.Permission
                 The permission bitfield representing the permissions granted.
             ]=]
-            permission = tonumber(permission),
+            permission = tonumber(permission)
         } :: Permission,
         { __index = Permission.Prototype }
     )
@@ -79,7 +79,7 @@ function Permission.Interface.new(permission: string): Permission
 end
 
 export type Permission = typeof(Permission.Prototype) & {
-    permission: number,
+    permission: number
 }
 
 return Permission.Interface

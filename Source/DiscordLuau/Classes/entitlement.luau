@@ -127,7 +127,7 @@ export type Entitlement = typeof(Entitlement.Prototype) & {
     startsAt: stdPolyfills.DateTime?,
     endsAt: stdPolyfills.DateTime?,
     guildId: apiTypes.Snowflake?,
-    consumed: boolean?,
+    consumed: boolean?
 }
 
 return Entitlement.Interface

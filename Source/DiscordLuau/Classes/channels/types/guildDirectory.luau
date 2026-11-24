@@ -27,7 +27,7 @@ GuildDirectory.Interface = {}
 GuildDirectory.Prototype = {}
 GuildDirectory.Behaviours = {
     channelBehaviour,
-    guildBehaviour,
+    guildBehaviour
 }
 
 --[=[
@@ -57,7 +57,7 @@ function GuildDirectory.Interface.new(state: state.State, channelData: apiTypes.
                 @prop state Classes.State
                 @within Classes.GuildDirectory
             ]=]
-            state = state,
+            state = state
         } :: GuildDirectory,
         { __index = GuildDirectory.Prototype }
     )
@@ -68,7 +68,7 @@ function GuildDirectory.Interface.new(state: state.State, channelData: apiTypes.
 end
 
 export type GuildDirectory = typeof(GuildDirectory.Prototype) & {
-    state: state.State,
+    state: state.State
 } & channelBehaviour.ChannelBehaviour & guildBehaviour.GuildBehaviour
 
 return GuildDirectory.Interface

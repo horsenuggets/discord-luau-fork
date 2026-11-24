@@ -61,7 +61,7 @@ end
 
 export type Activity = typeof(Activity.Prototype) & {
     type: apiTypes.MessageAcitvityType,
-    partyId: string?,
+    partyId: string?
 }
 
 return Activity.Interface

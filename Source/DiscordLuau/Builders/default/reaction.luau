@@ -34,7 +34,7 @@ DefaultReaction.Interface = {}
 function DefaultReaction.Prototype.build(self: DefaultReaction): JSON
     return {
         emoji_id = self.emojiId,
-        emoji_name = self.emojiName,
+        emoji_name = self.emojiName
     }
 end
 
@@ -49,7 +49,7 @@ end
 ]=]
 function DefaultReaction.Interface.new(resource: {
     emojiId: apiTypes.Snowflake?,
-    emojiName: string?,
+    emojiName: string?
 }): DefaultReaction
     local self = setmetatable(
         {
@@ -65,7 +65,7 @@ function DefaultReaction.Interface.new(resource: {
                 @within Builders.DefaultReaction
                 The unicode character of the emoji.
             ]=]
-            emojiName = resource.emojiName,
+            emojiName = resource.emojiName
         } :: DefaultReaction,
         { __index = DefaultReaction.Prototype }
     )
@@ -75,7 +75,7 @@ end
 
 export type DefaultReaction = typeof(DefaultReaction.Prototype) & {
     emojiId: apiTypes.Snowflake?,
-    emojiName: string?,
+    emojiName: string?
 }
 
 export type JSON = typeof(DefaultReaction.Prototype.build(nil :: any))

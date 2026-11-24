@@ -158,7 +158,7 @@ export type Preview = typeof(Preview.Prototype) & {
     approximateMemberCount: number,
     approximatePresenceCount: number,
     description: string?,
-    stickers: { stickerObject.Sticker },
+    stickers: { stickerObject.Sticker }
 }
 
 return Preview.Interface

@@ -34,7 +34,7 @@ function message.getChannelMessagesAsync(
         around: apiTypes.Snowflake?,
         before: apiTypes.Snowflake?,
         after: apiTypes.Snowflake?,
-        limit: number?,
+        limit: number?
     }
 ): future.FutureLike<string, apiTypes.GetChannelMessagesResponse>
     return future.Future.new(function()
@@ -240,7 +240,7 @@ function message.getReactionsAsync(
     urlParams: {
         type: ("Normal" | "Burst")?,
         after: apiTypes.Snowflake?,
-        limit: number?,
+        limit: number?
     }
 ): future.FutureLike<string, apiTypes.GetReactionsResponse>
     return future.Future.new(function()

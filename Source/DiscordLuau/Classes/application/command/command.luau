@@ -197,7 +197,7 @@ export type Command = typeof(Command.Prototype) & {
     nsfw: boolean?,
     integrationTypes: { apiTypes.IntegrationTypesConfig },
     contexts: { apiTypes.InteractionContextType },
-    version: apiTypes.Snowflake,
+    version: apiTypes.Snowflake
     -- handler: -- todo: implement handler type
 }
 

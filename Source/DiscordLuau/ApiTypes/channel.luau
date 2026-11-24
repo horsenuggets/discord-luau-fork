@@ -27,28 +27,28 @@ local ChannelTypes = table.freeze(util.tableReflect({
     GuildStageVoice = 13,
     GuildDirectory = 14,
     GuildForum = 15,
-    GuildMedia = 16,
+    GuildMedia = 16
 }))
 
 local MediaSortOrder = table.freeze(util.tableReflect({
     LatestActivity = 0,
-    CreationDate = 1,
+    CreationDate = 1
 }))
 
 local ForumSortOrder = table.freeze(util.tableReflect({
     LatestActivity = 0,
-    CreationDate = 1,
+    CreationDate = 1
 }))
 
 local ForumLayout = table.freeze(util.tableReflect({
     NotSet = 0,
     ListView = 1,
-    GalleryView = 2,
+    GalleryView = 2
 }))
 
 local VideoQualityMode = table.freeze(util.tableReflect({
     Auto = 1,
-    Full = 2,
+    Full = 2
 }))
 
 local SelectMenuType = table.freeze(util.tableReflect({
@@ -57,7 +57,7 @@ local SelectMenuType = table.freeze(util.tableReflect({
     User = 5,
     Role = 6,
     Mentionable = 7,
-    Channel = 8,
+    Channel = 8
 }))
 
 export type ChannelType =
@@ -118,7 +118,7 @@ export type AbstractChannel = {
     default_reaction_emoji: apiTypes.DefaultReactionObject?,
     default_thread_rate_limit_per_user: number?,
     default_sort_order: apiTypes.SortOrderType?,
-    default_forum_layout: apiTypes.ForumLayoutType?,
+    default_forum_layout: apiTypes.ForumLayoutType?
 }
 
 return {
@@ -127,5 +127,5 @@ return {
     ForumSortOrder = ForumSortOrder,
     ForumLayout = ForumLayout,
     VideoQualityMode = VideoQualityMode,
-    SelectMenuType = SelectMenuType,
+    SelectMenuType = SelectMenuType
 }

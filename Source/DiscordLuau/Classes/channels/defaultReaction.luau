@@ -63,7 +63,7 @@ end
 
 export type DefaultReaction = typeof(DefaultReaction.Prototype) & {
     emojiId: string?,
-    emojiName: string?,
+    emojiName: string?
 }
 
 return DefaultReaction.Interface

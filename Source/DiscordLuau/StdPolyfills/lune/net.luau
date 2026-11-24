@@ -11,7 +11,7 @@ local net = setmetatable({}, { __index = require("@lune/net") })
 net.socket = function(...)
     local socket = require("@lune/net").socket(...)
     local value = setmetatable({}, {
-        __index = socket,
+        __index = socket
     })
 
     function value.next(...: any)

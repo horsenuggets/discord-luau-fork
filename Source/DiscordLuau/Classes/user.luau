@@ -161,7 +161,7 @@ end
 function User.Interface.new(userData: apiTypes.UserObject): User
     local self = setmetatable(
         {
-            id = userData.id,
+            id = userData.id
         } :: User,
         { __index = User.Prototype }
     )
@@ -191,7 +191,7 @@ export type User = typeof(User.Prototype) & {
     flags: number?,
     premiumType: apiTypes.NitroType?,
     publicFlags: number?,
-    avatarDecorationData: avatarDecoration.AvatarDecoration?,
+    avatarDecorationData: avatarDecoration.AvatarDecoration?
 }
 
 return User.Interface

@@ -146,7 +146,7 @@ function MessageBitflag.Interface.new(flag: number): MessageBitflag
                 @prop flag number
                 The raw bitflag value for the message.
             ]=]
-            flag = flag,
+            flag = flag
         } :: MessageBitflag,
         { __index = MessageBitflag.Prototype }
     )
@@ -155,7 +155,7 @@ function MessageBitflag.Interface.new(flag: number): MessageBitflag
 end
 
 export type MessageBitflag = typeof(MessageBitflag.Prototype) & {
-    flag: number,
+    flag: number
 }
 
 return MessageBitflag.Interface

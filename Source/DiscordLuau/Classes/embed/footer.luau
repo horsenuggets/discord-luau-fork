@@ -69,7 +69,7 @@ end
 export type Footer = typeof(Footer.Prototype) & {
     text: string,
     iconUrl: string?,
-    proxyIconUrl: string?,
+    proxyIconUrl: string?
 }
 
 return Footer.Interface

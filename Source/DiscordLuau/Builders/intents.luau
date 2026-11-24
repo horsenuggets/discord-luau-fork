@@ -77,7 +77,7 @@ function Intents.Interface.new(intents: {}?): Intents
                 @within Builders.Intents
                 An array of intent flags that determine which gateway events your client will receive.
             ]=]
-            intents = intents or {},
+            intents = intents or {}
         } :: Intents,
         { __index = Intents.Prototype }
     )
@@ -86,7 +86,7 @@ function Intents.Interface.new(intents: {}?): Intents
 end
 
 export type Intents = typeof(Intents.Prototype) & {
-    intents: { apiTypes.Intent },
+    intents: { apiTypes.Intent }
 }
 
 return Intents.Interface

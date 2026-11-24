@@ -64,7 +64,7 @@ function WelcomeScreen.Prototype.build(self: WelcomeScreen): JSON
     return {
         enabled = self.enabled,
         description = self.description,
-        welcome_channels = self.welcomeChannels,
+        welcome_channels = self.welcomeChannels
     }
 end
 
@@ -76,7 +76,7 @@ end
 function WelcomeScreen.Interface.new(resource: {
     enabled: boolean?,
     description: string?,
-    welcomeChannels: { WelcomeScreenChannel.JSON }?,
+    welcomeChannels: { WelcomeScreenChannel.JSON }?
 }?): WelcomeScreen
     local self = setmetatable(
         {
@@ -97,10 +97,10 @@ function WelcomeScreen.Interface.new(resource: {
                 @within Builders.WelcomeScreen
                 The channels shown in the welcome screen.
             ]=]
-            welcomeChannels = {},
+            welcomeChannels = {}
         } :: WelcomeScreen,
         {
-            __index = WelcomeScreen.Prototype,
+            __index = WelcomeScreen.Prototype
         }
     )
 
@@ -126,7 +126,7 @@ end
 export type WelcomeScreen = typeof(WelcomeScreen.Prototype) & {
     enabled: boolean?,
     description: string?,
-    welcomeChannels: { WelcomeScreenChannel.JSON },
+    welcomeChannels: { WelcomeScreenChannel.JSON }
 }
 
 export type JSON = typeof(WelcomeScreen.Prototype.build(nil :: any))

@@ -53,8 +53,8 @@ function GuildBehaviour.Prototype.setPositionAsync<T>(self: Channel<T>, position
             .modifyGuildChannelPositionsAsync(request, self.guildId, {
                 {
                     id = self.id,
-                    position = position,
-                },
+                    position = position
+                }
             })
             :await()
 
@@ -77,8 +77,8 @@ function GuildBehaviour.Prototype.setParentAsync<T>(self: Channel<T>, parentId: 
                 {
                     id = self.id,
                     lock_permissions = syncPermissions,
-                    parent_id = parentId,
-                },
+                    parent_id = parentId
+                }
             })
             :await()
 
@@ -107,7 +107,7 @@ function GuildBehaviour.Prototype.setPermissionsAsync<T>(
             .editChannelPermissionsAsync(request, self.id, overwriteId, {
                 type = apiTypes.guild.OverwriteType[type],
                 allow = allowedPermissions,
-                deny = denyPermissions,
+                deny = denyPermissions
             }, auditLogReason)
             :await()
 
@@ -191,7 +191,7 @@ function GuildBehaviour.Prototype.listPublicArchivedThreadsAsync<T>(
         local response = rest.channel
             .listPublicArchivedThreadsAsync(request, self.id, {
                 before = before and before:toIsoDate() or nil,
-                limit = limit,
+                limit = limit
             })
             :await()
 
@@ -201,7 +201,7 @@ function GuildBehaviour.Prototype.listPublicArchivedThreadsAsync<T>(
         local returnedValue = {
             threads = {},
             members = {},
-            hasMore = data.has_more,
+            hasMore = data.has_more
         }
 
         for _, threadData in next, data.threads do
@@ -218,7 +218,7 @@ function GuildBehaviour.Prototype.listPublicArchivedThreadsAsync<T>(
     end) :: future.FutureLike<string, {
         threads: { apiTypes.Snowflake },
         members: { threadMember.ThreadMember },
-        hasMore: boolean,
+        hasMore: boolean
     }>
 end
 
@@ -237,7 +237,7 @@ function GuildBehaviour.Prototype.listPrivateArchivedThreadsAsync<T>(
         local response = rest.channel
             .listPrivateArchivedThreadsAsync(request, self.id, {
                 before = before and before:toIsoDate() or nil,
-                limit = limit,
+                limit = limit
             })
             :await()
 
@@ -247,7 +247,7 @@ function GuildBehaviour.Prototype.listPrivateArchivedThreadsAsync<T>(
         local returnedValue = {
             threads = {},
             members = {},
-            hasMore = data.has_more,
+            hasMore = data.has_more
         }
 
         for _, threadData in next, data.threads do
@@ -264,7 +264,7 @@ function GuildBehaviour.Prototype.listPrivateArchivedThreadsAsync<T>(
     end) :: future.FutureLike<string, {
         threads: { apiTypes.Snowflake },
         members: { threadMember.ThreadMember },
-        hasMore: boolean,
+        hasMore: boolean
     }>
 end
 
@@ -283,7 +283,7 @@ function GuildBehaviour.Prototype.listJoinedPrivateArchivedThreadsAsync<T>(
         local response = rest.channel
             .listJoinedPrivateArchivedThreadsAsync(request, self.id, {
                 before = before and before:toIsoDate() or nil,
-                limit = limit,
+                limit = limit
             })
             :await()
 
@@ -293,7 +293,7 @@ function GuildBehaviour.Prototype.listJoinedPrivateArchivedThreadsAsync<T>(
         local returnedValue = {
             threads = {},
             members = {},
-            hasMore = data.has_more,
+            hasMore = data.has_more
         }
 
         for _, threadData in next, data.threads do
@@ -310,7 +310,7 @@ function GuildBehaviour.Prototype.listJoinedPrivateArchivedThreadsAsync<T>(
     end) :: future.FutureLike<string, {
         threads: { apiTypes.Snowflake },
         members: { threadMember.ThreadMember },
-        hasMore: boolean,
+        hasMore: boolean
     }>
 end
 
@@ -320,7 +320,7 @@ end
 ]=]
 function GuildBehaviour.Prototype.setNameAsync<T>(self: Channel<T>, groupName: string)
     return self:modifyAsync({
-        name = groupName,
+        name = groupName
     }) :: future.FutureLike<string, Channel<T>>
 end
 
@@ -422,7 +422,7 @@ type Channel<T> = T & GuildBehaviour & {
 
     modifyAsync: any,
 
-    sync: (...any) -> (),
+    sync: (...any) -> ()
 }
 
 export type GuildBehaviourMethods = typeof(GuildBehaviour.Prototype)
@@ -435,7 +435,7 @@ export type GuildBehaviourProperties = {
     parentId: string?,
     permissions: number,
     defaultThreadRateLimitPerUser: number,
-    defaultAutoArchiveDuration: number,
+    defaultAutoArchiveDuration: number
 }
 
 export type GuildBehaviour = GuildBehaviourMethods & GuildBehaviourProperties

@@ -91,7 +91,7 @@ end
 function Widget.Interface.new(state: state.State, widgetData: apiTypes.GuildWidgetObject): Widget
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: Widget,
         { __index = Widget.Prototype }
     )
@@ -109,7 +109,7 @@ export type Widget = typeof(Widget.Prototype) & {
     instantInvite: string?,
     channels: { apiTypes.AbstractChannel },
     members: { user.User },
-    presenceCount: number,
+    presenceCount: number
 }
 
 return Widget.Interface

@@ -142,7 +142,7 @@ function SelectMenu.Prototype.build(self: SelectMenu): JSON
         default_values = self.defaultValues,
         min_values = self.minValues,
         max_values = self.maxValues,
-        disabled = self.disabled,
+        disabled = self.disabled
     }
 end
 
@@ -160,7 +160,7 @@ function SelectMenu.Interface.new(resource: {
     defaultValues: { defaultValue.JSON },
     minValues: number?,
     maxValues: number?,
-    disabled: boolean?,
+    disabled: boolean?
 }?): SelectMenu
     local self = setmetatable(
         {
@@ -183,10 +183,10 @@ function SelectMenu.Interface.new(resource: {
                 @within Builders.SelectMenu
                 Array of channel types that can be selected
             ]=]
-            apiTypes = {},
+            apiTypes = {}
         } :: SelectMenu,
         {
-            __index = SelectMenu.Prototype,
+            __index = SelectMenu.Prototype
         }
     )
 
@@ -246,7 +246,7 @@ export type SelectMenu = typeof(SelectMenu.Prototype) & {
     defaultValues: { defaultValue.JSON },
     minValues: number?,
     maxValues: number?,
-    disabled: boolean?,
+    disabled: boolean?
 }
 
 export type JSON = typeof(SelectMenu.Prototype.build(nil :: any))

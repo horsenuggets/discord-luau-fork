@@ -73,7 +73,7 @@ end
 
 export type WelcomeScreen = typeof(WelcomeScreen.Prototype) & {
     description: string?,
-    welcomeChannels: { welcomeScreenChannel.WelcomeScreenChannel },
+    welcomeChannels: { welcomeScreenChannel.WelcomeScreenChannel }
 }
 
 return WelcomeScreen.Interface

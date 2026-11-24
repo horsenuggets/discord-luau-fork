@@ -63,7 +63,7 @@ end
 
 export type Answer = typeof(Answer.Prototype) & {
     answerId: number,
-    pollMedia: mediaObject.MediaObject,
+    pollMedia: mediaObject.MediaObject
 }
 
 return Answer.Interface

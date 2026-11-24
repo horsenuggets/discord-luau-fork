@@ -129,7 +129,7 @@ function TextInput.Prototype.build(self: TextInput): JSON
         max_length = self.maxLength,
         required = self.required,
         value = self.value,
-        placeholder = self.placeholder,
+        placeholder = self.placeholder
     }
 end
 
@@ -154,7 +154,7 @@ function TextInput.Interface.new(resource: {
     maxLength: number?,
     required: boolean?,
     value: string?,
-    placeholder: string?,
+    placeholder: string?
 }?): TextInput
     local self = setmetatable(
         {
@@ -212,10 +212,10 @@ function TextInput.Interface.new(resource: {
                 @within Builders.TextInput
                 The placeholder text that appears when no text is entered.
             ]=]
-            placeholder = nil,
+            placeholder = nil
         } :: TextInput,
         {
-            __index = TextInput.Prototype,
+            __index = TextInput.Prototype
         }
     )
 
@@ -264,7 +264,7 @@ export type TextInput = typeof(TextInput.Prototype) & {
     maxLength: number?,
     required: boolean?,
     value: string?,
-    placeholder: string?,
+    placeholder: string?
 }
 
 export type JSON = apiTypes.TextInputComponentObject

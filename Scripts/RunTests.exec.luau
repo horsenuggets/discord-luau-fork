@@ -30,7 +30,7 @@ function RunTests.exec()
     -- Disable parallel execution for integration tests that make API calls
     -- This prevents rate limiting issues with the Discord API
     Testable.configure({
-        Parallel = false,
+        Parallel = false
     })
 
     const filterName = process.args[1]

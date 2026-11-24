@@ -60,9 +60,9 @@ function Interaction.Prototype.deferAsync(self: Interaction)
 
         local response = rest.interaction
             .createInteractionResponseAsync(request, self.id, self.token, {
-                type = 5,
+                type = 5
             }, {
-                withResponse = false,
+                withResponse = false
             })
             :await()
 
@@ -91,9 +91,9 @@ function Interaction.Prototype.messageAsync(
         local response = rest.interaction
             .createInteractionResponseAsync(request, self.id, self.token, {
                 type = self.isDeferred and 5 or 4,
-                data = messageJSON,
+                data = messageJSON
             }, {
-                withResponse = responseMessage or false,
+                withResponse = responseMessage or false
             })
             :await()
 
@@ -120,9 +120,9 @@ function Interaction.Prototype.modalAsync(self: Interaction, modalJSON: builders
         local response = rest.interaction
             .createInteractionResponseAsync(request, self.id, self.token, {
                 type = 9,
-                data = modalJSON,
+                data = modalJSON
             }, {
-                withResponse = responseMessage or false,
+                withResponse = responseMessage or false
             })
             :await()
 
@@ -148,7 +148,7 @@ function Interaction.Prototype.getResponseAsync(self: Interaction, threadId: str
     return future.Future.new(function()
         local response = rest.interaction
             .getOriginalInteractionResponseAsync(request, self.state.applicationId, self.token, {
-                threadId = threadId,
+                threadId = threadId
             })
             :await()
 
@@ -174,7 +174,7 @@ function Interaction.Prototype.editResponseAsync(
 
         local response = rest.interaction
             .editOriginalInteractionResponseAsync(request, self.state.applicationId, self.token, messageJSON, {
-                threadId = threadId,
+                threadId = threadId
             })
             :await()
 
@@ -220,7 +220,7 @@ function Interaction.Prototype.createFollowupResponseAsync(
         local response = rest.interaction
             .createFollowupMessageAsync(request, self.state.applicationId, self.token, messageJSON, {
                 wait = true,
-                threadId = threadId,
+                threadId = threadId
             })
             :await()
 
@@ -240,7 +240,7 @@ function Interaction.Prototype.getFollowupResponseAsync(self: Interaction, messa
     return future.Future.new(function()
         local response = rest.interaction
             .getFollowupMessageAsync(request, self.state.applicationId, self.token, messageId, {
-                threadId = threadId,
+                threadId = threadId
             })
             :await()
 
@@ -267,7 +267,7 @@ function Interaction.Prototype.editFollowupResponseAsync(
 
         local response = rest.interaction
             .editFollowupMessageAsync(request, self.state.applicationId, self.token, messageId, messageJSON, {
-                threadId = threadId,
+                threadId = threadId
             })
             :await()
 
@@ -319,7 +319,7 @@ export type Interaction = InteractionMethods & {
     state: state.State,
     id: string,
     token: string,
-    isDeferred: boolean?,
+    isDeferred: boolean?
 }
 
 return Interaction.Interface

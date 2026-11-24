@@ -64,7 +64,7 @@ function Image.Prototype.build(self: Image): JSON
         url = self.url,
         proxy_url = self.proxyUrl,
         height = self.height,
-        width = self.width,
+        width = self.width
     }
 end
 
@@ -85,7 +85,7 @@ function Image.Interface.new(resource: {
     url: string,
     proxyUrl: string?,
     height: number?,
-    width: number?,
+    width: number?
 }?): Image
     local self = setmetatable(
         {
@@ -115,10 +115,10 @@ function Image.Interface.new(resource: {
                 @within Builders.Image
                 Width of image
             ]=]
-            width = nil,
+            width = nil
         } :: Image,
         {
-            __index = Image.Prototype,
+            __index = Image.Prototype
         }
     )
 
@@ -143,7 +143,7 @@ export type Image = typeof(Image.Prototype) & {
     url: string,
     proxyUrl: string?,
     height: number?,
-    width: number?,
+    width: number?
 }
 
 export type JSON = typeof(Image.Prototype.build({} :: any))

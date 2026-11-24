@@ -118,17 +118,17 @@ function Emitter.Interface.new<T...>(): Emitter<T...>
     return setmetatable(
         {
             _yieldingThreads = {},
-            _connectedThreads = {},
+            _connectedThreads = {}
         } :: Emitter<T...>,
         {
-            __index = Emitter.Prototype,
+            __index = Emitter.Prototype
         }
     )
 end
 
 export type Emitter<T...> = typeof(Emitter.Prototype) & {
     _yieldingThreads: { thread },
-    _connectedThreads: { thread },
+    _connectedThreads: { thread }
 }
 
 return Emitter.Interface

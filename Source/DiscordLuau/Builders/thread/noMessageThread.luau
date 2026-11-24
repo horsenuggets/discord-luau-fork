@@ -106,7 +106,7 @@ function NoMessageThread.Prototype.build(self: NoMessageThread): JSON
         auto_archive_duration = self.autoArchiveDuration,
         type = apiTypes.channel.ChannelTypes[self.type],
         invitable = self.invitable,
-        rate_limit_per_user = self.rateLimitPerUser,
+        rate_limit_per_user = self.rateLimitPerUser
     }
 end
 
@@ -120,7 +120,7 @@ function NoMessageThread.Interface.new(resource: {
     autoArchiveDuration: number?,
     type: apiTypes.ChannelType?,
     invitable: boolean?,
-    rateLimitPerUser: number?,
+    rateLimitPerUser: number?
 }?): NoMessageThread
     local self = setmetatable(
         {
@@ -157,10 +157,10 @@ function NoMessageThread.Interface.new(resource: {
                 @within Builders.NoMessageThread
                 Amount of seconds a user has to wait before sending another message.
             ]=]
-            rateLimitPerUser = nil,
+            rateLimitPerUser = nil
         } :: NoMessageThread,
         {
-            __index = NoMessageThread.Prototype,
+            __index = NoMessageThread.Prototype
         }
     )
 
@@ -194,7 +194,7 @@ export type NoMessageThread = typeof(NoMessageThread.Prototype) & {
     autoArchiveDuration: number?,
     type: apiTypes.ChannelType?,
     invitable: boolean?,
-    rateLimitPerUser: number?,
+    rateLimitPerUser: number?
 }
 
 export type JSON = typeof(NoMessageThread.Prototype.build(nil :: any))

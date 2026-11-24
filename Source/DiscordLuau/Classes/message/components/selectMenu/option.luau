@@ -87,7 +87,7 @@ export type Option = typeof(Option.Prototype) & {
     value: string,
     description: string?,
     emoji: emoji.Emoji?,
-    default: boolean?,
+    default: boolean?
 }
 
 return Option.Interface

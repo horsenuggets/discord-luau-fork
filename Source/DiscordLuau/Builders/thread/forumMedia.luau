@@ -106,7 +106,7 @@ function ForumMediaThread.Prototype.build(self: ForumMediaThread): JSON
         auto_archive_duration = self.autoArchiveDuration,
         rate_limit_per_user = self.rateLimitPerUser,
         message = self.message,
-        applied_tags = self.appliedTags :: { string }?,
+        applied_tags = self.appliedTags :: { string }?
     }
 end
 
@@ -122,7 +122,7 @@ end
 function ForumMediaThread.Interface.new(resource: {
     name: string?,
     autoArchiveDuration: number?,
-    rateLimitPerUser: number?,
+    rateLimitPerUser: number?
 }?): ForumMediaThread
     local self = setmetatable(
         {
@@ -131,7 +131,7 @@ function ForumMediaThread.Interface.new(resource: {
                 @within Builders.ForumMediaThread
                 An array of tag IDs that have been applied to the thread.
             ]=]
-            appliedTags = {},
+            appliedTags = {}
 
             --[=[
                 @prop name string?
@@ -158,7 +158,7 @@ function ForumMediaThread.Interface.new(resource: {
             ]=]
         } :: ForumMediaThread,
         {
-            __index = ForumMediaThread.Prototype,
+            __index = ForumMediaThread.Prototype
         }
     )
 
@@ -184,7 +184,7 @@ export type ForumMediaThread = typeof(ForumMediaThread.Prototype) & {
     autoArchiveDuration: number?,
     rateLimitPerUser: number?,
     appliedTags: { string },
-    message: messageParams.JSON,
+    message: messageParams.JSON
     -- files[n]
     -- payload_json
 }

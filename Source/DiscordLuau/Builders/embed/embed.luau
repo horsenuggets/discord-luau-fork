@@ -209,7 +209,7 @@ function Embed.Prototype.build(self: Embed): JSON
         video = self.video,
         provider = self.provider,
         author = self.author,
-        fields = self.fields,
+        fields = self.fields
     }
 end
 
@@ -231,7 +231,7 @@ function Embed.Interface.new(resource: {
     video: embedVideo.JSON?,
     provider: embedProvider.JSON?,
     author: embedAuthor.JSON?,
-    fields: { embedField.JSON },
+    fields: { embedField.JSON }
 }?): Embed
     local self = setmetatable(
         {
@@ -312,10 +312,10 @@ function Embed.Interface.new(resource: {
                 @within Builders.Embed
                 The fields in the embed.
             ]=]
-            fields = {},
+            fields = {}
         } :: Embed,
         {
-            __index = Embed.Prototype,
+            __index = Embed.Prototype
         }
     )
 
@@ -387,7 +387,7 @@ export type Embed = typeof(Embed.Prototype) & {
     video: embedVideo.JSON?,
     provider: embedProvider.JSON?,
     author: embedAuthor.JSON?,
-    fields: { embedField.JSON },
+    fields: { embedField.JSON }
 }
 
 export type JSON = typeof(Embed.Prototype.build(nil :: any))

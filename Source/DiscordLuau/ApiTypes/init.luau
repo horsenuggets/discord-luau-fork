@@ -38,7 +38,7 @@ return {
     voice = {},
     rest = {
         endpoints = require("@self/rest/endpoints"),
-        types = require("@self/rest/types"),
+        types = require("@self/rest/types")
     },
     gateway = {
         closeCodes = require("@self/gateway/closeCodes"),
@@ -46,6 +46,6 @@ return {
         opcodes = require("@self/gateway/opcodes"),
         receiveEvents = require("@self/gateway/receiveEvents"),
         sendEvents = require("@self/gateway/sendEvents"),
-        types = require("@self/gateway/types"),
-    },
+        types = require("@self/gateway/types")
+    }
 }

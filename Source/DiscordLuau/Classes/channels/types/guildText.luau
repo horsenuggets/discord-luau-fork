@@ -29,7 +29,7 @@ GuildText.Prototype = {}
 GuildText.Behaviours = {
     channelBehaviour,
     guildBehaviour,
-    textBehaviour,
+    textBehaviour
 }
 
 --[=[
@@ -59,7 +59,7 @@ function GuildText.Interface.new(state: state.State, channelData: apiTypes.Chann
     ]=]
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: GuildText,
         { __index = GuildText.Prototype }
     )
@@ -70,7 +70,7 @@ function GuildText.Interface.new(state: state.State, channelData: apiTypes.Chann
 end
 
 export type GuildText = typeof(GuildText.Prototype) & {
-    state: state.State,
+    state: state.State
 } & channelBehaviour.ChannelBehaviour & textBehaviour.TextBehaviour & guildBehaviour.GuildBehaviour
 
 return GuildText.Interface

@@ -101,7 +101,7 @@ function Application.Prototype.getSlashCommandsAsync(self: Application, withLoca
 
         local response = rest.commands
             .getGlobalApplicationCommandsAsync(request, self.id, {
-                withLocalizations = withLocalizations,
+                withLocalizations = withLocalizations
             })
             :await()
 
@@ -357,7 +357,7 @@ end
 function Application.Interface.new(state: state.State, applicationData: apiTypes.ApplicationObject): Application
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: Application,
         { __index = Application.Prototype }
     )
@@ -395,7 +395,7 @@ export type Application = typeof(Application.Prototype) & {
     redirectUris: { string }?,
     installParams: installParams.InstallParams?,
     integrationTypesConfig: { [apiTypes.IntegrationTypesConfig]: boolean }?,
-    customInstallUrl: string?,
+    customInstallUrl: string?
 }
 
 return Application.Interface

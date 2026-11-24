@@ -135,7 +135,7 @@ export type Sticker = typeof(Sticker.Prototype) & {
     available: boolean?,
     guildId: apiTypes.Snowflake?,
     user: user.User?,
-    sortValue: number?,
+    sortValue: number?
 }
 
 return Sticker.Interface

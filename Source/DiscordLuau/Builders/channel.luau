@@ -505,7 +505,7 @@ function Channel.Prototype.build(self: Channel): JSON
         available_tags = self.availableTags,
         default_sort_order = apiTypes.channel.MediaSortOrder[self.defaultSortOrder],
         default_forum_layout = apiTypes.channel.ForumLayout[self.defaultForumLayout],
-        default_thread_rate_limit_per_user = self.defaultThreadRateLimitPerUser,
+        default_thread_rate_limit_per_user = self.defaultThreadRateLimitPerUser
     }
 end
 
@@ -518,7 +518,7 @@ function Channel.Interface.new(resource: {
     channelName: string?,
     channelType: apiTypes.ChannelType?,
     channelPosition: number?,
-    channelPermissionOverwrites: { apiTypes.OverwriteObject }?,
+    channelPermissionOverwrites: { apiTypes.OverwriteObject }?
 }?): Channel
     local self = setmetatable(
         {
@@ -527,7 +527,7 @@ function Channel.Interface.new(resource: {
                 @within Builders.Channel
                 List of permission overwrites applied to the channel.
             ]=]
-            permissionOverwrites = {},
+            permissionOverwrites = {}
         } :: Channel,
         { __index = Channel.Prototype }
     )
@@ -572,7 +572,7 @@ export type Channel = typeof(Channel.Prototype) & {
     videoQualityMode: apiTypes.VideoQualityMode?,
     rtcRegion: string?,
     userLimit: number?,
-    bitrate: number?,
+    bitrate: number?
 }
 
 export type JSON = typeof(Channel.Prototype.build(nil :: any))

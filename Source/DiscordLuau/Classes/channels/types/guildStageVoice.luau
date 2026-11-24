@@ -29,7 +29,7 @@ GuildStageVoice.Prototype = {}
 GuildStageVoice.Behaviours = {
     channelBehaviour,
     guildBehaviour,
-    voiceBehaviour,
+    voiceBehaviour
 }
 
 --[=[
@@ -59,7 +59,7 @@ function GuildStageVoice.Interface.new(state: state.State, channelData: apiTypes
     ]=]
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: GuildStageVoice,
         { __index = GuildStageVoice.Prototype }
     )
@@ -70,7 +70,7 @@ function GuildStageVoice.Interface.new(state: state.State, channelData: apiTypes
 end
 
 export type GuildStageVoice = typeof(GuildStageVoice.Prototype) & {
-    state: state.State,
+    state: state.State
 } & channelBehaviour.ChannelBehaviour & voiceBehaviour.VoiceBehaviour & guildBehaviour.GuildBehaviour
 
 return GuildStageVoice.Interface

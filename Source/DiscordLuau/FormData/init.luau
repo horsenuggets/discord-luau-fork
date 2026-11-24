@@ -35,7 +35,7 @@ local FILE_FORMATS = table.freeze({
     html = "text/html",
 
     mp4 = "video/mp4",
-    json = "application/json",
+    json = "application/json"
 })
 
 local FormData = {}
@@ -121,7 +121,7 @@ function FormData.Prototype.append(
         name = name,
         value = value,
         filename = filename,
-        encoding = encoding,
+        encoding = encoding
     })
 end
 
@@ -149,7 +149,7 @@ function FormData.Prototype.set(self: FormData, name: string, value: string, fil
             name = name,
             value = value,
             filename = filename,
-            encoding = encoding,
+            encoding = encoding
         }
 
         local nextIndex = filter(self.entries, function(object)
@@ -257,11 +257,11 @@ function FormData.Interface.new(): FormData
     return setmetatable(
         {
             entries = entries,
-            boundary = uuid(),
+            boundary = uuid()
         } :: FormData,
         {
             __index = FormData.Prototype,
-            __iter = entries,
+            __iter = entries
         }
     )
 end
@@ -286,7 +286,7 @@ export type FormDataEntryValue = string
 export type FormDataEntryMap = { name: string, value: string, filename: string?, encoding: string? }
 export type FormData = typeof(FormData.Prototype) & {
     entries: { FormDataEntryMap },
-    boundary: string,
+    boundary: string
 }
 
 return FormData.Interface

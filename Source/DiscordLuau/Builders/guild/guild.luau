@@ -268,7 +268,7 @@ function Guild.Prototype.build(self: Guild): JSON
         features = #self.features ~= 0 and self.features or nil,
         description = self.description,
         premium_progress_bar_enabled = self.premiumProgressBarEnabled,
-        safety_alerts_channel_id = self.safetyAlertsChannelId,
+        safety_alerts_channel_id = self.safetyAlertsChannelId
     }
 end
 
@@ -296,7 +296,7 @@ function Guild.Interface.new(resource: {
     features: { apiTypes.GuildFeature }?,
     description: string?,
     premiumProgressBarEnabled: boolean?,
-    safetyAlertsChannelId: apiTypes.Snowflake?,
+    safetyAlertsChannelId: apiTypes.Snowflake?
 }?): Guild
     local self = setmetatable(
         {
@@ -401,7 +401,7 @@ function Guild.Interface.new(resource: {
                 @within Builders.Guild
                 List of enabled guild features.
             ]=]
-            features = {},
+            features = {}
 
             --[=[
                 @prop description string?
@@ -532,7 +532,7 @@ export type Guild = typeof(Guild.Prototype) & {
     features: { apiTypes.GuildFeature },
     description: string?,
     premiumProgressBarEnabled: boolean?,
-    safetyAlertsChannelId: apiTypes.Snowflake?,
+    safetyAlertsChannelId: apiTypes.Snowflake?
 }
 
 export type JSON = typeof(Guild.Prototype.build(nil :: any))
