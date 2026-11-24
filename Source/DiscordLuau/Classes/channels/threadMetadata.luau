@@ -100,7 +100,7 @@ export type ThreadMetadata = typeof(ThreadMetadata.Prototype) & {
     archiveTimestamp: stdPolyfills.DateTime,
     locked: boolean,
     invitable: boolean?,
-    createTimestamp: stdPolyfills.DateTime?,
+    createTimestamp: stdPolyfills.DateTime?
 }
 
 return ThreadMetadata.Interface

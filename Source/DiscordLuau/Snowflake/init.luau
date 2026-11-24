@@ -81,14 +81,14 @@ end
 function Snowflake.Interface.new(snowflake: string)
     return setmetatable(
         {
-            snowflake = snowflake,
+            snowflake = snowflake
         } :: Snowflake,
         { __index = Snowflake.Prototype }
     )
 end
 
 export type Snowflake = typeof(Snowflake.Prototype) & {
-    snowflake: string,
+    snowflake: string
 }
 
 return Snowflake.Interface

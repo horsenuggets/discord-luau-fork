@@ -26,7 +26,7 @@ local Autocomplete = {}
 Autocomplete.Interface = {}
 Autocomplete.Prototype = {}
 Autocomplete.Behaviours = {
-    interactionBehaviour,
+    interactionBehaviour
 }
 
 --[=[
@@ -56,7 +56,7 @@ function Autocomplete.Interface.new(state: state.State, interactionData: apiType
                 @prop state State
                 @within Classes.Autocomplete
             ]=]
-            state = state,
+            state = state
         } :: Autocomplete,
         { __index = Autocomplete.Prototype }
     )

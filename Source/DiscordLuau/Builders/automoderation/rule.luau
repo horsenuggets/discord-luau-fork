@@ -141,7 +141,7 @@ function AutomoderationRule.Prototype.build(self: AutomoderationRule): JSON
         actions = self.actions,
         enabled = self.enabled,
         exempt_roles = self.exemptRoles,
-        exempt_channels = self.exemptChannels,
+        exempt_channels = self.exemptChannels
     }
 end
 
@@ -172,7 +172,7 @@ function AutomoderationRule.Interface.new(resource: {
     actions: { action.JSON }?,
     enabled: boolean?,
     exemptRoles: { apiTypes.Snowflake }?,
-    exemptChannels: { apiTypes.Snowflake }?,
+    exemptChannels: { apiTypes.Snowflake }?
 }?): AutomoderationRule
     local self = setmetatable(
         {
@@ -230,10 +230,10 @@ function AutomoderationRule.Interface.new(resource: {
                 @within Builders.AutomoderationRule
                 The channel ids that should not be affected by the rule.
             ]=]
-            exemptChannels = nil,
+            exemptChannels = nil
         } :: AutomoderationRule,
         {
-            __index = AutomoderationRule.Prototype,
+            __index = AutomoderationRule.Prototype
         }
     )
 
@@ -282,7 +282,7 @@ export type AutomoderationRule = typeof(AutomoderationRule.Prototype) & {
     actions: { action.JSON },
     enabled: boolean?,
     exemptRoles: { apiTypes.Snowflake }?,
-    exemptChannels: { apiTypes.Snowflake }?,
+    exemptChannels: { apiTypes.Snowflake }?
 }
 
 export type JSON = typeof(AutomoderationRule.Prototype.build(nil :: any))

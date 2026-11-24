@@ -61,7 +61,7 @@ end
 
 export type CountDetails = typeof(CountDetails.Prototype) & {
     burst: number,
-    normal: number,
+    normal: number
 }
 
 return CountDetails.Interface

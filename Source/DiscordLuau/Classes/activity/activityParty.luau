@@ -53,7 +53,7 @@ function ActivityParty.Interface.new(id: apiTypes.Snowflake, currentSize: number
                 
                 The maximum size the party can be
             ]=]
-            maxSize = maxSize,
+            maxSize = maxSize
         } :: ActivityParty,
         { __index = ActivityParty.Prototype }
     )
@@ -65,7 +65,7 @@ export type ActivityParty = typeof(ActivityParty.Prototype) & {
     id: apiTypes.Snowflake,
 
     currentSize: number,
-    maxSize: number,
+    maxSize: number
 }
 
 return ActivityParty.Interface

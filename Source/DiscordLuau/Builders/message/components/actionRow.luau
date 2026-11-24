@@ -46,7 +46,7 @@ end
 function ActionRow.Prototype.build(self: ActionRow): JSON
     return {
         type = 1,
-        components = self.components,
+        components = self.components
     }
 end
 
@@ -62,7 +62,7 @@ end
     ```
 ]=]
 function ActionRow.Interface.new(resource: {
-    components: { button.JSON | textInput.JSON | selectMenu.JSON | JSON },
+    components: { button.JSON | textInput.JSON | selectMenu.JSON | JSON }
 }?): ActionRow
     local self = setmetatable(
         {
@@ -71,10 +71,10 @@ function ActionRow.Interface.new(resource: {
                 @within Builders.ActionRow
                 The components that are part of this action row. Can include buttons, text inputs, and select menus.
             ]=]
-            components = {},
+            components = {}
         } :: ActionRow,
         {
-            __index = ActionRow.Prototype,
+            __index = ActionRow.Prototype
         }
     )
 
@@ -90,7 +90,7 @@ function ActionRow.Interface.new(resource: {
 end
 
 export type ActionRow = typeof(ActionRow.Prototype) & {
-    components: { button.JSON | textInput.JSON | selectMenu.JSON | JSON },
+    components: { button.JSON | textInput.JSON | selectMenu.JSON | JSON }
 }
 
 export type JSON = typeof(ActionRow.Prototype.build(nil :: any))

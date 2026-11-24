@@ -30,7 +30,7 @@ function commands.getGlobalApplicationCommandsAsync(
     instance: request.Request,
     applicationId: apiTypes.Snowflake,
     urlParams: {
-        withLocalizations: boolean?,
+        withLocalizations: boolean?
     }
 ): future.FutureLike<
     string,
@@ -205,7 +205,7 @@ function commands.getGuildApplicationCommandsAsync(
     applicationId: apiTypes.Snowflake,
     guildId: apiTypes.Snowflake,
     urlParams: {
-        withLocalizations: boolean?,
+        withLocalizations: boolean?
     }
 ): future.FutureLike<
     string,

@@ -84,7 +84,7 @@ export type WelcomeScreenChannel = typeof(WelcomeScreenChannel.Prototype) & {
     channelId: apiTypes.Snowflake?,
     description: string?,
     emojiId: apiTypes.Snowflake?,
-    emojiName: string?,
+    emojiName: string?
 }
 
 return WelcomeScreenChannel.Interface

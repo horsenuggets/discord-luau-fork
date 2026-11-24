@@ -14,12 +14,12 @@ local util = require("../Utilities")
 
 local MembershipState = table.freeze(util.tableReflect({
     Invited = 1,
-    Accepted = 2,
+    Accepted = 2
 }))
 
 local IntegrationTypesConfig = table.freeze(util.tableReflect({
     GuildInstall = 0,
-    UserInstall = 1,
+    UserInstall = 1
 }))
 
 export type MembershipState = "Invited" | "Accepted"
@@ -59,5 +59,5 @@ export type OAuth2Scopes =
 
 return {
     MembershipState = MembershipState,
-    IntegrationTypesConfig = IntegrationTypesConfig,
+    IntegrationTypesConfig = IntegrationTypesConfig
 }

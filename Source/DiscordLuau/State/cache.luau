@@ -72,10 +72,10 @@ function Cache.Interface.new<K, V>(expiry: number): Cache<K, V>
         {
             store = setmetatable({}, { __mode = "kv" }) :: any,
 
-            expiry = expiry,
+            expiry = expiry
         } :: Cache<K, V>,
         {
-            __index = Cache.Prototype,
+            __index = Cache.Prototype
         }
     )
 
@@ -85,7 +85,7 @@ end
 export type Store<K, V> = { [K]: V }
 export type Cache<K, V> = typeof(Cache.Prototype) & {
     store: Store<K, V>,
-    expiry: number,
+    expiry: number
 }
 
 return Cache.Interface

@@ -57,7 +57,7 @@ function Emoji.Prototype.build(self: Emoji): JSON
 
     return {
         id = self.emojiId,
-        name = self.emojiName,
+        name = self.emojiName
     }
 end
 
@@ -75,7 +75,7 @@ end
 ]=]
 function Emoji.Interface.new(resource: {
     emojiId: string,
-    emojiName: string,
+    emojiName: string
 }?): Emoji
     local self = setmetatable(
         {
@@ -91,10 +91,10 @@ function Emoji.Interface.new(resource: {
                 @within Builders.Emoji
                 The name of the emoji.
             ]=]
-            emojiName = nil,
+            emojiName = nil
         } :: Emoji,
         {
-            __index = Emoji.Prototype,
+            __index = Emoji.Prototype
         }
     )
 
@@ -113,7 +113,7 @@ end
 
 export type Emoji = typeof(Emoji.Prototype) & {
     emojiId: string?,
-    emojiName: string?,
+    emojiName: string?
 }
 
 export type JSON = typeof(Emoji.Prototype.build(nil :: any))

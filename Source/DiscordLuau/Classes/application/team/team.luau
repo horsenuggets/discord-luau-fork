@@ -93,7 +93,7 @@ export type Team = typeof(Team.Prototype) & {
     id: apiTypes.Snowflake,
     members: { member.Member },
     name: string,
-    ownerUserId: apiTypes.Snowflake,
+    ownerUserId: apiTypes.Snowflake
 }
 
 return Team.Interface

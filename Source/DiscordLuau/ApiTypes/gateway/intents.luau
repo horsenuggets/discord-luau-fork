@@ -33,7 +33,7 @@ local Intents = table.freeze({
     AutoModerationConfiguration = 20,
     AutoModerationExecution = 21,
     GuildMessagePolls = 24,
-    DirectMessagePolls = 25,
+    DirectMessagePolls = 25
 })
 
 export type Intent =

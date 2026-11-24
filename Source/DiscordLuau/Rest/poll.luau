@@ -32,7 +32,7 @@ function poll.getAnswerVotersAsync(
     answerId: apiTypes.Snowflake,
     urlParams: {
         after: number?,
-        limit: number?,
+        limit: number?
     }
 ): future.FutureLike<string, apiTypes.GetAnswerVotersResponse>
     return future.Future.new(function()

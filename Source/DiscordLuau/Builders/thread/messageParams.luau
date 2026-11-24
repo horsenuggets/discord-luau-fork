@@ -141,7 +141,7 @@ function MessageParams.Prototype.build(self: MessageParams): JSON
         components = self.components :: { button.JSON | textInput.JSON | selectMenu.JSON | actionRow.JSON }?,
         sticker_ids = self.stickerIds :: { string }?,
         attachments = self.attachments :: { attachment.JSON }?,
-        flags = self.flags,
+        flags = self.flags
     }
 end
 
@@ -157,7 +157,7 @@ function MessageParams.Interface.new(resource: {
     components: { button.JSON | textInput.JSON | selectMenu.JSON | actionRow.JSON }?,
     stickerIds: { string }?,
     attachments: { attachment.JSON }?,
-    flags: number?,
+    flags: number?
 }?): MessageParams
     local self = setmetatable(
         {
@@ -198,7 +198,7 @@ function MessageParams.Interface.new(resource: {
                 @within Builders.MessageParams
                 Array of attachment objects that will be attached to the message.
             ]=]
-            attachments = {},
+            attachments = {}
 
             --[=[
                 @prop flags number?
@@ -207,7 +207,7 @@ function MessageParams.Interface.new(resource: {
             ]=]
         } :: MessageParams,
         {
-            __index = MessageParams.Prototype,
+            __index = MessageParams.Prototype
         }
     )
 
@@ -259,7 +259,7 @@ export type MessageParams = typeof(MessageParams.Prototype) & {
     components: { button.JSON | textInput.JSON | selectMenu.JSON | actionRow.JSON },
     stickerIds: { string },
     attachments: { attachment.JSON },
-    flags: number?,
+    flags: number?
 }
 
 export type JSON = typeof(MessageParams.Prototype.build(nil :: any))

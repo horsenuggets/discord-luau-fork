@@ -63,7 +63,7 @@ end
 
 export type Account = typeof(Account.Prototype) & {
     id: string,
-    name: string,
+    name: string
 }
 
 return Account.Interface

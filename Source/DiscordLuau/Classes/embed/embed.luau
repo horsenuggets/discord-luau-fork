@@ -177,7 +177,7 @@ export type Embed = typeof(Embed.Prototype) & {
     video: video.Video?,
     provider: provider.Provider?,
     author: author.Author?,
-    fields: { field.Field }?,
+    fields: { field.Field }?
 }
 
 return Embed.Interface

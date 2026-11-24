@@ -33,7 +33,7 @@ function auditLog.getGuildAuditLogAsync(
         before: apiTypes.Snowflake?,
         after: apiTypes.Snowflake?,
         limit: number?,
-        actionType: ActionType,
+        actionType: ActionType
     }
 ): future.FutureLike<string, apiTypes.GetGuildAuditLogResponse>
     return future.Future.new(function()

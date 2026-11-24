@@ -100,7 +100,7 @@ function user.getCurrentUserGuildsAsync(
         before: apiTypes.Snowflake?,
         after: apiTypes.Snowflake?,
         limit: number?,
-        withCounts: boolean?,
+        withCounts: boolean?
     }
 ): future.FutureLike<string, apiTypes.GetCurrentUserGuildsResponse>
     return future.Future.new(function()

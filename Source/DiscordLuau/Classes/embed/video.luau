@@ -77,7 +77,7 @@ export type Video = typeof(Video.Prototype) & {
     url: string,
     proxyUrl: string?,
     height: number?,
-    width: number?,
+    width: number?
 }
 
 return Video.Interface

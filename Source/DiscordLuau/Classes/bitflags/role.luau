@@ -47,7 +47,7 @@ function RoleBitflag.Interface.new(flag: number): RoleBitflag
                 @prop flag number
                 @within Classes.RoleBitflag
             ]=]
-            flag = flag,
+            flag = flag
         } :: RoleBitflag,
         { __index = RoleBitflag.Prototype }
     )
@@ -56,7 +56,7 @@ function RoleBitflag.Interface.new(flag: number): RoleBitflag
 end
 
 export type RoleBitflag = typeof(RoleBitflag.Prototype) & {
-    flag: number,
+    flag: number
 }
 
 return RoleBitflag.Interface

@@ -21,12 +21,12 @@
 			"*.luau": "luau"
 		},
 		"[luau]": {
-			"editor.defaultFormatter": "JohnnyMorganz.stylua"
+			"editor.defaultFormatter": "horsenuggets.styluau"
 		}
 	},
 	"extensions": {
 		"recommendations": [
-			"JohnnyMorganz.stylua",
+			"horsenuggets.styluau",
 			"JohnnyMorganz.luau-lsp"
 		]
 	}

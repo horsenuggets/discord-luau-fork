@@ -69,7 +69,7 @@ end
 
 export type Action = typeof(Action.Prototype) & {
     type: apiTypes.ActionTypes,
-    metadata: metadata.ActionMetadata?,
+    metadata: metadata.ActionMetadata?
 }
 
 return Action.Interface

@@ -90,7 +90,7 @@ function Overwrite.Prototype.build(self: Overwrite): JSON
         type = self.type == "role" and 0 or 1,
 
         allow = tostring(bit.bor(table.unpack(allowPermissionBits))),
-        deny = tostring(bit.bor(table.unpack(denyPermissionBits))),
+        deny = tostring(bit.bor(table.unpack(denyPermissionBits)))
     }
 end
 
@@ -102,7 +102,7 @@ end
 function Overwrite.Interface.new(resource: {
     permissionType: PermissionOverwriteType,
     allowFlags: { apiTypes.Permissions }?,
-    denyFlags: { apiTypes.Permissions }?,
+    denyFlags: { apiTypes.Permissions }?
 }): Overwrite
     local self = setmetatable(
         {
@@ -125,10 +125,10 @@ function Overwrite.Interface.new(resource: {
                 @within Builders.Overwrite
                 The type of overwrite, either "role" or "member".
             ]=]
-            type = resource.permissionType,
+            type = resource.permissionType
         } :: Overwrite,
         {
-            __index = Overwrite.Prototype,
+            __index = Overwrite.Prototype
         }
     )
 
@@ -164,7 +164,7 @@ function Overwrite.Interface.fromId(resource: {
     permissionId: apiTypes.Snowflake,
     permissionType: PermissionOverwriteType,
     allowFlags: { apiTypes.Permissions }?,
-    denyFlags: { apiTypes.Permissions }?,
+    denyFlags: { apiTypes.Permissions }?
 }): Overwrite
     local self = Overwrite.Interface.new(resource)
 
@@ -183,7 +183,7 @@ export type Overwrite = typeof(Overwrite.Prototype) & {
     deniedPermissionFlags: { apiTypes.Permissions },
 
     type: PermissionOverwriteType,
-    id: apiTypes.Snowflake,
+    id: apiTypes.Snowflake
 }
 
 export type JSON = typeof(Overwrite.Prototype.build(nil :: any))

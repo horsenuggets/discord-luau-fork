@@ -112,7 +112,7 @@ function Bot.Prototype.connectAsync(self: Bot): future.FutureLike<string, nil>
         self.state.webSocketManager.onDispatch:listen(function(object: {
             shardId: number,
             event: apiTypes.ReceiveEvent,
-            payload: apiTypes.Payload<unknown>,
+            payload: apiTypes.Payload<unknown>
         })
             if object.event == apiTypes.gateway.receiveEvents["Ready"] then
                 self.onReady:invoke(object.shardId)
@@ -130,7 +130,7 @@ function Bot.Prototype.connectAsync(self: Bot): future.FutureLike<string, nil>
                 self.onMessageDeleted:invoke({
                     messageId = typedObject.d.id,
                     channelId = typedObject.d.channel_id,
-                    guildId = typedObject.d.guild_id,
+                    guildId = typedObject.d.guild_id
                 })
             elseif object.event == apiTypes.gateway.receiveEvents["MessageDeleteBulk"] then
                 local typedObject = object.payload :: apiTypes.MessageDeleteBulkPayload
@@ -138,7 +138,7 @@ function Bot.Prototype.connectAsync(self: Bot): future.FutureLike<string, nil>
                 self.onMessageBulkDeleted:invoke({
                     channelId = typedObject.d.channel_id,
                     guildId = typedObject.d.guild_id,
-                    ids = typedObject.d.ids,
+                    ids = typedObject.d.ids
                 })
             elseif object.event == apiTypes.gateway.receiveEvents["ChannelCreate"] then
                 local typedObject = object.payload :: apiTypes.CreateChannelPayload
@@ -235,7 +235,7 @@ function Bot.Prototype.connectAsync(self: Bot): future.FutureLike<string, nil>
                     channelId = typedObject.d.channel_id,
                     guildId = typedObject.d.guild_id,
                     lastPinTimestamp = typedObject.d.last_pin_timestamp
-                        and stdPolyfills.datetime.fromIsoDate(typedObject.d.last_pin_timestamp),
+                        and stdPolyfills.datetime.fromIsoDate(typedObject.d.last_pin_timestamp)
                 })
             elseif object.event == apiTypes.gateway.receiveEvents["UserUpdate"] then
                 local typedObject = object.payload :: apiTypes.UserUpdatePayload
@@ -275,7 +275,7 @@ function Bot.Prototype.connectAsync(self: Bot): future.FutureLike<string, nil>
 
                 self.onGuildMemberBanned:invoke({
                     guildId = typedObject.d.guild_id,
-                    user = classes.user.new(typedObject.d.user),
+                    user = classes.user.new(typedObject.d.user)
                 })
             elseif object.event == apiTypes.gateway.receiveEvents["GuildBanRemove"] then
                 local typedObject = object.payload :: apiTypes.GuildBanRemovePayload
@@ -284,21 +284,21 @@ function Bot.Prototype.connectAsync(self: Bot): future.FutureLike<string, nil>
 
                 self.onGuildMemberUnbanned:invoke({
                     guildId = typedObject.d.guild_id,
-                    user = classes.user.new(typedObject.d.user),
+                    user = classes.user.new(typedObject.d.user)
                 })
             elseif object.event == apiTypes.gateway.receiveEvents["GuildMemberAdd"] then
                 local typedObject = object.payload :: apiTypes.GuildMemberAddPayload
 
                 self.onGuildMemberJoined:invoke({
                     guildId = typedObject.d.guild_id,
-                    member = classes.guild.member.new(self.state, typedObject.d.guild_id, typedObject.d),
+                    member = classes.guild.member.new(self.state, typedObject.d.guild_id, typedObject.d)
                 })
             elseif object.event == apiTypes.gateway.receiveEvents["GuildMemberRemove"] then
                 local typedObject = object.payload :: apiTypes.GuildMemberRemovePayload
 
                 self.onGuildMemberLeft:invoke({
                     guildId = typedObject.d.guild_id,
-                    user = classes.user.new(typedObject.d.user),
+                    user = classes.user.new(typedObject.d.user)
                 })
             elseif object.event == apiTypes.gateway.receiveEvents["GuildMemberUpdate"] then
                 local typedObject = object.payload :: apiTypes.GuildMemberUpdatePayload
@@ -316,7 +316,7 @@ function Bot.Prototype.connectAsync(self: Bot): future.FutureLike<string, nil>
                     mute = typedObject.d.mute,
                     pending = typedObject.d.pending,
                     communicationDisabledUntil = typedObject.d.communication_disabled_until
-                        and stdPolyfills.datetime.fromIsoDate(typedObject.d.communication_disabled_until),
+                        and stdPolyfills.datetime.fromIsoDate(typedObject.d.communication_disabled_until)
                 })
             elseif object.event == apiTypes.gateway.receiveEvents["InteractionCreate"] then
                 local typedObject = object.payload :: apiTypes.InteractionCreatePayload
@@ -370,7 +370,7 @@ function Bot.Prototype.getGuildAsync(
 
         local response = rest.guild
             .getGuildAsync(request, guildId, {
-                withCounts = withCount,
+                withCounts = withCount
             })
             :await()
 
@@ -596,7 +596,7 @@ end
 function Bot.Prototype.createGuildAsync(
     self: Bot,
     guildData: builders.guildJSON & {
-        name: string,
+        name: string
     }
 ): future.FutureLike<string, classes.Guild>
     return future.Future.new(function()
@@ -667,7 +667,7 @@ function Bot.Interface.new(options: {
     intents: number,
     reconnect: boolean?,
     logLevel: logger.LogLevel?,
-    globalRatelimit: number?,
+    globalRatelimit: number?
 })
     local self = setmetatable(
         {
@@ -677,7 +677,7 @@ function Bot.Interface.new(options: {
                 logLevel = options.logLevel,
                 version = DISCORD_VERSION,
                 reconnect = options.reconnect or false,
-                globalRatelimit = options.globalRatelimit or 50,
+                globalRatelimit = options.globalRatelimit or 50
             }),
 
             logger = logger.new("Bot"),
@@ -734,7 +734,7 @@ function Bot.Interface.new(options: {
             onCommandInteraction = emitter.new(),
             onComponentInteraction = emitter.new(),
             onAutocompleteInteraction = emitter.new(),
-            onModalInteraction = emitter.new(),
+            onModalInteraction = emitter.new()
         } :: Bot,
         { __index = Bot.Prototype }
     )
@@ -1034,7 +1034,7 @@ export type Bot =
             deaf: boolean?,
             mute: boolean?,
             pending: boolean?,
-            communicationDisabledUntil: stdPolyfills.DateTime?,
+            communicationDisabledUntil: stdPolyfills.DateTime?
         }>,
 
         --[=[
@@ -1065,7 +1065,7 @@ export type Bot =
             @prop onModalInteraction Emitter<Classes.Modal>
             @within DiscordLuau.Bot
         ]=]
-        onModalInteraction: emitter.Emitter<classes.Modal>,
+        onModalInteraction: emitter.Emitter<classes.Modal>
     }
 
 return Bot.Interface

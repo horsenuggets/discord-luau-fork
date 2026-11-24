@@ -43,7 +43,7 @@ function AvatarDecoration.Interface.new(asset: string, skuId: apiTypes.Snowflake
                 @within Classes.AvatarDecoration
                 The SKU ID for this avatar decoration.
             ]=]
-            skuId = skuId,
+            skuId = skuId
         } :: AvatarDecoration,
         { __index = AvatarDecoration.Prototype }
     )
@@ -53,7 +53,7 @@ end
 
 export type AvatarDecoration = typeof(AvatarDecoration.Prototype) & {
     asset: string,
-    skuId: apiTypes.Snowflake,
+    skuId: apiTypes.Snowflake
 }
 
 return AvatarDecoration.Interface

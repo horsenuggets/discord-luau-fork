@@ -41,6 +41,6 @@ return function(source)
     end
 
     return setmetatable(source, {
-        __index = reversed,
+        __index = reversed
     })
 end

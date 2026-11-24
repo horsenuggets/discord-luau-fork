@@ -27,7 +27,7 @@ GuildCategory.Interface = {}
 GuildCategory.Prototype = {}
 GuildCategory.Behaviours = {
     channelBehaviour,
-    guildBehaviour,
+    guildBehaviour
 }
 
 --[=[
@@ -57,7 +57,7 @@ function GuildCategory.Interface.new(state: state.State, channelData: apiTypes.C
     ]=]
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: GuildCategory,
         { __index = GuildCategory.Prototype }
     )
@@ -68,7 +68,7 @@ function GuildCategory.Interface.new(state: state.State, channelData: apiTypes.C
 end
 
 export type GuildCategory = typeof(GuildCategory.Prototype) & {
-    state: state.State,
+    state: state.State
 } & channelBehaviour.ChannelBehaviour & guildBehaviour.GuildBehaviour
 
 return GuildCategory.Interface

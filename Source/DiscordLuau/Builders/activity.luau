@@ -80,7 +80,7 @@ function Activity.Prototype.build(self: Activity): JSON
     return {
         name = self.name,
         url = self.streamingURL,
-        type = apiTypes.client.ActivityType[self.activityType],
+        type = apiTypes.client.ActivityType[self.activityType]
     }
 end
 
@@ -100,7 +100,7 @@ end
 function Activity.Interface.new(resource: {
     name: string?,
     activityType: apiTypes.ActivityType?,
-    streamingURL: string?,
+    streamingURL: string?
 }?): Activity
     local self = setmetatable(
         {
@@ -123,7 +123,7 @@ function Activity.Interface.new(resource: {
                 @within Builders.Activity
                 The URL of the stream, only YouTube and Twitch URLs are supported.
             ]=]
-            streamingURL = nil,
+            streamingURL = nil
         } :: Activity,
         { __index = Activity.Prototype }
     )
@@ -146,7 +146,7 @@ end
 export type Activity = typeof(Activity.Prototype) & {
     name: string,
     activityType: apiTypes.ActivityType,
-    streamingURL: string?,
+    streamingURL: string?
 }
 
 export type JSON = typeof(Activity.Prototype.build(nil :: any))

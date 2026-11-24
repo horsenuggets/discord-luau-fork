@@ -255,27 +255,27 @@ return {
         rule = automoderationRule,
         action = {
             action = automoderationAction,
-            metadata = automoderationActionMetadata,
+            metadata = automoderationActionMetadata
         },
-        triggerMetadata = automoderationTriggerMetadata,
+        triggerMetadata = automoderationTriggerMetadata
     },
     application = {
         team = {
             member = member,
-            team = team,
+            team = team
         },
         installParams = installParams,
         command = {
             choice = choice,
             command = command,
-            option = option,
+            option = option
         },
-        application = application,
+        application = application
     },
     attachment = attachment,
     interaction = {
         behaviour = {
-            interaction = interaction,
+            interaction = interaction
         },
         data = data,
         types = {
@@ -283,9 +283,9 @@ return {
             modal = modal,
             autocomplete = autocomplete,
             command = typesCommand,
-            ping = ping,
+            ping = ping
         },
-        dataOption = dataOption,
+        dataOption = dataOption
     },
     resolved = resolved,
     presence = presence,
@@ -302,26 +302,26 @@ return {
             results = results,
             answer = answer,
             answerCount = answerCount,
-            mediaObject = mediaObject,
+            mediaObject = mediaObject
         },
         components = {
             selectMenu = {
                 selectMenu = selectMenu,
                 defaultValue = defaultValue,
-                option = selectMenuOption,
+                option = selectMenuOption
             },
             button = button,
             textInput = textInput,
-            actionRow = actionRow,
+            actionRow = actionRow
         },
         activity = activityActivity,
-        roleSubscriptionData = roleSubscriptionData,
+        roleSubscriptionData = roleSubscriptionData
     },
     guild = {
         integration = {
             account = account,
             application = integrationApplication,
-            integration = integration,
+            integration = integration
         },
         member = guildMember,
         role = role,
@@ -331,20 +331,20 @@ return {
         onboarding = {
             onboarding = onboarding,
             prompt = prompt,
-            option = onboardingOption,
+            option = onboardingOption
         },
         scheduledEvent = scheduledEvent,
         welcomeScreen = welcomeScreen,
         widget = {
             widget = widget,
-            widgetSettings = widgetSettings,
+            widgetSettings = widgetSettings
         },
         unavailableGuild = unavailableGuild,
         roleTag = roleTag,
         invite = invite,
         preview = preview,
         voiceRegion = voiceRegion,
-        guild = guild,
+        guild = guild
     },
     entitlement = entitlement,
     user = user,
@@ -361,7 +361,7 @@ return {
             channel = channel,
             thread = thread,
             forum = forum,
-            guild = behaviourGuild,
+            guild = behaviourGuild
         },
         overwrite = overwrite,
         types = {
@@ -372,7 +372,7 @@ return {
             guildText = guildText,
             dm = dm,
             groupDm = groupDm,
-            guildAnnouncement = guildAnnouncement,
+            guildAnnouncement = guildAnnouncement
         },
         forumTag = forumTag,
         threads = {
@@ -380,9 +380,9 @@ return {
             public = public,
             media = threadMedia,
             forum = threadForum,
-            private = private,
+            private = private
         },
-        threadMetadata = threadMetadata,
+        threadMetadata = threadMetadata
     },
     activity = {
         activityTimestamp = activityTimestamp,
@@ -391,11 +391,11 @@ return {
         activityAssets = activityAssets,
         activitySecrets = activitySecrets,
         activityParty = activityParty,
-        activity = activity,
+        activity = activity
     },
     reaction = {
         countDetails = countDetails,
-        reaction = reaction,
+        reaction = reaction
     },
     sticker = sticker,
     bitflags = {
@@ -406,7 +406,7 @@ return {
         message = bitflagsMessage,
         application = bitflagsApplication,
         channel = bitflagsChannel,
-        guildMember = bitflagsGuildMember,
+        guildMember = bitflagsGuildMember
     },
     emoji = emoji,
     embed = {
@@ -417,6 +417,6 @@ return {
         embed = embed,
         thumbnail = thumbnail,
         field = field,
-        provider = provider,
-    },
+        provider = provider
+    }
 }

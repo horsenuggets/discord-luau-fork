@@ -117,11 +117,11 @@ export type IneractionMetadata = typeof(IneractionMetadata.Prototype) & {
     type: apiTypes.InteractionType,
     user: user.User,
     authorizingIntegrationOwners: {
-        [apiTypes.IntegrationTypesConfig]: apiTypes.Snowflake,
+        [apiTypes.IntegrationTypesConfig]: apiTypes.Snowflake
     },
     originalResponseMessageId: apiTypes.Snowflake?,
     interactedMessageId: apiTypes.Snowflake?,
-    triggeringInteractionMetadata: IneractionMetadata,
+    triggeringInteractionMetadata: IneractionMetadata
 }
 
 return IneractionMetadata.Interface

@@ -73,7 +73,7 @@ function Message.Prototype.startThreadAsync(
             .startThreadFromMessageAsync(request, self.channelId, self.id, {
                 name = threadName,
                 auto_archive_duration = autoArchiveDuration,
-                rate_limit_per_user = rateLimitPerUser,
+                rate_limit_per_user = rateLimitPerUser
             })
             :await()
 
@@ -184,7 +184,7 @@ function Message.Prototype.getReactionsAsync(
             .getReactionsAsync(request, self.channelId, self.id, emojiObject, {
                 reactionType = reactionType,
                 after = afterUserId,
-                limit = limit,
+                limit = limit
             })
             :await()
 
@@ -258,7 +258,7 @@ function Message.Prototype.editAsync(self: Message, message: builders.messageJSO
                 components = message.components,
                 allowed_mentions = message.allowed_mentions,
                 attachments = message.attachments,
-                flags = message.flags,
+                flags = message.flags
             })
             :await()
 
@@ -301,7 +301,7 @@ function Message.Prototype.replyAsync(self: Message, message: builders.messageJS
             type = 0, -- referenced
             message_id = self.id,
             channel_id = self.channelId,
-            fail_if_not_exists = false,
+            fail_if_not_exists = false
         }
 
         local response = rest.message.createMessageAsync(request, self.channelId, message):await()
@@ -638,7 +638,7 @@ function Message.Interface.new(state: state.State, messageData: apiTypes.Message
                 @prop state State
                 The state object for this message.
             ]=]
-            state = state,
+            state = state
         } :: Message,
         { __index = Message.Prototype }
     )
@@ -696,10 +696,10 @@ export type Message = typeof(Message.Prototype) & {
         roles: { [apiTypes.Snowflake]: role.Role },
         -- channels: { [apiTypes.Snowflake]: unknown }, -- fixme: we can't type the channels since channels require this message class.
         messages: { [apiTypes.Snowflake]: Message },
-        attachments: { [apiTypes.Snowflake]: attachment.Attachment },
+        attachments: { [apiTypes.Snowflake]: attachment.Attachment }
     }?,
     poll: poll.Poll?,
-    call: call.Call?,
+    call: call.Call?
 }
 
 return Message.Interface

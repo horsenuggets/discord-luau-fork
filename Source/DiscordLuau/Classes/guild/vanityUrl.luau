@@ -63,7 +63,7 @@ end
 
 export type VanityUrl = typeof(VanityUrl.Prototype) & {
     code: string,
-    uses: number,
+    uses: number
 }
 
 return VanityUrl.Interface

@@ -132,7 +132,7 @@ end
 type Channel<T> = T & ChannelBehaviour & {
     state: state.State,
 
-    sync: (...any) -> (),
+    sync: (...any) -> ()
 }
 
 export type ChannelBehaviourMethods = typeof(ChannelBehaviour.Prototype)
@@ -140,7 +140,7 @@ export type ChannelBehaviourProperties = {
     id: apiTypes.Snowflake,
     type: apiTypes.ChannelType,
     name: string?,
-    flags: channelBitflags.ChannelBitflag?,
+    flags: channelBitflags.ChannelBitflag?
 }
 
 export type ChannelBehaviour = ChannelBehaviourMethods & ChannelBehaviourProperties

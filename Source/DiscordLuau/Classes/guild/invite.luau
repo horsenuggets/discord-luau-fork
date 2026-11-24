@@ -149,7 +149,7 @@ end
 function Invite.Interface.new(state: state.State, inviteData: apiTypes.InviteObject): Invite
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: Invite,
         { __index = Invite.Prototype }
     )
@@ -173,7 +173,7 @@ export type Invite = typeof(Invite.Prototype) & {
     approximatePresenceCount: number?,
     approximateMemberCount: number?,
     expiresAt: stdPolyfills.DateTime?,
-    scheduledEvent: scheduledEvent.ScheduledEvent?,
+    scheduledEvent: scheduledEvent.ScheduledEvent?
 }
 
 return Invite.Interface

@@ -64,7 +64,7 @@ end
 
 export type DefaultValue = typeof(DefaultValue.Prototype) & {
     id: apiTypes.Snowflake,
-    type: apiTypes.SelectDefaultValueType,
+    type: apiTypes.SelectDefaultValueType
 }
 
 return DefaultValue.Interface

@@ -22,7 +22,7 @@ Please note we have a [code of conduct](CODE_OF_CONDUCT.md), please follow it in
 	- instead of naming files `PostgresClient.luau` and `PostgresServer.luau`, group them under a module directory called `postgres` with an `init.luau` that exports both `client.luau` and `server.luau`.
 - **Modules:** Prefer grouping modules as a tree. For instance, rather than having separate files like `RobloxInputMouseHandler.luau` and `RobloxInputKeyboardHandler.luau`, structure them as `inputHandlers/roblox/mouse.luau` and `inputHandlers/roblox/keyboard.luau`.
 	- another example; use `builders/X.luau` instead of `builders/XBuilder.luau`.
-- **Formatting:** Adhere to a maximum line width of 100 characters and follow the default settings of stylua.
+- **Formatting:** Adhere to a maximum line width of 100 characters and follow the default settings of StyLuau.
 - **Variable Naming:** One-word variable names are discouraged, even in closures.
 - **Comments:** This project uses Moonwave documentation - ensure your format meets the requirements for Moonwave.
 

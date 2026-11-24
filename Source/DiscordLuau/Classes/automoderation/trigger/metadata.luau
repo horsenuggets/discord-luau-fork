@@ -95,7 +95,7 @@ export type TriggerMetadata = typeof(TriggerMetadata.Prototype) & {
     presets: { apiTypes.KeywordPresetType },
     allowList: { string },
     mentionTotalLimit: number,
-    mentionRaidProtectionEnabled: boolean,
+    mentionRaidProtectionEnabled: boolean
 }
 
 return TriggerMetadata.Interface

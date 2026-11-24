@@ -121,14 +121,14 @@ return {
         rule = automoderationRule,
         action = {
             action = automoderationAction,
-            metadata = automoderationActionMetadata,
+            metadata = automoderationActionMetadata
         },
-        triggerMetadata = automoderationTriggerMetadata,
+        triggerMetadata = automoderationTriggerMetadata
     },
     interaction = {
         interaction = interaction,
         choice = choice,
-        option = option,
+        option = option
     },
     message = {
         allowedMention = allowedMention,
@@ -137,19 +137,19 @@ return {
         poll = {
             poll = poll,
             answer = answer,
-            media = media,
+            media = media
         },
         components = {
             selectMenu = {
                 selectMenu = selectMenu,
                 defaultValue = defaultValue,
-                option = selectMenuOption,
+                option = selectMenuOption
             },
             modal = modal,
             button = button,
             textInput = textInput,
-            actionRow = actionRow,
-        },
+            actionRow = actionRow
+        }
     },
     forumTag = forumTag,
     guild = {
@@ -158,20 +158,20 @@ return {
         overwrite = overwrite,
         welcomeScreen = {
             welcomeScreen = welcomeScreen,
-            channel = welcomeScreenChannel,
+            channel = welcomeScreenChannel
         },
         onboarding = {
             onboarding = onboarding,
             prompt = prompt,
-            option = onboardingOption,
+            option = onboardingOption
         },
-        guild = guild,
+        guild = guild
     },
     thread = {
         noMessageThread = noMessageThread,
         forumMedia = forumMedia,
         messageThread = messageThread,
-        messageParams = messageParams,
+        messageParams = messageParams
     },
     channel = channel,
     emoji = emoji,
@@ -184,6 +184,6 @@ return {
         embed = embed,
         thumbnail = thumbnail,
         field = field,
-        provider = provider,
-    },
+        provider = provider
+    }
 }

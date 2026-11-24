@@ -77,7 +77,7 @@ function MessageThread.Prototype.build(self: MessageThread): JSON
     return {
         name = self.name,
         auto_archive_duration = self.autoArchiveDuration,
-        rate_limit_per_user = self.rateLimitPerUser,
+        rate_limit_per_user = self.rateLimitPerUser
     }
 end
 
@@ -97,7 +97,7 @@ end
 function MessageThread.Interface.new(resource: {
     name: string?,
     autoArchiveDuration: number?,
-    rateLimitPerUser: number?,
+    rateLimitPerUser: number?
 }?): MessageThread
     local self = setmetatable(
         {
@@ -120,10 +120,10 @@ function MessageThread.Interface.new(resource: {
                 @within Builders.MessageThread
                 Amount of seconds a user has to wait before sending another message.
             ]=]
-            rateLimitPerUser = nil,
+            rateLimitPerUser = nil
         } :: MessageThread,
         {
-            __index = MessageThread.Prototype,
+            __index = MessageThread.Prototype
         }
     )
 
@@ -147,7 +147,7 @@ end
 export type MessageThread = typeof(MessageThread.Prototype) & {
     name: string?,
     autoArchiveDuration: number?,
-    rateLimitPerUser: number?,
+    rateLimitPerUser: number?
 }
 
 export type JSON = typeof(MessageThread.Prototype.build(nil :: any))

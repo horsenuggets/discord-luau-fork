@@ -73,7 +73,7 @@ function ForumTag.Prototype.build(self: ForumTag): JSON
         name = self.name,
         moderated = self.moderated,
         emoji_id = self.emojiId,
-        emoji_name = self.emojiName,
+        emoji_name = self.emojiName
     } :: apiTypes.ForumTagObject
 end
 
@@ -92,8 +92,8 @@ function ForumTag.Interface.new(resource: {
     tagName: string,
     emoji: {
         name: string,
-        id: apiTypes.Snowflake,
-    }?,
+        id: apiTypes.Snowflake
+    }?
 }): ForumTag
     local self = setmetatable(
         {
@@ -123,7 +123,7 @@ function ForumTag.Interface.new(resource: {
                 @within Builders.ForumTag
                 The unicode character of the emoji.
             ]=]
-            emojiName = nil,
+            emojiName = nil
         } :: ForumTag,
         { __index = ForumTag.Prototype }
     )
@@ -151,8 +151,8 @@ function ForumTag.Interface.fromId(resource: {
     tagName: string,
     emoji: {
         name: string,
-        id: apiTypes.Snowflake,
-    }?,
+        id: apiTypes.Snowflake
+    }?
 }): ForumTag
     local self = ForumTag.Interface.new(resource)
 
@@ -172,7 +172,7 @@ export type ForumTag = typeof(ForumTag.Prototype) & {
     id: apiTypes.Snowflake?,
 
     moderated: boolean,
-    name: string,
+    name: string
 }
 
 export type JSON = typeof(ForumTag.Prototype.build(nil :: any))

@@ -68,7 +68,7 @@ function Field.Prototype.build(self: Field): JSON
     return {
         name = self.name,
         value = self.value,
-        inline = self.inline,
+        inline = self.inline
     }
 end
 
@@ -80,7 +80,7 @@ end
 function Field.Interface.new(resource: {
     name: string?,
     value: string?,
-    inline: boolean?,
+    inline: boolean?
 }?): Field
     local self = setmetatable(
         {
@@ -103,10 +103,10 @@ function Field.Interface.new(resource: {
                 @within Builders.Field
                 Whether or not this field should display inline.
             ]=]
-            inline = nil,
+            inline = nil
         } :: Field,
         {
-            __index = Field.Prototype,
+            __index = Field.Prototype
         }
     )
 
@@ -130,7 +130,7 @@ end
 export type Field = typeof(Field.Prototype) & {
     name: string?,
     value: string?,
-    inline: boolean?,
+    inline: boolean?
 }
 
 export type JSON = typeof(Field.Prototype.build({} :: any))

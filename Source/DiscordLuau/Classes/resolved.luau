@@ -111,7 +111,7 @@ function Resolved.Interface.new(state: state.State, resolvedData: apiTypes.Resol
             roles = {},
             channels = {},
             messages = {},
-            attachments = {},
+            attachments = {}
         } :: Resolved,
         { __index = Resolved.Prototype }
     )
@@ -129,7 +129,7 @@ export type Resolved = typeof(Resolved.Prototype) & {
     roles: { [apiTypes.Snowflake]: role.Role },
     channels: { [apiTypes.Snowflake]: apiTypes.AbstractChannel },
     messages: { [apiTypes.Snowflake]: message.Message },
-    attachments: { [apiTypes.Snowflake]: attachment.Attachment },
+    attachments: { [apiTypes.Snowflake]: attachment.Attachment }
 }
 
 return Resolved.Interface

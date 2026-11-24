@@ -299,20 +299,20 @@ export type InteractionCallbackType = number
 -- https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-timestamps
 export type ActivityTimestampObject = {
     start: number, -- Unix time (in milliseconds) of when the activity started
-    ["end"]: number, -- Unix time (in milliseconds) of when the activity ends
+    ["end"]: number -- Unix time (in milliseconds) of when the activity ends
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-emoji
 export type ActivityEmojiObject = {
     name: string, -- Name of the emoji
     id: Snowflake, -- ID of the emoji
-    animated: boolean?, -- Whether the emoji is animated
+    animated: boolean? -- Whether the emoji is animated
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-party
 export type ActivityPartyObject = {
     id: string, -- ID of the party
-    size: { number }, -- Used to show the party's current and maximum size, array of two integers (current_size, max_size)
+    size: { number } -- Used to show the party's current and maximum size, array of two integers (current_size, max_size)
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-assets
@@ -320,20 +320,20 @@ export type ActivityAssetsObject = {
     large_image: string, -- https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-asset-image
     large_text: string, -- Text displayed when hovering over the large image of the activity
     small_image: string, -- https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-asset-image
-    small_text: string, -- Text displayed when hovering over the small image of the activity
+    small_text: string -- Text displayed when hovering over the small image of the activity
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-secrets
 export type ActivitySecretsObject = {
     join: string?, -- Secret for joining a party
     spectate: string?, -- Secret for spectating a game
-    match: string?, -- Secret for a specific instanced match
+    match: string? -- Secret for a specific instanced match
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#activity-object-activity-buttons
 export type ActivityButtonsObject = {
     label: string, -- Text shown on the button (1-32 characters)
-    url: string, -- URL opened when clicking the button (1-512 characters)
+    url: string -- URL opened when clicking the button (1-512 characters)
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#activity-object
@@ -352,7 +352,7 @@ export type ActivityObject = {
     secrets: ActivitySecretsObject?, -- Secrets for Rich Presence joining and spectating
     instance: boolean?, -- Whether or not the activity is an instanced game session
     flags: number?, -- Activity flags ORd together, describes what the payload includes
-    buttons: { ActivityButtonsObject }?, -- Custom buttons shown in the Rich Presence (max 2)
+    buttons: { ActivityButtonsObject }? -- Custom buttons shown in the Rich Presence (max 2)
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#update-presence
@@ -360,20 +360,20 @@ export type PresenceObject = {
     since: number, -- Unix time (in milliseconds) of when the client went idle, or null if the client is not idle
     activities: { ActivityObject }, -- User's activities
     status: string, -- User's new status
-    afk: boolean, -- Whether or not the client is afk
+    afk: boolean -- Whether or not the client is afk
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#identify-identify-connection-properties
 export type IdentifyPropertiesObject = {
     os: string,
     browser: string,
-    device: string,
+    device: string
 }
 
 -- https://discord.com/developers/docs/resources/user#avatar-decoration-data-object
 export type AvatarDecorationDataObject = {
     asset: string, -- the avatar decoration hash
-    sku_id: Snowflake, -- id of the avatar decoration's SKU
+    sku_id: Snowflake -- id of the avatar decoration's SKU
 }
 
 -- https://discord.com/developers/docs/resources/user#user-object
@@ -394,13 +394,13 @@ export type UserObject = {
     flags: number?, -- the flags on a user's account
     premium_type: PremiumTypes?, -- the type of Nitro subscription on a user's account
     public_flags: number?, -- the public flags on a user's account
-    avatar_decoration_data: AvatarDecorationDataObject?, -- data for the user's avatar decoration
+    avatar_decoration_data: AvatarDecorationDataObject? -- data for the user's avatar decoration
 }
 
 -- https://discord.com/developers/docs/resources/guild#unavailable-guild-object
 export type UnavailableGuildObject = {
     id: Snowflake, -- guild id
-    unavailable: boolean, -- true, the guild is unavailable
+    unavailable: boolean -- true, the guild is unavailable
 }
 
 -- https://discord.com/developers/docs/topics/teams#data-models-team-member-object
@@ -408,7 +408,7 @@ export type TeamMemberObject = {
     membership_state: MembershipState, -- User's membership state on the team
     team_id: Snowflake, -- ID of the parent team of which they are a member
     user: UserObject, -- Avatar, discriminator, ID, and username of the user
-    role: TeamMemberRole, -- Role of the team member
+    role: TeamMemberRole -- Role of the team member
 }
 
 -- https://discord.com/developers/docs/topics/teams#data-models-team-object
@@ -417,7 +417,7 @@ export type TeamObject = {
     id: Snowflake, -- Unique ID of the team
     members: { TeamMemberObject }, -- Members of the team
     name: string, -- Name of the team
-    owner_user_id: Snowflake, -- User ID of the current team owner
+    owner_user_id: Snowflake -- User ID of the current team owner
 }
 
 -- https://discord.com/developers/docs/topics/permissions#role-object-role-tags-structure
@@ -427,7 +427,7 @@ export type GuildRoleTagObject = {
     premium_subscriber: nil, -- whether this is the guild's Booster role
     subscription_listing_id: Snowflake, -- the id of this role's subscription sku and listing
     available_for_purchase: nil, -- whether this role is available for purchase
-    guild_connections: nil, -- whether this role is a guild's linked role
+    guild_connections: nil -- whether this role is a guild's linked role
 }
 
 -- https://discord.com/developers/docs/topics/permissions#role-object
@@ -443,7 +443,7 @@ export type GuildRoleObject = {
     managed: boolean, -- whether this role is managed by an integration
     mentionable: boolean, -- whether this role is mentionable
     tags: GuildRoleTagObject?, -- the tags this role has
-    flags: number, -- role flags combined as a bitfield
+    flags: number -- role flags combined as a bitfield
 }
 
 -- https://discord.com/developers/docs/resources/emoji#emoji-object
@@ -455,7 +455,7 @@ export type EmojiObject = {
     require_colons: boolean?, -- whether this emoji must be wrapped in colons
     managed: boolean?, -- whether this emoji is managed
     animated: boolean?, -- whether this emoji is animated
-    available: boolean?, -- whether this emoji can be used, may be false due to loss of Server Boosts
+    available: boolean? -- whether this emoji can be used, may be false due to loss of Server Boosts
 }
 
 -- https://discord.com/developers/docs/resources/guild#welcome-screen-object-welcome-screen-channel-structure
@@ -463,13 +463,13 @@ export type WelcomeScreenChannelObject = {
     channel_id: Snowflake?, -- the channel's id
     description: string?, -- the description shown for the channel
     emoji_id: Snowflake?, -- the emoji id, if the emoji is custom
-    emoji_name: string?, -- the emoji name if custom, the unicode character if standard, or null if no emoji is set
+    emoji_name: string? -- the emoji name if custom, the unicode character if standard, or null if no emoji is set
 }
 
 -- https://discord.com/developers/docs/resources/guild#welcome-screen-object
 export type WelcomeScreenObject = {
     description: string, -- the server description shown in the welcome screen
-    welcome_channels: { WelcomeScreenChannelObject }, -- the channels shown in the welcome screen, up to 5
+    welcome_channels: { WelcomeScreenChannelObject } -- the channels shown in the welcome screen, up to 5
 }
 
 -- https://discord.com/developers/docs/resources/sticker#sticker-object
@@ -485,7 +485,7 @@ export type StickerObject = {
     available: boolean?, -- whether this guild sticker can be used, may be false due to loss of Server Boosts
     guild_id: Snowflake?, -- id of the guild that owns this sticker
     user: UserObject?, -- the user that uploaded the guild sticker
-    sort_value: number?, -- the standard sticker's sort order within its pack
+    sort_value: number? -- the standard sticker's sort order within its pack
 }
 
 -- https://discord.com/developers/docs/resources/guild#guild-object
@@ -532,13 +532,13 @@ export type GuildObject = {
     nsfw_level: GuildNSFWLevel?, --     guild NSFW level
     stickers: { StickerObject }?, -- custom guild stickers
     premium_progress_bar_enabled: boolean?, -- whether the guild has the boost progress bar enabled
-    safety_alerts_channel_id: Snowflake?, -- the id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
+    safety_alerts_channel_id: Snowflake? -- the id of the channel where admins and moderators of Community guilds receive safety alerts from Discord
 }
 
 -- https://discord.com/developers/docs/resources/application#install-params-object
 export type InstallParamsObject = {
     scopes: { OAuth2Scopes }, -- Scopes to add the application to the server with
-    permissions: string, -- Permissions to request for the bot role
+    permissions: string -- Permissions to request for the bot role
 }
 
 -- https://discord.com/developers/docs/resources/application#application-object
@@ -570,14 +570,14 @@ export type ApplicationObject = {
     tags: { string }?, -- List of tags describing the content and functionality of the app. Max of 5 tags.
     install_params: InstallParamsObject?, -- Settings for the app's default in-app authorization link, if enabled
     integration_types_config: { [ApplicationIntegrationType]: boolean }?, -- In preview. Default scopes and permissions for each supported installation context. Value for each key is an integration type configuration object
-    custom_install_url: string?, -- Default custom authorization URL for the app, if enabled
+    custom_install_url: string? -- Default custom authorization URL for the app, if enabled
 }
 
 -- https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-application-command-permissions-structure
 export type GuildApplicationCommandPermissionObject = {
     id: Snowflake, -- ID of the role, user, or channel. It can also be a permission constant
     type: ApplicationCommandPermissionType, -- role (1), user (2), or channel (3)
-    permission: boolean, -- true to allow, false, to disallow
+    permission: boolean -- true to allow, false, to disallow
 }
 
 -- https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-guild-application-command-permissions-structure
@@ -585,7 +585,7 @@ export type GuildApplicationCommandPermissionsObject = {
     id: Snowflake, -- ID of the command or the application ID
     application_id: Snowflake, -- ID of the application the command belongs to
     guild_id: Snowflake, -- ID of the guild
-    permissions: { GuildApplicationCommandPermissionObject }, -- Permissions for the command in the guild, max of 100
+    permissions: { GuildApplicationCommandPermissionObject } -- Permissions for the command in the guild, max of 100
 }
 
 -- https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object-trigger-metadata
@@ -595,20 +595,20 @@ export type AutomoderationRuleTriggerMetadataObject = {
     presets: { AutomoderationRuleKeywordPresetType }, -- the internally pre-defined wordsets which will be searched for in content
     allow_list: { string }, -- substrings which should not trigger the rule (Maximum of 100 or 1000)
     mention_total_limit: number, -- total number of unique role and user mentions allowed per message (Maximum of 50)
-    mention_raid_protection_enabled: boolean, -- whether to automatically detect mention raids
+    mention_raid_protection_enabled: boolean -- whether to automatically detect mention raids
 }
 
 -- https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-action-object-action-metadata
 export type AutmoderationActionMetadataObject = {
     channel_id: Snowflake, -- channel to which user content should be logged
     duration_seconds: number, -- timeout duration in seconds, maximum of 2419200 seconds (4 weeks)
-    custom_message: string?, -- additional explanation that will be shown to members whenever their message is blocked, maximum of 150 characters
+    custom_message: string? -- additional explanation that will be shown to members whenever their message is blocked, maximum of 150 characters
 }
 
 -- https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-action-object
 export type AutomoderationActionObject = {
     type: AutomoderationActionType, -- the type of action
-    metadata: AutmoderationActionMetadataObject?, -- additional metadata needed during execution for this specific action type
+    metadata: AutmoderationActionMetadataObject? -- additional metadata needed during execution for this specific action type
 }
 
 -- https://discord.com/developers/docs/resources/auto-moderation#auto-moderation-rule-object
@@ -623,7 +623,7 @@ export type AutomoderationRuleObject = {
     actions: { AutomoderationActionObject }, -- the actions which will execute when the rule is triggered
     enabled: boolean, -- whether the rule is enabled
     exempt_roles: { Snowflake }, -- the role ids that should not be affected by the rule (Maximum of 20)
-    exempt_channels: { Snowflake }, -- the channel ids that should not be affected by the rule (Maximum of 50)
+    exempt_channels: { Snowflake } -- the channel ids that should not be affected by the rule (Maximum of 50)
 }
 
 -- https://discord.com/developers/docs/resources/channel#overwrite-object
@@ -631,7 +631,7 @@ export type OverwriteObject = {
     id: Snowflake, -- role or user id
     type: OverwriteObjectType, -- either 0 (role) or 1 (member)
     allow: string, -- permission bit set
-    deny: string, --permission bit set
+    deny: string --permission bit set
 }
 
 -- https://discord.com/developers/docs/resources/channel#thread-metadata-object
@@ -641,7 +641,7 @@ export type ThreadMetadataObject = {
     archive_timestamp: string, -- timestamp when the thread's archive status was last changed, used for calculating recent activity
     locked: boolean, -- whether the thread is locked; when a thread is locked, only users with MANAGE_THREADS can unarchive it
     invitable: boolean?, -- whether non-moderators can add other non-moderators to a thread; only available on private threads
-    create_timestamp: string, -- timestamp when the thread was created; only populated for threads created after 2022-01-09
+    create_timestamp: string -- timestamp when the thread was created; only populated for threads created after 2022-01-09
 }
 
 -- https://discord.com/developers/docs/resources/guild#guild-member-object
@@ -658,7 +658,7 @@ export type GuildMemberObject = {
     pending: boolean?, -- whether the user has not yet passed the guild's Membership Screening requirements
     permissions: string?, -- total permissions of the member in the channel, including overwrites, returned when in the interaction object
     communication_disabled_until: string?, -- when the user's timeout will expire and the user will be able to communicate in the guild again, null or a time in the past if the user is not timed out
-    avatar_decoration_data: AvatarDecorationDataObject?, -- data for the member's guild avatar decoration
+    avatar_decoration_data: AvatarDecorationDataObject? -- data for the member's guild avatar decoration
 }
 
 -- https://discord.com/developers/docs/resources/channel#thread-member-object
@@ -667,7 +667,7 @@ export type ThreadMemberObject = {
     user_id: Snowflake?, -- ID of the user
     join_timestamp: string, -- Time the user last joined the thread
     flags: number, -- Any user-thread settings, currently only used for notifications
-    member: GuildMemberObject?, -- Additional information about the user
+    member: GuildMemberObject? -- Additional information about the user
 }
 
 -- https://discord.com/developers/docs/resources/channel#forum-tag-object
@@ -676,13 +676,13 @@ export type ForumTagObject = {
     name: string, -- the name of the tag (0-20 characters)
     moderated: boolean, -- whether this tag can only be added to or removed from threads by a member with the MANAGE_THREADS permission
     emoji_id: string?, -- the id of a guild's custom emoji
-    emoji_name: string?, -- the unicode character of the emoji
+    emoji_name: string? -- the unicode character of the emoji
 }
 
 -- https://discord.com/developers/docs/resources/channel#default-reaction-object
 export type DefaultReactionObject = {
     emoji_id: string?, -- the id of a guild's custom emoji
-    emoji_name: string?, -- the unicode character of the emoji
+    emoji_name: string? -- the unicode character of the emoji
 }
 
 -- https://discord.com/developers/docs/resources/channel#channel-object
@@ -721,7 +721,7 @@ export type ChannelObject = {
     default_reaction_emoji: DefaultReactionObject?, -- the emoji to show in the add reaction button on a thread in a GUILD_FORUM or a GUILD_MEDIA channel
     default_thread_rate_limit_per_user: number?, -- the initial rate_limit_per_user to set on newly created threads in a channel. this field is copied to the thread at creation time and does not live update.
     default_sort_order: SortOrderType?, -- the default sort order type used to order posts in GUILD_FORUM and GUILD_MEDIA channels. Defaults to null, which indicates a preferred sort order hasn't been set by a channel admin
-    default_forum_layout: ForumLayoutType?, -- the default forum layout view used to display posts in GUILD_FORUM channels. Defaults to 0, which indicates a layout view has not been set by a channel admin
+    default_forum_layout: ForumLayoutType? -- the default forum layout view used to display posts in GUILD_FORUM channels. Defaults to 0, which indicates a layout view has not been set by a channel admin
 }
 
 -- https://discord.com/developers/docs/monetization/entitlements#entitlement-object
@@ -735,7 +735,7 @@ export type EntitlementObject = {
     starts_at: string?, -- Start date at which the entitlement is valid. Not present when using test entitlements.
     ends_at: string?, -- Date at which the entitlement is no longer valid. Not present when using test entitlements.
     guild_id: Snowflake?, -- ID of the guild that is granted access to the entitlement's sku
-    consumed: boolean?, -- For consumable items, whether or not the entitlement has been consumed
+    consumed: boolean? -- For consumable items, whether or not the entitlement has been consumed
 }
 
 -- https://discord.com/developers/docs/resources/voice#voice-state-object
@@ -752,14 +752,14 @@ export type VoiceStateObject = {
     self_stream: boolean?, -- whether this user is streaming using "Go Live"
     self_video: boolean, -- whether this user's camera is enabled
     suppress: boolean, -- whether this user's permission to speak is denied
-    request_to_speak_timestamp: string?, -- the time at which the user requested to speak
+    request_to_speak_timestamp: string? -- the time at which the user requested to speak
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#client-status-object
 export type ClientStatusObject = {
     desktop: string?, -- User's status set for an active desktop (Windows, Linux, Mac) application session
     mobile: string?, -- User's status set for an active mobile (iOS, Android) application session
-    web: string?, -- User's status set for an active web (browser, bot user) application session
+    web: string? -- User's status set for an active web (browser, bot user) application session
 }
 
 -- https://discord.com/developers/docs/topics/gateway-events#presence-update
@@ -768,7 +768,7 @@ export type PresenceUpdateObject = {
     guild_id: Snowflake, -- ID of the guild
     status: string, -- Either "idle", "dnd", "online", or "offline"
     activities: { ActivityObject }, -- User's current activities
-    client_status: ClientStatusObject, -- User's platform-dependent status
+    client_status: ClientStatusObject -- User's platform-dependent status
 }
 
 -- https://discord.com/developers/docs/resources/stage-instance#stage-instance-object
@@ -779,12 +779,12 @@ export type StageInstanceObject = {
     topic: string, -- The topic of the Stage instance (1-120 characters)
     privacy_level: PrivacyLevel, -- The privacy level of the Stage instance
     discoverable_disabled: boolean, -- Whether or not Stage Discovery is disabled (deprecated)
-    guild_scheduled_event_id: Snowflake?, -- The id of the scheduled event for this Stage instance
+    guild_scheduled_event_id: Snowflake? -- The id of the scheduled event for this Stage instance
 }
 
 -- https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object-guild-scheduled-event-entity-metadata
 export type GuildScheduledEventEntityMetadata = {
-    location: string, -- location of the event (1-100 characters)
+    location: string -- location of the event (1-100 characters)
 }
 
 -- https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-object
@@ -804,13 +804,13 @@ export type GuildScheduledEventObject = {
     entity_metadata: GuildScheduledEventEntityMetadata?, -- additional metadata for the guild scheduled event
     creator: UserObject?, -- the user that created the scheduled event
     user_count: number, -- the number of users subscribed to the scheduled event
-    image: string?, -- the cover image hash of the scheduled event
+    image: string? -- the cover image hash of the scheduled event
 }
 
 -- https://discord.com/developers/docs/resources/guild#integration-account-object
 export type IntegrationAccountObject = {
     id: string, -- id of the account
-    name: string, -- name of the account
+    name: string -- name of the account
 }
 
 -- https://discord.com/developers/docs/resources/guild#integration-object
@@ -830,7 +830,7 @@ export type IntegrationObject = {
     subscriber_count: number?, -- how many subscribers this integration has
     revoked: boolean?, -- has this integration been revoked
     application: IntegrationApplicationObject?, -- The bot/OAuth2 application for discord integrations
-    scopes: { OAuth2Scopes }?, -- the scopes the application has been authorized for
+    scopes: { OAuth2Scopes }? -- the scopes the application has been authorized for
 }
 
 -- https://discord.com/developers/docs/resources/channel#channel-mention-object
@@ -838,7 +838,7 @@ export type ChannelMentionObject = {
     id: Snowflake, -- id of the channel
     guild_id: Snowflake, -- id of the guild containing the channel
     type: ChannelType, -- the type of channel
-    name: string, -- the name of the channel
+    name: string -- the name of the channel
 }
 
 -- https://discord.com/developers/docs/resources/channel#attachment-object
@@ -856,14 +856,14 @@ export type AttachmentObject = Partial<{
     ephemeral: boolean?, -- whether this attachment is ephemeral
     duration_secs: number?, -- the duration of the audio file (currently for voice messages)
     waveform: string?, -- base64 encoded bytearray representing a sampled waveform (currently for voice messages)
-    flags: number, -- attachment flags combined as a bitfield
+    flags: number -- attachment flags combined as a bitfield
 }>
 
 -- https://discord.com/developers/docs/resources/channel#embed-object-embed-footer-structure
 export type EmbedFooterObject = {
     text: string, -- footer text
     icon_url: string?, -- url of footer icon (only supports http(s) and attachments)
-    proxy_icon_url: string?, -- a proxied url of footer icon
+    proxy_icon_url: string? -- a proxied url of footer icon
 }
 
 -- https://discord.com/developers/docs/resources/channel#embed-object-embed-image-structure
@@ -871,13 +871,13 @@ export type EmbedImageObject = {
     url: string, -- source url of image (only supports http(s) and attachments)
     proxy_url: string?, -- a proxied url of the image
     height: number?, -- height of image
-    width: number?, -- width of image
+    width: number? -- width of image
 }
 
 -- https://discord.com/developers/docs/resources/channel#embed-object-embed-provider-structure
 export type EmbedProviderObject = {
     name: string?, -- name of provider
-    url: string?, -- url of provider
+    url: string? -- url of provider
 }
 
 -- https://discord.com/developers/docs/resources/channel#embed-object-embed-author-structure
@@ -885,14 +885,14 @@ export type EmbedAuthorObject = {
     name: string, -- name of author
     url: string?, -- url of author (only supports http(s))
     icon_url: string?, -- url of author icon (only supports http(s) and attachments)
-    proxy_icon_url: string?, -- a proxied url of author icon
+    proxy_icon_url: string? -- a proxied url of author icon
 }
 
 -- https://discord.com/developers/docs/resources/channel#embed-object-embed-field-structure
 export type EmbedFieldObject = {
     name: string, -- name of the field
     value: string, -- value of the field
-    inline: boolean?, -- whether or not this field should display inline
+    inline: boolean? -- whether or not this field should display inline
 }
 
 -- https://discord.com/developers/docs/resources/channel#embed-object-embed-thumbnail-structure
@@ -900,7 +900,7 @@ export type EmbedThumbnailObject = {
     url: string, -- source url of thumbnail (only supports http(s) and attachments)
     proxy_url: string?, -- a proxied url of the thumbnail
     height: number?, -- height of thumbnail
-    width: number?, -- width of thumbnail
+    width: number? -- width of thumbnail
 }
 
 -- https://discord.com/developers/docs/resources/channel#embed-object-embed-video-structure
@@ -908,7 +908,7 @@ export type EmbedVideoObject = {
     url: string, -- source url of video
     proxy_url: string?, -- a proxied url of the video
     height: number?, -- height of video
-    width: number?, -- width of video
+    width: number? -- width of video
 }
 
 -- https://discord.com/developers/docs/resources/message#embed-object
@@ -925,13 +925,13 @@ export type EmbedObject = {
     video: EmbedVideoObject?, -- video information
     provider: EmbedProviderObject?, -- provider information
     author: EmbedAuthorObject?, -- author information
-    fields: { EmbedFieldObject }?, -- fields information, max of 25
+    fields: { EmbedFieldObject }? -- fields information, max of 25
 }
 
 -- https://discord.com/developers/docs/resources/channel#reaction-count-details-object
 export type ReactionCountDetailsObject = {
     burst: number, -- Count of super reactions
-    normal: number, -- Count of normal reactions
+    normal: number -- Count of normal reactions
 }
 
 -- https://discord.com/developers/docs/resources/channel#reaction-object
@@ -941,13 +941,13 @@ export type ReactionObject = {
     me: boolean, -- Whether the current user reacted using this emoji
     me_burst: boolean, -- Whether the current user super-reacted using this emoji
     emoji: EmojiObject, -- emoji information
-    burst_colors: { string }, -- HEX colors used for super reaction
+    burst_colors: { string } -- HEX colors used for super reaction
 }
 
 -- https://discord.com/developers/docs/resources/channel#message-object-message-activity-structure
 export type MessageActivityObject = {
     type: MessageActivityType, --     type of message activity
-    party_id: string, -- party_id from a Rich Presence event
+    party_id: string -- party_id from a Rich Presence event
 }
 
 -- https://discord.com/developers/docs/resources/channel#message-reference-object-message-reference-structure
@@ -956,7 +956,7 @@ export type MessageReferenceObject = {
     message_id: Snowflake?, -- id of the originating message
     channel_id: Snowflake?, -- id of the originating message's channel
     guild_id: Snowflake?, -- id of the originating message's guild
-    fail_if_not_exists: boolean?, -- when sending, whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message, default true
+    fail_if_not_exists: boolean? -- when sending, whether to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message, default true
 }
 
 -- https://discord.com/developers/docs/resources/channel#message-interaction-metadata-object-message-interaction-metadata-structure
@@ -967,7 +967,7 @@ export type MessageInteractionMetadatObject = {
     authorizing_integration_owners: { [ApplicationIntegrationType]: Snowflake }, -- IDs for installation context(s) related to an interaction. Details in Authorizing Integration Owners Object
     original_response_message_id: Snowflake?, -- ID of the original response message, present only on follow-up messages
     interacted_message_id: Snowflake?, -- ID of the message that contained interactive component, present only on messages created from component interactions
-    triggering_interaction_metadata: MessageInteractionMetadatObject, -- Metadata for the interaction that was used to open the modal, present only on modal submit interactions
+    triggering_interaction_metadata: MessageInteractionMetadatObject -- Metadata for the interaction that was used to open the modal, present only on modal submit interactions
 }
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#message-interaction-object-message-interaction-structure
@@ -976,7 +976,7 @@ export type MessageInteractionObject = {
     type: InteractionType, -- Type of interaction
     name: string, -- Name of the application command, including subcommands and subcommand groups
     user: UserObject, -- User who invoked the interaction
-    member: GuildMemberObject?, -- Member who invoked the interaction in the guild
+    member: GuildMemberObject? -- Member who invoked the interaction in the guild
 }
 
 -- https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
@@ -985,19 +985,19 @@ export type SelectOptionObject = {
     value: string, -- Dev-defined value of the option; max 100 characters
     description: string?, -- Additional description of the option; max 100 characters
     emoji: EmojiObject?, -- id, name, and animated
-    default: boolean, -- Will show this option as selected by default
+    default: boolean -- Will show this option as selected by default
 }
 
 -- https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-default-value-structure
 export type SelectDefaultValueObject = {
     id: Snowflake, -- ID of a user, role, or channel
-    type: string, -- Type of value that id represents. Either "user", "role", or "channel"
+    type: string -- Type of value that id represents. Either "user", "role", or "channel"
 }
 
 -- https://discord.com/developers/docs/interactions/message-components#action-rows
 export type ActionRowComponentObject = {
     type: number, -- 1 for an action row.
-    components: { ComponentObjects }, -- range of component objects
+    components: { ComponentObjects } -- range of component objects
 }
 
 -- https://discord.com/developers/docs/interactions/message-components#button-object
@@ -1009,7 +1009,7 @@ export type ButtonComponentObject = Partial<{
     custom_id: string?, -- Developer-defined identifier for the button; max 100 characters
     sku_id: string?, -- Identifier for a purchasable SKU, only available when using premium-style buttons
     url: string?, --  URL for link-style buttons
-    disabled: boolean?, -- Whether the button is disabled (defaults to false)
+    disabled: boolean? -- Whether the button is disabled (defaults to false)
 }>
 
 -- https://discord.com/developers/docs/interactions/message-components#select-menu-object
@@ -1022,7 +1022,7 @@ export type SelectMenuComponentObject = {
     default_values: { SelectDefaultValueObject }?, -- List of default values for auto-populated select menu components; number of default values must be in the range defined by min_values and max_values
     min_values: number?, -- Minimum number of items that must be chosen (defaults to 1); min 0, max 25
     max_values: number?, -- Maximum number of items that can be chosen (defaults to 1); max 25
-    disabled: boolean?, -- Whether select menu is disabled (defaults to false)
+    disabled: boolean? -- Whether select menu is disabled (defaults to false)
 }
 
 -- https://discord.com/developers/docs/interactions/message-components#select-menu-object
@@ -1035,7 +1035,7 @@ export type TextInputComponentObject = {
     max_length: number?, -- Maximum input length for a text input; min 1, max 4000
     required: boolean?, -- Whether this component is required to be filled (defaults to true)
     value: string?, -- Pre-filled value for this component; max 4000 characters
-    placeholder: string?, -- Custom placeholder text if the input is empty; max 100 characters
+    placeholder: string? -- Custom placeholder text if the input is empty; max 100 characters
 }
 
 -- https://discord.com/developers/docs/interactions/message-components#message-components
@@ -1049,7 +1049,7 @@ export type ComponentObjects =
 export type SitckerItemObject = {
     id: Snowflake, -- id of the sticker
     name: string, -- name of the sticker
-    format_type: StickerFormatType, --     type of sticker format
+    format_type: StickerFormatType --     type of sticker format
 }
 
 -- https://discord.com/developers/docs/resources/channel#role-subscription-data-object
@@ -1057,32 +1057,32 @@ export type RoleSubscriptionDataObject = {
     role_subscription_listing_id: Snowflake, -- the id of the sku and listing that the user is subscribed to
     tier_name: string, -- the name of the tier that the user is subscribed to
     total_months_subscribed: number, -- the cumulative number of months that the user has been subscribed for
-    is_renewal: boolean, -- whether this notification is for a renewal rather than a new purchase
+    is_renewal: boolean -- whether this notification is for a renewal rather than a new purchase
 }
 
 -- https://discord.com/developers/docs/resources/poll#poll-media-object-poll-media-object-structure
 export type PollMediaObject = {
     text: string?, -- The text of the field
-    emoji: Partial<EmojiObject>?, -- The emoji of the field
+    emoji: Partial<EmojiObject>? -- The emoji of the field
 }
 
 -- https://discord.com/developers/docs/resources/poll#poll-answer-object-poll-answer-object-structure
 export type PollAnswerObject = {
     answer_id: number, -- The ID of the answer
-    poll_media: PollMediaObject, -- The data of the answer
+    poll_media: PollMediaObject -- The data of the answer
 }
 
 -- https://discord.com/developers/docs/resources/poll#poll-results-object-poll-answer-count-object-structure
 export type PollAnswerCountObject = {
     id: number, -- The answer_id
     count: number, -- The number of votes for this answer
-    me_voted: boolean, -- Whether the current user voted for this answer
+    me_voted: boolean -- Whether the current user voted for this answer
 }
 
 -- https://discord.com/developers/docs/resources/poll#poll-results-object-poll-results-object-structure
 export type PollResultObject = {
     is_finalized: boolean, -- Whether the votes have been precisely counted
-    answer_counts: { PollAnswerCountObject }, -- The counts for each answer
+    answer_counts: { PollAnswerCountObject } -- The counts for each answer
 }
 
 -- https://discord.com/developers/docs/resources/poll#poll-object
@@ -1094,13 +1094,13 @@ export type PollObject = {
     --fixme: for some reason luau's type system doesn't like this being a `boolean`????
     allow_multiselect: true | false, -- Whether a user can select multiple answers
     layout_type: PollLayoutType, -- The layout type of the poll
-    results: PollResultObject?, -- The results of the poll
+    results: PollResultObject? -- The results of the poll
 }
 
 -- https://discord.com/developers/docs/resources/channel#message-call-object
 export type MessageCallObject = {
     participants: { UserObject }, -- array of user object ids that participated in the call
-    ended_timestamp: string, -- time when call ended
+    ended_timestamp: string -- time when call ended
 }
 
 -- https://discord.com/developers/docs/resources/channel#message-object
@@ -1139,7 +1139,7 @@ export type MessageObject = {
     role_subscription_data: RoleSubscriptionDataObject?, -- data of the role subscription purchase or renewal that prompted this ROLE_SUBSCRIPTION_PURCHASE message
     resolved: ResolvedDataStructure?, -- data for users, members, channels, and roles in the message's auto-populated select menus
     poll: PollObject?, -- the poll associated with the message
-    call: MessageCallObject?, -- the call associated with the message
+    call: MessageCallObject? -- the call associated with the message
 }
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-resolved-data-structure
@@ -1149,7 +1149,7 @@ export type ResolvedDataStructure = {
     roles: { [Snowflake]: GuildRoleObject }?, -- the ids and Role objects
     channels: { [Snowflake]: ChannelObject }?, -- the ids and partial Channel objects
     messages: { [Snowflake]: MessageObject }?, -- the ids and partial Message objects
-    attachments: { [Snowflake]: AttachmentObject }?, -- the ids and attachment objects
+    attachments: { [Snowflake]: AttachmentObject }? -- the ids and attachment objects
 }
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-application-command-interaction-data-option-structure]
@@ -1158,7 +1158,7 @@ export type ApplicationCommandInteractionDataOptionObject = {
     type: ApplicationCommandOptionType, -- Value of application command option type
     value: (string | number | boolean)?, -- Value of the option resulting from user input
     options: { ApplicationCommandInteractionDataOptionObject }, -- Present if this option is a group or subcommand
-    focused: boolean, -- true if this option is the currently focused option for autocomplete
+    focused: boolean -- true if this option is the currently focused option for autocomplete
 }
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-data
@@ -1175,7 +1175,7 @@ export type InteractionDataObject = {
     component_type: number?, -- type of the component
     values: { SelectOptionObject }?, -- Values the user selected in a select menu component
 
-    components: { ComponentObjects }?, -- Resolved entities from selected options
+    components: { ComponentObjects }? -- Resolved entities from selected options
 }
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object-interaction-structure
@@ -1198,7 +1198,7 @@ export type InteractionObject = {
     guild_locale: LanguageLocales?, -- Guild's preferred locale, if invoked in a guild
     entitlements: { EntitlementObject }, -- For monetized apps, any entitlements for the invoking user, representing access to premium SKUs
     authorizing_integration_owners: { IntegrationType }, -- Mapping of installation contexts that the interaction was authorized for to related user or guild IDs. See Authorizing Integration Owners Object for details
-    context: InteractionContextType, -- Context where the interaction was triggered from
+    context: InteractionContextType -- Context where the interaction was triggered from
 }
 
 -- https://discord.com/developers/docs/resources/application-role-connection-metadata#application-role-connection-metadata-object
@@ -1208,14 +1208,14 @@ export type ApplicationRoleConnectionMetadataObject = {
     name: string, -- name of the metadata field (1-100 characters)
     name_localizations: { [LanguageLocales]: string }?, -- translations of the name
     description: string, -- description of the metadata field (1-200 characters)
-    description_localizations: { [LanguageLocales]: string }?, -- translations of the description
+    description_localizations: { [LanguageLocales]: string }? -- translations of the description
 }
 
 -- https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-choice-structure
 export type ApplicationCommandOptionChoiceObject = {
     name: string, -- 1-100 character choice name
     name_localizations: { [LanguageLocales]: string }?, -- Localization dictionary for the name field. Values follow the same restrictions as name
-    value: string | number, -- Value for the choice, up to 100 characters if string
+    value: string | number -- Value for the choice, up to 100 characters if string
 }
 
 -- https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-option-structure
@@ -1233,7 +1233,7 @@ export type ApplicationCommandOptionObject = {
     max_value: number?, -- The maximum value permitted
     min_length: number?, -- The minimum allowed length (minimum of 0, maximum of 6000)
     max_length: number?, -- The maximum allowed length (minimum of 1, maximum of 6000)
-    autocomplete: boolean?, -- If autocomplete interactions are enabled for this option
+    autocomplete: boolean? -- If autocomplete interactions are enabled for this option
 }
 
 -- https://discord.com/developers/docs/interactions/application-commands#application-command-object
@@ -1253,14 +1253,14 @@ export type ApplicationCommandObject = {
     nsfw: boolean?, -- Indicates whether the command is age-restricted, defaults to false
     integration_types: { IntegrationType }?, -- Installation contexts where the command is available, only for globally-scoped commands. Defaults to your app's configured contexts
     contexts: { InteractionContextType }?, -- Interaction context(s) where the command can be used, only for globally-scoped commands. By default, all interaction context types included for new commands.
-    version: Snowflake?, -- Autoincrementing version identifier updated during substantial record changes
+    version: Snowflake? -- Autoincrementing version identifier updated during substantial record changes
 }
 
 -- https://discord.com/developers/docs/resources/audit-log#audit-log-change-object
 export type AuditLogChangeObject = {
     new_value: any?, -- New value of the key
     old_value: any?, -- Old value of the key
-    key: string, -- Name of the changed entity, with a few exceptions
+    key: string -- Name of the changed entity, with a few exceptions
 }
 
 -- https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object-optional-audit-entry-info
@@ -1276,7 +1276,7 @@ export type OptionalAuditEntryInfoObject = {
     message_id: Snowflake, -- ID of the message that was targeted
     role_name: string, -- Name of the role if type is "0" (not present if type is "1")
     type: string, -- Type of overwritten entity - role ("0") or member ("1")
-    integration_type: IntegrationType, -- The type of integration which performed the action
+    integration_type: IntegrationType -- The type of integration which performed the action
 }
 
 -- https://discord.com/developers/docs/resources/audit-log#audit-log-entry-object
@@ -1287,7 +1287,7 @@ export type AuditLogEntryObject = {
     id: Snowflake, -- ID of the entry
     action_type: AuditLogEventType, -- Type of action that occurred
     options: { OptionalAuditEntryInfoObject }?, -- Additional info for certain event types
-    reason: string?, -- Reason for the change (1-512 characters)
+    reason: string? -- Reason for the change (1-512 characters)
 }
 
 -- https://discord.com/developers/docs/resources/webhook#webhook-object
@@ -1303,7 +1303,7 @@ export type WebhookObject = {
     application_id: Snowflake?, -- the bot/OAuth2 application that created this webhook
     source_guild: GuildObject?, -- the guild of the channel that this webhook is following (returned for Channel Follower Webhooks)
     source_channel: ChannelObject?, -- the channel that this webhook is following (returned for Channel Follower Webhooks)
-    url: string?, -- the url used for executing the webhook (returned by the webhooks OAuth2 flow)
+    url: string? -- the url used for executing the webhook (returned by the webhooks OAuth2 flow)
 }
 
 -- https://discord.com/developers/docs/resources/audit-log#audit-log-object
@@ -1315,7 +1315,7 @@ export type AuditLogObject = {
     integrations: { IntegrationObject }, -- List of partial integration objects
     threads: { ChannelObject }, -- List of threads referenced in the audit log*
     users: { UserObject }, -- List of users referenced in the audit log
-    webhooks: { WebhookObject }, -- List of webhooks referenced in the audit log
+    webhooks: { WebhookObject } -- List of webhooks referenced in the audit log
 }
 
 -- https://discord.com/developers/docs/resources/invite#invite-object
@@ -1332,13 +1332,13 @@ export type InviteObject = {
     approximate_member_count: number?, -- approximate count of total members, returned from the GET /invites/<code> endpoint when with_counts is true
     expires_at: string?, -- the expiration date of this invite, returned from the GET /invites/<code> endpoint when with_expiration is true
     stage_instance: StageInstanceObject?, -- stage instance data if there is a public Stage instance in the Stage channel this invite is for (deprecated)
-    guild_scheduled_event: GuildScheduledEventObject?, -- guild scheduled event data, only included if guild_scheduled_event_id contains a valid guild scheduled event id
+    guild_scheduled_event: GuildScheduledEventObject? -- guild scheduled event data, only included if guild_scheduled_event_id contains a valid guild scheduled event id
 }
 
 -- https://discord.com/developers/docs/resources/guild#get-guild-vanity-url
 export type GuildVanityUrl = {
     code: string,
-    uses: number,
+    uses: number
 }
 
 -- https://discord.com/developers/docs/resources/invite#invite-metadata-object
@@ -1347,13 +1347,13 @@ export type InviteMetadataObject = {
     max_uses: number, -- max number of times this invite can be used
     max_age: number, -- duration (in seconds) after which the invite expires
     temporary: boolean, -- whether this invite only grants temporary membership
-    created_at: string, -- when this invite was created
+    created_at: string -- when this invite was created
 }
 
 -- https://discord.com/developers/docs/resources/channel#followed-channel-object
 export type FollowedChannelObject = {
     channel_id: Snowflake, -- source channel id
-    webhook_id: Snowflake, -- created target webhook id
+    webhook_id: Snowflake -- created target webhook id
 }
 
 -- https://discord.com/developers/docs/resources/guild#guild-preview-object
@@ -1368,13 +1368,13 @@ export type GuildPreviewObject = {
     approximate_member_count: number, -- approximate number of members in this guild
     approximate_presence_count: number, -- approximate number of online members in this guild
     description: string?, -- the description for the guild
-    stickers: { StickerObject }, -- custom guild stickers
+    stickers: { StickerObject } -- custom guild stickers
 }
 
 -- https://discord.com/developers/docs/resources/guild#ban-object
 export type BanObject = {
     reason: string?, -- the reason for the ban
-    user: UserObject, -- the banned user=
+    user: UserObject -- the banned user=
 }
 
 -- https://discord.com/developers/docs/resources/voice#voice-region-object
@@ -1383,13 +1383,13 @@ export type VoiceRegionObject = {
     name: string, -- name of the region
     optimal: boolean, -- true for a single server that is closest to the current user's client
     deprecated: boolean, -- whether this is a deprecated voice region (avoid switching to these)
-    custom: boolean, -- whether this is a custom voice region (used for events/etc)
+    custom: boolean -- whether this is a custom voice region (used for events/etc)
 }
 
 -- https://discord.com/developers/docs/resources/guild#guild-widget-settings-object
 export type GuildWidgetSettingsObject = {
     enabled: boolean?, -- whether the widget is enabled
-    channel_id: Snowflake?, -- the widget channel id
+    channel_id: Snowflake? -- the widget channel id
 }
 
 -- https://discord.com/developers/docs/resources/guild#guild-widget-object
@@ -1399,7 +1399,7 @@ export type GuildWidgetObject = {
     instant_invite: string?, -- instant invite for the guilds specified widget invite channel
     channels: { ChannelObject }, -- voice and stage channels which are accessible by @everyone
     members: { UserObject }, -- special widget user objects that includes users presence (Limit 100)
-    presence_count: number, -- number of online members in this guild
+    presence_count: number -- number of online members in this guild
 }
 
 -- https://discord.com/developers/docs/resources/guild#guild-onboarding-object-prompt-option-structure
@@ -1412,7 +1412,7 @@ export type PromptOptionObject = {
     emoji_name: string?, -- Emoji name of the option (see below)
     emoji_animated: boolean?, -- Whether the emoji is animated (see below)
     title: string?, -- Title of the option
-    description: string?, -- Description of the option
+    description: string? -- Description of the option
 }
 
 -- https://discord.com/developers/docs/resources/guild#guild-onboarding-object-onboarding-prompt-structure
@@ -1423,7 +1423,7 @@ export type OnboardingPromptObject = {
     title: string?, -- Title of the prompt
     single_select: boolean?, -- Indicates whether users are limited to selecting one option for the prompt
     required: boolean?, -- Indicates whether the prompt is required before a user completes the onboarding flow
-    in_onboarding: boolean?, -- Indicates whether the prompt is present in the onboarding flow. If false, the prompt will only appear in the Channels & Roles tab
+    in_onboarding: boolean? -- Indicates whether the prompt is present in the onboarding flow. If false, the prompt will only appear in the Channels & Roles tab
 }
 
 -- https://discord.com/developers/docs/resources/guild#guild-onboarding-object
@@ -1432,14 +1432,14 @@ export type GuildOnboardingObject = {
     prompts: { OnboardingPromptObject }, -- Prompts shown during onboarding and in customize community
     default_channel_ids: { Snowflake }, -- Channel IDs that members get opted into automatically
     enabled: boolean, -- Whether onboarding is enabled in the guild
-    mode: OnboardingMode, -- Current mode of onboarding
+    mode: OnboardingMode -- Current mode of onboarding
 }
 
 -- https://discord.com/developers/docs/resources/guild-scheduled-event#guild-scheduled-event-user-object
 export type GuildScheduledEventUserObject = {
     guild_scheduled_event_id: Snowflake, -- the scheduled event id which the user subscribed to
     user: UserObject, -- user which subscribed to an event
-    member: GuildMemberObject?, -- guild member data for this user for the guild which this event belongs to, if any
+    member: GuildMemberObject? -- guild member data for this user for the guild which this event belongs to, if any
 }
 
 -- https://discord.com/developers/docs/resources/guild-template#guild-template-object
@@ -1454,7 +1454,7 @@ export type GuildTemplateObject = {
     updated_at: string, -- when this template was last synced to the source guild
     source_guild_id: Snowflake, -- the ID of the guild this template is based on
     serialized_source_guild: GuildObject, -- the guild snapshot this template contains
-    is_dirty: boolean?, -- whether the template has unsynced changes
+    is_dirty: boolean? -- whether the template has unsynced changes
 }
 
 -- https://discord.com/developers/docs/resources/sticker#sticker-pack-object
@@ -1465,7 +1465,7 @@ export type StickerPackObject = {
     sku_id: Snowflake, -- id of the pack's SKU
     cover_sticker_id: Snowflake?, -- id of a sticker in the pack which is shown as the pack's icon
     description: string, -- description of the sticker pack
-    banner_asset_id: Snowflake?, -- id of the sticker pack's banner image
+    banner_asset_id: Snowflake? -- id of the sticker pack's banner image
 }
 
 -- https://discord.com/developers/docs/resources/guild#integration-application-object
@@ -1474,7 +1474,7 @@ export type IntegrationApplicationObject = {
     name: string, -- the name of the app
     icon: string?, -- the icon hash of the app
     description: string, -- the description of the app
-    bot: UserObject?, -- the bot associated with this application
+    bot: UserObject? -- the bot associated with this application
 }
 
 -- https://discord.com/developers/docs/resources/user#connection-object
@@ -1488,14 +1488,14 @@ export type ConnectionObject = {
     friend_sync: boolean, -- whether friend sync is enabled for this connection
     show_Activity: boolean, -- whether activities related to this connection will be shown in presence updates
     two_way_link: boolean, -- whether this connection has a corresponding third party OAuth2 token
-    visibility: ConnectionVisibilityTypes, -- visibility of this connection
+    visibility: ConnectionVisibilityTypes -- visibility of this connection
 }
 
 -- https://discord.com/developers/docs/resources/user#application-role-connection-object
 export type ApplicationRoleConnectionObject = {
     platform_name: string?, -- the vanity name of the platform a bot has connected (max 50 characters)
     platform_username: string?, -- the username on the platform a bot has connected (max 100 characters)
-    metadata: ApplicationRoleConnectionMetadataObject, -- object mapping application role connection metadata keys to their string-ified value (max 100 characters) for the user on the platform a bot has connected
+    metadata: ApplicationRoleConnectionMetadataObject -- object mapping application role connection metadata keys to their string-ified value (max 100 characters) for the user on the platform a bot has connected
 }
 
 -- https://discord.com/developers/docs/topics/gateway#session-start-limit-object
@@ -1503,7 +1503,7 @@ export type SessionStartLimitObject = {
     total: number, -- Total number of session starts the current user is allowed
     remaining: number, -- Remaining number of session starts the current user is allowed
     reset_after: number, -- Number of milliseconds after which the limit resets
-    max_concurrency: number, -- Number of identify requests allowed per 5 seconds
+    max_concurrency: number -- Number of identify requests allowed per 5 seconds
 }
 
 -- https://discord.com/developers/docs/resources/channel#allowed-mentions-object
@@ -1511,7 +1511,7 @@ export type AllowedMentionObject = {
     parse: { AllowedMentionTypes }?, -- An array of allowed mention types to parse from the content.
     users: { string }?, -- Array of role_ids to mention (Max size of 100)
     roles: { string }?, -- Array of user_ids to mention (Max size of 100)
-    replied_user: boolean?, -- For replies, whether to mention the author of the message being replied to (default false)
+    replied_user: boolean? -- For replies, whether to mention the author of the message being replied to (default false)
 }
 
 -- https://discord.com/developers/docs/resources/channel#start-thread-in-forum-or-media-channel-forum-and-media-thread-message-params-object
@@ -1522,25 +1522,25 @@ export type ForumAndMediaThreadMessageObject = {
     components: { ComponentObjects }?, -- Components to include with the message
     sticker_ids: { Snowflake }?, -- IDs of up to 3 stickers in the server to send in the message
     attachments: { AttachmentObject }?, -- Attachment objects with filename and description. See Uploading Files
-    flags: number?, -- Message flags combined as a bitfield (only SUPPRESS_EMBEDS and SUPPRESS_NOTIFICATIONS can be set)
+    flags: number? -- Message flags combined as a bitfield (only SUPPRESS_EMBEDS and SUPPRESS_NOTIFICATIONS can be set)
 }
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure
 export type InteractionCallbackAutocompleteObject = {
-    choices: { ApplicationCommandOptionChoiceObject }?, -- autocomplete choices (max of 25 choices)
+    choices: { ApplicationCommandOptionChoiceObject }? -- autocomplete choices (max of 25 choices)
 }
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure
 export type InteractionCallbackModalObject = {
     custom_id: string?, -- Developer-defined identifier for the modal, max 100 characters
     title: string?, -- Title of the popup modal, max 45 characters
-    components: { ComponentObjects }, -- Between 1 and 5 (inclusive) components that make up the modal
+    components: { ComponentObjects } -- Between 1 and 5 (inclusive) components that make up the modal
 }
 
 -- https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type
 export type InteractionResponseObject = {
     type: InteractionCallbackType, -- the type of response
-    data: (Partial<MessageObject> | InteractionCallbackAutocompleteObject | InteractionCallbackModalObject)?, -- an optional response message
+    data: (Partial<MessageObject> | InteractionCallbackAutocompleteObject | InteractionCallbackModalObject)? -- an optional response message
 }
 
 return "DISCORD_V10_PAYLOAD_TYPES"

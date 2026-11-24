@@ -55,16 +55,16 @@ end
 function Buffer.Interface.new(): Buffer
     return setmetatable(
         {
-            data = "",
+            data = ""
         } :: Buffer,
         {
-            __index = Buffer.Prototype,
+            __index = Buffer.Prototype
         }
     )
 end
 
 export type Buffer = typeof(Buffer.Prototype) & {
-    data: string,
+    data: string
 }
 
 return Buffer.Interface

@@ -165,5 +165,5 @@ return {
         @prop guild Rest.guild
         @within Rest
     ]=]
-    guild = guild,
+    guild = guild
 }

@@ -17,7 +17,7 @@ local ActivityType = table.freeze(util.tableReflect({
     Streaming = 1,
     Listening = 2,
     Watching = 3,
-    Competing = 5,
+    Competing = 5
 }))
 
 local Status = table.freeze(util.tableReflect({
@@ -25,7 +25,7 @@ local Status = table.freeze(util.tableReflect({
     DoNotDisturb = "dnd",
     Idle = "idle",
     Invisible = "invisible",
-    Offline = "offline",
+    Offline = "offline"
 }))
 
 export type ActivityType = "Game" | "Streaming" | "Listening" | "Watching" | "Competing"
@@ -33,5 +33,5 @@ export type Status = "Online" | "DoNotDisturb" | "Idle" | "Invisible" | "Offline
 
 return {
     ActivityType = ActivityType,
-    Status = Status,
+    Status = Status
 }

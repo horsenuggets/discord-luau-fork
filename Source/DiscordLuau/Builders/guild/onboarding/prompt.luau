@@ -93,7 +93,7 @@ function Prompt.Prototype.build(self: Prompt): JSON
         required = self.required,
 
         id = nil,
-        in_onboarding = nil,
+        in_onboarding = nil
     }
 end
 
@@ -107,7 +107,7 @@ function Prompt.Interface.new(resource: {
     options: { option.JSON }?,
     title: string?,
     singleSelect: boolean?,
-    required: boolean?,
+    required: boolean?
 }?): Prompt
     local self = setmetatable(
         {
@@ -144,10 +144,10 @@ function Prompt.Interface.new(resource: {
                 @within Builders.Prompt
                 Whether this prompt is required to be answered or not.
             ]=]
-            required = resource and resource.required,
+            required = resource and resource.required
         } :: Prompt,
         {
-            __index = Prompt.Prototype,
+            __index = Prompt.Prototype
         }
     )
 
@@ -183,7 +183,7 @@ export type Prompt = typeof(Prompt.Prototype) & {
     options: { option.JSON },
     title: string,
     singleSelect: boolean,
-    required: boolean,
+    required: boolean
 }
 
 export type JSON = typeof(Prompt.Prototype.build(nil :: any))

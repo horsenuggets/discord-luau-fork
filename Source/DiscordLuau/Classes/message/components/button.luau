@@ -119,7 +119,7 @@ export type Button = typeof(Button.Prototype) & {
     customId: string?,
     skuId: apiTypes.Snowflake?,
     url: string?,
-    disabled: boolean?,
+    disabled: boolean?
 }
 
 return Button.Interface

@@ -33,7 +33,7 @@ Forum.Behaviours = {
     guildBehaviour,
     threadBehaviour,
     forumBehaviour,
-    textBehaviour,
+    textBehaviour
 }
 
 --[=[
@@ -63,7 +63,7 @@ function Forum.Interface.new(state: state.State, channelData: apiTypes.ChannelOb
                 @prop state Classes.State
                 @within Classes.Forum
             ]=]
-            state = state,
+            state = state
         } :: Forum,
         { __index = Forum.Prototype }
     )
@@ -76,7 +76,7 @@ end
 export type Forum =
     typeof(Forum.Prototype)
     & {
-        state: state.State,
+        state: state.State
     }
     & channelBehaviour.ChannelBehaviour
     & textBehaviour.TextBehaviour

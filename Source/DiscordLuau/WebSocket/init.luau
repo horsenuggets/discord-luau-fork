@@ -28,5 +28,5 @@ return {
         @prop shard WebSocket.Shard 
         @within WebSocket
     ]=]
-    shard = shard,
+    shard = shard
 }

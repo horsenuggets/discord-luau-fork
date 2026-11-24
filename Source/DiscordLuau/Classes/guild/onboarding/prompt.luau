@@ -116,7 +116,7 @@ export type Prompt = typeof(Prompt.Prototype) & {
     title: string?,
     singleSelect: boolean?,
     required: boolean?,
-    inOnboarding: boolean?,
+    inOnboarding: boolean?
 }
 
 return Prompt.Interface

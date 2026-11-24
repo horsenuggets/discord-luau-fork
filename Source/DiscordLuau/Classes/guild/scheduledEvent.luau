@@ -177,7 +177,7 @@ export type ScheduledEvent = typeof(ScheduledEvent.Prototype) & {
     location: string?,
     creator: user.User?,
     userCount: number?,
-    image: string?,
+    image: string?
 
     -- todo: what is this?
     -- recurrence_rule

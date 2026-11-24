@@ -182,7 +182,7 @@ function Request.Prototype.executeAsync<Resolve>(self: Request)
                 url = baseUrl,
                 method = self.method,
                 body = self.body,
-                headers = headerTable,
+                headers = headerTable
             })
 
             if success then
@@ -205,7 +205,7 @@ function Request.Prototype.executeAsync<Resolve>(self: Request)
             url = baseUrl,
             method = self.method,
             body = self.body,
-            headers = headerTable,
+            headers = headerTable
         } :: stdPolyfills.FetchParams)
 
         for _, hook in self.afterHooks do
@@ -214,7 +214,7 @@ function Request.Prototype.executeAsync<Resolve>(self: Request)
                 url = baseUrl,
                 method = self.method,
                 body = self.body,
-                headers = headerTable,
+                headers = headerTable
             }, request)
 
             if not success then
@@ -228,11 +228,11 @@ function Request.Prototype.executeAsync<Resolve>(self: Request)
             error(setmetatable({
                 statusCode = request.statusCode,
                 statusMessage = request.statusMessage,
-                body = request.body,
+                body = request.body
             }, {
                 __tostring = function(self)
                     return `HTTP REST Request failed: {self.statusCode} {self.statusMessage}\n{self.body}`
-                end,
+                end
             }))
         end
 
@@ -240,11 +240,11 @@ function Request.Prototype.executeAsync<Resolve>(self: Request)
 
         return {
             headers = request.headers,
-            body = (decodeSuccess and decodedBody or request.body) :: Resolve,
+            body = (decodeSuccess and decodedBody or request.body) :: Resolve
         }
     end) :: future.FutureLike<string, {
         headers: stdPolyfills.HttpHeaderMap,
-        body: Resolve,
+        body: Resolve
     }>
 end
 
@@ -256,7 +256,7 @@ end
 function Request.Interface.new(settings: {
     token: string?,
 
-    restApiVersion: number,
+    restApiVersion: number
 }): Request
     return setmetatable(
         {
@@ -266,7 +266,7 @@ function Request.Interface.new(settings: {
             headers = {},
             urlParams = {},
             beforeHooks = {},
-            afterHooks = {},
+            afterHooks = {}
         } :: Request,
         { __index = Request.Prototype }
     )
@@ -277,7 +277,7 @@ export type RequestInformation = {
     method: string,
     body: string,
     headers: stdPolyfills.HttpHeaderMap,
-    requestUrl: string,
+    requestUrl: string
 }
 
 export type Request = typeof(Request.Prototype) & {
@@ -292,7 +292,7 @@ export type Request = typeof(Request.Prototype) & {
     flags: { [string]: boolean },
     headers: { [string]: string },
     urlParams: { [string]: string },
-    body: string,
+    body: string
 }
 
 return Request.Interface

@@ -120,7 +120,7 @@ function Button.Prototype.build(self: Button): JSON
         custom_id = self.customId,
         sku_id = self.skuId,
         url = self.url,
-        disabled = self.disabled,
+        disabled = self.disabled
     }
 end
 
@@ -144,7 +144,7 @@ function Button.Interface.new(resource: {
     customId: string?,
     skuId: string?,
     url: string?,
-    disabled: boolean?,
+    disabled: boolean?
 }?): Button
     local self = setmetatable(
         {
@@ -195,10 +195,10 @@ function Button.Interface.new(resource: {
                 @within Builders.Button
                 Whether the button is disabled and cannot be clicked.
             ]=]
-            disabled = nil,
+            disabled = nil
         } :: Button,
         {
-            __index = Button.Prototype,
+            __index = Button.Prototype
         }
     )
 
@@ -242,7 +242,7 @@ export type Button = typeof(Button.Prototype) & {
     customId: string?,
     skuId: string?,
     url: string?,
-    disabled: boolean?,
+    disabled: boolean?
 }
 
 export type JSON = apiTypes.ButtonComponentObject

@@ -31,7 +31,7 @@ Announcement.Behaviours = {
     channelBehaviour,
     guildBehaviour,
     threadBehaviour,
-    textBehaviour,
+    textBehaviour
 }
 
 --[=[
@@ -61,7 +61,7 @@ function Announcement.Interface.new(state: state.State, channelData: apiTypes.Ch
                 @prop state Classes.State
                 @within Classes.Announcement
             ]=]
-            state = state,
+            state = state
         } :: Announcement,
         { __index = Announcement.Prototype }
     )
@@ -74,7 +74,7 @@ end
 export type Announcement =
     typeof(Announcement.Prototype)
     & {
-        state: state.State,
+        state: state.State
     }
     & channelBehaviour.ChannelBehaviour
     & textBehaviour.TextBehaviour

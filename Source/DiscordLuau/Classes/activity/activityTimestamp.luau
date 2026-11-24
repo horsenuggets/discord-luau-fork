@@ -45,7 +45,7 @@ function ActivityTimestamp.Interface.new(startTime: number, endTime: number): Ac
 
                 The end time of the activity. This represents when the activity will end.
             ]=]
-            endTime = stdPolyfills.datetime.fromUnixTimestamp(endTime),
+            endTime = stdPolyfills.datetime.fromUnixTimestamp(endTime)
         } :: ActivityTimestamp,
         { __index = ActivityTimestamp.Prototype }
     )
@@ -55,7 +55,7 @@ end
 
 export type ActivityTimestamp = typeof(ActivityTimestamp.Prototype) & {
     startTime: stdPolyfills.DateTime,
-    endTime: stdPolyfills.DateTime,
+    endTime: stdPolyfills.DateTime
 }
 
 return ActivityTimestamp.Interface

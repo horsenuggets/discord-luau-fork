@@ -44,7 +44,7 @@ end
 function Task.Prototype.execute(self: Task)
     local spawnResult = process.create(self.executable, self.arguments, {
         stdio = "forward",
-        cwd = self.cwd,
+        cwd = self.cwd
     })
 
     local status = spawnResult:status()
@@ -77,10 +77,10 @@ function Task.Interface.new(executable: string): Task
         {
             executable = executable,
 
-            arguments = {},
+            arguments = {}
         } :: Task,
         {
-            __index = Task.Prototype,
+            __index = Task.Prototype
         }
     )
 
@@ -90,7 +90,7 @@ end
 export type Task = typeof(Task.Prototype) & {
     executable: string,
     cwd: string?,
-    arguments: { string },
+    arguments: { string }
 }
 
 return Task.Interface

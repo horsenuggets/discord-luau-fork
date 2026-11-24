@@ -38,7 +38,7 @@ function ThreadMemberBitflag.Interface.new(flag: number): ThreadMemberBitflag
                 @within Classes.ThreadMemberBitflag
                 The bitfield representing the thread member flags.
             ]=]
-            flag = flag,
+            flag = flag
         } :: ThreadMemberBitflag,
         { __index = ThreadMemberBitflag.Prototype }
     )
@@ -47,7 +47,7 @@ function ThreadMemberBitflag.Interface.new(flag: number): ThreadMemberBitflag
 end
 
 export type ThreadMemberBitflag = typeof(ThreadMemberBitflag.Prototype) & {
-    flag: number,
+    flag: number
 }
 
 return ThreadMemberBitflag.Interface

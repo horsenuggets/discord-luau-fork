@@ -70,7 +70,7 @@ end
 export type Field = typeof(Field.Prototype) & {
     name: string,
     value: string,
-    inline: boolean?,
+    inline: boolean?
 }
 
 return Field.Interface

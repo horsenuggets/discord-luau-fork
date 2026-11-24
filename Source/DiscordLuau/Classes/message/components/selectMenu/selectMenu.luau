@@ -145,7 +145,7 @@ export type SelectMenu = typeof(SelectMenu.Prototype) & {
     defaultValues: { defaultValue.DefaultValue }?,
     minValues: number?,
     maxValues: number?,
-    disabled: boolean?,
+    disabled: boolean?
 }
 
 return SelectMenu.Interface

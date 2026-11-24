@@ -55,7 +55,7 @@ function DefaultValue.Prototype.build(self: DefaultValue): JSON
 
     return {
         id = self.id,
-        type = self.type,
+        type = self.type
     }
 end
 
@@ -73,7 +73,7 @@ end
 ]=]
 function DefaultValue.Interface.new(resource: {
     id: string,
-    type: apiTypes.SelectDefaultValueType,
+    type: apiTypes.SelectDefaultValueType
 }?): DefaultValue
     local self = setmetatable(
         {
@@ -89,10 +89,10 @@ function DefaultValue.Interface.new(resource: {
                 @within Builders.DefaultValue
                 The type of the default value.
             ]=]
-            type = nil,
+            type = nil
         } :: DefaultValue,
         {
-            __index = DefaultValue.Prototype,
+            __index = DefaultValue.Prototype
         }
     )
 
@@ -111,7 +111,7 @@ end
 
 export type DefaultValue = typeof(DefaultValue.Prototype) & {
     id: string,
-    type: apiTypes.SelectDefaultValueType,
+    type: apiTypes.SelectDefaultValueType
 }
 
 export type JSON = typeof(DefaultValue.Prototype.build(nil :: any))

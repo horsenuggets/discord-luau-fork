@@ -23,7 +23,7 @@ local Opcodess = table.freeze({
     RequestGuildMembers = 8,
     InvalidSession = 9,
     Hello = 10,
-    HeartbeatACK = 11,
+    HeartbeatACK = 11
 })
 
 export type Opcode =

@@ -58,7 +58,7 @@ function Member.Prototype.banAsync(
         local response = rest.guild
             .createGuildBanAsync(request, self.guildId, self.user.id, {
                 delete_message_days = deleteMessageDays,
-                delete_message_seconds = deleteMessageSeconds,
+                delete_message_seconds = deleteMessageSeconds
             }, reason)
             :await()
 
@@ -99,7 +99,7 @@ function Member.Prototype.modifyAsync(
         mute: boolean?,
         deaf: boolean?,
         channelId: (apiTypes.Snowflake | boolean)?,
-        communicationDisabledUntil: string?,
+        communicationDisabledUntil: string?
     },
     reason: string?
 )
@@ -115,7 +115,7 @@ function Member.Prototype.modifyAsync(
                 mute = data.mute,
                 deaf = data.deaf,
                 channel_id = data.channelId,
-                communication_disabled_until = data.communicationDisabledUntil,
+                communication_disabled_until = data.communicationDisabledUntil
             }, reason)
             :await()
 
@@ -133,7 +133,7 @@ end
 ]=]
 function Member.Prototype.muteAsync(self: Member, reason: string?)
     return self:modifyAsync({
-        muted = true,
+        muted = true
     }, reason)
 end
 
@@ -143,7 +143,7 @@ end
 ]=]
 function Member.Prototype.unmuteAsync(self: Member, reason: string?)
     return self:modifyAsync({
-        muted = false,
+        muted = false
     }, reason)
 end
 
@@ -153,7 +153,7 @@ end
 ]=]
 function Member.Prototype.deafenAsync(self: Member, reason: string?)
     return self:modifyAsync({
-        deaf = true,
+        deaf = true
     }, reason)
 end
 
@@ -163,7 +163,7 @@ end
 ]=]
 function Member.Prototype.undeafenAsync(self: Member, reason: string?)
     return self:modifyAsync({
-        deaf = false,
+        deaf = false
     }, reason)
 end
 
@@ -173,7 +173,7 @@ end
 ]=]
 function Member.Prototype.setNicknameAsync(self: Member, nickname: string, reason: string?)
     return self:modifyAsync({
-        nickname = nickname,
+        nickname = nickname
     }, reason)
 end
 
@@ -183,7 +183,7 @@ end
 ]=]
 function Member.Prototype.setRolesAsync(self: Member, roles: { apiTypes.Snowflake }, reason: string?)
     return self:modifyAsync({
-        roles = roles,
+        roles = roles
     }, reason)
 end
 
@@ -193,7 +193,7 @@ end
 ]=]
 function Member.Prototype.moveVoiceChannelAsync(self: Member, channelId: apiTypes.Snowflake, reason: string?)
     return self:modifyAsync({
-        channelId = channelId,
+        channelId = channelId
     }, reason)
 end
 
@@ -203,7 +203,7 @@ end
 ]=]
 function Member.Prototype.disconnectFromVoiceChannelAsync(self: Member, reason: string?)
     return self:modifyAsync({
-        channelId = false,
+        channelId = false
     }, reason)
 end
 
@@ -213,7 +213,7 @@ end
 ]=]
 function Member.Prototype.disableAsync(self: Member, disabledUntil: stdPolyfills.DateTime, reason: string?)
     return self:modifyAsync({
-        communicationDisabledUntil = disabledUntil:toIsoDate(),
+        communicationDisabledUntil = disabledUntil:toIsoDate()
     }, reason)
 end
 
@@ -382,7 +382,7 @@ function Member.Interface.new(
                 @prop guildId string
                 The ID of the guild this member belongs to.
             ]=]
-            guildId = guildId,
+            guildId = guildId
         } :: Member,
         { __index = Member.Prototype }
     )
@@ -408,7 +408,7 @@ export type Member = typeof(Member.Prototype) & {
     pending: boolean?,
     permissions: string?,
     communicationDisabledUntil: stdPolyfills.DateTime?,
-    avatarDecorationData: avatarDecoration.AvatarDecoration?,
+    avatarDecorationData: avatarDecoration.AvatarDecoration?
 }
 
 return Member.Interface

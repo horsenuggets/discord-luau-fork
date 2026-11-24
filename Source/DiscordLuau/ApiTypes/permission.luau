@@ -61,7 +61,7 @@ local Permissions = table.freeze(util.tableReflect({
     UseExternalSounds = bit.lshift(1, 45),
     SendVoiceMessages = bit.lshift(1, 46),
     SendPolls = bit.lshift(1, 49),
-    UseExternalApps = bit.lshift(1, 50),
+    UseExternalApps = bit.lshift(1, 50)
 }))
 
 export type Permissions =
@@ -116,5 +116,5 @@ export type Permissions =
     | "UseExternalApps"
 
 return {
-    Permissions = Permissions,
+    Permissions = Permissions
 }

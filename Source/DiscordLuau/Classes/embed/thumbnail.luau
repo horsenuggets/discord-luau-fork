@@ -81,7 +81,7 @@ export type Thumbnail = typeof(Thumbnail.Prototype) & {
     url: string,
     proxyUrl: string?,
     height: number?,
-    width: number?,
+    width: number?
 }
 
 return Thumbnail.Interface

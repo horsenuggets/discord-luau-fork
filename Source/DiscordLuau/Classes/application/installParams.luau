@@ -61,7 +61,7 @@ end
 
 export type InstallParams = typeof(InstallParams.Prototype) & {
     scopes: { apiTypes.OAuth2Scopes },
-    permissions: permission.Permission,
+    permissions: permission.Permission
 }
 
 return InstallParams.Interface

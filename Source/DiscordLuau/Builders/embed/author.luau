@@ -69,7 +69,7 @@ function Author.Prototype.build(self: Author): JSON
         name = self.name,
         url = self.url,
         icon_url = self.iconUrl,
-        proxy_icon_url = self.proxyIconUrl,
+        proxy_icon_url = self.proxyIconUrl
     }
 end
 
@@ -82,7 +82,7 @@ function Author.Interface.new(resource: {
     name: string?,
     url: string?,
     iconUrl: string?,
-    proxyIconUrl: string?,
+    proxyIconUrl: string?
 }?): Author
     local self = setmetatable(
         {
@@ -112,10 +112,10 @@ function Author.Interface.new(resource: {
                 @within Builders.Author
                 A proxied url of author's icon image.
             ]=]
-            proxyIconUrl = nil,
+            proxyIconUrl = nil
         } :: Author,
         {
-            __index = Author.Prototype,
+            __index = Author.Prototype
         }
     )
 
@@ -140,7 +140,7 @@ export type Author = typeof(Author.Prototype) & {
     name: string?,
     url: string?,
     iconUrl: string?,
-    proxyIconUrl: string?,
+    proxyIconUrl: string?
 }
 
 export type JSON = typeof(Author.Prototype.build({} :: any))

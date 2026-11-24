@@ -54,7 +54,7 @@ return function()
         check.truthy(object)
         check.table.contains(object.entries, {
             name = "example",
-            value = "value",
+            value = "value"
         })
     end)
 
@@ -76,7 +76,7 @@ return function()
             check.table.contains(parsedFormData.entries, {
                 name = "example",
                 value = "value",
-                filename = `example{index}.txt`,
+                filename = `example{index}.txt`
             })
         end
     end)

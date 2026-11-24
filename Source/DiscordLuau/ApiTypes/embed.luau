@@ -19,11 +19,11 @@ local EmbedType = table.freeze(util.tableReflect({
     Gifv = "gifv",
     Article = "article",
     Link = "link",
-    PollResult = "poll_result",
+    PollResult = "poll_result"
 }))
 
 export type EmbedType = "Rich" | "Image" | "Video" | "Gifv" | "Article" | "Link" | "PollResult"
 
 return {
-    EmbedType = EmbedType,
+    EmbedType = EmbedType
 }

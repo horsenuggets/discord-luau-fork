@@ -80,7 +80,7 @@ export type RoleSubscriptionData = typeof(RoleSubscriptionData.Prototype) & {
     roleSubscriptionListingId: apiTypes.Snowflake,
     tierName: string,
     totalMonthsSubscribed: number,
-    isRenewal: boolean,
+    isRenewal: boolean
 }
 
 return RoleSubscriptionData.Interface

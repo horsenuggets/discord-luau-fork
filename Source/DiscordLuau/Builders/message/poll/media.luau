@@ -52,7 +52,7 @@ end
 function PollMedia.Prototype.build(self: PollMedia): JSON
     return {
         text = self.text,
-        emoji = self.emoji,
+        emoji = self.emoji
     }
 end
 
@@ -70,7 +70,7 @@ end
 ]=]
 function PollMedia.Interface.new(resource: {
     text: string?,
-    emoji: emojiBuilder.JSON?,
+    emoji: emojiBuilder.JSON?
 }?): PollMedia
     local self = setmetatable(
         {
@@ -86,10 +86,10 @@ function PollMedia.Interface.new(resource: {
                 @within Builders.PollMedia
                 The emoji associated with this poll media.
             ]=]
-            emoji = nil,
+            emoji = nil
         } :: PollMedia,
         {
-            __index = PollMedia.Prototype,
+            __index = PollMedia.Prototype
         }
     )
 
@@ -108,7 +108,7 @@ end
 
 export type PollMedia = typeof(PollMedia.Prototype) & {
     text: string?,
-    emoji: emojiBuilder.JSON?,
+    emoji: emojiBuilder.JSON?
 }
 
 export type JSON = typeof(PollMedia.Prototype.build(nil :: any))

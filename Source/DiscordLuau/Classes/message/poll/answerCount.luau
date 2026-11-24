@@ -70,7 +70,7 @@ end
 export type AnswerCount = typeof(AnswerCount.Prototype) & {
     id: number,
     count: number,
-    meVoted: boolean,
+    meVoted: boolean
 }
 
 return AnswerCount.Interface

@@ -91,7 +91,7 @@ function Choice.Prototype.build(self: Choice): JSON
     return {
         name = self.name,
         name_localizations = self.nameLocalizations,
-        value = self.value,
+        value = self.value
     }
 end
 
@@ -110,7 +110,7 @@ end
 function Choice.Interface.new(resource: {
     name: string?,
     nameLocalizations: { [apiTypes.LanguageLocales]: string }?,
-    value: string | number?,
+    value: string | number?
 }?): Choice
     local self = setmetatable(
         {
@@ -133,7 +133,7 @@ function Choice.Interface.new(resource: {
                 @within Builders.Choice
                 The value that is sent to your application when this choice is selected.
             ]=]
-            value = resource and resource.value,
+            value = resource and resource.value
         } :: Choice,
         { __index = Choice.Prototype }
     )
@@ -160,7 +160,7 @@ end
 export type Choice = typeof(Choice.Prototype) & {
     name: string,
     nameLocalizations: { [apiTypes.LanguageLocales]: string },
-    value: string | number,
+    value: string | number
 }
 
 export type JSON = typeof(Choice.Prototype.build(nil :: any))

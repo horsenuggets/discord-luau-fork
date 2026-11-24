@@ -82,14 +82,14 @@ export type HttpQueryMap = HttpQueryOrHeaderMap
 export type HttpHeaderMap = HttpQueryOrHeaderMap
 
 export type FetchParamsOptions = {
-    decompress: boolean?,
+    decompress: boolean?
 }
 
 export type WebSocket = {
     closeCode: number?,
     close: (code: number?) -> (),
     send: (message: (string | buffer)?, asBinaryMessage: boolean?) -> (),
-    next: () -> string?,
+    next: () -> string?
 }
 
 export type FetchResponse = {
@@ -97,7 +97,7 @@ export type FetchResponse = {
     statusCode: number,
     statusMessage: string,
     headers: HttpHeaderMap,
-    body: string,
+    body: string
 }
 
 export type FetchParams = {
@@ -106,7 +106,7 @@ export type FetchParams = {
     body: (string | buffer)?,
     query: HttpQueryMap?,
     headers: HttpHeaderMap?,
-    options: FetchParamsOptions?,
+    options: FetchParamsOptions?
 }
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "HEAD" | "OPTIONS" | "PATCH"

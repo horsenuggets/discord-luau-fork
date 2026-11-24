@@ -111,7 +111,7 @@ export type Emoji = typeof(Emoji.Prototype) & {
     requireColons: boolean?,
     managed: boolean?,
     animated: boolean?,
-    available: boolean?,
+    available: boolean?
 }
 
 return Emoji.Interface

@@ -116,7 +116,7 @@ type Channel<T> = T & MediaBehaviour & {
     state: state.State,
     id: string,
 
-    sync: (...any) -> (),
+    sync: (...any) -> ()
 }
 
 export type MediaBehaviourMethods = typeof(MediaBehaviour.Prototype)
@@ -124,7 +124,7 @@ export type MediaBehaviourProperties = {
     availableTags: { forumTag.ForumTag },
     defaultReaction: defaultReaction.DefaultReaction?,
     appliedTags: { apiTypes.Snowflake },
-    defaultForumLayout: apiTypes.MediaSortOrder,
+    defaultForumLayout: apiTypes.MediaSortOrder
 }
 
 export type MediaBehaviour = MediaBehaviourMethods & MediaBehaviourProperties

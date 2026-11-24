@@ -149,7 +149,7 @@ function Manager.Prototype.connectAsync(
                     logLevel = self.logger:getLogLevel(),
 
                     shardId = shardId,
-                    shardCount = shardCount,
+                    shardCount = shardCount
                 })
             )
         end
@@ -165,7 +165,7 @@ function Manager.Prototype.connectAsync(
                 self.onDispatch:invoke({
                     shardId = shardIndex - 1,
                     event = event.t,
-                    payload = event,
+                    payload = event
                 })
 
                 if event.t == apiTypes.gateway.receiveEvents.Ready then
@@ -174,7 +174,7 @@ function Manager.Prototype.connectAsync(
                     if #readyShards == shardCount then
                         self.onAllShardsReady:invoke({
                             shardId = shardIndex - 1,
-                            payload = event,
+                            payload = event
                         })
 
                         self.ready = true
@@ -185,26 +185,26 @@ function Manager.Prototype.connectAsync(
             shardInstance.onSocketHeartbeat:listen(function(ping: number?)
                 self.onHeartbeat:invoke({
                     shardId = shardIndex - 1,
-                    latency = ping,
+                    latency = ping
                 })
             end)
 
             shardInstance.onSocketConnected:listen(function()
                 self.onConnected:invoke({
-                    shardId = shardIndex - 1,
+                    shardId = shardIndex - 1
                 })
             end)
 
             shardInstance.onSocketReconnected:listen(function()
                 self.onReconnected:invoke({
-                    shardId = shardIndex - 1,
+                    shardId = shardIndex - 1
                 })
             end)
 
             shardInstance.onSocketDisconnected:listen(function(code: number?)
                 self.onDisconnected:invoke({
                     shardId = shardIndex - 1,
-                    errorCode = code,
+                    errorCode = code
                 })
             end)
 
@@ -243,7 +243,7 @@ function Manager.Prototype.sendAsync<T>(self: Manager, operation: apiTypes.Opcod
                     shardObject
                         :sendAsync(stdPolyfills.serde.encode("json", {
                             ["op"] = operation,
-                            ["d"] = data,
+                            ["d"] = data
                         }, false))
                         :await()
                 end)
@@ -270,7 +270,7 @@ function Manager.Interface.new(settings: {
     intents: number,
     largeThreshold: number?,
     webSocketVersion: number,
-    reconnect: boolean,
+    reconnect: boolean
 }): Manager
     return setmetatable(
         {
@@ -292,7 +292,7 @@ function Manager.Interface.new(settings: {
             onHeartbeat = emitter.new(),
             onDispatch = emitter.new(),
 
-            onAllShardsReady = emitter.new(),
+            onAllShardsReady = emitter.new()
         } :: Manager,
         { __index = Manager.Prototype }
     )
@@ -318,12 +318,12 @@ export type Manager = typeof(Manager.Prototype) & {
     onDispatch: emitter.Emitter<ShardPayload<{
         shardId: number,
         event: apiTypes.ReceiveEvent,
-        payload: apiTypes.Payload<unknown>,
+        payload: apiTypes.Payload<unknown>
     }>>,
     onAllShardsReady: emitter.Emitter<ShardPayload<{
         shardId: number,
-        payload: apiTypes.ReadyPayload,
-    }>>,
+        payload: apiTypes.ReadyPayload
+    }>>
 }
 
 return Manager.Interface

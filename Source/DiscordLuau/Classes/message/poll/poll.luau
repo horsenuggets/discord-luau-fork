@@ -105,7 +105,7 @@ export type Poll = typeof(Poll.Prototype) & {
     expiry: stdPolyfills.DateTime?,
     allowMultiselect: boolean,
     layoutType: apiTypes.PollLayoutType,
-    results: results.Results?,
+    results: results.Results?
 }
 
 return Poll.Interface

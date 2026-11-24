@@ -63,7 +63,7 @@ end
 
 export type Provider = typeof(Provider.Prototype) & {
     name: string?,
-    url: string?,
+    url: string?
 }
 
 return Provider.Interface

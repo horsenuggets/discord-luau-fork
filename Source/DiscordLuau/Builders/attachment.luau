@@ -37,7 +37,7 @@ end
 ]=]
 function Attachment.Prototype.build(self: Attachment): JSON
     return {
-        id = self.attachmentId,
+        id = self.attachmentId
     }
 end
 
@@ -46,7 +46,7 @@ end
     Responsible for creating a new Attachment.
 ]=]
 function Attachment.Interface.new(resource: {
-    attachmentId: string,
+    attachmentId: string
 }?): Attachment
     local self = setmetatable(
         {
@@ -57,7 +57,7 @@ function Attachment.Interface.new(resource: {
             ]=]
         } :: Attachment,
         {
-            __index = Attachment.Prototype,
+            __index = Attachment.Prototype
         }
     )
 
@@ -71,7 +71,7 @@ function Attachment.Interface.new(resource: {
 end
 
 export type Attachment = typeof(Attachment.Prototype) & {
-    attachmentId: string?,
+    attachmentId: string?
 }
 
 export type JSON = typeof(Attachment.Prototype.build(nil :: any))

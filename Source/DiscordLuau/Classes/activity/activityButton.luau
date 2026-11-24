@@ -43,7 +43,7 @@ function ActivityButton.Interface.new(label: string, url: string): ActivityButto
 
                 The url opened when clicking the button (1-512 characters)
             ]=]
-            url = url,
+            url = url
         } :: ActivityButton,
         { __index = ActivityButton.Prototype }
     )
@@ -53,7 +53,7 @@ end
 
 export type ActivityButton = typeof(ActivityButton.Prototype) & {
     label: string,
-    url: string,
+    url: string
 }
 
 return ActivityButton.Interface

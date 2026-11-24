@@ -566,7 +566,7 @@ local endpoints = table.freeze({
     GetCurrentBotApplicationInformation = "/oauth2/applications/@me",
 
     -- https://discord.com/developers/docs/topics/oauth2#get-current-authorization-information
-    GetCurrentAuthorizationInformation = "/oauth2/@me",
+    GetCurrentAuthorizationInformation = "/oauth2/@me"
 })
 
 export type Endpoint =

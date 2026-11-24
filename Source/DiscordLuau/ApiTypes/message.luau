@@ -49,46 +49,46 @@ local MessageType = table.freeze(util.tableReflect({
     GuildIncidentReportRaid = 38,
     GuildIncidentReportFalseAlarm = 39,
     PurchaseNotification = 44,
-    PollResult = 46,
+    PollResult = 46
 }))
 
 local MessageAcitvityType = table.freeze(util.tableReflect({
     Join = 1,
     Spectate = 2,
     Listen = 3,
-    JoinRequest = 5,
+    JoinRequest = 5
 }))
 
 local MessageReferenceType = table.freeze(util.tableReflect({
     Default = 0,
-    Forward = 1,
+    Forward = 1
 }))
 
 local ButtonStyle = table.freeze(util.tableReflect({
     Blurple = 1,
     Grey = 2,
     Green = 3,
-    Red = 4,
+    Red = 4
 }))
 
 local TextInputStyle = table.freeze(util.tableReflect({
     Short = 1,
-    Paragraph = 2,
+    Paragraph = 2
 }))
 
 local SelectDefaultValueType = table.freeze(util.tableReflect({
     Role = "role",
     User = "user",
-    Channel = "channel",
+    Channel = "channel"
 }))
 
 local PollLayoutType = table.freeze(util.tableReflect({
-    Default = 1,
+    Default = 1
 }))
 
 local ReactionType = table.freeze(util.tableReflect({
     Normal = 0,
-    Burst = 1,
+    Burst = 1
 }))
 
 export type MessageType =
@@ -151,5 +151,5 @@ return {
     TextInputStyle = TextInputStyle,
     SelectDefaultValueType = SelectDefaultValueType,
     PollLayoutType = PollLayoutType,
-    ReactionType = ReactionType,
+    ReactionType = ReactionType
 }

@@ -90,7 +90,7 @@ export type VoiceRegion = typeof(VoiceRegion.Prototype) & {
     name: string,
     optimal: boolean,
     deprecated: boolean,
-    custom: boolean,
+    custom: boolean
 }
 
 return VoiceRegion.Interface

@@ -93,7 +93,7 @@ export type Onboarding = typeof(Onboarding.Prototype) & {
     prompts: { prompt.Prompt },
     defaultChannelIds: { apiTypes.Snowflake },
     enabled: boolean,
-    mode: apiTypes.OnboardingMode,
+    mode: apiTypes.OnboardingMode
 }
 
 return Onboarding.Interface

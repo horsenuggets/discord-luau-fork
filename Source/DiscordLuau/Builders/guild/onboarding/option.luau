@@ -93,7 +93,7 @@ function Option.Prototype.build(self: Option): JSON
         description = self.description,
 
         emoji = nil,
-        id = nil,
+        id = nil
     }
 end
 
@@ -109,7 +109,7 @@ function Option.Interface.new(resource: {
     emojiName: string?,
     emojiAnimated: boolean?,
     title: string?,
-    description: string?,
+    description: string?
 }?): Option
     local self = setmetatable(
         {
@@ -125,7 +125,7 @@ function Option.Interface.new(resource: {
                 @within Builders.Onboarding.Option
                 Array of role IDs that are associated with this option.
             ]=]
-            roleIds = {},
+            roleIds = {}
 
             --[=[
                 @prop emojiId string?
@@ -158,7 +158,7 @@ function Option.Interface.new(resource: {
             ]=]
         } :: Option,
         {
-            __index = Option.Prototype,
+            __index = Option.Prototype
         }
     )
 
@@ -200,7 +200,7 @@ export type Option = typeof(Option.Prototype) & {
     emojiName: string?,
     emojiAnimated: boolean?,
     title: string,
-    description: string?,
+    description: string?
 }
 
 export type JSON = typeof(Option.Prototype.build(nil :: any))

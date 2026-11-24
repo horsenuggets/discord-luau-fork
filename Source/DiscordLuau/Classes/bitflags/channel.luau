@@ -72,7 +72,7 @@ function ChannelBitflag.Interface.new(flag: number): ChannelBitflag
                 @prop flag number
                 @within Classes.ChannelBitflag
             ]=]
-            flag = flag,
+            flag = flag
         } :: ChannelBitflag,
         { __index = ChannelBitflag.Prototype }
     )
@@ -81,7 +81,7 @@ function ChannelBitflag.Interface.new(flag: number): ChannelBitflag
 end
 
 export type ChannelBitflag = typeof(ChannelBitflag.Prototype) & {
-    flag: number,
+    flag: number
 }
 
 return ChannelBitflag.Interface

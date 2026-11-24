@@ -95,7 +95,7 @@ export type Option = typeof(Option.Prototype) & {
     roleIds: { apiTypes.Snowflake },
     emoji: emoji.Emoji?,
     title: string?,
-    description: string?,
+    description: string?
 }
 
 return Option.Interface

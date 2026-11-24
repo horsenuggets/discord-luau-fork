@@ -17,92 +17,92 @@ local VerificationLevel = table.freeze(util.tableReflect({
     Low = 1,
     Medium = 2,
     High = 3,
-    VeryHigh = 4,
+    VeryHigh = 4
 }))
 
 local DefaultMessageNotification = table.freeze(util.tableReflect({
     AllMessages = 0,
-    OnlyMentions = 1,
+    OnlyMentions = 1
 }))
 
 local ExplicitContentFilterLevel = table.freeze(util.tableReflect({
     Disabled = 0,
     MembersWithoutRoles = 1,
-    AllMembers = 2,
+    AllMembers = 2
 }))
 
 local NSFWLevel = table.freeze(util.tableReflect({
     Default = 0,
     Explicit = 1,
     Safe = 2,
-    AgeRestricted = 3,
+    AgeRestricted = 3
 }))
 
 local PremiumTier = table.freeze(util.tableReflect({
     None = 0,
     Tier1 = 1,
     Tier2 = 2,
-    Tier3 = 3,
+    Tier3 = 3
 }))
 
 local MFALevel = table.freeze(util.tableReflect({
     None = 0,
-    Elevated = 1,
+    Elevated = 1
 }))
 
 local InviteType = table.freeze(util.tableReflect({
     Guild = 0,
     GroupDM = 1,
-    Friend = 2,
+    Friend = 2
 }))
 
 local InviteTargetType = table.freeze(util.tableReflect({
     Stream = 1,
-    EmbeddedApplication = 2,
+    EmbeddedApplication = 2
 }))
 
 local ScheduledEventPrivacyLevel = table.freeze(util.tableReflect({
-    GuildOnly = 2,
+    GuildOnly = 2
 }))
 
 local SchedledEventEntityType = table.freeze(util.tableReflect({
     StageInstance = 1,
     Voice = 2,
-    External = 3,
+    External = 3
 }))
 
 local SchedledEventStatus = table.freeze(util.tableReflect({
     Scheduled = 1,
     Active = 2,
     Completed = 3,
-    Cancelled = 4,
+    Cancelled = 4
 }))
 
 local IntegrationType = table.freeze(util.tableReflect({
     Twitch = "twitch",
     YouTube = "youtube",
     Discord = "discord",
-    GuildSubscription = "guild_subscription",
+    GuildSubscription = "guild_subscription"
 }))
 
 local IntegrationExpireBehaviour = table.freeze(util.tableReflect({
     RemoveRole = 0,
-    Kick = 1,
+    Kick = 1
 }))
 
 local OnboardingPromptType = table.freeze(util.tableReflect({
     MultipleChoice = "MULTIPLE_CHOICE",
-    Dropdown = "DROPDOWN",
+    Dropdown = "DROPDOWN"
 }))
 
 local OnboardingMode = table.freeze(util.tableReflect({
     Default = "ONBOARDING_DEFAULT",
-    Advanced = "ONBOARDING_ADVANCED",
+    Advanced = "ONBOARDING_ADVANCED"
 }))
 
 local OverwriteType = table.freeze(util.tableReflect({
     Role = 0,
-    Member = 1,
+    Member = 1
 }))
 
 local TriggerTypes = table.freeze(util.tableReflect({
@@ -110,25 +110,25 @@ local TriggerTypes = table.freeze(util.tableReflect({
     Spam = 3,
     KeywordPreset = 4,
     MentionSpam = 5,
-    MemberProfile = 6,
+    MemberProfile = 6
 }))
 
 local KeywordPresetType = table.freeze(util.tableReflect({
     Profanity = 1,
     SexualContent = 2,
-    Slurs = 3,
+    Slurs = 3
 }))
 
 local EventTypes = table.freeze(util.tableReflect({
     MessageSend = 1,
-    MemberUpdate = 2,
+    MemberUpdate = 2
 }))
 
 local ActionTypes = table.freeze(util.tableReflect({
     BlockMessage = 1,
     SendAlertMessage = 2,
     Timeout = 3,
-    BlockMemberInteraction = 4,
+    BlockMemberInteraction = 4
 }))
 
 local AuditLogEvent = table.freeze(util.tableReflect({
@@ -197,7 +197,7 @@ local AuditLogEvent = table.freeze(util.tableReflect({
     OnboardingCreate = 166,
     OnboardingUpdate = 167,
     HomeSettingsCreate = 190,
-    HomeSettingsUpdate = 191,
+    HomeSettingsUpdate = 191
 }))
 
 export type ActionTypes = "BlockMessage" | "SendAlertMessage" | "Timeout" | "BlockMemberInteraction"
@@ -255,5 +255,5 @@ return {
     IntegrationExpireBehaviour = IntegrationExpireBehaviour,
     OnboardingPromptType = OnboardingPromptType,
     OnboardingMode = OnboardingMode,
-    OverwriteType = OverwriteType,
+    OverwriteType = OverwriteType
 }

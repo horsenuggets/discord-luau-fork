@@ -55,7 +55,7 @@ function PollAnswer.Prototype.build(self: PollAnswer): JSON
 
     return {
         answer_id = self.answerId,
-        poll_media = self.pollMedia,
+        poll_media = self.pollMedia
     }
 end
 
@@ -73,7 +73,7 @@ end
 ]=]
 function PollAnswer.Interface.new(resource: {
     answerId: number?,
-    pollMedia: mediaBuilder.JSON?,
+    pollMedia: mediaBuilder.JSON?
 }?): PollAnswer
     local self = setmetatable(
         {
@@ -89,10 +89,10 @@ function PollAnswer.Interface.new(resource: {
                 @within Builders.PollAnswer
                 The media attached to this poll answer.
             ]=]
-            pollMedia = nil,
+            pollMedia = nil
         } :: PollAnswer,
         {
-            __index = PollAnswer.Prototype,
+            __index = PollAnswer.Prototype
         }
     )
 
@@ -111,7 +111,7 @@ end
 
 export type PollAnswer = typeof(PollAnswer.Prototype) & {
     answerId: number?,
-    pollMedia: mediaBuilder.JSON?,
+    pollMedia: mediaBuilder.JSON?
 }
 
 export type JSON = typeof(PollAnswer.Prototype.build(nil :: any))

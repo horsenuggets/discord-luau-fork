@@ -29,7 +29,7 @@ Command.Interface = {}
 Command.Prototype = {}
 Command.Behaviours = {
     interactionBehaviour,
-    interactableBehaviour,
+    interactableBehaviour
 }
 
 --[=[
@@ -163,7 +163,7 @@ function Command.Interface.new(state: state.State, interactionData: apiTypes.Int
                 @prop isDeferred boolean
                 @within Command
             ]=]
-            isDeferred = false,
+            isDeferred = false
         } :: Command,
         { __index = Command.Prototype }
     )
@@ -174,7 +174,7 @@ function Command.Interface.new(state: state.State, interactionData: apiTypes.Int
 end
 
 export type Command = typeof(Command.Prototype) & {
-    isDeferred: boolean,
+    isDeferred: boolean
 } & interactionBehaviour.Interaction & interactableBehaviour.Interaction
 
 return Command.Interface

@@ -69,7 +69,7 @@ end
 export type StickerItem = typeof(StickerItem.Prototype) & {
     id: apiTypes.Snowflake,
     name: string,
-    formatType: apiTypes.StickerFormatType,
+    formatType: apiTypes.StickerFormatType
 }
 
 return StickerItem.Interface

@@ -105,7 +105,7 @@ function Poll.Prototype.build(self: Poll): JSON
         expiry = self.expiry,
         allow_multiselect = self.allowMultiselect,
         layout_type = apiTypes.channel.PollLayoutType[self.layoutType],
-        results = nil,
+        results = nil
     }
 end
 
@@ -119,7 +119,7 @@ function Poll.Interface.new(resource: {
     answers: { answerBuilder.JSON }?,
     expiry: number?,
     allowMultiselect: boolean?,
-    layoutType: apiTypes.PollLayoutType?,
+    layoutType: apiTypes.PollLayoutType?
 }?): Poll
     local self = setmetatable(
         {
@@ -133,7 +133,7 @@ function Poll.Interface.new(resource: {
                 @within Builders.Poll
                 The array of possible answers for the poll.
             ]=]
-            answers = {},
+            answers = {}
             --[=[
                 @prop expiry string
                 @within Builders.Poll
@@ -151,7 +151,7 @@ function Poll.Interface.new(resource: {
             ]=]
         } :: Poll,
         {
-            __index = Poll.Prototype,
+            __index = Poll.Prototype
         }
     )
 
@@ -187,7 +187,7 @@ export type Poll = typeof(Poll.Prototype) & {
     answers: { answerBuilder.JSON },
     expiry: string,
     allowMultiselect: boolean,
-    layoutType: apiTypes.PollLayoutType,
+    layoutType: apiTypes.PollLayoutType
 }
 
 export type JSON = typeof(Poll.Prototype.build(nil :: any))

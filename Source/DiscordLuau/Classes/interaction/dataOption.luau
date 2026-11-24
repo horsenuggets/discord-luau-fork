@@ -102,7 +102,7 @@ export type DataOption<T> = typeof(DataOption.Prototype) & {
     type: apiTypes.ApplicationCommandOptionType,
     value: T?,
     options: { DataOption<T> }?,
-    focused: boolean?,
+    focused: boolean?
 }
 
 return DataOption.Interface

@@ -154,7 +154,7 @@ function REST.Prototype.implementBucketRatelimitsFor(self: REST, request: rest.R
             self.routeRatelimits[ratelimitBucket] = {
                 remaining = tonumber(ratelimitRemaining) :: number,
                 limit = tonumber(ratelimitLimit) :: number,
-                resetAfter = tonumber(ratelimitResetAfter) :: number,
+                resetAfter = tonumber(ratelimitResetAfter) :: number
             }
 
             utils.coroutineRun(function()
@@ -254,7 +254,7 @@ function REST.Prototype.implementAttachmentHandlerFor(_: REST, request: rest.Req
         if request.flags["FormdataRequest"] then
             local bodyJson = stdPolyfills.serde.decode("json", requestInfo.body)
             local messageJson = (bodyJson.data and bodyJson.data or bodyJson) :: {
-                attachments: { Attachment }?,
+                attachments: { Attachment }?
             }
 
             if messageJson.attachments and #messageJson.attachments > 0 then
@@ -275,7 +275,7 @@ function REST.Prototype.implementAttachmentHandlerFor(_: REST, request: rest.Req
                     url = requestInfo.url,
                     method = requestInfo.method,
                     body = formdata:getBody(),
-                    headers = requestInfo.headers,
+                    headers = requestInfo.headers
                 })
 
                 return true,
@@ -283,7 +283,7 @@ function REST.Prototype.implementAttachmentHandlerFor(_: REST, request: rest.Req
                         url = requestInfo.url,
                         method = requestInfo.method,
                         body = formdata:getBody(),
-                        headers = requestInfo.headers,
+                        headers = requestInfo.headers
                     }
             end
         end
@@ -293,7 +293,7 @@ function REST.Prototype.implementAttachmentHandlerFor(_: REST, request: rest.Req
                 url = requestInfo.url,
                 method = requestInfo.method,
                 body = requestInfo.body,
-                headers = requestInfo.headers,
+                headers = requestInfo.headers
             }
     end)
 end
@@ -306,7 +306,7 @@ end
 function REST.Prototype.newRequest(self: REST): rest.Request
     local newRequest = rest.request.new({
         token = self.token.value,
-        restApiVersion = self.version,
+        restApiVersion = self.version
     })
 
     self:implementBucketRatelimitsFor(newRequest)
@@ -328,7 +328,7 @@ function REST.Interface.new(settings: {
     intents: number,
     version: number,
     globalRatelimit: number,
-    logLevel: logger.LogLevel?,
+    logLevel: logger.LogLevel?
 }): REST
     local self = setmetatable(
         {
@@ -341,10 +341,10 @@ function REST.Interface.new(settings: {
             isBlocked = false,
             resourcesBlocked = {},
             intents = settings.intents,
-            version = settings.version,
+            version = settings.version
         } :: REST,
         {
-            __index = REST.Prototype,
+            __index = REST.Prototype
         }
     )
 
@@ -353,7 +353,7 @@ end
 
 export type Attachment = {
     content: string,
-    filename: string?,
+    filename: string?
 }
 
 export type Bucket = string
@@ -368,7 +368,7 @@ export type REST = typeof(REST.Prototype) & {
     isBlocked: boolean,
     resourcesBlocked: { [string]: boolean? },
     intents: number,
-    version: number,
+    version: number
 }
 
 return REST.Interface

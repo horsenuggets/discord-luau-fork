@@ -31,7 +31,7 @@ Public.Behaviours = {
     channelBehaviour,
     guildBehaviour,
     threadBehaviour,
-    textBehaviour,
+    textBehaviour
 }
 
 --[=[
@@ -61,7 +61,7 @@ function Public.Interface.new(state: state.State, channelData: apiTypes.ChannelO
     ]=]
     local self = setmetatable(
         {
-            state = state,
+            state = state
         } :: Public,
         { __index = Public.Prototype }
     )
@@ -74,7 +74,7 @@ end
 export type Public =
     typeof(Public.Prototype)
     & {
-        state: state.State,
+        state: state.State
     }
     & channelBehaviour.ChannelBehaviour
     & textBehaviour.TextBehaviour

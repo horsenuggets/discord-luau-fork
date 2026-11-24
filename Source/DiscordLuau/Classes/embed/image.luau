@@ -81,7 +81,7 @@ export type Image = typeof(Image.Prototype) & {
     url: string,
     proxyUrl: string?,
     height: number?,
-    width: number?,
+    width: number?
 }
 
 return Image.Interface

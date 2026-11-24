@@ -111,7 +111,7 @@ function ThreadBehaviour.Prototype.getMemberAsync<T>(self: Channel<T>, userId: s
 
         local response = rest.channel
             .getThreadMemberAsync(request, self.id, userId, {
-                withMember = withMember,
+                withMember = withMember
             })
             :await()
 
@@ -138,7 +138,7 @@ function ThreadBehaviour.Prototype.listMembersAsync<T>(
             .listThreadMembersAsync(request, self.id, {
                 withMember = withMember,
                 after = after,
-                limit = limit,
+                limit = limit
             })
             :await()
 
@@ -230,7 +230,7 @@ type Channel<T> = T & ThreadBehaviour & {
     id: string,
     guildId: string,
 
-    sync: (...any) -> (),
+    sync: (...any) -> ()
 }
 
 export type ThreadBehaviourMethods = typeof(ThreadBehaviour.Prototype)
@@ -241,7 +241,7 @@ export type ThreadBehaviourProperties = {
     memberCount: number,
     messageCount: number,
     parentId: string?,
-    ownerId: string,
+    ownerId: string
 }
 
 export type ThreadBehaviour = ThreadBehaviourMethods & ThreadBehaviourProperties

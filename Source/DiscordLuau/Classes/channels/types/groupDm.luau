@@ -29,7 +29,7 @@ GroupDM.Prototype = {}
 GroupDM.Behaviours = {
     channelBehaviour,
     groupDMBehaviours,
-    textBehaviour,
+    textBehaviour
 }
 
 --[=[
@@ -59,7 +59,7 @@ function GroupDM.Interface.new(state: state.State, channelData: apiTypes.Channel
                 @prop state Classes.State
                 @within Classes.GroupDM
             ]=]
-            state = state,
+            state = state
         } :: GroupDM,
         { __index = GroupDM.Prototype }
     )
@@ -70,7 +70,7 @@ function GroupDM.Interface.new(state: state.State, channelData: apiTypes.Channel
 end
 
 export type GroupDM = typeof(GroupDM.Prototype) & {
-    state: state.State,
+    state: state.State
 } & channelBehaviour.ChannelBehaviour & groupDMBehaviours.GroupDMBehaviour & textBehaviour.TextBehaviour
 
 return GroupDM.Interface

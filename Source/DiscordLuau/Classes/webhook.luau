@@ -129,7 +129,7 @@ export type Webhook = typeof(Webhook.Prototype) & {
     avatar: string?,
     token: string?,
     applicationId: apiTypes.Snowflake?,
-    url: string?,
+    url: string?
 }
 
 return Webhook.Interface

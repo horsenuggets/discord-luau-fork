@@ -87,7 +87,7 @@ export type Presence = typeof(Presence.Prototype) & {
     since: stdPolyfills.DateTime,
     activities: { activity.Activity },
     status: string,
-    afk: boolean,
+    afk: boolean
 }
 
 return Presence.Interface

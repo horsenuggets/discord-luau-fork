@@ -33,7 +33,7 @@ Media.Behaviours = {
     guildBehaviour,
     threadBehaviour,
     mediaBehaviour,
-    textBehaviour,
+    textBehaviour
 }
 
 --[=[
@@ -63,7 +63,7 @@ function Media.Interface.new(state: state.State, channelData: apiTypes.ChannelOb
                 @prop state Classes.State
                 @within Classes.Media
             ]=]
-            state = state,
+            state = state
         } :: Media,
         { __index = Media.Prototype }
     )
@@ -76,7 +76,7 @@ end
 export type Media =
     typeof(Media.Prototype)
     & {
-        state: state.State,
+        state: state.State
     }
     & channelBehaviour.ChannelBehaviour
     & textBehaviour.TextBehaviour

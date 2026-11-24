@@ -87,7 +87,7 @@ export type Member = typeof(Member.Prototype) & {
     membershipState: apiTypes.MembershipState,
     teamId: apiTypes.Snowflake,
     user: user.User,
-    role: apiTypes.TeamRole,
+    role: apiTypes.TeamRole
 }
 
 return Member.Interface

@@ -63,7 +63,7 @@ end
 
 export type WidgetSettings = typeof(WidgetSettings.Prototype) & {
     enabled: boolean?,
-    channelId: apiTypes.Snowflake?,
+    channelId: apiTypes.Snowflake?
 }
 
 return WidgetSettings.Interface

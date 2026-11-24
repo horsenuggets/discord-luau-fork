@@ -72,7 +72,7 @@ end
 export type AuditLogChange = typeof(AuditLogChange.Prototype) & {
     newValue: any,
     oldValue: any,
-    key: string,
+    key: string
 }
 
 return AuditLogChange.Interface

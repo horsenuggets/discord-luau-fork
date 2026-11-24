@@ -101,7 +101,7 @@ function Option.Prototype.build(self: Option): JSON
         value = self.value,
         description = self.description,
         emoji = self.emoji,
-        default = self.default,
+        default = self.default
     }
 end
 
@@ -124,7 +124,7 @@ function Option.Interface.new(resource: {
     value: string?,
     description: string?,
     emoji: emoji.JSON?,
-    default: boolean?,
+    default: boolean?
 }): Option
     local self = setmetatable(
         {
@@ -161,10 +161,10 @@ function Option.Interface.new(resource: {
                 @within Builders.Option
                 Whether this option is selected by default.
             ]=]
-            default = nil,
+            default = nil
         } :: Option,
         {
-            __index = Option.Prototype,
+            __index = Option.Prototype
         }
     )
 
@@ -198,7 +198,7 @@ export type Option = typeof(Option.Prototype) & {
     value: string?,
     description: string?,
     emoji: emoji.JSON?,
-    default: boolean?,
+    default: boolean?
 }
 
 export type JSON = typeof(Option.Prototype.build(nil :: any))

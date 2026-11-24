@@ -94,7 +94,7 @@ function AllowedMention.Prototype.build(self: AllowedMention): JSON
         parse = self.parse,
         roles = self.roles,
         users = self.users,
-        replied_user = self.repliedUser,
+        replied_user = self.repliedUser
     }
 end
 
@@ -107,7 +107,7 @@ function AllowedMention.Interface.new(resource: {
     roles: { apiTypes.Snowflake },
     users: { apiTypes.Snowflake },
     repliedUser: boolean?,
-    mentionsEveryone: boolean?,
+    mentionsEveryone: boolean?
 }?): AllowedMention
     local self = setmetatable(
         {
@@ -130,7 +130,7 @@ function AllowedMention.Interface.new(resource: {
                 @within Builders.AllowedMention
                 Array of user_ids to mention (Max size of 100).
             ]=]
-            users = {},
+            users = {}
 
             --[=[
                 @prop repliedUser boolean?
@@ -139,7 +139,7 @@ function AllowedMention.Interface.new(resource: {
             ]=]
         } :: AllowedMention,
         {
-            __index = AllowedMention.Prototype,
+            __index = AllowedMention.Prototype
         }
     )
 
@@ -172,7 +172,7 @@ export type AllowedMention = typeof(AllowedMention.Prototype) & {
     parse: { apiTypes.AllowedMentionTypes },
     roles: { apiTypes.Snowflake },
     users: { apiTypes.Snowflake },
-    repliedUser: boolean?,
+    repliedUser: boolean?
 }
 
 export type JSON = typeof(AllowedMention.Prototype.build(nil :: any))

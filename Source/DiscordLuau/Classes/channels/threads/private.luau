@@ -31,7 +31,7 @@ Private.Behaviours = {
     channelBehaviour,
     guildBehaviour,
     threadBehaviour,
-    textBehaviour,
+    textBehaviour
 }
 
 --[=[
@@ -61,7 +61,7 @@ function Private.Interface.new(state: state.State, channelData: apiTypes.Channel
                 @prop state Classes.State
                 @within Classes.Private
             ]=]
-            state = state,
+            state = state
         } :: Private,
         { __index = Private.Prototype }
     )
@@ -74,7 +74,7 @@ end
 export type Private =
     typeof(Private.Prototype)
     & {
-        state: state.State,
+        state: state.State
     }
     & channelBehaviour.ChannelBehaviour
     & textBehaviour.TextBehaviour

@@ -28,7 +28,7 @@ Component.Interface = {}
 Component.Prototype = {}
 Component.Behaviours = {
     interactionBehaviour,
-    interactableBehaviour,
+    interactableBehaviour
 }
 
 --[=[
@@ -55,7 +55,7 @@ function Component.Interface.new(state: state.State, interactionData: apiTypes.I
     local self = setmetatable(
         {
             state = state,
-            isDeferred = false,
+            isDeferred = false
         } :: Component,
         { __index = Component.Prototype }
     )
@@ -76,7 +76,7 @@ end
 ]=]
 
 export type Component = typeof(Component.Prototype) & {
-    isDeferred: boolean,
+    isDeferred: boolean
 } & interactionBehaviour.Interaction & interactableBehaviour.Interaction
 
 return Component.Interface

@@ -31,7 +31,7 @@ local ILLEGAL_HTTP_TOKEN_CHARACTERS = table.freeze({
     ["\20"] = true,
     ["\9"] = true,
     ["\r"] = true,
-    ["\n"] = true,
+    ["\n"] = true
 }) :: { [string]: boolean }
 
 --[[
@@ -167,7 +167,7 @@ local function parseMultipartFormDataValue(stream: Stream.Stream): DecodedFormDa
         filename = filename,
         contentType = contentType,
         contentTransferEncoding = contentTransferEncoding,
-        body = body,
+        body = body
     }
 end
 
@@ -252,7 +252,7 @@ export type DecodedFormDataValue = {
     filename: string?,
     contentType: string,
     contentTransferEncoding: string?,
-    body: string,
+    body: string
 }
 
 return function(textSource: string, mimeType: string): { DecodedFormDataValue }

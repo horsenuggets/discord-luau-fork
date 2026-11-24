@@ -157,7 +157,7 @@ export type AuditLogEntryInfo = typeof(AuditLogEntryInfo.Prototype) & {
     messageId: apiTypes.Snowflake,
     roleName: string,
     type: string,
-    integrationType: string,
+    integrationType: string
 }
 
 return AuditLogEntryInfo.Interface

@@ -51,7 +51,7 @@ function GroupDMBehaviour.Prototype.addRecipient<T>(
         local response = rest.channel
             .groupDMAddRecipientAsync(request, self.id, userId, {
                 access_token = accessToken,
-                nick = nickname,
+                nick = nickname
             })
             :await()
 
@@ -83,7 +83,7 @@ end
 ]=]
 function GroupDMBehaviour.Prototype.setNameAsync<T>(self: Channel<T>, groupName: string)
     return self:modifyAsync({
-        name = groupName,
+        name = groupName
     }) :: future.FutureLike<string, Channel<T>>
 end
 
@@ -94,7 +94,7 @@ end
 function GroupDMBehaviour.Prototype.setIconAsync<T>(self: Channel<T>, iconData: string)
     return self:modifyAsync({
         name = self.name,
-        icon = iconData,
+        icon = iconData
     }) :: future.FutureLike<string, Channel<T>>
 end
 
@@ -169,7 +169,7 @@ type Channel<T> = T & GroupDMBehaviour & {
 
     modifyAsync: any,
 
-    sync: (...any) -> (),
+    sync: (...any) -> ()
 }
 
 export type GroupDMBehaviourMethods = typeof(GroupDMBehaviour.Prototype)
@@ -178,7 +178,7 @@ export type GroupDMBehaviourProperties = {
     icon: string?,
     ownerId: string?,
     applicationId: string?,
-    managed: boolean,
+    managed: boolean
 }
 
 export type GroupDMBehaviour = GroupDMBehaviourMethods & GroupDMBehaviourProperties

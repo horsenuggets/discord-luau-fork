@@ -84,7 +84,7 @@ function Interaction.Interface.new(state: state.State, interactionData: apiTypes
                 @within Classes.MessageInteraction
                 The state object that this interaction is associated with
             ]=]
-            state = state,
+            state = state
         } :: Interaction,
         { __index = Interaction.Prototype }
     )
@@ -101,7 +101,7 @@ export type Interaction = typeof(Interaction.Prototype) & {
     type: apiTypes.InteractionType,
     name: string,
     user: user.User,
-    member: member.Member?,
+    member: member.Member?
 }
 
 return Interaction.Interface

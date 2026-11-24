@@ -40,7 +40,7 @@ local LOGGER_LOG_LEVELS = table.freeze({
     "Error",
     "Critical",
     "Alert",
-    "Emergency",
+    "Emergency"
 })
 
 local LOGGER_LOG_FORMATS = table.freeze({
@@ -51,7 +51,7 @@ local LOGGER_LOG_FORMATS = table.freeze({
     ["Error"] = `{RED}[%s][%s][ERROR]: %s`,
     ["Critical"] = `{RED}[%s][%s][CRITICAL]: %s`,
     ["Alert"] = `{BOLD}{RED}[%s][%s][ALERT]: %s`,
-    ["Emergency"] = `{BOLD}{RED}[%s][%s][EMERGENCY]: %s`,
+    ["Emergency"] = `{BOLD}{RED}[%s][%s][EMERGENCY]: %s`
 })
 
 local Logger = {}
@@ -108,7 +108,7 @@ function Logger.Interface.new(name: string, logLevel: LogLevel?): Logger
 
     local self = setmetatable(
         {
-            logLevel = logLevelIndex or 1,
+            logLevel = logLevelIndex or 1
         } :: Logger,
         { __index = Logger.Prototype }
     )
@@ -165,7 +165,7 @@ export type Logger = typeof(Logger.Prototype) & {
     error: (self: Logger, ...any) -> (),
     critical: (self: Logger, ...any) -> (),
     alert: (self: Logger, ...any) -> (),
-    emergency: (self: Logger, ...any) -> (),
+    emergency: (self: Logger, ...any) -> ()
 }
 
 return Logger.Interface

@@ -72,7 +72,7 @@ end
 export type Choice = typeof(Choice.Prototype) & {
     name: string,
     nameLocalizations: { [apiTypes.LanguageLocales]: string }?,
-    value: string | number,
+    value: string | number
 }
 
 return Choice.Interface

@@ -27,7 +27,7 @@ DM.Interface = {}
 DM.Prototype = {}
 DM.Behaviours = {
     channelBehaviour,
-    textBehaviour,
+    textBehaviour
 }
 
 --[=[
@@ -57,7 +57,7 @@ function DM.Interface.new(state: state.State, channelData: apiTypes.ChannelObjec
                 @prop state State
                 @within Classes.DM
             ]=]
-            state = state,
+            state = state
         } :: DM,
         { __index = DM.Prototype }
     )
@@ -68,7 +68,7 @@ function DM.Interface.new(state: state.State, channelData: apiTypes.ChannelObjec
 end
 
 export type DM = typeof(DM.Prototype) & {
-    state: state.State,
+    state: state.State
 } & channelBehaviour.ChannelBehaviour & textBehaviour.TextBehaviour
 
 return DM.Interface

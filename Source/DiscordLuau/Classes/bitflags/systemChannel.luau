@@ -103,7 +103,7 @@ function SystemChannelBitflag.Interface.new(flag: number): SystemChannelBitflag
                 @within Classes.SystemChannelBitflag
                 The bitfield representing the system channel flags.
             ]=]
-            flag = flag,
+            flag = flag
         } :: SystemChannelBitflag,
         { __index = SystemChannelBitflag.Prototype }
     )
@@ -112,7 +112,7 @@ function SystemChannelBitflag.Interface.new(flag: number): SystemChannelBitflag
 end
 
 export type SystemChannelBitflag = typeof(SystemChannelBitflag.Prototype) & {
-    flag: number,
+    flag: number
 }
 
 return SystemChannelBitflag.Interface

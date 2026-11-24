@@ -64,7 +64,7 @@ function ActivityAssets.Interface.new(
 
                 Text displayed when hovering over the small image of the activity
             ]=]
-            smallText = smallText,
+            smallText = smallText
         } :: ActivityAssets,
         { __index = ActivityAssets.Prototype }
     )
@@ -76,7 +76,7 @@ export type ActivityAssets = typeof(ActivityAssets.Prototype) & {
     largeImage: string,
     largeText: string,
     smallImage: string,
-    smallText: string,
+    smallText: string
 }
 
 return ActivityAssets.Interface

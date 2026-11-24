@@ -83,7 +83,7 @@ function GuildMemberBitflag.Interface.new(flag: number): GuildMemberBitflag
                 @prop flag number
                 @within Classes.GuildMemberBitflag
             ]=]
-            flag = flag,
+            flag = flag
         } :: GuildMemberBitflag,
         { __index = GuildMemberBitflag.Prototype }
     )
@@ -92,7 +92,7 @@ function GuildMemberBitflag.Interface.new(flag: number): GuildMemberBitflag
 end
 
 export type GuildMemberBitflag = typeof(GuildMemberBitflag.Prototype) & {
-    flag: number,
+    flag: number
 }
 
 return GuildMemberBitflag.Interface

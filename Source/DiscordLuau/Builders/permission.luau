@@ -86,7 +86,7 @@ end
     Responsible for creating a new Permission.
 ]=]
 function Permission.Interface.new(resource: {
-    bitflag: (string | number)?,
+    bitflag: (string | number)?
 }?): Permission
     local self = setmetatable(
         {
@@ -109,10 +109,10 @@ function Permission.Interface.new(resource: {
                 @within Builders.Permission
                 The numeric representation of the permission bitflag.
             ]=]
-            bitflag = 0,
+            bitflag = 0
         } :: Permission,
         {
-            __index = Permission.Prototype,
+            __index = Permission.Prototype
         }
     )
 
@@ -138,14 +138,14 @@ function Permission.Interface.fromPermissions(permissions: { apiTypes.Permission
     end
 
     return Permission.Interface.new({
-        bitflag = bitflag,
+        bitflag = bitflag
     })
 end
 
 export type Permission = typeof(Permission.Prototype) & {
     bitflag: number,
     addedPermissions: { apiTypes.Permissions },
-    removedPermissions: { apiTypes.Permissions },
+    removedPermissions: { apiTypes.Permissions }
 }
 
 export type JSON = typeof(Permission.Prototype.build(nil :: any))

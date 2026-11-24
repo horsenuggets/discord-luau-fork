@@ -33,7 +33,7 @@ function interaction.createInteractionResponseAsync(
     interactionToken: string,
     jsonParams: apiTypes.CreateInteractionRequest,
     urlParams: {
-        withResponse: boolean?,
+        withResponse: boolean?
     }
 ): future.FutureLike<string, apiTypes.CreateInteractionResponse>
     return future.Future.new(function()
@@ -68,7 +68,7 @@ function interaction.getOriginalInteractionResponseAsync(
     applicationId: apiTypes.Snowflake,
     interactionToken: string,
     urlParams: {
-        threadId: apiTypes.Snowflake?,
+        threadId: apiTypes.Snowflake?
     }
 ): future.FutureLike<
     string,
@@ -103,7 +103,7 @@ function interaction.editOriginalInteractionResponseAsync(
     interactionToken: string,
     jsonParams: apiTypes.EditOriginalInteractionRequest,
     urlParams: {
-        threadId: apiTypes.Snowflake?,
+        threadId: apiTypes.Snowflake?
     }
 ): future.FutureLike<
     string,
@@ -169,7 +169,7 @@ function interaction.createFollowupMessageAsync(
     jsonParams: apiTypes.CreateFollowupMessageRequest,
     urlParams: {
         wait: boolean?,
-        threadId: apiTypes.Snowflake?,
+        threadId: apiTypes.Snowflake?
     }
 ): future.FutureLike<string, apiTypes.CreateFollowupMessageResponse>
     return future.Future.new(function()
@@ -201,7 +201,7 @@ function interaction.getFollowupMessageAsync(
     interactionToken: string,
     messageId: apiTypes.Snowflake,
     urlParams: {
-        threadId: apiTypes.Snowflake?,
+        threadId: apiTypes.Snowflake?
     }
 ): future.FutureLike<string, apiTypes.GetFollowupMessageResponse>
     return future.Future.new(function()
@@ -234,7 +234,7 @@ function interaction.editFollowupMessageAsync(
     messageId: apiTypes.Snowflake,
     jsonParams: apiTypes.EditFollowupMessageRequest,
     urlParams: {
-        threadId: apiTypes.Snowflake?,
+        threadId: apiTypes.Snowflake?
     }
 ): future.FutureLike<string, apiTypes.EditFollowupMessageResponse>
     return future.Future.new(function()

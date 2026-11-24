@@ -70,7 +70,7 @@ function Modal.Prototype.build(self: Modal): JSON
     return {
         custom_id = self.customId,
         title = self.title,
-        components = self.components,
+        components = self.components
     }
 end
 
@@ -90,7 +90,7 @@ end
 function Modal.Interface.new(resource: {
     customId: string?,
     title: string?,
-    components: { textInput.JSON }?,
+    components: { textInput.JSON }?
 }?): Modal
     local self = setmetatable(
         {
@@ -113,10 +113,10 @@ function Modal.Interface.new(resource: {
                 @within Builders.Modal
                 The components that will be displayed in this modal.
             ]=]
-            components = nil,
+            components = nil
         } :: Modal,
         {
-            __index = Modal.Prototype,
+            __index = Modal.Prototype
         }
     )
 
@@ -140,7 +140,7 @@ end
 export type Modal = typeof(Modal.Prototype) & {
     customId: string?,
     title: string?,
-    components: { textInput.JSON }?,
+    components: { textInput.JSON }?
 }
 
 export type JSON = apiTypes.InteractionCallbackModalObject
